@@ -1,0 +1,331 @@
+﻿ticker,period,as_of_date,ky_goc,dung_ky_thay_the,car_percent,car_rieng_le_percent,tier1_percent,thong_tu,co_so,nguon,do_tin_cay,source_url,note,retrieved_at_utc
+ACB,2019-H1,2019-06-30,2019-Q2,False,10.26,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+ACB,2019-H2,2019-12-31,2019-Q4,False,10.91,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2020-H1,2020-06-30,2020-Q2,False,11.23,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+ACB,2020-H2,2020-12-31,2020-Q4,False,11.06,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2021-H1,2021-06-30,2021-Q2,False,11.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2021-H2,2021-12-31,2021-Q4,False,11.23,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2022-H1,2022-06-30,2022-Q2,False,11.98,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+ACB,2022-H2,2022-12-31,2022-Q4,False,12.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2023-H1,2023-06-30,2023-Q2,False,12.76,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+ACB,2023-H2,2023-12-31,2023-Q4,False,12.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2024-H1,2024-06-30,2024-Q2,False,11.79,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+ACB,2024-H2,2024-12-31,2024-Q4,False,12.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2025-H1,2025-06-30,2025-Q2,False,12.12,,,TT41,hop_nhat,nhap_tay,,,Nhap tay tu bao cao NH. Ghi de o vnstock cu (10.97) - lech 1.15 diem. Nhan nguon=vnstock va note 'khop tuyet doi' cua ban cu da go vi khong con dung.,2026-09-07T09:19:08.830666+00:00
+ACB,2025-H2,2025-12-31,2025-Q4,False,12.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2026-H1,2026-06-30,2026-Q2,False,11.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2019-H1,2019-06-30,2019-Q2,False,11.15,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2019-H2,2019-12-31,2019-Q4,False,10.22,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2020-H1,2020-06-30,2020-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2020-H2,2020-12-31,2020-Q4,False,8.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2021-H2,2021-12-31,2021-Q4,False,9.24,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2022-H1,2022-06-30,2022-Q2,False,8.92,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BAB,2022-H2,2022-12-31,2022-Q4,False,8.95,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2023-H1,2023-06-30,2023-Q2,False,8.53,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BAB,2023-H2,2023-12-31,2023-Q4,False,8.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2024-H1,2024-06-30,2024-Q2,False,10.0,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BAB,2024-H2,2024-12-31,2024-Q4,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2025-H1,2025-06-30,2025-Q2,False,10.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BAB,2025-H2,2025-12-31,2025-Q4,False,10.02,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BID,2019-H1,2019-06-30,2019-Q2,False,9.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2019-H2,2019-12-31,2019-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2020-H1,2020-06-30,2020-Q2,False,8.97,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BID,2020-H2,2020-12-31,2020-Q4,False,8.61,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2021-H1,2021-06-30,2021-Q2,False,8.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2021-H2,2021-12-31,2021-Q4,False,8.97,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2022-H1,2022-06-30,2022-Q2,False,8.88,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BID,2022-H2,2022-12-31,2022-Q4,False,8.92,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2023-H1,2023-06-30,2023-Q2,False,9.34,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BID,2023-H2,2023-12-31,2023-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2024-H1,2024-06-30,2024-Q2,False,9.48,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BID,2024-H2,2024-12-31,2024-Q4,False,9.03,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2025-H1,2025-06-30,2025-Q2,False,9.57,9.39,6.75,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://bidv.com.vn/wps/wcm/connect/408c687f-055c-4e0c-88b9-0c1dba6710bd/Bao+cao+CBTT_+30.6.2025_VIE.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-408c687f-055c-4e0c-88b9-0c1dba6710bd-pACUd9K,"Gan cot suy tu thu tu cot, nhu SHB. Hop ly theo chieu: vnstock 2024-Q2 = 9.48 -> 9.57 la buoc tang nho. BIDV da co ban 31/12/2025 tren trang IR, chua lay.",2026-09-07T09:19:08.830666+00:00
+BID,2025-H2,2025-12-31,2025-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2019-H2,2019-12-31,2019-Q4,False,8.54,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2020-H1,2020-06-30,2020-Q2,False,8.43,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2020-H2,2020-12-31,2020-Q4,False,9.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2021-H1,2021-06-30,2021-Q2,False,9.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2021-H2,2021-12-31,2021-Q4,False,10.86,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2022-H1,2022-06-30,2022-Q2,False,11.2,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BVB,2022-H2,2022-12-31,2022-Q4,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2023-H1,2023-06-30,2023-Q2,False,11.76,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BVB,2023-H2,2023-12-31,2023-Q4,False,11.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2024-H1,2024-06-30,2024-Q2,False,11.5,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BVB,2024-H2,2024-12-31,2024-Q4,False,11.9,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2025-H1,2025-06-30,2025-Q2,False,14.2,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+BVB,2025-H2,2025-12-31,2025-Q4,False,13.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2026-H1,2026-06-30,2026-Q2,False,12.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2019-H1,2019-06-30,2019-Q2,False,8.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2019-H2,2019-12-31,2019-Q4,False,9.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2020-H1,2020-06-30,2020-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2020-H2,2020-12-31,2020-Q4,False,9.93,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2021-H1,2021-06-30,2021-Q2,False,9.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2021-H2,2021-12-31,2021-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2022-H1,2022-06-30,2022-Q2,False,8.96,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+CTG,2022-H2,2022-12-31,2022-Q4,False,9.45,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2023-H1,2023-06-30,2023-Q2,False,8.94,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+CTG,2023-H2,2023-12-31,2023-Q4,False,9.13,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2024-H1,2024-06-30,2024-Q2,False,9.54,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+CTG,2024-H2,2024-12-31,2024-Q4,False,9.54,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2025-H1,2025-06-30,2025-Q2,False,10.29,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+CTG,2025-H2,2025-12-31,2025-Q4,False,9.89,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2019-H2,2019-12-31,2019-Q4,False,13.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2020-H1,2020-06-30,2020-Q2,False,11.78,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+EIB,2020-H2,2020-12-31,2020-Q4,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2021-H2,2021-12-31,2021-Q4,False,12.29,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2022-H1,2022-06-30,2022-Q2,False,12.97,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+EIB,2022-H2,2022-12-31,2022-Q4,False,14.64,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2023-H1,2023-06-30,2023-Q2,False,14.25,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+EIB,2023-H2,2023-12-31,2023-Q4,False,13.43,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2024-H1,2024-06-30,2024-Q2,False,12.09,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+EIB,2024-H2,2024-12-31,2024-Q4,False,12.41,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2025-H1,2025-06-30,2025-Q2,False,11.91,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2025-H2,2025-12-31,2025-Q4,False,12.41,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2019-H1,2019-06-30,2019-Q2,False,12.4,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2019-H2,2019-12-31,2019-Q4,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2020-H1,2020-06-30,2020-Q2,False,11.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2020-H2,2020-12-31,2020-Q4,False,12.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2021-H1,2021-06-30,2021-Q2,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2021-H2,2021-12-31,2021-Q4,False,14.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2022-H1,2022-06-30,2022-Q2,False,14.89,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+HDB,2022-H2,2022-12-31,2022-Q4,False,14.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2023-H1,2023-06-30,2023-Q2,False,12.3,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+HDB,2023-H2,2023-12-31,2023-Q4,False,12.57,12.21,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://cdn.hdbank.com.vn/hdbank-file/investor/editor/bM0oFeFPUJyfnjkNnAjK20240904113105/HDBankCongbothongtinCARTT4130062024dau_1725437683266.pdf,Ky so sanh in kem trong cung bao cao scan.,2026-09-07T09:19:08.830666+00:00
+HDB,2024-H1,2024-06-30,2024-Q2,False,13.94,13.4,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://cdn.hdbank.com.vn/hdbank-file/investor/editor/bM0oFeFPUJyfnjkNnAjK20240904113105/HDBankCongbothongtinCARTT4130062024dau_1725437683266.pdf,"PDF SCAN, khong co lop text - doc bang cach render trang 5 thanh anh. Bang co nhan cot day du (31/12/2023 | 30/06/2024, moi ky x Rieng le | Hop nhat). Khop tuyet doi voi vnstock 2024-Q2 = 13.94.",2026-09-07T09:19:08.830666+00:00
+HDB,2024-H2,2024-12-31,2024-Q4,False,14.03,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2025-H1,2025-06-30,2025-Q2,False,12.02,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+HDB,2025-H2,2025-12-31,2025-Q4,False,16.7,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2019-H2,2019-12-31,2019-Q4,False,8.35,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2020-H1,2020-06-30,2020-Q2,False,8.59,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2020-H2,2020-12-31,2020-Q4,False,10.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2021-H2,2021-12-31,2021-Q4,False,11.26,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2022-H1,2022-06-30,2022-Q2,False,12.31,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2022-H2,2022-12-31,2022-Q4,False,12.36,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2023-H1,2023-06-30,2023-Q2,False,11.16,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2023-H2,2023-12-31,2023-Q4,False,12.24,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2024-H1,2024-06-30,2024-Q2,False,12.21,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2024-H2,2024-12-31,2024-4,False,13.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2025-H1,2025-06-30,2025-Q2,False,9.5,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2025-H2,2025-12-31,2025-Q4,False,11.87,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2026-H1,2026-06-30,2026-Q2,False,11.23,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MBB,2019-H1,2019-06-30,2019-Q2,False,9.58,9.23,8.17,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/1.2020/mbb.cbtt-bao-cao-cong-bo-thong-tin-ty-le-an-toan-von-30.6.2019.pdf,"Bieu 2, thu tu cot 'RL|HN' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2019-H2,2019-12-31,2019-Q4,False,10.12,9.83,9.04,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/06.2020/bao-cao-cong-bo-thong-tin-car---31-12-2019-f.pdf,"Bieu 2, thu tu cot 'RL|HN' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2020-H1,2020-06-30,2020-Q2,False,11.27,10.85,9.98,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/11.2020/mbb.cbtt-bao-cao-ty-le-an-toan-von-ngay-30.06.2020-(thong-tu-41).pdf,"Bieu 2, thu tu cot 'RL|HN' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2020-H2,2020-12-31,2020-Q4,False,10.42,10.14,9.47,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/03.2021/mbb.cbtt-bao-cao-ty-le-an-toan-von-car-theo-thong-tu-41-ngay-31.12.2020.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2021-H1,2021-06-30,2021-Q2,False,10.66,10.25,9.71,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/10.2021/mbb.cbtt-bao-cao-ty-le-an-toan-von-car-theo-thong-tu-41-ngay-30.06.2021.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2021-H2,2021-12-31,2021-Q4,False,11.28,11.02,9.75,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/06.2022/mbb.cbtt-bao-cao-ty-le-an-toan-von-car-thong-tu-41-ngay-31.12.2021-final.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2022-H1,2022-06-30,2022-Q2,False,11.2,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+MBB,2022-H2,2022-12-31,2022-Q4,False,11.53,11.37,10.03,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/02.2023/mbb.cbtt---bc-car41-31.12.2022-signed.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2023-H1,2023-06-30,2023-Q2,False,11.28,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+MBB,2023-H2,2023-12-31,2023-Q4,False,10.75,10.75,9.71,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/2024/thang-02/mbb.cbtt-bao-cao-ty-le-an-toan-von-tai-31.12.2023.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2024-H1,2024-06-30,2024-Q2,False,11.1,11.17,9.75,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/CBTT/2024/T11/20241107---mbb---cbtt-ty-le-an-toan-von-tai-ngay-30.06.2024-ky.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2024-H2,2024-12-31,2024-Q4,False,11.76,11.74,10.08,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/2025/THANG-6.2025/20250602---mbb---cbtt-ty-le-an-toan-von-tai-ngay-31.12.2024..pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2025-H1,2025-06-30,2025-Q2,False,11.6,11.64,9.65,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/2025/20251106---mbb---cong-bo-thong-tin-ty-le-an-toan-von-tai-ngay-30.06.2025.pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2025-H2,2025-12-31,2025-Q4,False,11.02,11.11,9.25,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/2026/T05-2026/20260527---mbb---cbtt-ty-le-an-toan-von-tai-ngay-31122025-(vn-en).pdf,"Bieu 2, thu tu cot 'HN|RL' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
+MBB,2026-H1,2026-06-30,2026-Q2,False,10.28,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2019-H2,2019-12-31,2019-Q4,False,10.25,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2020-H1,2020-06-30,2020-Q2,False,10.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2020-H2,2020-12-31,2020-Q4,False,10.56,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2021-H1,2021-06-30,2021-Q2,False,11.64,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2021-H2,2021-12-31,2021-Q4,False,11.52,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2022-H1,2022-06-30,2022-Q2,False,12.17,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2022-H2,2022-12-31,2022-Q4,False,12.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2023-H1,2023-06-30,2023-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2023-H2,2023-12-31,2023-Q4,False,12.76,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2024-H1,2024-06-30,2024-Q2,False,12.13,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2024-H2,2024-12-31,2024-Q4,False,12.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2025-H1,2025-06-30,2025-Q2,False,12.28,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+MSB,2025-H2,2025-12-31,2025-Q4,False,12.49,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+MSB,2026-H1,2026-06-30,2026-Q2,False,12.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2019-H1,2019-06-30,2019-Q2,False,9.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2019-H2,2019-12-31,2019-Q4,False,8.62,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2020-H1,2020-06-30,2020-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2020-H2,2020-12-31,2020-Q4,False,9.57,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2021-H1,2021-06-30,2021-Q2,False,9.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2021-H2,2021-12-31,2021-Q4,False,9.46,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2022-H1,2022-06-30,2022-Q2,False,10.12,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+NAB,2022-H2,2022-12-31,2022-Q4,False,8.92,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2023-H1,2023-06-30,2023-Q2,False,9.45,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+NAB,2023-H2,2023-12-31,2023-Q4,False,11.16,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2024-H1,2024-06-30,2024-Q2,False,11.51,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+NAB,2024-H2,2024-12-31,2024-Q4,False,12.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2025-H1,2025-06-30,2025-Q2,False,10.96,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+NAB,2025-H2,2025-12-31,2025-Q4,False,11.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2019-H1,2019-06-30,2019-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2019-H2,2019-12-31,2019-Q4,False,9.67,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2020-H1,2020-06-30,2020-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2020-H2,2020-12-31,2020-Q4,False,9.44,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2021-H1,2021-06-30,2021-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2021-H2,2021-12-31,2021-Q4,False,9.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2022-H1,2022-06-30,2022-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2022-H2,2022-12-31,2022-Q4,False,10.63,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2023-H1,2023-06-30,2023-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2023-H2,2023-12-31,2023-Q4,False,9.22,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2024-H1,2024-06-30,2024-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2024-H2,2024-12-31,2024-Q4,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2025-H1,2025-06-30,2025-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2025-H2,2025-12-31,2025-Q4,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NVB,2026-H1,2026-06-30,2026-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2019-H2,2019-12-31,2019-Q4,False,11.19,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2020-H1,2020-06-30,2020-Q2,False,14.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2020-H2,2020-12-31,2020-Q4,False,12.85,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2021-H1,2021-06-30,2021-Q2,False,12.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2021-H2,2021-12-31,2021-Q4,False,12.34,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2022-H1,2022-06-30,2022-Q2,False,12.49,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+OCB,2022-H2,2022-12-31,2022-Q4,False,12.9,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2023-H1,2023-06-30,2023-Q2,False,13.33,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+OCB,2023-H2,2023-12-31,2023-Q4,False,13.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2024-H1,2024-06-30,2024-Q2,False,13.72,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+OCB,2024-H2,2024-12-31,2024-Q4,False,12.46,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2025-H1,2025-06-30,2025-Q2,False,12.43,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2025-H2,2025-12-31,2025-Q4,False,12.09,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2026-H1,2026-06-30,2026-Q2,False,13.07,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2019-H2,2019-12-31,2019-Q4,False,14.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2020-H1,2020-06-30,2020-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2020-H2,2020-12-31,2020-Q4,False,12.24,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2021-H2,2021-12-31,2021-Q4,False,12.35,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2022-H1,2022-06-30,2022-Q2,False,13.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+PGB,2022-H2,2022-12-31,2022-Q4,False,11.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2023-H1,2023-06-30,2023-Q2,False,12.84,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+PGB,2023-H2,2023-12-31,2023-Q4,False,12,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2024-H1,2024-06-30,2024-Q2,False,11.83,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+PGB,2024-H2,2024-12-31,2024-Q4,False,10.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2025-H1,2025-06-30,2025-Q2,False,10.68,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+PGB,2025-H2,2025-12-31,2025-Q4,False,10.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2019-H2,2019-12-31,2019-Q4,False,12.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2020-H1,2020-06-30,2020-Q2,False,10.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SHB,2020-H2,2020-12-31,2020-Q4,False,10.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2021-H1,2021-06-30,2021-Q2,False,10.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2021-H2,2021-12-31,2021-Q4,False,11.86,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2022-H1,2022-06-30,2022-Q2,False,11.49,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SHB,2022-H2,2022-12-31,2022-Q4,False,12.22,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2023-H1,2023-06-30,2023-Q2,False,12.25,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SHB,2023-H2,2023-12-31,2023-Q4,False,12.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2024-H1,2024-06-30,2024-Q2,False,12.61,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SHB,2024-H2,2024-12-31,2024-Q4,False,11.86,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2025-H1,2025-06-30,2025-Q2,False,12.46,12.06,9.37,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://www.shb.com.vn/wp-content/uploads/2025/10/CONG-BO-TY-LE-AN-TOAN-VON-30-06-2025.pdf,Gan cot rieng_le/hop_nhat SUY TU THU TU COT trong bang (nhan cot va gia tri nam o hai khoi text roi nhau). vnstock chi co den 2024-Q2 = 12.61 nen chua doi chieu duoc. Kiem lai bang cach render trang 5 thanh anh truoc khi trich luan van.,2026-09-07T09:19:08.830666+00:00
+SHB,2025-H2,2025-12-31,2025-Q4,False,12.62,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2019-H2,2019-12-31,2019-Q4,False,11.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2020-H1,2020-06-30,2020-Q2,False,12.11,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2020-H2,2020-12-31,2020-Q4,False,11.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2021-H1,2021-06-30,2021-Q2,False,10.91,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2021-H2,2021-12-31,2021-Q4,False,13.27,,,TT41,hop_nhat,nhap_tay,,,Nhap tay. vnstock KHONG co ban ghi SSB 2021 (nguon nay chi co SSB 2022-Q2 -> 2025-Q2) nen nhan nguon=vnstock cu la sai. Luu y: 13.27 trung khop gia tri SSB 2025-H1 - kiem lai ban goc phong truong hop sao chep nham dong.,2026-09-07T09:19:08.830666+00:00
+SSB,2022-H1,2022-06-30,2022-Q2,False,13.49,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SSB,2022-H2,2022-12-31,2022-Q4,False,14.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2023-H1,2023-06-30,2023-Q2,False,14.55,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SSB,2023-H2,2023-12-31,2023-Q4,False,13.61,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2024-H1,2024-06-30,2024-Q2,False,14.78,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SSB,2024-H2,2024-12-31,2024-Q4,False,12.84,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2025-H1,2025-06-30,2025-Q2,False,13.27,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+SSB,2025-H2,2025-12-31,2025-Q4,False,13.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+SSB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+STB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+STB,2019-H2,2019-12-31,2019-Q4,False,9.93,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2020-H1,2020-06-30,2020-Q2,False,9.36,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+STB,2020-H2,2020-12-31,2020-Q4,False,9.53,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2021-H1,2021-06-30,2021-Q2,False,9.75,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2021-H2,2021-12-31,2021-Q4,False,9.93,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2022-H1,2022-06-30,2022-Q2,False,9.87,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+STB,2022-H2,2022-12-31,2022-Q4,False,9.49,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2023-H1,2023-06-30,2023-Q2,False,9.4,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+STB,2023-H2,2023-12-31,2023-Q4,False,9.11,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2024-H1,2024-06-30,2024-Q2,False,8.99,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+STB,2024-H2,2024-12-31,2024-Q4,False,10.14,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2025-H1,2025-06-30,2025-Q2,False,9.69,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+STB,2025-H2,2025-12-31,2025-Q4,False,9.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+STB,2026-H1,2026-06-30,2026-Q2,False,9.89,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TCB,2019-H1,2019-06-30,2019-Q3,False,13.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TCB,2019-H2,2019-12-31,2019-Q4,False,15.5,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2020-H1,2020-06-30,2020-Q2,False,16.87,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TCB,2020-H2,2020-12-31,2020-Q4,False,16.1,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2021-H1,2021-06-30,2021-Q2,False,15.2,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2021-H2,2021-12-31,2021-Q4,False,15.0,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2022-H1,2022-06-30,2022-Q2,False,15.83,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TCB,2022-H2,2022-12-31,2022-Q4,False,15.2,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2023-H1,2023-06-30,2023-Q2,False,15.1,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2023-H2,2023-12-31,2023-Q4,False,14.4,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2024-H1,2024-06-30,2024-Q2,False,14.5,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2024-H2,2024-12-31,2024-Q4,False,15.4,,,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Doc tu bieu do CAR trang 6 ban 2H2025 - bieu do CO NHAN SO, nhung nguon tu ghi la lam tron 1 chu so. Dung dung de tinh chenh lech duoi 0,1 diem. Xem TCB_CHART.",2026-09-07T09:19:08.830666+00:00
+TCB,2025-H1,2025-06-30,2025-Q2,False,14.97,13.09,14.25,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,Ky so sanh in kem trong ban 2H2025. Ban 1H2025 rieng cung ton tai: ty-le-an-toan-von-1h2025-final.pdf,2026-09-07T09:19:08.830666+00:00
+TCB,2025-H2,2025-12-31,2025-Q4,False,14.61,11.97,13.67,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://techcombank.com/content/dam/techcombank/public-site/documents/ty-le-an-toan-von-2h2025-final.pdf,"Bang 2 trang 6, co nhan cot day du. Kiem bang so hoc tu Bang 1: von tu co hop nhat 181,870 / tong TSCRR 1,244,531 = 14.614%. Luu y CAR RIENG LE (11.97) THAP HON ty le von cap 1 rieng le (12.74) - khong phai loi doc: khoan giam tru khi tinh von tu co o cap rieng le la 12,708 ty, lon hon von cap 2 (3,877 ty).",2026-09-07T09:19:08.830666+00:00
+TCB,2026-H1,2026-06-30,2026-Q2,False,15,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2019-H1,2019-06-30,2019-Q2,False,9.09,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TPB,2019-H2,2019-12-31,2019-Q4,False,10.69,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2020-H1,2020-06-30,2020-Q2,False,11.24,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TPB,2020-H2,2020-12-31,2020-Q4,False,12.95,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2021-H1,2021-06-30,2021-Q2,False,13.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2021-H2,2021-12-31,2021-Q4,False,13.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2022-H1,2022-06-30,2022-Q2,False,12.44,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TPB,2022-H2,2022-12-31,2022-Q4,False,12.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2023-H1,2023-06-30,2023-Q2,False,11.11,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TPB,2023-H2,2023-12-31,2023-Q4,False,12.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2024-H1,2024-06-30,2024-Q2,False,13.17,13.14,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://tpb.vn/wps/wcm/connect/fc169b8a-2b23-4d8c-b676-7a3fd0ec12c3/BC+CBTT+CAR_TT41_T6.2024.pdf?MOD=AJPERES&CONVERT_TO=url&CACHEID=ROOTWORKSPACE-fc169b8a-2b23-4d8c-b676-7a3fd0ec12c3-paKBrns,"Khop tuyet doi voi vnstock 2024-Q2 = 13.17, va con so nay xac nhan THU TU COT la rieng le truoc, hop nhat sau (13.14 | 13.17) - co so de suy cot cho SHB/BID.",2026-09-07T09:19:08.830666+00:00
+TPB,2024-H2,2024-12-31,2024-Q4,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2025-H1,2025-06-30,2025-Q2,False,13.72,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+TPB,2025-H2,2025-12-31,2025-Q4,False,12.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2019-H1,2019-06-30,2019-Q2,False,9.47,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2019-H2,2019-12-31,2019-Q4,False,9.34,,,,hop_nhat,nhap_tay,,,,2026-09-07T₀₉:₁₉:₀₈.₈₃₀₆₆₆+₀₀:₀₀
+VCB,2020-H1,2020-06-30,2020-Q2,False,10.13,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2020-H2,2020-12-31,2020-Q4,False,9.56,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2021-H1,2021-06-30,2021-Q2,False,10.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2021-H2,2021-12-31,2021-Q4,False,9.31,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2022-H1,2022-06-30,2022-Q2,False,9.56,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2022-H2,2022-12-31,2022-Q4,False,9.95,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2023-H1,2023-06-30,2023-Q2,False,11.21,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2023-H2,2023-12-31,2023-Q4,False,11.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2024-H1,2024-06-30,2024-Q2,False,12.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2024-H2,2024-12-31,2024-Q4,False,12.16,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2025-H1,2025-06-30,2025-Q2,False,12.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VCB,2025-H2,2025-12-31,2025-Q4,False,11.56,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2026-H1,2026-06-30,2026-Q2,False,11.14,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2019-H1,2019-06-30,2019-Q2,False,9.17,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VIB,2019-H2,2019-12-31,2019-Q4,False,9.67,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2020-H1,2020-06-30,2020-Q2,False,9.69,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VIB,2020-H2,2020-12-31,2020-Q4,False,10.12,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2021-H1,2021-06-30,2021-Q2,False,10.34,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2021-H2,2021-12-31,2021-Q4,False,11.7,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2022-H1,2022-06-30,2022-Q2,False,11.48,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VIB,2022-H2,2022-12-31,2022-Q4,False,12.78,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2023-H1,2023-06-30,2023-Q2,False,12.06,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VIB,2023-H2,2023-12-31,2023-Q4,False,11.73,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2024-H1,2024-06-30,2024-Q2,False,11.81,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VIB,2024-H2,2024-12-31,2024-Q4,False,11.97,11.93,10.49,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vib.com.vn/wps/wcm/connect/a3ab69fb-bee6-4c51-9587-ee2d41f8dc1b/VIB+Pillar+3+Report.Final_VN+30.06.2026.pdf?MOD=AJPERES&CVID=pL4vXSN,Ky so sanh in kem trong cung bao cao. vnstock KHONG co o Q4 nao - day la vi du cho thay moi ban cong bo cho khong mot ma HAI ky.,2026-09-07T09:19:08.830666+00:00
+VIB,2025-H1,2025-06-30,2025-Q2,False,12.15,12.08,10.67,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vib.com.vn/wps/wcm/connect/a3ab69fb-bee6-4c51-9587-ee2d41f8dc1b/VIB+Pillar+3+Report.Final_VN+30.06.2026.pdf?MOD=AJPERES&CVID=pL4vXSN,"TEN FILE GHI 30.06.2026 NHUNG NOI DUNG LA 30/06/2025 - da doc ky tu trong file, khong lay tu URL. Bang trang 6 (hop nhat) / trang 7 (rieng le), co nhan cot ro. VIB ghi trong chinh bao cao: 'dang tai 6 thang mot lan'.",2026-09-07T09:19:08.830666+00:00
+VIB,2025-H2,2025-12-31,2025-Q4,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2026-H1,2026-06-30,2026-Q2,False,11.98,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2019-H1,2019-06-30,2019-Q2,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2019-H2,2019-12-31,2019-Q4,False,11.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2020-H1,2020-06-30,2020-Q2,False,11.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2020-H2,2020-12-31,2020-Q4,False,11.7,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2021-H1,2021-06-30,2021-Q2,False,12.45,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2021-H2,2021-12-31,2022-Q4,False,14.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VPB,2022-H1,2022-06-30,2022-Q2,False,14.39,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+VPB,2022-H2,2022-09-30,2022-Q3,True,14.95,13.57,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/nam-2022/cong-bo-thong-tin-ty-le-an-toan-von-quy-3-2022.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2023-H1,2023-06-30,2023-Q2,False,13.85,12.18,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/nam-2023/cong-bo-thong-tin-ty-le-an-toan-von-q2-2023.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2023-H2,2023-12-31,2023-Q4,False,17.07,15.92,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/nam-2023/cong-bo-thong-tin-ty-le-an-toan-von-q4-2023.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2024-H1,2024-06-30,2024-Q2,False,15.56,14.15,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/nam-2024/cong-bo-thong-tin-ty-le-an-toan-von-q2-2024.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2024-H2,2024-12-31,2024-Q4,False,15.5,14.01,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/nam-2024/cong-bo-thong-tin-ty-le-an-toan-von-q4-2024.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2025-H1,2025-06-30,2025-Q2,False,13.81,12.51,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/2025/cong-bo-thong-tin-ty-le-an-toan-von-quy-2-2025.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2025-H2,2025-12-31,2025-Q4,False,14.35,12.45,,TT41?,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/2025/cong-bo-thong-tin-ty-le-an-toan-von-quy-4-2025.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00
+VPB,2026-H1,2026-03-31,2026-Q1,True,13.74,12.03,,TT41?,hop_nhat,ngan_hang_cong_bo,cao,https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/cong-bo-thong-tin-ty-le-an-toan-von/2026/cong-bo-thong-tin-ty-le-an-toan-von-q1-2026.pdf,Trich tu cau van ban bao cao tu mo ta. VPBank la NH duy nhat cong bo THEO QUY (17 ban 2022-Q1 -> 2026-Q1). Xem VPB_QUARTERLY.,2026-09-07T09:19:08.830666+00:00

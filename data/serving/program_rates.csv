@@ -1,0 +1,22 @@
+program_code,borrower_group,valid_from,valid_to,rate_pct_year,spread_below_avg_min_pct,spread_below_avg_max_pct,source_url
+NOXH_145K,người mua,2023-07-01,2023-12-31,8.2,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,chủ đầu tư,2023-07-01,2023-12-31,8.7,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,người mua,2024-01-01,2024-06-30,7.5,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,chủ đầu tư,2024-01-01,2024-06-30,8.0,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,người mua,2024-07-01,2024-12-31,6.5,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,chủ đầu tư,2024-07-01,2024-12-31,7.0,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,người mua,2025-01-01,2025-06-30,6.1,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,chủ đầu tư,2025-01-01,2025-06-30,6.6,,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm
+NOXH_145K,người mua,2025-07-01,2025-12-31,5.9,,,https://baochinhphu.vn/cong-bo-lai-suat-uu-dai-cho-nguoi-tre-vay-mua-nha-o-xa-hoi-102250702115547715.htm
+NOXH_145K,chủ đầu tư,2025-07-01,2025-12-31,6.4,,,https://baochinhphu.vn/cong-bo-lai-suat-uu-dai-cho-nguoi-tre-vay-mua-nha-o-xa-hoi-102250702115547715.htm
+NOXH_145K,người mua,2026-01-01,2026-06-30,,,,
+NOXH_145K,người mua,2026-07-01,2026-12-31,6.5,,,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-vay-nha-o-xa-hoi-tu-01-7-2026-nguoi-mua-vay-65-nam-chu-dau-tu-vay-7-nam-186-109831-article.html
+NOXH_145K,chủ đầu tư,2026-07-01,2026-12-31,7.0,,,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-vay-nha-o-xa-hoi-tu-01-7-2026-nguoi-mua-vay-65-nam-chu-dau-tu-vay-7-nam-186-109831-article.html
+NOXH_U35,"người dưới 35 tuổi, 5 năm đầu",2025-07-01,2025-12-31,5.9,,,https://baochinhphu.vn/cong-bo-lai-suat-uu-dai-cho-nguoi-tre-vay-mua-nha-o-xa-hoi-102250702115547715.htm
+NOXH_U35,"người dưới 35 tuổi, 5 năm đầu",2026-07-01,2026-12-31,6.5,,,https://luatvietnam.vn/tin-van-ban-moi/chinh-thuc-ap-dung-lai-suat-65-nam-cho-nguoi-duoi-35-tuoi-vay-mua-nha-o-xa-hoi-tu-01-7-2026-186-109829-article.html
+NOXH_U35,"người dưới 35 tuổi, 10 năm tiếp",2026-07-01,2026-12-31,7.5,,,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+G30K_2013,dư nợ gói 30.000 tỷ,2025-01-01,2025-12-31,4.7,,,https://vietnambiz.vn/nhnn-ha-lai-suat-khoan-cho-vay-ho-tro-nha-o-xa-hoi-ve-47nam-2024122082441883.htm
+G30K_2013,dư nợ gói 30.000 tỷ,2026-01-01,2026-12-31,4.6,,,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+NLTS_185K,khách hàng chương trình,2025-09-23,,,1.0,2.0,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html
+HATANG_500K,dự án hạ tầng,2025-12-12,2030-12-31,,1.0,1.5,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+SME_7125,"DNNVV, lĩnh vực ưu tiên",2026-08-07,2028-12-31,,1.0,,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd

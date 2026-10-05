@@ -1,0 +1,83 @@
+ticker,short_name,full_name,app_name
+ACB,ACB,Ngân hàng TMCP Á Châu,"ticker
+ACB    ACB ONE
+ACB    ACB ONE
+Name: app_name, dtype: object"
+BAB,BAC A BANK,Ngân hàng TMCP Bắc Á,"ticker
+BAB    BAC A BANK Mobile Banking
+BAB    BAC A BANK Mobile Banking
+Name: app_name, dtype: object"
+BID,BIDV,Ngân hàng TMCP Đầu tư và Phát triển Việt Nam,BIDV SmartBanking
+BVB,BVBank,Ngân hàng TMCP Bản Việt,"ticker
+BVB    digimi
+BVB    digimi
+Name: app_name, dtype: object"
+CTG,VietinBank,Ngân hàng TMCP Công Thương Việt Nam,"ticker
+CTG    VietinBank iPay
+CTG    VietinBank iPay
+Name: app_name, dtype: object"
+EIB,Eximbank,Ngân hàng TMCP Xuất Nhập khẩu Việt Nam,"ticker
+EIB    Eximbank EDigi
+EIB    Eximbank EDigi
+Name: app_name, dtype: object"
+HDB,HDBank,Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh,"ticker
+HDB    HDBank
+HDB    HDBank
+Name: app_name, dtype: object"
+LPB,LPBank,Ngân hàng TMCP Lộc Phát Việt Nam,"ticker
+LPB    LPBank
+LPB    LPBank
+Name: app_name, dtype: object"
+MBB,MB,Ngân hàng TMCP Quân đội,"ticker
+MBB    MB Bank
+MBB    MB Bank
+Name: app_name, dtype: object"
+MSB,MSB,Ngân hàng TMCP Hàng Hải Việt Nam,"ticker
+MSB    MSB mBank (Ca nhan)
+MSB    MSB mBank (Ca nhan)
+Name: app_name, dtype: object"
+NAB,Nam A Bank,Ngân hàng TMCP Nam Á,"ticker
+NAB    Nam A Bank Open Banking
+NAB    Nam A Bank Open Banking
+Name: app_name, dtype: object"
+NVB,NCB,Ngân hàng TMCP Quốc Dân,"ticker
+NVB    NCB iziMobile
+NVB    NCB iziMobile
+Name: app_name, dtype: object"
+OCB,OCB,Ngân hàng TMCP Phương Đông,"ticker
+OCB    OCB OMNI
+OCB    OCB OMNI
+Name: app_name, dtype: object"
+PGB,PGBank,Ngân hàng TMCP Thịnh vượng và Phát triển,"ticker
+PGB    PGBank
+PGB    PGBank
+Name: app_name, dtype: object"
+SHB,SHB,Ngân hàng TMCP Sài Gòn – Hà Nội,"ticker
+SHB    SHB SAHA
+SHB    SHB SAHA
+Name: app_name, dtype: object"
+SSB,SeABank,Ngân hàng TMCP Đông Nam Á,"ticker
+SSB    SeAMobile
+SSB    SeAMobile
+Name: app_name, dtype: object"
+STB,Sacombank,Ngân hàng TMCP Sài Gòn Thương Tín,"ticker
+STB    SACOMBANK mBanking
+STB    SACOMBANK mBanking
+Name: app_name, dtype: object"
+TCB,Techcombank,Ngân hàng TMCP Kỹ Thương Việt Nam,"ticker
+TCB    Techcombank Mobile
+TCB    Techcombank Mobile
+Name: app_name, dtype: object"
+TPB,TPBank,Ngân hàng TMCP Tiên Phong,"ticker
+TPB    TPBank Mobile
+TPB    TPBank Mobile
+Name: app_name, dtype: object"
+VCB,Vietcombank,Ngân hàng TMCP Ngoại thương Việt Nam,VCB Digibank
+VIB,VIB,Ngân hàng TMCP Quốc tế Việt Nam,"ticker
+VIB    MyVIB
+VIB    MyVIB
+Name: app_name, dtype: object"
+VPB,VPBank,Ngân hàng TMCP Việt Nam Thịnh Vượng,"ticker
+VPB    VPBank NEO
+VPB    VPBank NEO
+Name: app_name, dtype: object"

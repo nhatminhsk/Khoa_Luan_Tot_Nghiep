@@ -1,0 +1,69 @@
+# MSB: tieu de "Phan tich du no cho vay theo mot so nganh kinh te cua khach hang" - phan nganh rieng cua MSB, ma nhom VSIC la gan dung
+MSB_2025|I|Nông nghiệp, lâm nghiệp, thủy sản|A|479.063|629.627
+MSB_2025|I|Khai khoáng|B|160.874|1.176.661
+MSB_2025|I|Chế biến thủy hải sản|C|1.655.320|1.355.092
+MSB_2025|I|Sản xuất, chế biến lương thực thực phẩm, đồ uống, thức ăn chăn nuôi|C|2.035.080|2.295.490
+MSB_2025|I|Dệt may, sản xuất da dày, sản xuất trang phục|C|928.898|1.445.539
+MSB_2025|I|Khai thác và sơ chế gỗ, chế biến gỗ, sản xuất sản phẩm từ gỗ và lâm sản khác|C|1.841.096|1.910.169
+MSB_2025|I|Sản xuất giấy và các sản phẩm từ giấy và in ấn|C|388.785|407.433
+MSB_2025|I|Sản xuất thuốc, hóa dược, dược liệu; cao su, nhựa, phân bón, hóa chất|C|3.117.951|2.797.289
+MSB_2025|I|Sản xuất vật liệu xây dựng (trừ thép, Inox, sơn, matit và các chất tương tự)|C|2.837.918|3.202.064
+MSB_2025|I|Sản xuất thép thành phẩm|C|2.172.386|1.813.945
+MSB_2025|I|Sản xuất phôi thép|C|-|4.789
+MSB_2025|I|Sản xuất Inox và luyện kim khác|C|89.925|84.256
+MSB_2025|I|Cơ khí, lắp ráp, chế tạo máy móc, ô tô, xe máy|C|4.672.517|3.913.479
+MSB_2025|I|Sản xuất điện tử, thiết bị điện, máy vi tính quang học, thiết bị viễn thông|C|2.997.376|7.270.865
+MSB_2025|I|Đóng tàu, thuyền|C|10.149|521
+MSB_2025|I|Sản xuất thiết bị văn phòng, đồ gia dụng, thiết bị y tế, giáo dục, thể dục thể thao|C|234.342|167.999
+MSB_2025|I|Sản xuất và phân phối điện, năng lượng, cung cấp nước, hoạt động quản lý và xử lý rác thải, nước thải|DE|5.236.113|5.083.131
+MSB_2025|I|Xây dựng|F|19.800.759|15.786.992
+MSB_2025|I|Thương mại hàng công nghiệp nhẹ và hàng tiêu dùng|G|23.076.154|19.990.140
+MSB_2025|I|Kinh doanh phân bón, hóa chất, các sản phẩm hóa chất khác, thuốc, hóa dược, dược liệu, thiết bị y tế|G|1.886.242|1.662.526
+MSB_2025|I|Thương mại xăng, dầu, gas, khí đốt|G|1.418.293|1.737.040
+MSB_2025|I|Kinh doanh sắt thép, xi măng, vật liệu xây dựng tổng hợp khác|G|9.646.788|13.463.100
+MSB_2025|I|Thương mại hàng công nghiệp nặng khác|G|4.659.173|3.817.147
+MSB_2025|I|Kinh doanh vận tải bộ và đường sông|H|6.015.874|4.370.573
+MSB_2025|I|Kinh doanh vận tải biển|H|1.626.106|1.652.285
+MSB_2025|I|Kinh doanh dịch vụ khách sạn, du lịch, ăn uống, vui chơi giải trí|IR|344.296|448.558
+MSB_2025|I|Kinh doanh bất động sản và cơ sở hạ tầng|L|28.522.415|17.153.000
+MSB_2025|I|Kinh doanh dịch vụ bưu chính viễn thông|J|364.996|327.385
+MSB_2025|I|Dịch vụ công nghệ, khoa học công nghệ, dịch vụ hành chính, hỗ trợ, giáo dục y tế, thông tin và truyền thông khác|SERV|9.562.717|7.984.989
+MSB_2025|I|Kinh doanh kho bãi và các dịch vụ hỗ trợ|H|593.791|445.206
+MSB_2025|I|Hoạt động tài chính và chứng khoán|K|5.220.081|5.669.152
+MSB_2025|I|Ngành khác|OTHER|1.379.416|2.282.421
+MSB_2025|I|Cá nhân|INDIV|62.233.941|46.144.588
+MSB_2025|T|Tổng|TOTAL|205.208.835|176.493.451
+MSB_2023|I|Nông nghiệp, lâm nghiệp, thủy sản|A|2.346.262|656.190
+MSB_2023|I|Khai khoáng|B|332.646|1.150.939
+MSB_2023|I|Chế biến thủy hải sản|C|1.427.864|1.256.232
+MSB_2023|I|Sản xuất, chế biến lương thực thực phẩm, đồ uống, thức ăn chăn nuôi|C|1.609.573|1.121.771
+MSB_2023|I|Dệt may, sản xuất da dày, sản xuất trang phục|C|1.613.649|1.553.930
+MSB_2023|I|Khai thác và sơ chế gỗ, chế biến gỗ, sản xuất sản phẩm từ gỗ và lâm sản khác|C|1.310.563|1.266.880
+MSB_2023|I|Sản xuất giấy và các sản phẩm từ giấy và in ấn|C|1.357.596|1.025.660
+MSB_2023|I|Sản xuất thuốc, hoá dược, dược liệu; cao su, nhựa, phân bón, hoá chất|C|2.123.551|1.558.786
+MSB_2023|I|Sản xuất vật liệu xây dựng (trừ thép, Inox, sơn, matit và các chất tương tự)|C|1.537.847|838.965
+MSB_2023|I|Sản xuất thép thành phẩm|C|295.669|105.312
+MSB_2023|I|Sản xuất phôi thép|C|17.276|25.164
+MSB_2023|I|Sản xuất Inox và luyện kim khác|C|49.198|77.233
+MSB_2023|I|Cơ khí, lắp ráp, chế tạo máy móc, ô tô, xe máy|C|1.366.705|1.438.804
+MSB_2023|I|Sản xuất điện tử, thiết bị điện, máy vi tính quang học, thiết bị viễn thông|C|2.711.575|3.269.622
+MSB_2023|I|Đóng tàu, thuyền|C|3.382|3.852
+MSB_2023|I|Sản xuất thiết bị văn phòng, đồ gia dụng, thiết bị y tế, giáo dục, thể dục thể thao|C|41.335|57.352
+MSB_2023|I|Sản xuất và phân phối điện, năng lượng|D|8.346.872|10.315.040
+MSB_2023|I|Xây dựng|F|13.105.715|11.207.188
+MSB_2023|I|Thương mại hàng công nghiệp nhẹ và hàng tiêu dùng|G|16.285.336|10.714.319
+MSB_2023|I|Kinh doanh phân bón, hóa chất, các sản phẩm hóa chất khác, thuốc, hóa dược, dược liệu, thiết bị y tế|G|1.086.396|778.370
+MSB_2023|I|Thương mại xăng, dầu, gas, khí đốt|G|4.645.331|990.165
+MSB_2023|I|Kinh doanh sắt thép, xi măng, vật liệu xây dựng tổng hợp khác|G|7.426.527|4.482.711
+MSB_2023|I|Thương mại hàng công nghiệp nặng khác|G|2.978.469|2.782.320
+MSB_2023|I|Kinh doanh vận tải bộ và đường sông|H|3.519.426|2.925.191
+MSB_2023|I|Kinh doanh vận tải biển|H|683.712|581.322
+MSB_2023|I|Kinh doanh dịch vụ khách sạn, du lịch, ăn uống, vui chơi giải trí|IR|188.876|151.226
+MSB_2023|I|Kinh doanh bất động sản và cơ sở hạ tầng|L|13.163.399|10.386.690
+MSB_2023|I|Kinh doanh dịch vụ bưu chính viễn thông|J|1.108.097|769.794
+MSB_2023|I|Dịch vụ công nghệ, khoa học công nghệ, dịch vụ hành chính, hỗ trợ, giáo dục y tế, thông tin và truyền thông khác|SERV|4.087.884|4.259.915
+MSB_2023|I|Kinh doanh kho bãi và các dịch vụ hỗ trợ|H|91.464|165.387
+MSB_2023|I|Hoạt động tài chính và chứng khoán|K|7.281.125|1.446.536
+MSB_2023|I|Ngành khác|OTHER|5.715.135|5.716.749
+MSB_2023|I|Cá nhân|INDIV|41.286.931|37.563.927
+MSB_2023|T|Tổng|TOTAL|149.145.386|120.643.542

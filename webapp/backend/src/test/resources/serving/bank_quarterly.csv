@@ -1,0 +1,8 @@
+ticker,period,period_end,indicator,value
+ACB,2026-Q1,2026-03-31,npl,1.2
+ACB,2026-Q2,2026-06-30,npl,1.1
+VCB,2026-Q1,2026-03-31,npl,0.9
+VCB,2026-Q2,2026-06-30,npl,1.0
+ACB,2026-Q2,2026-06-30,nim,3.5
+VCB,2026-Q2,2026-06-30,nim,2.9
+XYZ,2026-Q2,2026-06-30,nim,9.9

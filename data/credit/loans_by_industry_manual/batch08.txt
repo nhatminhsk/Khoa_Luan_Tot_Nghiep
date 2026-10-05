@@ -1,0 +1,68 @@
+MSB_2021|I|Nông lâm nghiệp, thủy sản|A|681.673|273.999
+MSB_2021|I|Khai khoáng|B|276.564|693.482
+MSB_2021|I|Chế biến thủy hải sản|C|1.604.515|1.155.146
+MSB_2021|I|Sản xuất, chế biến lương thực thực phẩm, đồ uống, thức ăn chăn nuôi|C|1.133.664|1.252.804
+MSB_2021|I|Dệt may, sản xuất da dày, sản xuất trang phục|C|939.478|740.041
+MSB_2021|I|Khai thác và sơ chế gỗ, chế biến gỗ, sản xuất sản phẩm từ gỗ và lâm sản khác|C|924.344|396.753
+MSB_2021|I|Sản xuất giấy và các sản phẩm từ giấy và in ấn|C|1.198.916|242.673
+MSB_2021|I|Sản xuất thuốc, hoá dược, dược liệu; cao su, nhựa, phân bón, hoá chất|C|1.471.096|893.847
+MSB_2021|I|Sản xuất vật liệu xây dựng (trừ thép, Inox, sơn, matit và các chất tương tự)|C|569.161|480.129
+MSB_2021|I|Sản xuất thép thành phẩm|C|104.169|80.033
+MSB_2021|I|Sản xuất phôi thép|C|44.445|40.396
+MSB_2021|I|Sản xuất Inox và luyện kim khác|C|58.268|28.846
+MSB_2021|I|Cơ khí, lắp ráp, chế tạo máy móc, ô tô, xe máy|C|1.242.653|1.299.402
+MSB_2021|I|Sản xuất điện tử, thiết bị điện, máy vi tính quang học, thiết bị viễn thông|C|1.483.772|1.212.595
+MSB_2021|I|Đóng tàu, thuyền|C|3.051|4.159
+MSB_2021|I|Sản xuất thiết bị văn phòng, đồ gia dụng, thiết bị y tế, giáo dục, thể dục thể thao|C|42.665|14.242
+MSB_2021|I|Sản xuất và phân phối điện, năng lượng|D|7.125.610|4.706.923
+MSB_2021|I|Xây dựng|F|14.175.548|7.279.461
+MSB_2021|I|Thương mại hàng công nghiệp nhẹ và hàng tiêu dùng|G|8.148.952|7.450.285
+MSB_2021|I|Kinh doanh phân bón, hóa chất, các sản phẩm hóa chất khác, thuốc, hóa dược, dược liệu, thiết bị y tế|G|560.650|750.273
+MSB_2021|I|Thương mại xăng, dầu, gas, khí đốt|G|1.017.390|1.067.638
+MSB_2021|I|Kinh doanh sắt thép, xi măng, vật liệu xây dựng tổng hợp khác|G|2.014.497|1.665.960
+MSB_2021|I|Thương mại hàng công nghiệp nặng khác|G|2.062.717|1.672.322
+MSB_2021|I|Kinh doanh vận tải bộ và đường sông|H|3.672.107|931.744
+MSB_2021|I|Kinh doanh vận tải biển|H|634.813|194.383
+MSB_2021|I|Kinh doanh dịch vụ khách sạn, du lịch, ăn uống, vui chơi giải trí|IR|199.411|213.360
+MSB_2021|I|Kinh doanh bất động sản và cơ sở hạ tầng|L|12.136.094|9.020.505
+MSB_2021|I|Kinh doanh dịch vụ bưu chính viễn thông|J|422.106|710.826
+MSB_2021|I|Dịch vụ công nghệ, khoa học công nghệ, dịch vụ hành chính, hỗ trợ, giáo dục y tế, thông tin và truyền thông khác|SERV|2.664.604|2.626.868
+MSB_2021|I|Kinh doanh kho bãi và các dịch vụ hỗ trợ|H|297.192|246.885
+MSB_2021|I|Hoạt động tài chính và chứng khoán|K|2.809.632|4.185.717
+MSB_2021|I|Ngành khác|OTHER|5.285.597|5.619.734
+MSB_2021|I|Cá nhân|INDIV|26.557.255|22.189.148
+MSB_2021|T|Tổng|TOTAL|101.562.609|79.340.579
+MSB_2020|I|Nông lâm nghiệp, thủy sản|A|273.999|412.402
+MSB_2020|I|Khai khoáng|B|693.482|114.270
+MSB_2020|I|Chế biến thủy hải sản|C|1.155.146|738.612
+MSB_2020|I|Sản xuất, chế biến lương thực thực phẩm, đồ uống, thức ăn chăn nuôi|C|1.252.804|1.119.451
+MSB_2020|I|Dệt may, sản xuất da dày, sản xuất trang phục|C|740.041|804.031
+MSB_2020|I|Khai thác và sơ chế gỗ, chế biến gỗ, sản xuất sản phẩm từ gỗ và lâm sản khác|C|396.753|231.919
+MSB_2020|I|Sản xuất giấy và các sản phẩm từ giấy và in ấn|C|242.673|282.781
+MSB_2020|I|Sản xuất thuốc, hoá dược, dược liệu; cao su, nhựa, phân bón, hoá chất|C|893.847|791.128
+MSB_2020|I|Sản xuất vật liệu xây dựng (trừ thép, Inox, sơn, matit và các chất tương tự)|C|480.129|705.722
+MSB_2020|I|Sản xuất thép thành phẩm|C|80.033|147.937
+MSB_2020|I|Sản xuất phôi thép|C|40.396|13.278
+MSB_2020|I|Sản xuất Inox và luyện kim khác|C|28.846|174.995
+MSB_2020|I|Cơ khí, lắp ráp, chế tạo máy móc, ô tô, xe máy|C|1.299.402|580.286
+MSB_2020|I|Sản xuất điện tử, thiết bị điện, máy vi tính quang học, thiết bị viễn thông|C|1.212.595|931.544
+MSB_2020|I|Đóng tàu, thuyền|C|4.159|93.923
+MSB_2020|I|Sản xuất thiết bị văn phòng, đồ gia dụng, thiết bị y tế, giáo dục, thể dục thể thao|C|14.242|6.514
+MSB_2020|I|Sản xuất và phân phối điện, năng lượng|D|4.706.923|2.574.534
+MSB_2020|I|Xây dựng|F|7.279.461|3.358.092
+MSB_2020|I|Thương mại hàng công nghiệp nhẹ và hàng tiêu dùng|G|7.450.285|5.563.197
+MSB_2020|I|Kinh doanh phân bón, hóa chất, các sản phẩm hóa chất khác, thuốc, hóa dược, dược liệu, thiết bị y tế|G|750.273|325.201
+MSB_2020|I|Thương mại xăng, dầu, gas, khí đốt|G|1.067.638|876.774
+MSB_2020|I|Kinh doanh sắt thép, xi măng, vật liệu xây dựng tổng hợp khác|G|1.665.960|1.661.399
+MSB_2020|I|Thương mại hàng công nghiệp nặng khác|G|1.672.322|1.038.936
+MSB_2020|I|Kinh doanh vận tải bộ và đường sông|H|931.744|724.260
+MSB_2020|I|Kinh doanh vận tải biển|H|194.383|271.751
+MSB_2020|I|Kinh doanh dịch vụ khách sạn, du lịch, ăn uống, vui chơi giải trí|IR|213.360|167.789
+MSB_2020|I|Kinh doanh bất động sản và cơ sở hạ tầng|L|9.020.505|15.039.733
+MSB_2020|I|Kinh doanh dịch vụ bưu chính viễn thông|J|710.826|578.593
+MSB_2020|I|Dịch vụ công nghệ, khoa học công nghệ, dịch vụ hành chính, hỗ trợ, giáo dục y tế, thông tin và truyền thông khác|SERV|2.626.868|986.884
+MSB_2020|I|Kinh doanh kho bãi và các dịch vụ hỗ trợ|H|246.885|251.330
+MSB_2020|I|Hoạt động tài chính và chứng khoán|K|4.185.717|2.167.300
+MSB_2020|I|Ngành khác|OTHER|5.619.734|1.800.631
+MSB_2020|I|Cá nhân|INDIV|22.189.148|19.059.192
+MSB_2020|T|Tổng|TOTAL|79.340.579|63.594.389

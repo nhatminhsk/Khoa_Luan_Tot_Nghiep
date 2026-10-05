@@ -1,0 +1,12 @@
+NVB_2020|I|Nông nghiệp và lâm nghiệp|A|38.256|70.340
+NVB_2020|I|Công nghiệp chế biến, chế tạo|C|743.667|970.937
+NVB_2020|I|Xây dựng|F|10.413.057|8.577.346
+NVB_2020|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và động cơ khác|G|779.146|1.136.126
+NVB_2020|I|Dịch vụ lưu trú và ăn uống|I|482.995|932.139
+NVB_2020|I|Vận tải kho bãi|H|2.734.682|4.203.491
+NVB_2020|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|8.479.827|8.391.076
+NVB_2020|I|Giáo dục và đào tạo|P|65|137
+NVB_2020|I|Y tế và hoạt động trợ giúp xã hội|Q|35.107|42.249
+NVB_2020|I|Hoạt động dịch vụ khác|S|7.362.168|3.245.550
+NVB_2020|I|Sản xuất sản phẩm vật chất và dịch vụ tiêu dùng của hộ gia đình|T|9.244.302|10.341.212
+NVB_2020|T|Tổng cộng|TOTAL|40.313.272|37.910.603

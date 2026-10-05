@@ -1,0 +1,44 @@
+MBB_2025|I|Nông, lâm nghiệp và thủy sản|A|10.777.589|8.724.854
+MBB_2025|I|Khai khoáng|B|6.775.371|3.975.824
+MBB_2025|I|Công nghiệp chế biến, chế tạo|C|178.930.964|124.040.940
+MBB_2025|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|50.676.721|46.125.259
+MBB_2025|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|1.585.206|1.267.073
+MBB_2025|I|Xây dựng|F|45.398.649|31.917.958
+MBB_2025|I|Bán buôn, bán lẻ, sửa chữa ô tô, xe máy|G|297.131.413|222.846.289
+MBB_2025|I|Vận tải kho bãi|H|29.961.714|25.762.468
+MBB_2025|I|Dịch vụ lưu trú, ăn uống|I|20.003.667|16.057.822
+MBB_2025|I|Thông tin và truyền thông|J|9.807.942|7.100.447
+MBB_2025|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|30.446.431|7.697.847
+MBB_2025|I|Hoạt động kinh doanh bất động sản|L|121.188.714|64.141.215
+MBB_2025|I|Chuyên môn, khoa học và công nghệ|M|1.381.276|668.318
+MBB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|3.409.076|1.905.606
+MBB_2025|I|Giáo dục và đào tạo|P|2.583.338|1.791.148
+MBB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|7.888.432|5.535.906
+MBB_2025|I|Nghệ thuật, vui chơi, giải trí|R|1.708.707|2.395.960
+MBB_2025|I|Hoạt động dịch vụ khác|S|820.530|533.019
+MBB_2025|I|Hoạt động làm thuê hộ gia đình|T|239.172.416|186.581.816
+MBB_2025|I|Dư nợ tại chi nhánh và ngân hàng con nước ngoài|FOREIGN_BRANCH|9.330.629|7.294.348
+MBB_2025|I|Các khoản cho vay giao dịch ký quỹ và ứng trước cho khách hàng giao dịch đầu tư chứng khoán|MARGIN|15.040.585|10.293.729
+MBB_2025|T|Tổng|TOTAL|1.084.019.370|776.657.846
+MBB_2023|I|Nông, lâm nghiệp và thủy sản|A|6.234.490|4.559.921
+MBB_2023|I|Khai khoáng|B|3.178.276|2.969.396
+MBB_2023|I|Công nghiệp chế biến, chế tạo|C|98.521.149|71.318.239
+MBB_2023|I|Sản xuất và phân phối điện, khí đốt, nước nóng|D|41.237.247|31.922.949
+MBB_2023|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|1.075.745|762.237
+MBB_2023|I|Xây dựng|F|28.700.450|26.445.868
+MBB_2023|I|Bán buôn, bán lẻ, sửa chữa ô tô, xe máy|G|165.406.488|114.651.780
+MBB_2023|I|Vận tải kho bãi|H|16.132.904|8.216.403
+MBB_2023|I|Dịch vụ lưu trú, ăn uống|I|11.570.229|10.825.513
+MBB_2023|I|Thông tin và truyền thông|J|3.309.515|2.371.359
+MBB_2023|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|1.499.841|274.407
+MBB_2023|I|Hoạt động kinh doanh bất động sản|L|43.268.446|21.357.811
+MBB_2023|I|Chuyên môn, khoa học và công nghệ|M|575.417|499.184
+MBB_2023|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|924.125|640.479
+MBB_2023|I|Giáo dục và đào tạo|P|1.307.008|895.429
+MBB_2023|I|Y tế và hoạt động trợ giúp xã hội|Q|4.607.913|3.639.050
+MBB_2023|I|Nghệ thuật, vui chơi, giải trí|R|2.659.628|2.466.786
+MBB_2023|I|Hoạt động dịch vụ khác|S|242.700|160.567
+MBB_2023|I|Hoạt động làm thuê hộ gia đình|T|168.012.507|150.444.509
+MBB_2023|I|Dư nợ tại chi nhánh và ngân hàng con nước ngoài|FOREIGN_BRANCH|3.366.269|2.393.095
+MBB_2023|I|Các khoản cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|9.218.483|3.759.500
+MBB_2023|T|Tổng|TOTAL|611.048.830|460.574.482

@@ -1,0 +1,16 @@
+code,name,camels_group,unit,direction,description,display_order
+car,Hệ số an toàn vốn (CAR),C,PERCENT,HIGHER_BETTER,"Vốn tự có / tài sản có rủi ro. Công bố nửa năm (quý 2, quý 4).",0
+npl,Tỷ lệ nợ xấu (NPL),A,PERCENT,LOWER_BETTER,"Nợ nhóm 3–5 / tổng dư nợ, theo thuyết minh BCTC.",1
+loans_g2,Nợ cần chú ý (nhóm 2),A,PERCENT,LOWER_BETTER,Nợ nhóm 2 / tổng dư nợ.,2
+npl_coverage,Bao phủ nợ xấu,A,PERCENT,HIGHER_BETTER,Dự phòng rủi ro / nợ xấu.,3
+cir,Chi phí / thu nhập (CIR),M,PERCENT,LOWER_BETTER,"Chi phí hoạt động / tổng thu nhập hoạt động, cộng 4 quý (xấp xỉ).",4
+nim,Biên lãi thuần (NIM),E,PERCENT,HIGHER_BETTER,"Thu nhập lãi thuần / tài sản sinh lãi bình quân, cộng 4 quý.",5
+roa,ROA,E,PERCENT,HIGHER_BETTER,"Lợi nhuận sau thuế / tổng tài sản bình quân, cộng 4 quý.",6
+roe,ROE,E,PERCENT,HIGHER_BETTER,"Lợi nhuận sau thuế / vốn chủ sở hữu bình quân, cộng 4 quý.",7
+cof,Chi phí vốn (COF),E,PERCENT,LOWER_BETTER,"Chi phí lãi / nguồn vốn chịu lãi bình quân, cộng 4 quý.",8
+asset_yield,Lợi suất tài sản sinh lãi,E,PERCENT,NEUTRAL,"Thu nhập lãi / tài sản sinh lãi bình quân, cộng 4 quý.",9
+casa,Tỷ lệ CASA,L,PERCENT,HIGHER_BETTER,Tiền gửi không kỳ hạn / tổng tiền gửi khách hàng.,10
+ldr,Dư nợ / tiền gửi (LDR),L,PERCENT,NEUTRAL,"Dư nợ cho vay / tiền gửi khách hàng (tính trên số BCTC, không phải LDR theo quy định).",11
+loans_growth_yoy,Tăng trưởng dư nợ so cùng kỳ,G,PERCENT,NEUTRAL,Dư nợ cuối quý so với cùng quý năm trước.,12
+total_assets,Tổng tài sản,G,VND,NEUTRAL,Tổng tài sản cuối quý.,13
+deposits,Tiền gửi khách hàng,G,VND,NEUTRAL,Tiền gửi của khách hàng cuối quý.,14

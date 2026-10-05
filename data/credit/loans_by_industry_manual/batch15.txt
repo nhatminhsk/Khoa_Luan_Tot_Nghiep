@@ -1,0 +1,79 @@
+SSB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|53.923.629|33.489.746
+SSB_2025|I|Hoạt động làm thuê hộ gia đình|T|46.997.685|45.013.587
+SSB_2025|I|Nghệ thuật, vui chơi và giải trí|R|38.421.178|15.489.724
+SSB_2025|I|Hoạt động kinh doanh bất động sản|L|29.436.896|9.949.817
+SSB_2025|I|Dịch vụ lưu trú, ăn uống|I|26.968.260|14.386.765
+SSB_2025|I|Hoạt động tài chính và bảo hiểm|K|12.457.299|7.729.440
+SSB_2025|I|Công nghiệp chế biến, chế tạo|C|7.912.342|17.705.332
+SSB_2025|I|Xây dựng|F|6.451.388|10.463.950
+SSB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|4.350.770|12.026.908
+SSB_2025|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|2.709.189|1.563.680
+SSB_2025|I|Vận tải kho bãi|H|2.074.979|13.593.541
+SSB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|1.497.794|8.017.345
+SSB_2025|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|555.838|200.642
+SSB_2025|I|Khai khoáng|B|230.342|1.349.558
+SSB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|96.706|83.628
+SSB_2025|I|Thông tin và truyền thông|J|66.830|5.711.977
+SSB_2025|I|Giáo dục và đào tạo|P|12.394|2.083
+SSB_2025|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|4.943|-
+SSB_2025|I|Hoạt động khác|OTHER|2.878.638|12.576.920
+SSB_2025|T|Tổng|TOTAL|237.047.100|209.354.643
+TCB_2025|S|Cho vay các tổ chức kinh tế (tổng phụ)|SUBTOTAL|411.429.457|359.408.394
+TCB_2025|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|3.622.411|4.324.232
+TCB_2025|I|Khai khoáng|B|1.295.588|2.082.826
+TCB_2025|I|Công nghiệp chế biến, chế tạo|C|56.386.701|58.465.029
+TCB_2025|I|Sản xuất và phân phối điện, khí đốt và nước nóng, hơi nước và điều hòa không khí|D|3.861.933|2.017.000
+TCB_2025|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|57.922|52.607
+TCB_2025|I|Xây dựng|F|26.413.712|17.442.917
+TCB_2025|I|Bán buôn và bán lẻ; sửa chữa mô tô, ô tô, xe máy và xe có động cơ khác|G|61.559.029|54.777.567
+TCB_2025|I|Vận tải kho bãi|H|7.892.391|6.213.823
+TCB_2025|I|Dịch vụ lưu trú và ăn uống|I|600.068|1.068.294
+TCB_2025|I|Thông tin và truyền thông|J|847.784|608.205
+TCB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|19.255.776|9.377.851
+TCB_2025|I|Hoạt động kinh doanh bất động sản|L|207.026.817|187.100.081
+TCB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|8.218.019|10.837.601
+TCB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|9.937.794|879.171
+TCB_2025|I|Giáo dục và đào tạo|P|216.055|160.204
+TCB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|510.220|761.399
+TCB_2025|I|Nghệ thuật, vui chơi và giải trí|R|3.672.279|3.162.625
+TCB_2025|I|Hoạt động dịch vụ khác|S|54.958|76.962
+TCB_2025|I|Cho vay cá nhân|INDIV|312.327.940|246.405.324
+TCB_2025|S|Tổng phân ngành (chưa gồm ký quỹ, ứng trước)|SUBTOTAL|723.757.397|605.813.718
+TCB_2025|I|Các khoản cho vay hoạt động ký quỹ và cho vay hoạt động ứng trước tiền bán của khách hàng|MARGIN|43.859.732|25.911.246
+TCB_2025|T|Tổng|TOTAL|767.617.129|631.724.964
+TCB_2023|S|Cho vay các tổ chức kinh tế (tổng phụ)|SUBTOTAL|297.161.062|193.716.757
+TCB_2023|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|2.908.684|2.095.342
+TCB_2023|I|Khai khoáng|B|1.751.323|1.451.843
+TCB_2023|I|Công nghiệp chế biến, chế tạo|C|42.054.340|28.006.736
+TCB_2023|I|Sản xuất và phân phối điện, khí đốt và nước nóng, hơi nước và điều hòa không khí|D|3.794.489|3.951.228
+TCB_2023|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|31.580|28.872
+TCB_2023|I|Xây dựng|F|11.876.937|12.093.130
+TCB_2023|I|Bán buôn và bán lẻ; sửa chữa mô tô, ô tô, xe máy và xe có động cơ khác|G|44.842.420|34.129.848
+TCB_2023|I|Vận tải kho bãi|H|7.867.107|1.516.639
+TCB_2023|I|Dịch vụ lưu trú và ăn uống|I|1.293.097|245.674
+TCB_2023|I|Thông tin và truyền thông|J|784.185|362.959
+TCB_2023|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|966.379|45.852
+TCB_2023|I|Hoạt động kinh doanh bất động sản|L|176.803.981|108.805.146
+TCB_2023|I|Hoạt động chuyên môn, khoa học và công nghệ|M|507.564|259.405
+TCB_2023|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|538.943|448.661
+TCB_2023|I|Giáo dục và đào tạo|P|129.156|104.111
+TCB_2023|I|Y tế và hoạt động trợ giúp xã hội|Q|9.012|48.332
+TCB_2023|I|Nghệ thuật, vui chơi và giải trí|R|834.835|8.984
+TCB_2023|I|Hoạt động dịch vụ khác|S|167.030|113.995
+TCB_2023|I|Cho vay cá nhân|INDIV|204.861.339|217.452.344
+TCB_2023|S|Tổng phân ngành (chưa gồm ký quỹ, ứng trước)|SUBTOTAL|502.022.401|411.169.101
+TCB_2023|I|Các khoản cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|16.619.167|9.354.604
+TCB_2023|T|Tổng|TOTAL|518.641.568|420.523.705
+TPB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|3.671.316|3.912.189
+TPB_2025|I|Khai khoáng|B|1.139.758|479.541
+TPB_2025|I|Công nghiệp chế biến, chế tạo|C|25.376.563|24.118.782
+TPB_2025|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|6.055.977|4.109.730
+TPB_2025|I|Xây dựng|F|25.400.134|20.427.101
+TPB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|29.491.698|23.288.538
+TPB_2025|I|Vận tải kho bãi|H|16.234.234|14.249.743
+TPB_2025|I|Thông tin và truyền thông|J|1.799.015|1.790.254
+TPB_2025|I|Hoạt động kinh doanh bất động sản|L|32.255.004|21.355.380
+TPB_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|147.649.277|122.422.807
+TPB_2025|I|Hoạt động kinh doanh khác|OTHER|15.283.579|14.177.303
+TPB_2025|I|Các khoản cho vay giao dịch ký quỹ và ứng trước tiền bán chứng khoán của khách hàng|MARGIN|1.460.080|-
+TPB_2025|T|Tổng|TOTAL|305.816.635|250.331.368

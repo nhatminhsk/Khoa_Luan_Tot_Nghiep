@@ -1,0 +1,10 @@
+﻿a,b,rho
+casa_percent,cof_ttm_percent,-0.8961038961038962
+cof_ttm_percent,loan_yield_ttm_pct,0.7696216826651607
+casa_percent,loan_yield_ttm_pct,-0.7504234895539245
+loans_g2_percent,credit_cost_ttm_pct,0.7492941840767929
+roa_ttm_percent,nim_ttm_percent,0.7199322416713723
+roa_ttm_percent,log_total_assets,0.6476566911349521
+npl_percent,loans_g2_percent,0.6420101637492943
+npl_percent,credit_cost_ttm_pct,0.6261998870694524
+car_asof_percent,equity_to_assets_pct,0.6174787424511622

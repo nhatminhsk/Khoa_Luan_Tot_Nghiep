@@ -1,0 +1,31 @@
+# Core data handling
+pandas>=2.3.3
+
+# Financial-statement + price data (data/vnstock_financial, data/price)
+vnstock>=4.0.6
+vnai>=2.5.7
+vnstock_ezchart>=1.0.2
+# vnstock_data is a private/sponsor package, NOT on public PyPI -- it is installed
+# through the Vnstock sponsor installer (see https://vnstocks.com/).
+# `pip install -r requirements.txt` will NOT install it;
+# follow the Vnstock sponsor installation instructions separately first.
+
+# Interest-rate / macro crawlers (crawlers/deposit_rates.py, loan_rates.py, macro.py)
+requests>=2.34.2
+beautifulsoup4>=4.15.0
+lxml>=6.1.2
+html5lib>=1.1
+
+# Report/chart generation used in exploratory analysis
+matplotlib>=3.11.1
+seaborn>=0.13.2
+
+# Danh gia app ngan hang tren Google Play (crawlers/app_reviews.py)
+google-play-scraper>=1.2.7
+
+# Thu nghiem mo hinh (experiments/imputation_benchmark.py); GAIN/VAE can them tensorflow
+scikit-learn>=1.5
+lightgbm>=4.5
+
+# Chay cac notebook .ipynb (crawl_*.ipynb, bieu_do.ipynb) trong VS Code / Jupyter
+ipykernel>=7.3.0

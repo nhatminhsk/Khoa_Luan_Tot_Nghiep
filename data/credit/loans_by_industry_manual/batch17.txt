@@ -1,0 +1,56 @@
+VCB_2019|I|Sản xuất và gia công chế biến|C|174.032.670|163.734.487
+VCB_2019|I|Thương mại, dịch vụ|GS|131.856.583|120.238.625
+VCB_2019|I|Sản xuất và phân phối điện, khí đốt và nước|DE|30.411.521|29.340.404
+VCB_2019|I|Xây dựng|F|32.357.572|28.873.357
+VCB_2019|I|Vận tải kho bãi và thông tin liên lạc|HJ|24.742.604|23.352.261
+VCB_2019|I|Khai khoáng|B|14.458.842|15.476.351
+VCB_2019|I|Nông, lâm, thủy hải sản|A|16.122.626|14.499.324
+VCB_2019|I|Nhà hàng, khách sạn|I|12.837.989|11.362.643
+VCB_2019|I|Khác|OTHER|297.886.484|224.989.306
+VCB_2019|T|Tổng|TOTAL|734.706.891|631.866.758
+VIB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|830.616|875.303
+VIB_2025|I|Khai khoáng|B|985.136|1.994.885
+VIB_2025|I|Công nghiệp chế biến, chế tạo|C|19.457.078|19.648.895
+VIB_2025|I|Sản xuất và phân phối điện, khí đốt và nước nóng, hơi nước và điều hòa không khí|D|5.716.552|3.935.354
+VIB_2025|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|170.084|133.070
+VIB_2025|I|Xây dựng|F|6.585.657|3.402.170
+VIB_2025|I|Bán buôn và bán lẻ; sửa chữa mô tô, ô tô, xe máy và xe có động cơ khác|G|39.955.299|23.755.780
+VIB_2025|I|Vận tải kho bãi|H|12.478.803|9.208.267
+VIB_2025|I|Dịch vụ lưu trú và ăn uống|I|4.772.320|1.354.475
+VIB_2025|I|Thông tin và truyền thông|J|243.277|597.807
+VIB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|32.515.546|17.686.741
+VIB_2025|I|Hoạt động kinh doanh bất động sản|L|21.088.256|5.695.936
+VIB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|2.003.535|1.287.842
+VIB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|441.685|298.338
+VIB_2025|I|Giáo dục và đào tạo|P|1.284.600|735.418
+VIB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|489.299|74.935
+VIB_2025|I|Nghệ thuật, vui chơi và giải trí|R|2.075.152|42.897
+VIB_2025|I|Hoạt động dịch vụ khác|S|280.346|97.756
+VIB_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|230.598.775|233.183.844
+VIB_2025|T|Tổng|TOTAL|381.972.016|324.009.713
+VIB_2023|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|552.157|234.343
+VIB_2023|I|Khai khoáng|B|1.191.649|397.414
+VIB_2023|I|Công nghiệp chế biến, chế tạo|C|13.400.504|7.151.325
+VIB_2023|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|2.639.418|1.471.782
+VIB_2023|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|80.133|64.830
+VIB_2023|I|Xây dựng|F|1.958.665|1.535.921
+VIB_2023|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|9.155.453|7.677.151
+VIB_2023|I|Vận tải kho bãi|H|1.932.668|1.659.163
+VIB_2023|I|Dịch vụ lưu trú và ăn uống|I|1.198.526|1.230.298
+VIB_2023|I|Thông tin và truyền thông|J|243.331|114.687
+VIB_2023|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|9.732.793|3.481.102
+VIB_2023|I|Hoạt động kinh doanh bất động sản|L|1.673.708|1.995.786
+VIB_2023|I|Hoạt động chuyên môn, khoa học và công nghệ|M|547.459|517.598
+VIB_2023|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|160.467|155.326
+VIB_2023|I|Giáo dục và đào tạo|P|362.069|399.819
+VIB_2023|I|Y tế và hoạt động trợ giúp xã hội|Q|39.999|36.038
+VIB_2023|I|Nghệ thuật, vui chơi và giải trí|R|25.504|36.954
+VIB_2023|I|Hoạt động dịch vụ khác|S|277.370|428.015
+VIB_2023|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|221.173.672|203.356.464
+VIB_2023|T|Tổng|TOTAL|266.345.545|231.944.016
+VIB_2021|I|Nông lâm nghiệp, thủy sản|A|1.523.922|2.050.751
+VIB_2021|I|Thương mại, sản xuất và chế biến|GC|29.155.532|28.640.644
+VIB_2021|I|Xây dựng|F|3.027.172|1.738.857
+VIB_2021|I|Kho bãi vận tải và thông tin liên lạc|HJ|1.921.844|1.819.126
+VIB_2021|I|Cá nhân và các ngành nghề khác|INDIV_OTHER|165.888.284|135.270.857
+VIB_2021|T|Tổng|TOTAL|201.516.754|169.520.235

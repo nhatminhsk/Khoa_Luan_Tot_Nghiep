@@ -1,0 +1,42 @@
+STB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|199.923.908|211.961.149
+STB_2024|I|Bán buôn và bán lẻ, sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|69.097.075|51.532.760
+STB_2024|I|Nông nghiệp, lâm nghiệp và thủy sản|A|52.521.946|42.117.519
+STB_2024|I|Xây dựng|F|49.700.537|42.913.190
+STB_2024|I|Công nghiệp chế biến, chế tạo|C|36.779.349|25.416.410
+STB_2024|I|Hoạt động kinh doanh bất động sản|L|22.455.686|6.301.208
+STB_2024|I|Vận tải kho bãi|H|15.619.717|13.818.156
+STB_2024|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|7.456.339|7.704.296
+STB_2024|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|7.379.187|6.894.384
+STB_2024|I|Giáo dục, đào tạo|P|6.361.722|5.543.395
+STB_2024|I|Dịch vụ lưu trú và ăn uống|I|6.914.994|5.333.073
+STB_2024|I|Y tế và hoạt động cứu trợ xã hội|Q|2.826.550|3.180.710
+STB_2024|I|Khai khoáng|B|1.641.399|1.455.613
+STB_2024|I|Hoạt động của Đảng Cộng sản, tổ chức chính trị xã hội, quản lý nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|1.298.710|1.123.089
+STB_2024|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|901.257|153.920
+STB_2024|I|Hoạt động chuyên môn khoa học và công nghệ|M|425.248|311.670
+STB_2024|I|Thông tin và truyền thông|J|408.642|140.609
+STB_2024|I|Nghệ thuật, vui chơi và giải trí|R|213.850|140.563
+STB_2024|I|Cung cấp nước, hoạt động quản lý và xử lý rác thải, nước thải|E|-|6.130
+STB_2024|I|Hoạt động khác|OTHER|57.388.542|56.683.278
+STB_2024|T|Tổng|TOTAL|539.314.658|482.731.122
+STB_2022|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|212.890.201|172.650.992
+STB_2022|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|43.657.534|40.396.612
+STB_2022|I|Nông nghiệp, lâm nghiệp và thủy sản|A|39.124.557|39.402.127
+STB_2022|I|Xây dựng|F|28.447.719|20.365.450
+STB_2022|I|Công nghiệp chế biến, chế tạo|C|19.342.166|20.361.197
+STB_2022|I|Vận tải kho bãi|H|6.714.727|6.543.715
+STB_2022|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|6.338.234|5.362.414
+STB_2022|I|Giáo dục, đào tạo|P|5.784.057|5.584.278
+STB_2022|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|5.713.791|4.796.645
+STB_2022|I|Dịch vụ lưu trú và ăn uống|I|5.008.055|3.892.422
+STB_2022|I|Hoạt động kinh doanh bất động sản|L|3.629.882|2.967.008
+STB_2022|I|Y tế và hoạt động cứu trợ xã hội|Q|3.205.641|3.792.016
+STB_2022|I|Khai khoáng|B|1.309.737|1.189.930
+STB_2022|I|Hoạt động của Đảng Cộng sản, tổ chức chính trị xã hội, quản lý nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|1.121.513|1.073.757
+STB_2022|I|Hoạt động chuyên môn khoa học và công nghệ|M|274.595|252.050
+STB_2022|I|Thông tin và truyền thông|J|150.047|145.983
+STB_2022|I|Nghệ thuật vui chơi, giải trí|R|137.337|158.785
+STB_2022|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|94.440|148.964
+STB_2022|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|11.315|8.585
+STB_2022|I|Hoạt động dịch vụ khác|S|55.672.229|58.836.666
+STB_2022|T|Tổng|TOTAL|438.627.777|387.929.596

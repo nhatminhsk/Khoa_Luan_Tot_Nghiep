@@ -1,0 +1,177 @@
+program_code,ticker,participates,list_as_of,source_url
+LTS_15K,ACB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,BAB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,BID,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,BVB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,CTG,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,EIB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,HDB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,LPB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,MBB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,MSB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,NAB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,NVB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,OCB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,PGB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,SHB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,SSB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,STB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,TCB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,TPB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,VCB,1,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,VIB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+LTS_15K,VPB,0,2023-07-20,https://baochinhphu.vn/trien-khai-goi-tin-dung-15000-ty-dong-doi-voi-linh-vuc-lam-san-thuy-san-102230720110931596.htm
+NLTS_100K,ACB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,BAB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,BID,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,BVB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,CTG,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,EIB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,HDB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,LPB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,MBB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,MSB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,NAB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,NVB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,OCB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,PGB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,SHB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,SSB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,STB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,TCB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,TPB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,VCB,1,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,VIB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_100K,VPB,0,2025-04-15,https://baochinhphu.vn/trien-khai-chuong-trinh-tin-dung-tren-100-nghin-ty-dong-voi-linh-vuc-nong-lam-thuy-san-102250415172632097.htm
+NLTS_185K,ACB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,BAB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,BID,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,BVB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,CTG,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,EIB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,HDB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,LPB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,MBB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,MSB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,NAB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,NVB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,OCB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,PGB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,SHB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,SSB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,STB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,TCB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,TPB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,VCB,1,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,VIB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NLTS_185K,VPB,0,2025-09-23,https://vietnamnet.vn/nang-quy-mo-chuong-trinh-tin-dung-nong-lam-thuy-san-len-185-000-ty-dong-2445959.html ; https://vneconomy.vn/co-15-ngan-hang-tham-gia-goi-tin-dung-100-nghin-ty-dong-cho-linh-vuc-nong-lam-nghiep-va-thuy-san.htm
+NOXH_145K,ACB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,BAB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,BID,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,BVB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,CTG,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,EIB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,HDB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,LPB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,MBB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,MSB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,NAB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,NVB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,OCB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,PGB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,SHB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,SSB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,STB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,TCB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,TPB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,VCB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,VIB,0,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_145K,VPB,1,2024-10-24,https://nhandan.vn/them-ngan-hang-tham-gia-goi-cho-vay-nha-o-xa-hoi-post838341.html
+NOXH_U35,ACB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,BAB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,BID,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,BVB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,CTG,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,EIB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,HDB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,LPB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,MBB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,MSB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,NAB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,NVB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,OCB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,PGB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,SHB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,SSB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,STB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,TCB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,TPB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,VCB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,VIB,0,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+NOXH_U35,VPB,1,2025-05-31,https://cafef.vn/tu-1-7-khach-hang-duoi-35-tuoi-tai-vietcombank-agribank-bidv-vietinbank-mb-dong-loat-don-tin-vui-188260626141136192.chn
+HATANG_500K,ACB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,BAB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,BID,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,BVB,0,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,CTG,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,EIB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,HDB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,LPB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,MBB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,MSB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,NAB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,NVB,0,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,OCB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,PGB,0,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,SHB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,SSB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,STB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,TCB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,TPB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,VCB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,VIB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+HATANG_500K,VPB,1,2025-12-12,https://baochinhphu.vn/danh-500-nghin-ty-dong-cho-vay-uu-dai-ha-tang-dien-giao-thong-cong-nghe-chien-luoc-10225121218545832.htm
+SME_7125,ACB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,BAB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,BID,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,BVB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,CTG,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,EIB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,HDB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,LPB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,MBB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,MSB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,NAB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,NVB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,OCB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,PGB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,SHB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,SSB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,STB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,TCB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,TPB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,VCB,1,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,VIB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+SME_7125,VPB,0,2026-08-24,https://anninhthudo.vn/goi-tin-dung-huong-den-dong-luc-tang-truong-doanh-nghiep-nho-vua-12-ngan-hang-cam-ket-danh-408000-ty-dong-von-uu-dai-post664701.antd ; https://tapchikinhtetaichinh.vn/408-000-ty-dong-tin-dung-tu-12-ngan-hang-huong-vao-dong-luc-tang-truong-165556.html
+G30K_2013,ACB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,BAB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,BID,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,BVB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,CTG,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,EIB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,HDB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,LPB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,MBB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,MSB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,NAB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,NVB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,OCB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,PGB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,SHB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,SSB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,STB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,TCB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,TPB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,VCB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,VIB,1,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html
+G30K_2013,VPB,0,2025-12-17,https://luatvietnam.vn/tin-van-ban-moi/lai-suat-cho-vay-ho-tro-nha-o-nam-2026-la-46-nam-186-106200-article.html

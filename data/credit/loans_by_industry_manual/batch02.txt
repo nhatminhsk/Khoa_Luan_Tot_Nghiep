@@ -1,0 +1,52 @@
+ACB_2025|I|Thương mại|G|120.134.692|100.261.294
+ACB_2025|I|Sản xuất và gia công chế biến|C|44.060.495|36.272.884
+ACB_2025|I|Xây dựng|F|22.131.494|20.471.657
+ACB_2025|I|Dịch vụ cá nhân và cộng đồng|S|21.432.988|19.418.129
+ACB_2025|I|Tư vấn và kinh doanh bất động sản|LM|12.306.608|7.563.949
+ACB_2025|I|Kho bãi, giao thông vận tải và thông tin liên lạc|HJ|6.491.487|5.049.985
+ACB_2025|I|Nhà hàng và khách sạn|I|1.945.595|1.789.899
+ACB_2025|I|Nông, lâm nghiệp|A|2.498.470|1.832.339
+ACB_2025|I|Giáo dục và đào tạo|P|589.450|695.852
+ACB_2025|I|Dịch vụ tài chính|K|20.750.638|8.599.396
+ACB_2025|I|Hoạt động khoa học, công nghệ|M|2.882.869|1.291.286
+ACB_2025|I|Y tế và cứu trợ xã hội|Q|926.245|818.531
+ACB_2025|I|Các ngành nghề khác|OTHER|430.626.321|376.621.047
+ACB_2025|T|Tổng|TOTAL|686.777.352|580.686.248
+BAB_2024|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|20.183.435|17.785.384
+BAB_2024|I|Khai khoáng|B|805.205|803.712
+BAB_2024|I|Công nghiệp chế biến, chế tạo|C|36.207.536|36.859.001
+BAB_2024|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|1.107.280|1.209.830
+BAB_2024|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|1.281.571|1.678.733
+BAB_2024|I|Xây dựng|F|6.257.916|5.552.264
+BAB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|12.608.320|10.435.166
+BAB_2024|I|Vận tải kho bãi|H|924.127|762.787
+BAB_2024|I|Dịch vụ lưu trú và ăn uống|I|617.362|131.807
+BAB_2024|I|Thông tin và truyền thông|J|82.248|74.860
+BAB_2024|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|207.621|412.678
+BAB_2024|I|Hoạt động kinh doanh bất động sản|L|6.557.890|5.630.557
+BAB_2024|I|Hoạt động chuyên môn, khoa học và công nghệ|M|56.543|25.347
+BAB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|111.237|127.114
+BAB_2024|I|Hoạt động của Đảng cộng sản, tổ chức chính trị - xã hội, quản lý nhà nước, an ninh quốc phòng; bảo đảm xã hội bắt buộc|O|-|14.987
+BAB_2024|I|Giáo dục và đào tạo|P|885.080|938.861
+BAB_2024|I|Y tế và hoạt động trợ giúp xã hội|Q|40.972|24.261
+BAB_2024|I|Nghệ thuật, vui chơi và giải trí|R|259.685|257.997
+BAB_2024|I|Hoạt động dịch vụ khác|S|15.605.387|12.036.111
+BAB_2024|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|5.753.121|5.090.988
+BAB_2024|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|268|1.530
+BAB_2024|T|Tổng|TOTAL|109.552.804|99.853.975
+BID_2025|I|Nông, lâm nghiệp và thủy sản|A|85.494.051|77.787.188
+BID_2025|I|Công nghiệp chế biến, chế tạo|C|350.377.788|319.153.826
+BID_2025|I|Sản xuất và phân phối điện, khí đốt và nước|DE|107.931.215|102.611.077
+BID_2025|I|Xây dựng|F|103.863.347|103.618.244
+BID_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, xe máy và xe có động cơ khác|G|573.299.742|603.013.583
+BID_2025|I|Dịch vụ|SERV|444.190.319|308.752.144
+BID_2025|I|Ngành khác|OTHER|707.798.612|541.146.358
+BID_2025|T|Tổng|TOTAL|2.372.955.074|2.056.082.420
+BID_2023|I|Nông, lâm nghiệp và thủy sản|A|64.785.960|59.347.766
+BID_2023|I|Công nghiệp chế biến, chế tạo|C|291.203.191|239.090.054
+BID_2023|I|Sản xuất và phân phối điện, khí đốt và nước|DE|95.217.420|79.538.477
+BID_2023|I|Xây dựng|F|111.199.088|117.429.550
+BID_2023|I|Bán buôn và bán lẻ; sửa chữa ô tô, xe máy và xe có động cơ khác|G|553.748.420|463.119.427
+BID_2023|I|Dịch vụ|SERV|238.987.145|184.063.129
+BID_2023|I|Ngành khác|OTHER|422.523.658|379.633.311
+BID_2023|T|Tổng|TOTAL|1.777.664.882|1.522.221.714

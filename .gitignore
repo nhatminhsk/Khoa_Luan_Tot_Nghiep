@@ -1,0 +1,35 @@
+# Bí mật: khóa API, mật khẩu, khóa ký. Mẫu cấu hình để ở .env.example.
+.env
+.env.*
+!.env.example
+*.pem
+
+# Môi trường và cache
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.claude/
+
+# File thăm dò tạm, log crawl, bản chụp zip
+/.*.csv
+/.*.pkl
+*.log
+crawl_log.txt
+_snapshots/
+
+# Ghi chú làm việc nội bộ
+/TIEP_TUC.md
+/PHIEN_*.md
+/AGENTS.md
+
+# Dữ liệu thô nặng hoặc tải lại được bằng crawler / vnstock
+data/app_reviews/
+data/powerbi/
+data/vnstock_financial/
+data/_archive/
+data/loan_rates/terms_survey/
+
+# Hình xuất từ script/notebook (chạy lại là có)
+figures/
+figures_doc/

@@ -1,0 +1,36 @@
+OCB_2020|I|Bán buôn và bán lẻ; sửa chữa môtô, ôtô, xe máy và xe có động cơ khác|G|18.794.596.486.211|14.203.471.615.622
+OCB_2020|I|Dịch vụ lưu trú và ăn uống|I|11.230.993.688.104|8.242.987.547.895
+OCB_2020|I|Xây dựng|F|9.391.398.251.043|7.780.281.474.101
+OCB_2020|I|Công nghiệp chế biến, chế tạo|C|7.066.592.576.041|7.092.594.962.215
+OCB_2020|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|5.504.364.133.080|7.490.663.357.287
+OCB_2020|I|Vận tải kho bãi|H|7.117.525.860.046|5.268.849.858.822
+OCB_2020|I|Sản xuất và phân phối điện, khí đốt và nước nóng, hơi nước và điều hòa không khí|D|9.313.272.140.650|5.979.058.697.665
+OCB_2020|I|Hoạt động kinh doanh bất động sản|L|6.268.194.676.278|5.154.589.033.775
+OCB_2020|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|2.331.879.699.991|2.761.840.363.975
+OCB_2020|I|Nông nghiệp, lâm nghiệp và thủy sản|A|2.099.663.011.741|2.217.735.433.422
+OCB_2020|I|Hoạt động dịch vụ khác|S|1.298.117.702.316|1.779.745.345.458
+OCB_2020|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|735.299.382.465|625.049.334.334
+OCB_2020|I|Các ngành khác|OTHER|8.085.988.558.188|2.493.874.047.152
+OCB_2020|T|Tổng|TOTAL|89.237.886.166.154|71.090.741.071.723
+# SHB_2025: cot dau nam ghi "Trinh bay lai"
+SHB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|8.251.923|9.928.660
+SHB_2025|I|Khai khoáng|B|1.452.562|1.156.368
+SHB_2025|I|Công nghiệp chế biến, chế tạo|C|35.163.900|35.290.977
+SHB_2025|I|Sản xuất và phân phối điện, khí đốt và nước|D|24.322.379|20.414.795
+SHB_2025|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|965.570|631.534
+SHB_2025|I|Xây dựng|F|91.056.255|59.786.589
+SHB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|118.393.364|148.306.068
+SHB_2025|I|Vận tải kho bãi|H|22.135.947|20.305.290
+SHB_2025|I|Dịch vụ lưu trú, ăn uống|I|10.821.245|12.181.267
+SHB_2025|I|Thông tin và truyền thông|J|131.454|148.159
+SHB_2025|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|4.027.533|743.778
+SHB_2025|I|Hoạt động kinh doanh bất động sản|L|205.314.110|127.568.519
+SHB_2025|I|Chuyên môn, khoa học và công nghệ|M|3.184.922|177.614
+SHB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|10.757.287|9.299.433
+SHB_2025|I|Hoạt động của Đảng, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|318.795|390.456
+SHB_2025|I|Giáo dục và đào tạo|P|139.003|145.439
+SHB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|231.965|164.704
+SHB_2025|I|Nghệ thuật, vui chơi, giải trí|R|2.469.862|484.660
+SHB_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|14.170.299|9.685.217
+SHB_2025|I|Hoạt động dịch vụ khác|S|61.553.605|65.747.797
+SHB_2025|T|Tổng|TOTAL|614.861.980|522.557.324

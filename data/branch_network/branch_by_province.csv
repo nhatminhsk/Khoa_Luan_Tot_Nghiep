@@ -1,0 +1,339 @@
+﻿province,ticker,n_bank,n_atm,n_total
+Thành phố Bắc Ninh,ACB,2,0,2
+Thành phố Cần Thơ,ACB,4,3,7
+Thành phố Huế,ACB,2,2,4
+Thành phố Hà Nội,ACB,12,20,32
+Thành phố Hải Phòng,ACB,3,0,3
+Thành phố Hồ Chí Minh,ACB,40,26,66
+Thành phố Quảng Ninh,ACB,1,1,2
+Thành phố Đà Nẵng,ACB,2,18,20
+Thành phố Đồng Nai,ACB,1,0,1
+Tỉnh An Giang,ACB,1,3,4
+Tỉnh Gia Lai,ACB,2,2,4
+Tỉnh Khánh Hòa,ACB,1,3,4
+Tỉnh Lâm Đồng,ACB,2,6,8
+Tỉnh Nghệ An,ACB,0,1,1
+Tỉnh Ninh Bình,ACB,0,1,1
+Tỉnh Thái Nguyên,ACB,1,0,1
+Tỉnh Tây Ninh,ACB,0,1,1
+Tỉnh Vĩnh Long,ACB,1,0,1
+Tỉnh Đắk Lắk,ACB,2,0,2
+Tỉnh Đồng Tháp,ACB,2,0,2
+Thành phố Bắc Ninh,BAB,2,1,3
+Thành phố Cần Thơ,BAB,2,0,2
+Thành phố Hà Nội,BAB,7,0,7
+Thành phố Hồ Chí Minh,BAB,9,0,9
+Thành phố Bắc Ninh,BID,5,9,14
+Thành phố Cần Thơ,BID,2,6,8
+Thành phố Huế,BID,1,9,10
+Thành phố Hà Nội,BID,51,279,330
+Thành phố Hải Phòng,BID,7,6,13
+Thành phố Hồ Chí Minh,BID,60,23,83
+Thành phố Quảng Ninh,BID,3,1,4
+Thành phố Đà Nẵng,BID,6,54,60
+Thành phố Đồng Nai,BID,11,0,11
+Tỉnh An Giang,BID,4,9,13
+Tỉnh Cao Bằng,BID,2,0,2
+Tỉnh Gia Lai,BID,8,2,10
+Tỉnh Hà Tĩnh,BID,1,0,1
+Tỉnh Hưng Yên,BID,1,0,1
+Tỉnh Khánh Hòa,BID,3,5,8
+Tỉnh Lai Châu,BID,0,2,2
+Tỉnh Lào Cai,BID,4,6,10
+Tỉnh Lâm Đồng,BID,3,6,9
+Tỉnh Nghệ An,BID,1,5,6
+Tỉnh Ninh Bình,BID,3,6,9
+Tỉnh Phú Thọ,BID,2,1,3
+Tỉnh Quảng Ngãi,BID,1,2,3
+Tỉnh Quảng Trị,BID,3,1,4
+Tỉnh Thanh Hóa,BID,1,0,1
+Tỉnh Thái Nguyên,BID,2,1,3
+Tỉnh Tuyên Quang,BID,2,5,7
+Tỉnh Tây Ninh,BID,1,2,3
+Tỉnh Vĩnh Long,BID,3,0,3
+Tỉnh Đắk Lắk,BID,3,4,7
+Tỉnh Đồng Tháp,BID,2,3,5
+Thành phố Bắc Ninh,BVB,2,0,2
+Thành phố Hà Nội,BVB,1,0,1
+Thành phố Hồ Chí Minh,BVB,4,0,4
+Thành phố Đà Nẵng,BVB,1,1,2
+Tỉnh Gia Lai,BVB,1,0,1
+Tỉnh Đắk Lắk,BVB,1,0,1
+Tỉnh Đồng Tháp,BVB,1,0,1
+Thành phố Bắc Ninh,CTG,12,8,20
+Thành phố Cần Thơ,CTG,6,7,13
+Thành phố Huế,CTG,3,6,9
+Thành phố Hà Nội,CTG,64,78,142
+Thành phố Hải Phòng,CTG,8,4,12
+Thành phố Hồ Chí Minh,CTG,48,30,78
+Thành phố Quảng Ninh,CTG,4,2,6
+Thành phố Đà Nẵng,CTG,8,26,34
+Thành phố Đồng Nai,CTG,8,1,9
+Tỉnh An Giang,CTG,4,6,10
+Tỉnh Cao Bằng,CTG,2,1,3
+Tỉnh Gia Lai,CTG,4,3,7
+Tỉnh Khánh Hòa,CTG,0,2,2
+Tỉnh Lai Châu,CTG,1,1,2
+Tỉnh Lào Cai,CTG,2,3,5
+Tỉnh Lâm Đồng,CTG,3,7,10
+Tỉnh Nghệ An,CTG,2,2,4
+Tỉnh Ninh Bình,CTG,4,5,9
+Tỉnh Quảng Ngãi,CTG,2,3,5
+Tỉnh Quảng Trị,CTG,2,3,5
+Tỉnh Thái Nguyên,CTG,0,1,1
+Tỉnh Tuyên Quang,CTG,2,2,4
+Tỉnh Tây Ninh,CTG,2,0,2
+Tỉnh Vĩnh Long,CTG,3,2,5
+Tỉnh Điện Biên,CTG,1,1,2
+Tỉnh Đắk Lắk,CTG,4,2,6
+Tỉnh Đồng Tháp,CTG,4,3,7
+Thành phố Bắc Ninh,EIB,1,0,1
+Thành phố Cần Thơ,EIB,3,2,5
+Thành phố Huế,EIB,1,1,2
+Thành phố Hà Nội,EIB,5,14,19
+Thành phố Hải Phòng,EIB,0,1,1
+Thành phố Hồ Chí Minh,EIB,28,5,33
+Thành phố Quảng Ninh,EIB,2,1,3
+Thành phố Đà Nẵng,EIB,6,12,18
+Tỉnh An Giang,EIB,0,1,1
+Tỉnh Gia Lai,EIB,1,0,1
+Tỉnh Khánh Hòa,EIB,0,1,1
+Tỉnh Lâm Đồng,EIB,1,2,3
+Tỉnh Đắk Lắk,EIB,1,0,1
+Tỉnh Đồng Tháp,EIB,1,0,1
+Thành phố Bắc Ninh,HDB,1,1,2
+Thành phố Cần Thơ,HDB,4,0,4
+Thành phố Hà Nội,HDB,11,0,11
+Thành phố Hải Phòng,HDB,2,0,2
+Thành phố Hồ Chí Minh,HDB,7,2,9
+Thành phố Đà Nẵng,HDB,1,0,1
+Thành phố Đồng Nai,HDB,3,0,3
+Tỉnh Gia Lai,HDB,2,0,2
+Tỉnh Lào Cai,HDB,1,1,2
+Tỉnh Lâm Đồng,HDB,0,3,3
+Tỉnh Đắk Lắk,HDB,1,0,1
+Thành phố Bắc Ninh,LPB,2,0,2
+Thành phố Cần Thơ,LPB,1,1,2
+Thành phố Hà Nội,LPB,6,0,6
+Thành phố Hải Phòng,LPB,3,0,3
+Thành phố Hồ Chí Minh,LPB,1,1,2
+Thành phố Quảng Ninh,LPB,0,1,1
+Thành phố Đồng Nai,LPB,1,0,1
+Tỉnh Cao Bằng,LPB,2,0,2
+Tỉnh Khánh Hòa,LPB,1,0,1
+Tỉnh Lào Cai,LPB,1,0,1
+Tỉnh Lâm Đồng,LPB,0,1,1
+Tỉnh Quảng Ngãi,LPB,0,1,1
+Tỉnh Quảng Trị,LPB,0,1,1
+Tỉnh Tuyên Quang,LPB,0,1,1
+Tỉnh Vĩnh Long,LPB,1,0,1
+Tỉnh Đắk Lắk,LPB,1,0,1
+Thành phố Bắc Ninh,MBB,7,8,15
+Thành phố Cần Thơ,MBB,1,0,1
+Thành phố Huế,MBB,0,3,3
+Thành phố Hà Nội,MBB,13,96,109
+Thành phố Hải Phòng,MBB,4,1,5
+Thành phố Hồ Chí Minh,MBB,12,11,23
+Thành phố Quảng Ninh,MBB,0,1,1
+Thành phố Đà Nẵng,MBB,1,17,18
+Thành phố Đồng Nai,MBB,1,0,1
+Tỉnh An Giang,MBB,2,5,7
+Tỉnh Gia Lai,MBB,1,1,2
+Tỉnh Hưng Yên,MBB,0,3,3
+Tỉnh Khánh Hòa,MBB,2,5,7
+Tỉnh Lào Cai,MBB,1,2,3
+Tỉnh Lâm Đồng,MBB,1,4,5
+Tỉnh Nghệ An,MBB,1,0,1
+Tỉnh Ninh Bình,MBB,0,3,3
+Tỉnh Phú Thọ,MBB,1,0,1
+Tỉnh Quảng Ngãi,MBB,0,1,1
+Tỉnh Quảng Trị,MBB,0,1,1
+Tỉnh Thái Nguyên,MBB,0,1,1
+Tỉnh Tây Ninh,MBB,1,0,1
+Tỉnh Đắk Lắk,MBB,2,1,3
+Thành phố Bắc Ninh,MSB,1,0,1
+Thành phố Cần Thơ,MSB,2,0,2
+Thành phố Hà Nội,MSB,10,7,17
+Thành phố Hải Phòng,MSB,4,0,4
+Thành phố Hồ Chí Minh,MSB,11,6,17
+Thành phố Đà Nẵng,MSB,2,3,5
+Tỉnh Lâm Đồng,MSB,1,0,1
+Tỉnh Nghệ An,MSB,1,1,2
+Tỉnh Ninh Bình,MSB,0,1,1
+Tỉnh Quảng Ngãi,MSB,1,0,1
+Tỉnh Đắk Lắk,MSB,1,0,1
+Tỉnh Đồng Tháp,MSB,0,1,1
+Thành phố Bắc Ninh,NAB,1,0,1
+Thành phố Hà Nội,NAB,3,0,3
+Thành phố Hồ Chí Minh,NAB,13,2,15
+Thành phố Đà Nẵng,NAB,1,0,1
+Tỉnh Gia Lai,NAB,1,0,1
+Tỉnh Hà Tĩnh,NAB,1,0,1
+Tỉnh Khánh Hòa,NAB,2,0,2
+Tỉnh Lâm Đồng,NAB,2,0,2
+Tỉnh Tây Ninh,NAB,0,1,1
+Tỉnh Vĩnh Long,NAB,1,0,1
+Tỉnh Đắk Lắk,NAB,1,0,1
+Thành phố Bắc Ninh,NVB,1,0,1
+Thành phố Cần Thơ,NVB,1,0,1
+Thành phố Hà Nội,NVB,5,1,6
+Thành phố Hồ Chí Minh,NVB,7,0,7
+Thành phố Đà Nẵng,NVB,2,1,3
+Tỉnh An Giang,NVB,1,0,1
+Tỉnh Đồng Tháp,NVB,1,0,1
+Thành phố Bắc Ninh,OCB,1,0,1
+Thành phố Cần Thơ,OCB,4,0,4
+Thành phố Hà Nội,OCB,1,4,5
+Thành phố Hải Phòng,OCB,1,1,2
+Thành phố Hồ Chí Minh,OCB,14,4,18
+Thành phố Quảng Ninh,OCB,1,0,1
+Thành phố Đà Nẵng,OCB,3,5,8
+Tỉnh Lâm Đồng,OCB,1,0,1
+Tỉnh Đắk Lắk,OCB,1,0,1
+Thành phố Bắc Ninh,PGB,1,0,1
+Thành phố Cần Thơ,PGB,0,1,1
+Thành phố Hà Nội,PGB,6,2,8
+Thành phố Hồ Chí Minh,PGB,5,1,6
+Thành phố Quảng Ninh,PGB,1,0,1
+Thành phố Bắc Ninh,SHB,1,0,1
+Thành phố Cần Thơ,SHB,2,0,2
+Thành phố Hà Nội,SHB,7,45,52
+Thành phố Hải Phòng,SHB,1,0,1
+Thành phố Hồ Chí Minh,SHB,4,2,6
+Thành phố Đà Nẵng,SHB,0,1,1
+Thành phố Đồng Nai,SHB,2,0,2
+Tỉnh Gia Lai,SHB,1,0,1
+Tỉnh Lào Cai,SHB,0,1,1
+Tỉnh Lâm Đồng,SHB,1,0,1
+Tỉnh Nghệ An,SHB,0,1,1
+Tỉnh Ninh Bình,SHB,0,1,1
+Thành phố Bắc Ninh,SSB,2,1,3
+Thành phố Cần Thơ,SSB,3,1,4
+Thành phố Huế,SSB,1,3,4
+Thành phố Hà Nội,SSB,15,10,25
+Thành phố Hải Phòng,SSB,4,2,6
+Thành phố Hồ Chí Minh,SSB,7,9,16
+Thành phố Quảng Ninh,SSB,1,0,1
+Thành phố Đà Nẵng,SSB,2,4,6
+Thành phố Đồng Nai,SSB,0,1,1
+Tỉnh Khánh Hòa,SSB,0,1,1
+Tỉnh Nghệ An,SSB,0,2,2
+Tỉnh Quảng Ngãi,SSB,0,1,1
+Tỉnh Đồng Tháp,SSB,1,0,1
+Thành phố Bắc Ninh,STB,3,3,6
+Thành phố Cần Thơ,STB,10,5,15
+Thành phố Huế,STB,1,6,7
+Thành phố Hà Nội,STB,11,14,25
+Thành phố Hải Phòng,STB,5,1,6
+Thành phố Hồ Chí Minh,STB,74,29,103
+Thành phố Quảng Ninh,STB,2,0,2
+Thành phố Đà Nẵng,STB,3,13,16
+Thành phố Đồng Nai,STB,4,0,4
+Tỉnh An Giang,STB,2,10,12
+Tỉnh Gia Lai,STB,2,0,2
+Tỉnh Hà Tĩnh,STB,1,0,1
+Tỉnh Khánh Hòa,STB,6,4,10
+Tỉnh Lâm Đồng,STB,3,2,5
+Tỉnh Lạng Sơn,STB,2,0,2
+Tỉnh Nghệ An,STB,0,1,1
+Tỉnh Ninh Bình,STB,0,1,1
+Tỉnh Quảng Ngãi,STB,0,1,1
+Tỉnh Quảng Trị,STB,4,6,10
+Tỉnh Thanh Hóa,STB,1,0,1
+Tỉnh Thái Nguyên,STB,1,1,2
+Tỉnh Tây Ninh,STB,2,0,2
+Tỉnh Vĩnh Long,STB,3,2,5
+Tỉnh Đắk Lắk,STB,3,0,3
+Tỉnh Đồng Tháp,STB,6,6,12
+Thành phố Bắc Ninh,TCB,4,1,5
+Thành phố Cần Thơ,TCB,2,6,8
+Thành phố Huế,TCB,4,8,12
+Thành phố Hà Nội,TCB,38,95,133
+Thành phố Hải Phòng,TCB,3,1,4
+Thành phố Hồ Chí Minh,TCB,28,171,199
+Thành phố Đà Nẵng,TCB,3,29,32
+Thành phố Đồng Nai,TCB,1,1,2
+Tỉnh An Giang,TCB,0,2,2
+Tỉnh Gia Lai,TCB,0,2,2
+Tỉnh Hà Tĩnh,TCB,1,1,2
+Tỉnh Hưng Yên,TCB,2,1,3
+Tỉnh Khánh Hòa,TCB,0,2,2
+Tỉnh Lào Cai,TCB,1,0,1
+Tỉnh Lâm Đồng,TCB,0,1,1
+Tỉnh Lạng Sơn,TCB,1,2,3
+Tỉnh Ninh Bình,TCB,0,2,2
+Tỉnh Thanh Hóa,TCB,0,1,1
+Tỉnh Vĩnh Long,TCB,0,1,1
+Tỉnh Đắk Lắk,TCB,1,0,1
+Tỉnh Đồng Tháp,TCB,1,2,3
+Thành phố Bắc Ninh,TPB,1,3,4
+Thành phố Huế,TPB,1,1,2
+Thành phố Hà Nội,TPB,11,135,146
+Thành phố Hải Phòng,TPB,1,1,2
+Thành phố Hồ Chí Minh,TPB,9,9,18
+Thành phố Đà Nẵng,TPB,1,2,3
+Thành phố Đồng Nai,TPB,1,0,1
+Tỉnh An Giang,TPB,1,0,1
+Tỉnh Gia Lai,TPB,1,0,1
+Tỉnh Khánh Hòa,TPB,3,3,6
+Tỉnh Lào Cai,TPB,1,0,1
+Tỉnh Lâm Đồng,TPB,2,1,3
+Tỉnh Ninh Bình,TPB,0,1,1
+Thành phố Bắc Ninh,VCB,4,7,11
+Thành phố Cần Thơ,VCB,8,7,15
+Thành phố Huế,VCB,2,5,7
+Thành phố Hà Nội,VCB,38,197,235
+Thành phố Hải Phòng,VCB,6,5,11
+Thành phố Hồ Chí Minh,VCB,50,34,84
+Thành phố Quảng Ninh,VCB,3,4,7
+Thành phố Đà Nẵng,VCB,3,29,32
+Thành phố Đồng Nai,VCB,12,2,14
+Tỉnh An Giang,VCB,1,10,11
+Tỉnh Gia Lai,VCB,4,1,5
+Tỉnh Hà Tĩnh,VCB,1,0,1
+Tỉnh Hưng Yên,VCB,1,5,6
+Tỉnh Khánh Hòa,VCB,6,3,9
+Tỉnh Lào Cai,VCB,1,2,3
+Tỉnh Lâm Đồng,VCB,0,4,4
+Tỉnh Lạng Sơn,VCB,2,2,4
+Tỉnh Nghệ An,VCB,0,1,1
+Tỉnh Ninh Bình,VCB,1,3,4
+Tỉnh Phú Thọ,VCB,1,0,1
+Tỉnh Quảng Ngãi,VCB,3,2,5
+Tỉnh Quảng Trị,VCB,1,3,4
+Tỉnh Thanh Hóa,VCB,0,1,1
+Tỉnh Thái Nguyên,VCB,1,0,1
+Tỉnh Tây Ninh,VCB,2,1,3
+Tỉnh Vĩnh Long,VCB,1,1,2
+Tỉnh Đắk Lắk,VCB,5,3,8
+Tỉnh Đồng Tháp,VCB,3,1,4
+Thành phố Bắc Ninh,VIB,1,0,1
+Thành phố Cần Thơ,VIB,2,0,2
+Thành phố Huế,VIB,0,1,1
+Thành phố Hà Nội,VIB,13,17,30
+Thành phố Hải Phòng,VIB,1,0,1
+Thành phố Hồ Chí Minh,VIB,18,9,27
+Thành phố Đồng Nai,VIB,2,0,2
+Tỉnh Gia Lai,VIB,1,0,1
+Tỉnh Khánh Hòa,VIB,1,0,1
+Tỉnh Lâm Đồng,VIB,1,0,1
+Tỉnh Đắk Lắk,VIB,1,0,1
+Thành phố Bắc Ninh,VPB,3,0,3
+Thành phố Cần Thơ,VPB,4,2,6
+Thành phố Huế,VPB,3,1,4
+Thành phố Hà Nội,VPB,33,73,106
+Thành phố Hải Phòng,VPB,2,1,3
+Thành phố Hồ Chí Minh,VPB,26,16,42
+Thành phố Đà Nẵng,VPB,3,5,8
+Thành phố Đồng Nai,VPB,1,0,1
+Tỉnh An Giang,VPB,2,3,5
+Tỉnh Gia Lai,VPB,1,0,1
+Tỉnh Khánh Hòa,VPB,3,0,3
+Tỉnh Lào Cai,VPB,1,0,1
+Tỉnh Lâm Đồng,VPB,1,2,3
+Tỉnh Lạng Sơn,VPB,1,0,1
+Tỉnh Nghệ An,VPB,0,3,3
+Tỉnh Ninh Bình,VPB,2,1,3
+Tỉnh Tây Ninh,VPB,1,1,2
+Tỉnh Vĩnh Long,VPB,2,0,2
+Tỉnh Đắk Lắk,VPB,2,1,3

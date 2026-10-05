@@ -1,0 +1,9 @@
+rate_date,ticker,term_months,channel,rate_percent,source
+2026-09-26,ACB,12,ONLINE,5.9,24hmoney
+2026-09-26,VCB,12,ONLINE,5.7,24hmoney
+2026-09-27,ACB,12,ONLINE,6.1,24hmoney
+2026-09-27,VCB,12,ONLINE,5.7,24hmoney
+2026-09-27,ACB,6,COUNTER,4.5,24hmoney
+2026-09-26,VCB,12,COUNTER,5.0,24hmoney
+2026-09-27,VCB,12,COUNTER,5.0,24hmoney
+2026-09-27,ACB,12,COUNTER,5.2,24hmoney

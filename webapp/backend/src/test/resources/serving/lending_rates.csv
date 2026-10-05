@@ -1,0 +1,3 @@
+month,ticker,lending_avg_percent,deposit_avg_percent,source_url
+2026-06,ACB,6.8,4.4,https://example.test/a
+2026-07,VCB,6.2,,https://example.test/b

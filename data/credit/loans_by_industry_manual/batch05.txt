@@ -1,0 +1,44 @@
+MBB_2021|I|Nông, lâm nghiệp và thủy sản|A|3.506.228|3.217.038
+MBB_2021|I|Khai khoáng|B|2.980.179|3.987.481
+MBB_2021|I|Công nghiệp chế biến, chế tạo|C|53.107.960|45.483.439
+MBB_2021|I|Sản xuất và phân phối điện, khí đốt, nước nóng|D|30.741.006|19.633.300
+MBB_2021|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|676.925|739.723
+MBB_2021|I|Xây dựng|F|22.523.216|18.157.881
+MBB_2021|I|Bán buôn, bán lẻ, sửa chữa ô tô, xe máy|G|81.361.737|63.676.131
+MBB_2021|I|Vận tải kho bãi|H|6.364.695|7.850.007
+MBB_2021|I|Dịch vụ lưu trú, ăn uống|I|9.021.897|8.658.188
+MBB_2021|I|Thông tin và truyền thông|J|1.861.184|1.605.415
+MBB_2021|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|2.439.625|1.121.837
+MBB_2021|I|Hoạt động kinh doanh bất động sản|L|12.632.155|9.395.157
+MBB_2021|I|Chuyên môn, khoa học và công nghệ|M|519.234|437.012
+MBB_2021|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|435.207|421.668
+MBB_2021|I|Giáo dục và đào tạo|P|534.630|907.843
+MBB_2021|I|Y tế và hoạt động trợ giúp xã hội|Q|3.199.312|2.539.758
+MBB_2021|I|Nghệ thuật, vui chơi, giải trí|R|3.007.047|3.438.418
+MBB_2021|I|Hoạt động dịch vụ khác|S|148.658|67.740
+MBB_2021|I|Hoạt động làm thuê hộ gia đình|T|118.584.165|99.491.355
+MBB_2021|I|Cho vay tại chi nhánh nước ngoài|FOREIGN_BRANCH|2.758.429|3.344.252
+MBB_2021|I|Các khoản cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|7.151.289|4.123.340
+MBB_2021|T|Tổng|TOTAL|363.554.778|298.296.983
+MBB_2019|I|Nông, lâm nghiệp và thủy sản|A|3.320.783|3.095.756
+MBB_2019|I|Khai khoáng|B|3.837.122|3.941.497
+MBB_2019|I|Công nghiệp chế biến, chế tạo|C|38.783.944|36.303.626
+MBB_2019|I|Sản xuất và phân phối điện, khí đốt, nước nóng|D|10.000.983|6.263.470
+MBB_2019|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|724.777|748.549
+MBB_2019|I|Xây dựng|F|19.403.393|20.494.258
+MBB_2019|I|Bán buôn, bán lẻ, sửa chữa ô tô, xe máy|G|56.817.785|47.291.140
+MBB_2019|I|Vận tải kho bãi|H|7.810.083|10.048.584
+MBB_2019|I|Dịch vụ lưu trú, ăn uống|I|7.780.639|4.623.610
+MBB_2019|I|Thông tin và truyền thông|J|2.598.729|3.133.806
+MBB_2019|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|842.569|576.831
+MBB_2019|I|Hoạt động kinh doanh bất động sản|L|5.356.894|5.234.177
+MBB_2019|I|Chuyên môn, khoa học và công nghệ|M|311.581|210.248
+MBB_2019|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|894.466|612.640
+MBB_2019|I|Giáo dục và đào tạo|P|1.131.384|525.213
+MBB_2019|I|Y tế và hoạt động trợ giúp xã hội|Q|1.479.427|916.753
+MBB_2019|I|Nghệ thuật, vui chơi, giải trí|R|2.721.923|74.206
+MBB_2019|I|Hoạt động dịch vụ khác|S|53.874|74.323
+MBB_2019|I|Hoạt động làm thuê hộ gia đình|T|80.257.860|64.720.655
+MBB_2019|I|Cho vay tại chi nhánh nước ngoài|FOREIGN_BRANCH|3.513.008|3.496.332
+MBB_2019|I|Các khoản cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|2.689.399|2.300.284
+MBB_2019|T|Tổng|TOTAL|250.330.623|214.685.958

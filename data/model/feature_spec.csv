@@ -1,0 +1,121 @@
+﻿feature,group,source,formula,unit,processing,kind
+loans_vnd,G Quy mô & tăng trưởng,bank_panel_quarterly,Dư nợ (đồng) — mức tuyệt đối,đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+deposits_vnd,G Quy mô & tăng trưởng,bank_panel_quarterly,Tiền gửi khách hàng (đồng) — mức tuyệt đối,đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+total_assets_vnd,G Quy mô & tăng trưởng,bank_panel_quarterly,Tổng tài sản (đồng) — mức tuyệt đối,đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_qoq_percent,G Quy mô & tăng trưởng,bank_panel_quarterly,Tăng trưởng dư nợ so quý trước,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_yoy_percent,G Quy mô & tăng trưởng,bank_panel_quarterly,Tăng trưởng dư nợ so cùng kỳ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_over_assets_percent,L Thanh khoản,bank_panel_quarterly,Dư nợ / tổng tài sản,%,đã chuẩn hóa ở build_panel,theo NH-quý
+ldr_computed_percent,L Thanh khoản,bank_panel_quarterly,Dư nợ / tiền gửi khách hàng,%,đã chuẩn hóa ở build_panel,theo NH-quý
+npl_coverage_percent,A Chất lượng tài sản,bank_panel_quarterly,Dự phòng / nợ xấu,%,đã chuẩn hóa ở build_panel,theo NH-quý
+provision_over_loans_percent,A Chất lượng tài sản,bank_panel_quarterly,Dự phòng / dư nợ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loan_provision_vnd,A Chất lượng tài sản,bank_panel_quarterly,Dự phòng cho vay (đồng) — mức tuyệt đối,đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_g2_percent,A Chất lượng tài sản,bank_panel_quarterly,Nợ nhóm 2 / dư nợ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+casa_percent,L Thanh khoản,bank_panel_quarterly,Tiền gửi không kỳ hạn / tổng tiền gửi,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_short_share_percent,L Thanh khoản,bank_panel_quarterly,Cho vay ngắn hạn / dư nợ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_medium_share_percent,L Thanh khoản,bank_panel_quarterly,Cho vay trung hạn / dư nợ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+loans_long_share_percent,L Thanh khoản,bank_panel_quarterly,Cho vay dài hạn / dư nợ,%,đã chuẩn hóa ở build_panel,theo NH-quý
+vnd_deposit_share_percent,S Nhạy cảm thị trường,bank_panel_quarterly,Tiền gửi VNĐ / tiền gửi theo loại tiền,%,đã chuẩn hóa ở build_panel,theo NH-quý
+deposit_cost_implied_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,Trả lãi tiền gửi TTM / tiền gửi bình quân (suy ra),%,đã chuẩn hóa ở build_panel,theo NH-quý
+roe_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,ROE TTM (MAS),%,đã chuẩn hóa ở build_panel,theo NH-quý
+roa_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,ROA TTM (MAS),%,đã chuẩn hóa ở build_panel,theo NH-quý
+cir_ttm_approx_percent,M Quản trị,bank_panel_quarterly,"Chi phí / thu nhập TTM (MAS, xấp xỉ)",%,đã chuẩn hóa ở build_panel,theo NH-quý
+pe,T Thị trường,bank_panel_quarterly,P/E (MAS),lần,đã chuẩn hóa ở build_panel,theo NH-quý
+pb,T Thị trường,bank_panel_quarterly,P/B (MAS),lần,đã chuẩn hóa ở build_panel,theo NH-quý
+eps_vnd,T Thị trường,bank_panel_quarterly,EPS (MAS),đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+bvps_vnd,T Thị trường,bank_panel_quarterly,Giá trị sổ sách / cổ phiếu (MAS),đồng,đã chuẩn hóa ở build_panel,theo NH-quý
+beta,T Thị trường,bank_panel_quarterly,Beta (MAS),lần,đã chuẩn hóa ở build_panel,theo NH-quý
+dividend_yield,T Thị trường,bank_panel_quarterly,Tỷ suất cổ tức (MAS),%,đã chuẩn hóa ở build_panel,theo NH-quý
+car_percent,C Vốn,bank_panel_quarterly,"CAR đúng quý công bố (Q2, Q4)",%,đã chuẩn hóa ở build_panel,theo NH-quý
+npl_percent,A Chất lượng tài sản,bank_panel_quarterly,Nợ xấu / dư nợ (thuyết minh → VCI),%,đã chuẩn hóa ở build_panel,theo NH-quý
+cof_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,Chi phí vốn TTM (VCI → MAS),%,đã chuẩn hóa ở build_panel,theo NH-quý
+nim_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,Biên lãi thuần TTM (VCI → MAS),%,đã chuẩn hóa ở build_panel,theo NH-quý
+earning_asset_yield_ttm_percent,E Thu nhập & chi phí vốn,bank_panel_quarterly,Lợi suất tài sản sinh lãi TTM (MAS → suy ra),%,đã chuẩn hóa ở build_panel,theo NH-quý
+equity_to_assets_pct,C Vốn,financial_long.csv,Vốn chủ / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+equity_to_loans_pct,C Vốn,financial_long.csv,Vốn chủ / dư nợ gộp,%,quý: số dư cuối kỳ,theo NH-quý
+retained_to_equity_pct,C Vốn,financial_long.csv,LN chưa phân phối / vốn chủ,%,quý: số dư cuối kỳ,theo NH-quý
+dividend_payout_ttm_pct,C Vốn,financial_long.csv,Cổ tức tiền mặt đã trả TTM / LNST TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+credit_cost_ttm_pct,A Chất lượng tài sản,financial_long.csv,Chi phí dự phòng tín dụng TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+recovery_ttm_pct,A Chất lượng tài sản,financial_long.csv,Thu hồi nợ đã xử lý TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+npl_group5_share_pct,A Chất lượng tài sản,note_long.csv,Nợ nhóm 5 / nợ xấu (nhóm 3–5),%,quý: số dư cuối kỳ,theo NH-quý
+cir_ttm_pct,M Quản trị,financial_long.csv,(TNHĐ − LN trước dự phòng) TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+opex_to_assets_ttm_pct,M Quản trị,financial_long.csv,Chi phí hoạt động TTM / tổng tài sản bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+staff_cost_share_pct,M Quản trị,financial_long + note_long,"Chi lương, phụ cấp TTM / chi phí hoạt động TTM",%,quý: TTM / bình quân 5 mốc,theo NH-quý
+deposit_insurance_to_deposits_pct,M Quản trị,financial_long + note_long,Phí bảo hiểm tiền gửi TTM / tiền gửi bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+roaa_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,LNST TTM / tổng tài sản bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+roae_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,LNST TTM / vốn chủ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+ppop_to_assets_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,LN trước dự phòng TTM / tổng tài sản bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+noii_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Thu nhập ngoài lãi TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+fee_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Lãi thuần dịch vụ TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+loan_yield_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Thu lãi cho vay TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+deposit_rate_paid_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Trả lãi tiền gửi TTM / tiền gửi bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+npat_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
+toi_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng TNHĐ TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
+liquid_assets_pct,L Thanh khoản,financial_long.csv,(Tiền + tiền gửi NHNN + tiền gửi/cho vay TCTD + CK kinh doanh) / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+deposits_to_liabilities_pct,L Thanh khoản,financial_long.csv,Tiền gửi khách hàng / tổng nợ,%,quý: số dư cuối kỳ,theo NH-quý
+interbank_funding_pct,L Thanh khoản,financial_long.csv,Tiền gửi và vay TCTD khác / tổng nợ,%,quý: số dư cuối kỳ,theo NH-quý
+papers_funding_pct,L Thanh khoản,financial_long.csv,Giấy tờ có giá phát hành / tổng nợ,%,quý: số dư cuối kỳ,theo NH-quý
+gov_sbv_funding_pct,L Thanh khoản,financial_long.csv,Nợ Chính phủ và NHNN / tổng nợ,%,quý: số dư cuối kỳ,theo NH-quý
+cfo_to_assets_ttm_pct,L Thanh khoản,financial_long.csv,Lưu chuyển tiền thuần HĐKD TTM / tổng tài sản bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+invsec_to_assets_pct,S Nhạy cảm thị trường,financial_long.csv,Chứng khoán đầu tư / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+gov_bond_share_invsec_pct,S Nhạy cảm thị trường,note_long.csv,Trái phiếu Chính phủ / chứng khoán đầu tư,%,quý: số dư cuối kỳ,theo NH-quý
+corp_bond_to_assets_pct,S Nhạy cảm thị trường,financial_long + note_long,Trái phiếu TCKT trong nước / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+ci_bond_to_assets_pct,S Nhạy cảm thị trường,financial_long + note_long,Trái phiếu TCTD khác / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+paper_interest_share_pct,L Thanh khoản,note_long.csv,Trả lãi giấy tờ có giá TTM / (trả lãi GTCG + trả lãi tiền gửi) TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+log_total_assets,G Quy mô & tăng trưởng,financial_long.csv,"ln(tổng tài sản, tỷ đồng)",ln,quý: số dư cuối kỳ,theo NH-quý
+assets_yoy_pct,G Quy mô & tăng trưởng,financial_long.csv,Tổng tài sản so cùng kỳ,%,quý: số dư cuối kỳ,theo NH-quý
+deposits_yoy_pct,G Quy mô & tăng trưởng,financial_long.csv,Tiền gửi khách hàng so cùng kỳ,%,quý: số dư cuối kỳ,theo NH-quý
+equity_yoy_pct,G Quy mô & tăng trưởng,financial_long.csv,Vốn chủ so cùng kỳ,%,quý: số dư cuối kỳ,theo NH-quý
+loan_market_share_pct,G Quy mô & tăng trưởng,financial_long.csv,Dư nợ / tổng dư nợ 22 NH cùng quý,%,quý: số dư cuối kỳ,theo NH-quý
+deposit_market_share_pct,G Quy mô & tăng trưởng,financial_long.csv,Tiền gửi / tổng tiền gửi 22 NH cùng quý,%,quý: số dư cuối kỳ,theo NH-quý
+yield_cof_spread_pp,E Thu nhập & chi phí vốn,bank_panel_quarterly,Lợi suất TSSL TTM − chi phí vốn TTM,điểm %,quý,theo NH-quý
+nim_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi nim_ttm_percent so quý trước,điểm %,quý,theo NH-quý
+cof_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi cof_ttm_percent so quý trước,điểm %,quý,theo NH-quý
+npl_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi npl_percent so quý trước,điểm %,quý,theo NH-quý
+casa_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi casa_percent so quý trước,điểm %,quý,theo NH-quý
+ldr_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi ldr_computed_percent so quý trước,điểm %,quý,theo NH-quý
+roe_chg_qoq_pp,D Động lượng,bank_panel_quarterly,Thay đổi roe_ttm_percent so quý trước,điểm %,quý,theo NH-quý
+car_asof_percent,C Vốn,bank_car_halfyear,CAR hợp nhất gần nhất đã công bố,%,nửa năm → as-of 2 quý,theo NH-quý
+ind_share_A_asof_pct,P Chính sách & cơ cấu tín dụng,loans_by_industry_group_wide,"Tỷ trọng dư nợ ngành nông, lâm, thủy sản (BCTC kiểm toán)",%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+ind_share_C_asof_pct,P Chính sách & cơ cấu tín dụng,loans_by_industry_group_wide,Tỷ trọng dư nợ ngành công nghiệp chế biến (BCTC kiểm toán),%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+ind_share_F_asof_pct,P Chính sách & cơ cấu tín dụng,loans_by_industry_group_wide,Tỷ trọng dư nợ ngành xây dựng (BCTC kiểm toán),%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+ind_share_G_asof_pct,P Chính sách & cơ cấu tín dụng,loans_by_industry_group_wide,Tỷ trọng dư nợ ngành thương mại (BCTC kiểm toán),%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+ind_share_L_asof_pct,P Chính sách & cơ cấu tín dụng,loans_by_industry_group_wide,Tỷ trọng dư nợ ngành bất động sản (BCTC kiểm toán),%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+agri_share_asof_pct,P Chính sách & cơ cấu tín dụng,agri_loans_annual,"Dư nợ nông, lâm, thủy sản / dư nợ theo ngành",%,"năm → as-of (Q4/Y, Q1–Q3/Y+1)",theo NH-quý
+system_credit_growth_asof_pct,V Vĩ mô,credit_growth,Tăng trưởng tín dụng toàn hệ thống năm gần nhất,%,năm → as-of,chung mọi NH
+prog_g30k_2013,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách G30K_2013 và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_hatang_500k,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách HATANG_500K và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_lts_15k,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách LTS_15K và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_nlts_100k,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách NLTS_100K và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_nlts_185k,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách NLTS_185K và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_noxh_145k,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách NOXH_145K và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_noxh_u35,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách NOXH_U35 và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+prog_sme_7125,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách SME_7125 và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+n_programs_active,P Chính sách & cơ cấu tín dụng,program_participation,Số chương trình tín dụng chính sách đang tham gia,số,sự kiện → hiệu lực từ list_as_of,theo NH-quý
+disaster_branch_share_pct,P Chính sách & cơ cấu tín dụng,disaster_provinces + branch_by_province,% chi nhánh nằm ở tỉnh bị thiên tai trong cửa sổ hiệu lực (Yagi 9/2024–12/2025; bão 10–12 7/2025–),%,sự kiện × ảnh chụp chi nhánh 2026 (giả định mạng lưới ổn định),theo NH-quý
+state_own_percent,M Quản trị,bank_ownership,Sở hữu nhà nước (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+foreign_own_percent,M Quản trị,bank_ownership,Sở hữu nước ngoài (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+foreign_room_used_pct,M Quản trị,bank_ownership,Sở hữu nước ngoài / room tối đa (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+log_branches,G Quy mô & tăng trưởng,branch_by_province,ln(1 + số chi nhánh/PGD trên OSM),ln,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
+atm_per_branch,G Quy mô & tăng trưởng,branch_by_province,Số ATM / số chi nhánh,lần,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
+n_provinces_present,G Quy mô & tăng trưởng,branch_by_province,Số tỉnh (34 tỉnh mới) có chi nhánh,số,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
+app_reviews_log,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),ln(1 + số review trong quý),ln,tháng → tổng quý,theo NH-quý
+app_mean_score,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),Điểm sao trung bình có trọng số số review,sao,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
+app_pct_1star,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review 1 sao,%,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
+app_reply_rate_pct,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review được NH phản hồi,%,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
+dep12_online_pct,R Lãi suất niêm yết,deposit_24hmoney_daily,"Lãi suất tiết kiệm 12 tháng online, trung bình các ngày quan sát",%,ngày → trung bình quý,theo NH-quý
+dep12_counter_pct,R Lãi suất niêm yết,deposit_24hmoney_daily,Lãi suất tiết kiệm 12 tháng tại quầy,%,ngày → trung bình quý,theo NH-quý
+dep12_online_spread_pp,R Lãi suất niêm yết,deposit_24hmoney_daily,Lãi suất 12 tháng online − trung bình 22 NH cùng quý,điểm %,ngày → trung bình quý,theo NH-quý
+lending_avg_pct,R Lãi suất niêm yết,bank_lending_rates_monthly,Lãi suất cho vay bình quân NH công bố,%,tháng → trung bình quý,theo NH-quý
+stock_ret_q_pct,T Thị trường,data/price,Lợi suất cổ phiếu trong quý,%,ngày → quý; < 20 phiên → NaN,theo NH-quý
+stock_vol_q_pct,T Thị trường,data/price,Độ lệch chuẩn lợi suất log ngày × √252,%,ngày → quý; < 20 phiên → NaN,theo NH-quý
+log_adtv,T Thị trường,data/price,"ln(giá trị giao dịch bình quân phiên, đồng)",ln,ngày → quý; < 20 phiên → NaN,theo NH-quý
+vnindex_ret_q_pct,V Vĩ mô,VNINDEX,Lợi suất VN-Index trong quý,%,ngày → quý,chung mọi NH
+vnindex_vol_q_pct,V Vĩ mô,VNINDEX,Biến động VN-Index (năm hóa),%,ngày → quý,chung mọi NH
+excess_ret_q_pct,T Thị trường,data/price + VNINDEX,Lợi suất cổ phiếu − lợi suất VN-Index trong quý,%,ngày → quý,theo NH-quý
+cpi_yoy_q_pct,V Vĩ mô,cpi / price_indices (NSO),"CPI so cùng kỳ, trung bình 3 tháng",%,tháng → trung bình quý,chung mọi NH
+core_cpi_yoy_q_pct,V Vĩ mô,cpi / price_indices (NSO),"Lạm phát cơ bản so cùng kỳ, trung bình 3 tháng",%,tháng → trung bình quý,chung mọi NH
+usd_index_yoy_q_pct,V Vĩ mô,cpi / price_indices (NSO),"Chỉ số giá USD so cùng kỳ, trung bình 3 tháng",%,tháng → trung bình quý,chung mọi NH
+gold_index_yoy_q_pct,V Vĩ mô,cpi / price_indices (NSO),"Chỉ số giá vàng so cùng kỳ, trung bình 3 tháng",%,tháng → trung bình quý,chung mọi NH
+refinancing_rate_pct,V Vĩ mô,policy_rate,Lãi suất tai cap von NHNN có hiệu lực cuối quý,%,sự kiện → giá trị cuối quý,chung mọi NH
+rediscount_rate_pct,V Vĩ mô,policy_rate,Lãi suất tai chiet khau NHNN có hiệu lực cuối quý,%,sự kiện → giá trị cuối quý,chung mọi NH
+overnight_sbv_rate_pct,V Vĩ mô,policy_rate,Lãi suất cho vay qua dem NHNN có hiệu lực cuối quý,%,sự kiện → giá trị cuối quý,chung mọi NH

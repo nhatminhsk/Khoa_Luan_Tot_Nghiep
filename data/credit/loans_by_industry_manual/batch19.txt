@@ -1,0 +1,70 @@
+# VPB: tieu de 'theo mot so nganh kinh te cua khach hang'; VPB_2025 cot 2024 ghi 'Trinh bay lai'
+VPB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|2.443.131|2.104.559
+VPB_2025|I|Khai khoáng|B|1.199.188|1.519.641
+VPB_2025|I|Công nghiệp chế biến, chế tạo|C|44.324.951|31.042.642
+VPB_2025|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|1.038.628|861.118
+VPB_2025|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|193.891|146.670
+VPB_2025|I|Xây dựng|F|53.916.675|40.585.461
+VPB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|105.015.752|72.461.942
+VPB_2025|I|Vận tải kho bãi|H|12.417.698|12.572.965
+VPB_2025|I|Dịch vụ lưu trú và ăn uống|I|51.046.762|18.952.714
+VPB_2025|I|Thông tin và truyền thông|J|2.140.303|1.754.668
+VPB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|52.773.620|17.985.239
+VPB_2025|I|Hoạt động kinh doanh bất động sản|L|207.427.552|186.736.821
+VPB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|4.623.765|3.320.412
+VPB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|5.050.097|2.937.827
+VPB_2025|I|Hoạt động của Đảng Cộng sản, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng; bảo đảm xã hội bắt buộc|O|14.165|10.696
+VPB_2025|I|Giáo dục và đào tạo|P|293.470|1.072.488
+VPB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|667.273|591.474
+VPB_2025|I|Nghệ thuật, vui chơi và giải trí|R|6.374.911|3.546.017
+VPB_2025|I|Hoạt động dịch vụ khác|S|3.189.219|2.292.156
+VPB_2025|I|Hoạt động làm thuê các công việc trong hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|225.281.760|193.909.402
+VPB_2025|I|Cho vay cá nhân để mua nhà ở, nhận quyền sử dụng đất để xây nhà ở|INDIV_HOUSING|130.375.600|93.853.675
+VPB_2025|I|Cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|34.093.219|9.512.536
+VPB_2025|T|Tổng|TOTAL|943.901.630|697.771.123
+VPB_2024|I|Nông nghiệp, lâm nghiệp và thủy sản|A|2.054.559|3.041.136
+VPB_2024|I|Khai khoáng|B|1.519.641|1.502.568
+VPB_2024|I|Công nghiệp chế biến, chế tạo|C|30.747.223|26.526.255
+VPB_2024|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|861.118|1.408.650
+VPB_2024|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|146.670|692.813
+VPB_2024|I|Xây dựng|F|38.725.127|28.271.295
+VPB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|70.911.252|53.438.420
+VPB_2024|I|Vận tải kho bãi|H|12.164.350|9.817.781
+VPB_2024|I|Dịch vụ lưu trú và ăn uống|I|18.952.714|13.296.812
+VPB_2024|I|Thông tin và truyền thông|J|1.042.484|911.727
+VPB_2024|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|17.985.239|21.236.503
+VPB_2024|I|Hoạt động kinh doanh bất động sản|L|186.736.821|114.894.070
+VPB_2024|I|Hoạt động chuyên môn, khoa học và công nghệ|M|3.320.412|1.634.569
+VPB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|2.937.827|1.495.928
+VPB_2024|I|Hoạt động của Đảng Cộng sản, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng; bảo đảm xã hội bắt buộc|O|10.696|4.870
+VPB_2024|I|Giáo dục và đào tạo|P|1.072.488|2.645.282
+VPB_2024|I|Y tế và hoạt động trợ giúp xã hội|Q|591.474|1.219.198
+VPB_2024|I|Nghệ thuật, vui chơi và giải trí|R|3.546.017|3.891.018
+VPB_2024|I|Hoạt động dịch vụ khác|S|2.274.013|2.012.512
+VPB_2024|I|Hoạt động làm thuê các công việc trong hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|193.909.402|185.376.652
+VPB_2024|I|Cho vay cá nhân để mua nhà ở, nhận quyền sử dụng đất để xây nhà ở|INDIV_HOUSING|93.853.675|85.785.626
+VPB_2024|I|Cho vay giao dịch ký quỹ và ứng trước cho khách hàng|MARGIN|9.512.536|7.167.605
+VPB_2024|T|Tổng|TOTAL|692.875.738|566.271.290
+VPB_2022|I|Nông nghiệp, lâm nghiệp và thủy sản|A|3.678.961|3.807.569
+VPB_2022|I|Khai khoáng|B|1.327.520|554.164
+VPB_2022|I|Công nghiệp chế biến, chế tạo|C|21.391.907|16.652.370
+VPB_2022|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|2.302.444|2.277.161
+VPB_2022|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|618.115|174.778
+VPB_2022|I|Xây dựng|F|24.118.023|26.492.203
+VPB_2022|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|44.228.974|40.136.840
+VPB_2022|I|Vận tải kho bãi|H|11.131.595|6.107.587
+VPB_2022|I|Dịch vụ lưu trú và ăn uống|I|9.999.309|8.895.843
+VPB_2022|I|Thông tin và truyền thông|J|310.635|339.174
+VPB_2022|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|7.211.735|21.806.591
+VPB_2022|I|Hoạt động kinh doanh bất động sản|L|67.593.114|42.567.227
+VPB_2022|I|Hoạt động chuyên môn, khoa học và công nghệ|M|2.533.769|766.072
+VPB_2022|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|1.392.211|944.447
+VPB_2022|I|Hoạt động của Đảng Cộng sản, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng; bảo đảm xã hội bắt buộc|O|4.411|6.836
+VPB_2022|I|Giáo dục và đào tạo|P|214.772|166.771
+VPB_2022|I|Y tế và hoạt động trợ giúp xã hội|Q|458.645|187.843
+VPB_2022|I|Nghệ thuật, vui chơi và giải trí|R|1.820.380|1.584.563
+VPB_2022|I|Hoạt động dịch vụ khác|S|1.174.612|3.513.137
+VPB_2022|I|Hoạt động làm thuê các công việc trong hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|153.904.425|123.947.317
+VPB_2022|I|Cho vay cá nhân để mua nhà ở, nhận quyền sử dụng đất để xây nhà ở|INDIV_HOUSING|82.922.490|54.352.231
+VPB_2022|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|-|495
+VPB_2022|T|Tổng|TOTAL|438.338.047|355.281.219

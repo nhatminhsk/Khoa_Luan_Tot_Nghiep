@@ -1,0 +1,23 @@
+ticker,as_of_date,state_own_percent,foreign_own_percent,foreign_room_percent,source
+ACB,2026-10-01,0.0,23.4984,30.0,vnstock_data VCI Company.overview
+BAB,2026-10-01,0.0,0.0115,30.0,vnstock_data VCI Company.overview
+BID,2026-10-01,76.7325,17.502,30.0,vnstock_data VCI Company.overview
+BVB,2026-10-01,0.0,0.0742,5.0,vnstock_data VCI Company.overview
+CTG,2026-10-01,64.4636,24.4629,30.0,vnstock_data VCI Company.overview
+EIB,2026-10-01,4.2162,1.0275,29.9704,vnstock_data VCI Company.overview
+HDB,2026-10-01,2.7772,21.8615,27.0,vnstock_data VCI Company.overview
+LPB,2026-10-01,6.5372,1.508,5.0,vnstock_data VCI Company.overview
+MBB,2026-10-01,43.1919,22.1976,23.2351,vnstock_data VCI Company.overview
+MSB,2026-10-01,6.387,7.1215,30.0,vnstock_data VCI Company.overview
+NAB,2026-10-01,0.0,0.9495,30.0,vnstock_data VCI Company.overview
+NVB,2026-10-01,0.0,0.442,9.0,vnstock_data VCI Company.overview
+OCB,2026-10-01,8.6134,19.1569,22.0,vnstock_data VCI Company.overview
+PGB,2026-10-01,0.0,0.0007,30.0,vnstock_data VCI Company.overview
+SHB,2026-10-01,0.5741,3.984,30.0,vnstock_data VCI Company.overview
+SSB,2026-10-01,0.0,0.855,30.0,vnstock_data VCI Company.overview
+STB,2026-10-01,0.0043,10.6728,30.0,vnstock_data VCI Company.overview
+TCB,2026-10-01,0.0,20.7114,22.5386,vnstock_data VCI Company.overview
+TPB,2026-10-01,0.0,21.8302,30.0,vnstock_data VCI Company.overview
+VCB,2026-10-01,74.8035,19.948,30.0,vnstock_data VCI Company.overview
+VIB,2026-10-01,0.0,3.5131,4.99,vnstock_data VCI Company.overview
+VPB,2026-10-01,0.0,22.4456,30.0,vnstock_data VCI Company.overview

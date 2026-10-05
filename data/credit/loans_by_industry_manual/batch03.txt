@@ -1,0 +1,76 @@
+BVB_2019|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|9.123.825|7.036.165
+BVB_2019|I|Xây dựng|F|5.801.389|5.011.109
+BVB_2019|I|Hoạt động kinh doanh bất động sản|L|4.829.626|4.942.560
+BVB_2019|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|3.829.185|4.134.257
+BVB_2019|I|Dịch vụ lưu trú và ăn uống|I|3.315.508|2.429.274
+BVB_2019|I|Công nghiệp chế biến, chế tạo|C|2.598.284|2.375.069
+BVB_2019|I|Nông nghiệp, lâm nghiệp và thủy sản|A|1.088.312|796.667
+BVB_2019|I|Vận tải kho bãi|H|872.134|901.129
+BVB_2019|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|586.011|455.369
+BVB_2019|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|427.919|408.061
+BVB_2019|I|Y tế và hoạt động trợ giúp xã hội|Q|328.824|127.156
+BVB_2019|I|Thông tin và truyền thông|J|264.164|359.136
+BVB_2019|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|249.728|217.344
+BVB_2019|I|Giáo dục và đào tạo|P|95.083|54.525
+BVB_2019|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|86.357|-
+BVB_2019|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|62.928|70.497
+BVB_2019|I|Hoạt động chuyên môn, khoa học và công nghệ|M|58.639|16.758
+BVB_2019|I|Khai khoáng|B|53.544|73.256
+BVB_2019|I|Nghệ thuật, vui chơi và giải trí|R|52.999|23.516
+BVB_2019|I|Hoạt động của Đảng cộng sản, tổ chức chính trị - xã hội, quản lý nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|11.469|2.929
+BVB_2019|I|Hoạt động dịch vụ khác|S|258.758|255.691
+BVB_2019|T|Tổng|TOTAL|33.994.686|29.690.468
+BVB_2022|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|17.222.732|12.140.648
+BVB_2022|I|Xây dựng|F|5.308.501|6.884.411
+BVB_2022|I|Hoạt động kinh doanh bất động sản|L|7.313.302|7.267.088
+BVB_2022|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|5.733.383|5.684.012
+BVB_2022|I|Công nghiệp chế biến, chế tạo|C|3.658.547|3.232.537
+BVB_2022|I|Dịch vụ lưu trú và ăn uống|I|3.600.135|3.566.478
+BVB_2022|I|Nông nghiệp, lâm nghiệp và thủy sản|A|3.463.289|2.944.635
+BVB_2022|I|Vận tải kho bãi|H|557.635|999.558
+BVB_2022|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|534.524|730.952
+BVB_2022|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|768.081|735.958
+BVB_2022|I|Y tế và hoạt động trợ giúp xã hội|Q|378.423|384.560
+BVB_2022|I|Thông tin và truyền thông|J|334.458|381.290
+BVB_2022|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|1.001.464|241.144
+BVB_2022|I|Giáo dục và đào tạo|P|52.718|52.861
+BVB_2022|I|Hoạt động chuyên môn, khoa học và công nghệ|M|109.057|220.227
+BVB_2022|I|Nghệ thuật, vui chơi và giải trí|R|78.472|216.792
+BVB_2022|I|Cung cấp nước, hoạt động quản lý và xử lý rác thải, nước thải|E|25.831|24.025
+BVB_2022|I|Khai khoáng|B|119.326|110.191
+BVB_2022|I|Hoạt động của Đảng cộng sản, tổ chức chính trị - xã hội, quản lý nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|4.569|6.962
+BVB_2022|I|Hoạt động khác|OTHER|594.943|564.886
+BVB_2022|T|Tổng|TOTAL|50.859.390|46.389.215
+BVB_2020|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|10.811.900|9.123.825
+BVB_2020|I|Xây dựng|F|7.038.274|5.801.389
+BVB_2020|I|Hoạt động kinh doanh bất động sản|L|5.659.291|4.829.626
+BVB_2020|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|4.144.348|3.829.185
+BVB_2020|I|Công nghiệp chế biến, chế tạo|C|2.895.649|2.598.284
+BVB_2020|I|Dịch vụ lưu trú và ăn uống|I|2.889.138|3.315.508
+BVB_2020|I|Nông nghiệp, lâm nghiệp và thủy sản|A|2.118.852|1.088.312
+BVB_2020|I|Vận tải kho bãi|H|943.137|872.134
+BVB_2020|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|894.645|427.919
+BVB_2020|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|679.877|586.011
+BVB_2020|I|Y tế và hoạt động trợ giúp xã hội|Q|344.362|328.824
+BVB_2020|I|Thông tin và truyền thông|J|327.400|264.164
+BVB_2020|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|227.201|249.728
+BVB_2020|I|Giáo dục và đào tạo|P|205.430|95.083
+BVB_2020|I|Hoạt động chuyên môn, khoa học và công nghệ|M|199.821|58.639
+BVB_2020|I|Nghệ thuật, vui chơi và giải trí|R|74.865|52.999
+BVB_2020|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|37.226|62.928
+BVB_2020|I|Khai khoáng|B|34.649|53.544
+BVB_2020|I|Hoạt động của Đảng cộng sản, tổ chức chính trị - xã hội, quản lý nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|8.865|11.469
+BVB_2020|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|-|86.357
+BVB_2020|I|Hoạt động dịch vụ khác|S|297.866|258.758
+BVB_2020|T|Tổng|TOTAL|39.832.796|33.994.686
+CTG_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|55.469.017|50.717.337
+CTG_2025|I|Khai khoáng|B|10.441.935|8.514.213
+CTG_2025|I|Sản xuất và gia công chế biến|C|348.991.183|344.731.945
+CTG_2025|I|Sản xuất và phân phối điện, khí đốt và nước|DE|106.089.160|80.563.742
+CTG_2025|I|Xây dựng|F|83.394.479|81.696.934
+CTG_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|726.037.134|647.083.816
+CTG_2025|I|Vận tải kho bãi và thông tin liên lạc|HJ|54.794.595|38.078.919
+CTG_2025|I|Thương mại, dịch vụ|GS|402.424.470|303.117.790
+CTG_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|143.243.327|108.289.226
+CTG_2025|I|Ngành khác|OTHER|61.387.568|59.160.792
+CTG_2025|T|Tổng|TOTAL|1.992.272.868|1.721.954.714

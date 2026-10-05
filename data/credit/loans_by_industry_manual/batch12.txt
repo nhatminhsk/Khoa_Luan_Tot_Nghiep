@@ -1,0 +1,63 @@
+SHB_2019|I|Bán buôn, bán lẻ; sửa chữa ô tô, xe máy và xe có động cơ khác|G|44.733.777|36.247.298
+SHB_2019|I|Nông lâm nghiệp, thủy sản|A|43.243.886|38.463.768
+SHB_2019|I|Công nghiệp chế biến, chế tạo|C|39.292.368|29.957.113
+SHB_2019|I|Xây dựng|F|36.771.735|28.795.080
+SHB_2019|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|18.262.849|15.373.337
+SHB_2019|I|Hoạt động kinh doanh bất động sản|L|22.302.690|16.756.345
+SHB_2019|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|4.438.261|5.029.372
+SHB_2019|I|Khai khoáng|B|3.225.156|4.493.748
+SHB_2019|I|Vận tải, kho bãi|H|2.379.839|2.416.317
+SHB_2019|I|Dịch vụ lưu trú và ăn uống|I|1.696.564|1.189.297
+SHB_2019|I|Hoạt động tài chính, bảo hiểm|K|1.542.296|2.517.173
+SHB_2019|I|Thông tin và truyền thông|J|507.655|959.840
+SHB_2019|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|211.064|158.586
+SHB_2019|I|Hoạt động chuyên môn, khoa học và công nghệ|M|103.752|98.736
+SHB_2019|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|414.001|951.543
+SHB_2019|I|Nghệ thuật, vui chơi, giải trí|R|121.841|282.306
+SHB_2019|I|Hoạt động của Đảng, tổ chức chính trị xã hội, quản lý Nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|19.346|28.546
+SHB_2019|I|Giáo dục và đào tạo|P|226.017|723.744
+SHB_2019|I|Y tế và hoạt động trợ giúp xã hội|Q|74.934|72.367
+SHB_2019|I|Hoạt động dịch vụ khác|S|45.593.645|32.474.365
+SHB_2019|T|Tổng|TOTAL|265.161.676|216.988.881
+SHB_2024|I|Nông nghiệp, lâm nghiệp và thủy sản|A|9.928.660|24.197.149
+SHB_2024|I|Khai khoáng|B|1.156.368|1.369.635
+SHB_2024|I|Công nghiệp chế biến, chế tạo|C|35.290.977|43.942.645
+SHB_2024|I|Sản xuất và phân phối điện, khí đốt và nước|D|20.414.795|21.424.673
+SHB_2024|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|631.534|402.832
+SHB_2024|I|Xây dựng|F|59.708.529|69.713.722
+SHB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|145.776.795|123.776.536
+SHB_2024|I|Vận tải kho bãi|H|20.305.290|13.133.856
+SHB_2024|I|Dịch vụ lưu trú, ăn uống|I|12.181.267|2.890.657
+SHB_2024|I|Thông tin và truyền thông|J|148.159|106.645
+SHB_2024|I|Hoạt động tài chính, ngân hàng, bảo hiểm|K|743.778|204.929
+SHB_2024|I|Hoạt động kinh doanh bất động sản|L|127.568.519|73.269.016
+SHB_2024|I|Chuyên môn, khoa học và công nghệ|M|177.614|249.798
+SHB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|9.299.433|6.536.248
+SHB_2024|I|Hoạt động của Đảng, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|390.456|206.654
+SHB_2024|I|Giáo dục và đào tạo|P|145.439|190.989
+SHB_2024|I|Y tế và hoạt động trợ giúp xã hội|Q|164.704|60.083
+SHB_2024|I|Nghệ thuật, vui chơi, giải trí|R|484.660|144.495
+SHB_2024|I|Hoạt động dịch vụ khác|S|65.747.797|48.949.416
+SHB_2024|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|9.685.217|7.694.169
+SHB_2024|T|Tổng|TOTAL|519.949.991|438.464.147
+SHB_2022|I|Bán buôn, bán lẻ; sửa chữa ô tô, xe máy và xe có động cơ khác|G|111.258.709|94.125.479
+SHB_2022|I|Nông lâm nghiệp, thủy sản|A|35.700.343|50.448.631
+SHB_2022|I|Công nghiệp chế biến, chế tạo|C|43.153.183|47.137.639
+SHB_2022|I|Xây dựng|F|62.132.037|48.641.243
+SHB_2022|I|Hoạt động kinh doanh bất động sản|L|31.492.937|24.469.395
+SHB_2022|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|13.950.907|18.457.306
+SHB_2022|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|13.452.084|9.715.237
+SHB_2022|I|Khai khoáng|B|1.477.970|1.691.415
+SHB_2022|I|Vận tải, kho bãi|H|12.944.231|12.870.968
+SHB_2022|I|Dịch vụ lưu trú và ăn uống|I|1.745.617|1.778.330
+SHB_2022|I|Hoạt động tài chính, bảo hiểm|K|827.474|2.573.670
+SHB_2022|I|Thông tin và truyền thông|J|160.882|344.957
+SHB_2022|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|311.085|707.816
+SHB_2022|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|268.887|269.072
+SHB_2022|I|Nghệ thuật, vui chơi, giải trí|R|51.793|81.359
+SHB_2022|I|Hoạt động chuyên môn, khoa học và công nghệ|M|265.552|244.807
+SHB_2022|I|Y tế và hoạt động trợ giúp xã hội|Q|77.429|61.722
+SHB_2022|I|Giáo dục và đào tạo|P|226.799|289.513
+SHB_2022|I|Hoạt động của Đảng, tổ chức chính trị xã hội, quản lý Nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|28.650|35.507
+SHB_2022|I|Hoạt động dịch vụ khác|S|56.106.646|48.472.058
+SHB_2022|T|Tổng|TOTAL|385.633.215|362.416.124

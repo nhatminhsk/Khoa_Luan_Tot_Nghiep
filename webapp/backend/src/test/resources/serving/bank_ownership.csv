@@ -1,0 +1,4 @@
+ticker,as_of_date,state_own_percent,foreign_own_percent,foreign_room_percent,source
+ACB,2026-09-09,0.0,23.6416,30.0,vnstock_data VCI Company.overview
+VCB,2026-09-09,74.8035,19.9634,30.0,vnstock_data VCI Company.overview
+XYZ,2026-09-09,10.0,1.0,30.0,mã lạ bị bỏ qua

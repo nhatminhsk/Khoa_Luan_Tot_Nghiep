@@ -1,0 +1,82 @@
+# Cấu hình mặc định để chạy trên máy cá nhân (H2 nhúng, cookie không Secure).
+# Giá trị bí mật (APP_JWT_SECRET, APP_ADMIN_*) lấy từ biến môi trường hoặc file .env cạnh pom.xml.
+
+spring:
+  application:
+    name: bank-advisor-api
+  config:
+    # APP_ENV_FILE đổi được để test không đọc file .env của máy dev.
+    import: optional:file:${APP_ENV_FILE:.env}[.properties]
+
+  # H2 ở chế độ PostgreSQL: chuyển sang PostgreSQL chỉ cần đổi url/driver/username/password.
+  datasource:
+    url: jdbc:h2:file:${APP_DB_PATH:./.data/bank-advisor};MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    locations: classpath:db/migration
+  h2:
+    console:
+      enabled: ${APP_H2_CONSOLE:false}
+      path: /h2-console
+
+server:
+  port: ${PORT:8080}
+  # Trình duyệt gọi API qua proxy của Next.js (cùng origin). Đọc X-Forwarded-Host/Proto để Spring thấy đúng
+  # origin gốc; nếu không, header Origin của trình duyệt bị coi là cross-origin và POST bị CORS chặn (403).
+  # Khi triển khai thật, backend chỉ nên nhận request từ proxy (không mở cổng ra ngoài).
+  forward-headers-strategy: framework
+  error:
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+app:
+  data-import:
+    # Thư mục data/serving của pipeline, tính từ thư mục chạy backend (webapp/backend).
+    dir: ${APP_DATA_DIR:../../data/serving}
+    on-startup: true
+    cron: "0 0 16 * * *"
+  jwt:
+    secret: ${APP_JWT_SECRET:}
+    ttl: 7d
+    cookie-name: ba_session
+    cookie-secure: ${APP_COOKIE_SECURE:false}
+  bootstrap-admin:
+    email: ${APP_ADMIN_EMAIL:}
+    password: ${APP_ADMIN_PASSWORD:}
+  # Gửi thông báo qua email. OFF: tắt (mặc định); LOG: in email ra log để thử khi chưa có máy chủ thư;
+  # SMTP: gửi thật. Người dùng phải xác minh email trước khi chọn nhận qua email.
+  mail:
+    mode: ${APP_MAIL_MODE:OFF}
+    from: ${APP_MAIL_FROM:BankAdvisor <no-reply@bankadvisor.test>}
+    web-base-url: ${APP_WEB_BASE_URL:http://localhost:3000}
+    smtp:
+      host: ${APP_SMTP_HOST:}
+      port: ${APP_SMTP_PORT:587}
+      username: ${APP_SMTP_USERNAME:}
+      password: ${APP_SMTP_PASSWORD:}
+      starttls: ${APP_SMTP_STARTTLS:true}
+    dispatch-delay: 60s
+    retry-backoff: 5m
+    max-attempts: 3
+    verification-ttl: 24h
+    verification-code-ttl: 15m
+    resend-cooldown: 60s
+  login-throttle:
+    max-failures: 5
+    max-failures-per-email: 20
+    window: 15m
+  cors-origins: []
+
+logging:
+  level:
+    vn.kltn.bankadvisor: INFO

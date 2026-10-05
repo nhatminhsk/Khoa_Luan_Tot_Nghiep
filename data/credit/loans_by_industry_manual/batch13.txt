@@ -1,0 +1,57 @@
+SHB_2021|I|Bán buôn, bán lẻ; sửa chữa ô tô, xe máy và xe có động cơ khác|G|94.125.479|68.944.538
+SHB_2021|I|Nông lâm nghiệp, thủy sản|A|50.448.631|51.075.031
+SHB_2021|I|Công nghiệp chế biến, chế tạo|C|47.137.639|42.392.388
+SHB_2021|I|Xây dựng|F|48.641.243|42.258.279
+SHB_2021|I|Hoạt động kinh doanh bất động sản|L|24.469.395|23.671.149
+SHB_2021|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|18.457.306|16.883.004
+SHB_2021|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|9.715.237|7.780.208
+SHB_2021|I|Khai khoáng|B|1.691.415|2.638.804
+SHB_2021|I|Vận tải, kho bãi|H|12.870.968|4.257.505
+SHB_2021|I|Dịch vụ lưu trú và ăn uống|I|1.778.330|1.775.533
+SHB_2021|I|Hoạt động tài chính, bảo hiểm|K|2.573.670|1.139.964
+SHB_2021|I|Thông tin và truyền thông|J|344.957|138.481
+SHB_2021|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|707.816|398.846
+SHB_2021|I|Cung cấp nước, quản lý và xử lý rác thải, nước thải|E|269.072|197.529
+SHB_2021|I|Nghệ thuật, vui chơi, giải trí|R|81.359|92.479
+SHB_2021|I|Hoạt động chuyên môn, khoa học và công nghệ|M|244.807|72.447
+SHB_2021|I|Y tế và hoạt động trợ giúp xã hội|Q|61.722|67.171
+SHB_2021|I|Giáo dục và đào tạo|P|289.513|275.261
+SHB_2021|I|Hoạt động của Đảng, tổ chức chính trị xã hội, quản lý Nhà nước, an ninh quốc phòng, bảo đảm xã hội bắt buộc|O|35.507|35.173
+SHB_2021|I|Hoạt động dịch vụ khác|S|48.472.058|41.543.520
+SHB_2021|T|Tổng|TOTAL|362.416.124|305.637.310
+SSB_2022|I|Nông lâm nghiệp, thủy sản|A|141.735|186.674
+SSB_2022|I|Khai khoáng|B|1.284.768|1.182.702
+SSB_2022|I|Công nghiệp chế biến, chế tạo|C|11.390.000|7.857.069
+SSB_2022|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|1.326.144|1.563.952
+SSB_2022|I|Xây dựng|F|6.340.235|4.597.966
+SSB_2022|I|Bán buôn, bán lẻ, sửa chữa ô tô, xe máy và xe có động cơ khác|G|22.605.524|21.195.602
+SSB_2022|I|Vận tải, kho bãi|H|9.871.501|8.615.412
+SSB_2022|I|Dịch vụ lưu trú và ăn uống|I|12.035.540|10.969.642
+SSB_2022|I|Thông tin và truyền thông|J|4.298.000|2.620.737
+SSB_2022|I|Hoạt động tài chính, bảo hiểm|K|3.308.279|2.298.678
+SSB_2022|I|Hoạt động kinh doanh bất động sản|L|7.332.956|5.845.064
+SSB_2022|I|Hoạt động chuyên môn, khoa học và công nghệ|M|9.809.000|7.990.560
+SSB_2022|I|Y tế và hoạt động trợ giúp xã hội|Q|104.328|119.426
+SSB_2022|I|Nghệ thuật, vui chơi, giải trí|R|9.874.313|7.585.494
+SSB_2022|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|37.065.184|29.234.563
+SSB_2022|I|Hoạt động dịch vụ khác|S|17.168.485|15.724.618
+SSB_2022|T|Tổng|TOTAL|153.955.992|127.588.159
+SSB_2024|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|200.642|348.709
+SSB_2024|I|Khai khoáng|B|1.349.558|1.258.422
+SSB_2024|I|Công nghiệp chế biến, chế tạo|C|17.705.332|15.341.450
+SSB_2024|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|1.563.680|1.594.262
+SSB_2024|I|Xây dựng|F|10.463.950|7.461.319
+SSB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|33.489.746|27.394.555
+SSB_2024|I|Vận tải kho bãi|H|13.593.541|12.859.261
+SSB_2024|I|Dịch vụ lưu trú, ăn uống|I|14.386.765|12.507.611
+SSB_2024|I|Thông tin và truyền thông|J|5.711.977|5.241.000
+SSB_2024|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|7.729.440|3.486.303
+SSB_2024|I|Hoạt động kinh doanh bất động sản|L|9.949.817|8.886.123
+SSB_2024|I|Hoạt động chuyên môn, khoa học và công nghệ|M|12.026.908|10.747.000
+SSB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|8.017.345|5.736.500
+SSB_2024|I|Giáo dục và đào tạo|P|2.083|1.300
+SSB_2024|I|Y tế và hoạt động trợ giúp xã hội|Q|83.628|81.756
+SSB_2024|I|Nghệ thuật, vui chơi và giải trí|R|15.489.724|14.454.873
+SSB_2024|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|45.013.587|36.857.784
+SSB_2024|I|Hoạt động dịch vụ khác|S|12.576.920|15.493.665
+SSB_2024|T|Tổng|TOTAL|209.354.643|179.751.893

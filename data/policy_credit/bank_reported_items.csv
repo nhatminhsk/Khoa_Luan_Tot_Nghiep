@@ -1,0 +1,18 @@
+﻿ticker,period,source_type,item,value,unit,source_url,note
+VCB,2023-12-31,BCTC,Phải thu từ ngân sách Nhà nước về hỗ trợ lãi suất,380837,mn_vnd,https://static2.vietstock.vn/vietstock/2025/4/18/20250418_20250417___vcb___cbtt_bao_cao_thuong_nien_nam_2024.pdf,"BCTN 2024, thuyết minh tài sản Có khác, số đầu kỳ"
+VCB,2024-12-31,BCTC,Phải thu từ ngân sách Nhà nước về hỗ trợ lãi suất,386139,mn_vnd,https://static2.vietstock.vn/vietstock/2025/4/18/20250418_20250417___vcb___cbtt_bao_cao_thuong_nien_nam_2024.pdf,BCTN 2024
+VCB,2025-12-31,BCTC,Phải thu từ ngân sách Nhà nước về hỗ trợ lãi suất,276917,mn_vnd,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,BCTN 2025 trang 95; khớp OCR BCTC kiểm toán trang 50
+VCB,2023-12-31,BCTC,Lãi hỗ trợ lãi suất thu hồi phải trả Nhà nước,64528,mn_vnd,https://static2.vietstock.vn/vietstock/2025/4/18/20250418_20250417___vcb___cbtt_bao_cao_thuong_nien_nam_2024.pdf,
+VCB,2024-12-31,BCTC,Lãi hỗ trợ lãi suất thu hồi phải trả Nhà nước,64528,mn_vnd,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,
+VCB,2025-12-31,BCTC,Lãi hỗ trợ lãi suất thu hồi phải trả Nhà nước,64528,mn_vnd,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,
+EIB,2024-12-31,BCTC,Phải trả liên quan đến hỗ trợ lãi suất,29826,mn_vnd,https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/EIB_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf,"Thuyết minh 21, trang 41, số đầu năm; đọc từ ảnh quét"
+EIB,2025-12-31,BCTC,Phải trả liên quan đến hỗ trợ lãi suất,29826,mn_vnd,https://static2.vietstock.vn/data/HOSE/2025/BCTC/VN/NAM/EIB_Baocaotaichinh_2025_Kiemtoan_Hopnhat.pdf,"Thuyết minh 21, trang 41; đọc từ ảnh quét"
+VCB,2025,BCTN tự công bố,Số chương trình cho vay lãi suất ưu đãi,28,count,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,"Tự định nghĩa, không so sánh được giữa các NH"
+VCB,2025,BCTN tự công bố,Khách hàng được hưởng giảm lãi suất,39000,count,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,'khoảng'
+VCB,2025,BCTN tự công bố,Dư nợ được hỗ trợ lãi suất,810000,bn_vnd,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,"'khoảng', chiếm ~48,7% tổng dư nợ"
+VCB,2025,BCTN tự công bố,Tổng giá trị ưu đãi lãi vay,7000,bn_vnd,https://cdn.24hmoney.vn/upload/file/2026-3/2026-07-14/no-name-1783979100.pdf,'gần'
+BID,2022,Báo chí,Hạn mức hỗ trợ lãi suất 2% (NĐ 31) NHNN thông báo cho năm 2022,1060,bn_vnd,https://www.vietnamplus.vn/han-muc-ho-tro-lai-suat-2-cho-khach-hang-cua-bidv-la-1060-ty-dong-post827926.vnp,Bài ngày 8/11/2022
+BID,2022-2023,Báo chí,Số tiền hỗ trợ lãi suất 2% BIDV đăng ký,3820,bn_vnd,https://www.vietnamplus.vn/han-muc-ho-tro-lai-suat-2-cho-khach-hang-cua-bidv-la-1060-ty-dong-post827926.vnp,
+VCB,2024-09,Báo chí,Dư nợ được giảm lãi (tới 2%) do bão Yagi,160000,bn_vnd,https://www.dnse.com.vn/senses/tin-tuc/ngan-hang-dong-loat-giam-lai-vay-co-cau-no-cho-khach-hang-thiet-hai-sau-bao-33898314,Khái niệm khác CTG/BID
+CTG,2024-09,Báo chí,Quy mô gói giảm lãi 1% cho KH bị bão Yagi,100000,bn_vnd,https://www.dnse.com.vn/senses/tin-tuc/ngan-hang-dong-loat-giam-lai-vay-co-cau-no-cho-khach-hang-thiet-hai-sau-bao-33898314,"Là quy mô gói, không phải dư nợ"
+BID,2024-09,Báo chí,Dư nợ của KH bị ảnh hưởng bão Yagi,40000,bn_vnd,https://www.dnse.com.vn/senses/tin-tuc/ngan-hang-dong-loat-giam-lai-vay-co-cau-no-cho-khach-hang-thiet-hai-sau-bao-33898314,'hơn'

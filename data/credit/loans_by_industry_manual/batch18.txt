@@ -1,0 +1,52 @@
+VIB_2019|I|Nông nghiệp và lâm nghiệp|A|1.937.654|1.592.815
+VIB_2019|I|Thương mại, sản xuất và chế biến|GC|21.876.792|16.818.945
+VIB_2019|I|Xây dựng|F|1.595.774|2.587.311
+VIB_2019|I|Kho bãi vận tải và thông tin liên lạc|HJ|2.537.965|3.274.619
+VIB_2019|I|Cá nhân và các ngành nghề khác|INDIV_OTHER|101.251.623|71.865.045
+VIB_2019|T|Tổng|TOTAL|129.199.808|96.138.735
+VPB_2021|I|Nông nghiệp, lâm nghiệp và thủy sản|A|3.807.569|3.786.880
+VPB_2021|I|Khai khoáng|B|554.164|927.374
+VPB_2021|I|Công nghiệp chế biến, chế tạo|C|16.652.370|14.266.805
+VPB_2021|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|2.277.161|2.803.150
+VPB_2021|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|174.778|181.272
+VPB_2021|I|Xây dựng|F|26.492.203|24.703.820
+VPB_2021|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|40.136.840|31.836.141
+VPB_2021|I|Vận tải kho bãi|H|6.107.587|5.899.292
+VPB_2021|I|Dịch vụ lưu trú và ăn uống|I|8.895.843|10.017.665
+VPB_2021|I|Thông tin và truyền thông|J|339.174|234.725
+VPB_2021|I|Hoạt động tài chính và bảo hiểm|K|21.806.591|7.430.985
+VPB_2021|I|Hoạt động kinh doanh bất động sản|L|42.567.227|36.924.235
+VPB_2021|I|Hoạt động chuyên môn, khoa học và công nghệ|M|766.072|456.384
+VPB_2021|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|944.447|1.087.771
+VPB_2021|I|Hoạt động của Đảng cộng sản, tổ chức chính trị - xã hội, quản lý Nhà nước, an ninh quốc phòng; đảm bảo xã hội bắt buộc|O|6.836|3.970
+VPB_2021|I|Giáo dục và đào tạo|P|166.771|141.609
+VPB_2021|I|Y tế và hoạt động trợ giúp xã hội|Q|187.843|94.361
+VPB_2021|I|Nghệ thuật, vui chơi và giải trí|R|1.584.563|106.138
+VPB_2021|I|Hoạt động dịch vụ khác|S|3.513.137|535.206
+VPB_2021|I|Hoạt động làm thuê các công việc trong hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|123.947.317|113.042.970
+VPB_2021|I|Cho vay cá nhân để mua nhà ở, nhận quyền sử dụng đất để xây nhà ở|INDIV_HOUSING|54.352.231|36.334.720
+VPB_2021|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|495|613
+VPB_2021|T|Tổng|TOTAL|355.281.219|290.816.086
+VPB_2019|I|Nông nghiệp, lâm nghiệp và thủy sản|A|1.224.901|1.149.359
+VPB_2019|I|Khai khoáng|B|872.775|391.618
+VPB_2019|I|Công nghiệp chế biến, chế tạo|C|12.299.785|11.938.173
+VPB_2019|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|2.500.209|1.865.916
+VPB_2019|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|204.229|216.406
+VPB_2019|I|Xây dựng|F|21.607.181|19.234.916
+VPB_2019|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|29.559.991|24.644.053
+VPB_2019|I|Vận tải kho bãi|H|7.286.253|7.945.263
+VPB_2019|I|Dịch vụ lưu trú và ăn uống|I|9.809.042|9.902.603
+VPB_2019|I|Thông tin và truyền thông|J|345.026|396.897
+VPB_2019|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|5.749.920|3.969.632
+VPB_2019|I|Hoạt động kinh doanh bất động sản|L|24.361.962|23.502.217
+VPB_2019|I|Hoạt động chuyên môn, khoa học và công nghệ|M|565.941|638.907
+VPB_2019|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|1.476.380|1.563.129
+VPB_2019|I|Hoạt động của Đảng cộng sản, tổ chức chính trị-xã hội, quản lý Nhà nước, an ninh quốc phòng; bảo đảm xã hội bắt buộc|O|6.433|11.539
+VPB_2019|I|Giáo dục và đào tạo|P|237.645|327.506
+VPB_2019|I|Y tế và hoạt động trợ giúp xã hội|Q|61.958|34.359
+VPB_2019|I|Nghệ thuật, vui chơi và giải trí|R|293.082|214.758
+VPB_2019|I|Hoạt động dịch vụ khác|S|423.702|333.180
+VPB_2019|I|Hoạt động làm thuê các công việc trong hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|110.975.275|93.833.408
+VPB_2019|I|Cho vay cá nhân để mua nhà ở, nhận quyền sử dụng đất để xây nhà ở|INDIV_HOUSING|27.319.010|19.839.780
+VPB_2019|I|Hoạt động của các tổ chức và cơ quan quốc tế|U|3.259|8.377
+VPB_2019|T|Tổng|TOTAL|257.183.959|221.961.996

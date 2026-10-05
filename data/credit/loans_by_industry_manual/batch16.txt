@@ -1,0 +1,42 @@
+TPB_2024|I|Nông nghiệp, lâm nghiệp và thủy sản|A|3.912.189|8.399.094
+TPB_2024|I|Khai khoáng|B|479.541|1.197.802
+TPB_2024|I|Công nghiệp chế biến, chế tạo|C|24.118.782|15.670.032
+TPB_2024|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|4.109.730|4.991.892
+TPB_2024|I|Xây dựng|F|20.427.101|17.170.358
+TPB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|23.288.538|10.872.346
+TPB_2024|I|Vận tải kho bãi|H|14.249.743|10.384.611
+TPB_2024|I|Thông tin và truyền thông|J|1.790.254|1.623.304
+TPB_2024|I|Hoạt động kinh doanh bất động sản|L|21.355.380|14.622.261
+TPB_2024|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|122.422.807|108.378.242
+TPB_2024|I|Hoạt động kinh doanh khác|OTHER|14.177.303|11.952.150
+TPB_2024|T|Tổng|TOTAL|250.331.368|205.262.092
+VCB_2025|I|Sản xuất và gia công chế biến|C|361.087.402|340.501.488
+VCB_2025|I|Thương mại, dịch vụ|GS|240.272.006|214.488.774
+VCB_2025|I|Xây dựng|F|155.288.015|90.512.980
+VCB_2025|I|Sản xuất và phân phối điện, khí đốt và nước|DE|55.723.547|65.344.169
+VCB_2025|I|Nông, lâm, thủy hải sản|A|44.473.164|42.722.982
+VCB_2025|I|Vận tải kho bãi và thông tin liên lạc|HJ|52.107.105|42.626.109
+VCB_2025|I|Khai khoáng|B|25.496.853|26.027.625
+VCB_2025|I|Nhà hàng, khách sạn|I|17.327.360|16.356.618
+VCB_2025|I|Các ngành khác|OTHER|721.750.223|610.618.154
+VCB_2025|T|Tổng|TOTAL|1.673.525.675|1.449.198.899
+VCB_2023|I|Sản xuất và gia công chế biến|C|280.386.148|243.683.447
+VCB_2023|I|Thương mại, dịch vụ|GS|204.168.323|184.463.459
+VCB_2023|I|Xây dựng|F|81.091.024|75.113.942
+VCB_2023|I|Sản xuất và phân phối điện, khí đốt và nước|DE|54.975.004|58.615.950
+VCB_2023|I|Nông, lâm, thủy hải sản|A|38.732.650|36.100.729
+VCB_2023|I|Vận tải kho bãi và thông tin liên lạc|HJ|33.448.171|31.585.533
+VCB_2023|I|Khai khoáng|B|20.413.414|19.084.011
+VCB_2023|I|Nhà hàng, khách sạn|I|19.622.160|18.278.882
+VCB_2023|I|Các ngành khác|OTHER|537.522.124|478.140.297
+VCB_2023|T|Tổng|TOTAL|1.270.359.018|1.145.066.250
+VCB_2021|I|Sản xuất và gia công chế biến|C|203.057.429|178.521.411
+VCB_2021|I|Thương mại, dịch vụ|GS|152.212.435|202.773.035
+VCB_2021|I|Xây dựng|F|86.628.722|71.273.525
+VCB_2021|I|Sản xuất và phân phối điện, khí đốt và nước|DE|59.813.456|40.333.441
+VCB_2021|I|Vận tải kho bãi và thông tin liên lạc|HJ|28.715.341|26.843.614
+VCB_2021|I|Nông, lâm, thủy hải sản|A|25.096.242|17.069.197
+VCB_2021|I|Khai khoáng|B|15.084.113|14.591.656
+VCB_2021|I|Nhà hàng, khách sạn|I|16.921.726|10.166.471
+VCB_2021|I|Các ngành khác|OTHER|373.220.491|278.215.911
+VCB_2021|T|Tổng|TOTAL|960.749.955|839.788.261

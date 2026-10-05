@@ -1,0 +1,9 @@
+program_code,program_name,category
+LTS_15K,"Tín dụng lâm sản, thủy sản 15.000 tỷ",AGRICULTURE
+NLTS_100K,"Tín dụng nông, lâm, thủy sản >100.000 tỷ",AGRICULTURE
+NLTS_185K,"Tín dụng nông, lâm, thủy sản 185.000 tỷ",AGRICULTURE
+NOXH_145K,Cho vay nhà ở xã hội NQ 33 (120.000 → 145.000 tỷ),HOUSING
+NOXH_U35,Cho vay người dưới 35 tuổi mua nhà ở xã hội,HOUSING
+HATANG_500K,"Tín dụng hạ tầng điện, giao thông, công nghệ chiến lược 500.000 tỷ",INFRASTRUCTURE
+SME_7125,Tín dụng động lực tăng trưởng và DNNVV (~408.000 tỷ),BUSINESS
+G30K_2013,Gói 30.000 tỷ hỗ trợ nhà ở (2013-2016),HOUSING

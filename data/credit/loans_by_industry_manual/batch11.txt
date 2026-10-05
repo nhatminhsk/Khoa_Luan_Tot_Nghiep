@@ -1,0 +1,27 @@
+OCB_2025|I|Hoạt động kinh doanh bất động sản|L|38.045.493.326.685|28.851.442.834.099
+OCB_2025|I|Bán buôn và bán lẻ; sửa chữa môtô, ôtô, xe máy và xe có động cơ khác|G|37.223.185.684.875|40.809.797.227.319
+OCB_2025|I|Dịch vụ lưu trú và ăn uống|I|21.784.991.083.429|17.402.254.475.969
+OCB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|19.778.502.797.289|19.498.921.372.219
+OCB_2025|I|Xây dựng|F|17.946.218.065.096|6.521.603.613.929
+OCB_2025|I|Vận tải kho bãi|H|14.492.810.797.587|13.541.295.798.436
+OCB_2025|I|Công nghiệp chế biến, chế tạo|C|11.481.559.415.632|9.430.489.967.418
+OCB_2025|I|Sản xuất và phân phối điện, khí đốt và nước nóng, hơi nước và điều hòa không khí|D|11.280.844.695.128|11.970.763.179.128
+OCB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|7.743.569.910.382|4.214.788.033.892
+OCB_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|7.740.535.669.241|6.364.752.796.998
+OCB_2025|I|Nghệ thuật, vui chơi và giải trí|R|4.357.516.891.052|3.372.525.529.573
+OCB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|1.284.878.263.363|523.463.806.362
+OCB_2025|I|Hoạt động dịch vụ khác|S|1.264.070.423.366|1.413.809.158.152
+OCB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|1.214.913.630.542|435.927.395.983
+OCB_2025|I|Các ngành khác|OTHER|3.125.855.173.143|6.492.634.449.186
+OCB_2025|T|Tổng|TOTAL|198.764.945.826.810|170.844.469.638.663
+NVB_2022|I|Nông nghiệp và lâm nghiệp|A|94.043|38.256
+NVB_2022|I|Công nghiệp chế biến, chế tạo|C|1.793.886|695.851
+NVB_2022|I|Xây dựng|F|16.574.708|13.241.001
+NVB_2022|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và động cơ khác|G|4.412.914|768.102
+NVB_2022|I|Dịch vụ lưu trú và ăn uống|I|1.292.787|435.964
+NVB_2022|I|Vận tải kho bãi|H|557.891|1.989.976
+NVB_2022|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|601.600|7.910.318
+NVB_2022|I|Y tế và hoạt động trợ giúp xã hội|Q|788|30.442
+NVB_2022|I|Hoạt động dịch vụ khác|S|3.163.992|7.793.451
+NVB_2022|I|Sản xuất sản phẩm vật chất và dịch vụ tiêu dùng của hộ gia đình|T|19.229.664|8.711.658
+NVB_2022|T|Tổng cộng|TOTAL|47.722.273|41.615.019

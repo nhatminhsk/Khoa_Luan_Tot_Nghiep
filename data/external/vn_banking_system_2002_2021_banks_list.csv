@@ -1,0 +1,46 @@
+﻿No.,Bank,Bank Code,Type of ownership,Notes,Listed status
+1.0,An Binh Commercial Joint Stock Bank,ABB,JSCB,,
+2.0,Asia Commercial Joint Stock Bank,ACB,JSCB,,Yes
+3.0,Vietnam Bank for Agriculture and Rural Development,AGB,SOCB,,
+4.0,Joint Stock Commercial Bank for Investment and Development of Vietnam,BIDV,SOCB,,Yes
+5.0,BacA Joint Stock Commercial Bank,BAB,JSCB,,Yes
+6.0,Bao Viet Joint Stock Commercial Bank,BVB,JSCB,,
+7.0,Construction Bank (former name: Trustbank),CB,JSCB,Was acquired by the SBV on Feb.2015,
+8.0,Vietnam Joint Stock Commercial Bank of Industry and Trade,CTG,SOCB,,Yes
+9.0,DongA Joint Stock Commercial Bank,DAB,JSCB,,
+10.0,Vietnam Export Import Commercial Joint Stock Bank,EIB,JSCB,,Yes
+11.0,First Joint Stock Commercial Bank,FCB,JSCB,Was merged into SCB in 2011,
+12.0,Great Asia Commercial Joint Stock Bank,GAB,JSCB,Was merged into HDB in 2013,
+13.0,Global Petro Commercial Joint Stock Bank,GPB,JSCB,Was acquired by the SBV on Jul.2015,
+14.0,Hanoi Building Commercial Joint Stock Bank,HBB,JSCB,Was merged into SHB in 2012,
+15.0,Ho Chi Minh City Development Joint Stock Commercial Bank,HDB,JSCB,,Yes
+16.0,HSBC Bank (Vietnam) Limited,HSBC,FOCB,,
+17.0,Indovina Bank Ltd.,IVB,JSCB,,
+18.0,Kienlong Commercial Joint Stock Bank,KLB,JSCB,,
+19.0,Lien Viet Post Joint Stock Commercial Bank,LVB,JSCB,,Yes
+20.0,Military Commercial Joint Stock Bank,MB,JSCB,,Yes
+21.0,Vietnam Maritime Commercial Joint Stock Bank,MSB,JSCB,,Yes
+22.0,Mekong Development Joint Stock Commercial Bank,MDB,JSCB,Was merged into MSB in 2015,
+23.0,Mekong Housing Bank,MHB,JSCB,Was merged into BIDV in 2015,
+24.0,Nam A Commercial Joint Stock Bank,NAB,JSCB,,
+25.0,National Citizen Bank,NCB,JSCB,,Yes
+26.0,Ocean Commercial One Member Limited Liability Bank,OB,JSCB,Was acquired by the SBV on Apr.2015,
+27.0,Orient Commercial Joint Stock Bank,OCB,JSCB,,Yes
+28.0,Petrolimex Group Commercial Joint Stock Bank,PGB,JSCB,Was merged into CTG in 2015,
+29.0,Southern Commercial Joint Stock Bank,PNB,JSCB,Was merged into STB in 2015,
+30.0,Vietnam Public Joint Stock Commercial Bank,PVB,JSCB,,
+31.0,Saigon Commercial Bank,SCB,JSCB,,
+32.0,South East Asia Joint Stock Commercial Bank,SEAB,JSCB,,Yes
+33.0,Saigon Bank for Industry & Trade,SGB,JSCB,,
+34.0,Saigon – Hanoi Commercial Joint Stock Bank,SHB,JSCB,,Yes
+35.0,Saigon Thuong Tin Commercial Joint Stock Bank,STB,JSCB,,Yes
+36.0,Viet Nam Technological and Commercial Joint Stock Bank,TCB,JSCB,,Yes
+37.0,VietNam Tin Nghia Commercial Joint Stock Bank,TNB,JSCB,Was merged into SCB in 2011,
+38.0,TienPhong Commercial Joint Stock Bank,TPB,JSCB,,Yes
+39.0,Viet A Joint Stock Commercial Bank,VAB,JSCB,,
+40.0,Vietnam Bank for Social Policies,VBSP,PB,,
+41.0,Joint Stock Commercial Bank for Foreign Trade of Vietnam,VCB,SOCB,,Yes
+42.0,Viet Capital Commercial Joint Stock Bank,VCPB,JSCB,,
+43.0,Vietnam International Commercial Joint Stock Bank,VIB,JSCB,,Yes
+44.0,Vietnam Commercial Joint Stock Bank for Private Enterprise,VPB,JSCB,,Yes
+45.0,Western Commercial Joint Stock Bank,WEB,JSCB,Was merged/changed into PVB in 2013,

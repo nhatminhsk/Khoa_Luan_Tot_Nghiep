@@ -1,0 +1,17 @@
+﻿program_code,as_of,metric,value_bn_vnd,customers,source_url,note
+LTS_15K,2024-01-31,doanh số giải ngân lũy kế,15000.0,6000.0,https://sbv.gov.vn/en/w/sbv594829,100% quy mô 15.000 tỷ; 13 NH; khách hàng ghi 'gần 6.000'
+LTS_15K,2024-04,doanh số giải ngân lũy kế,17500.0,6500.0,https://sbv.gov.vn/en/w/sbv594829,"Bài 4/2024, sau khi nâng lên 30.000 tỷ; ghi 'hơn'"
+NLTS_185K,2026-05-31,doanh số giải ngân lũy kế,219000.0,79900.0,https://doanhnghiephoinhap.vn/hon-219000-ty-dong-da-giai-ngan-cho-chuong-trinh-tin-dung-nong-lam-thuy-san-141881.html,"118,4% quy mô"
+NOXH_145K,2024-10-20,doanh số giải ngân lũy kế,1344.0,,https://nhandan.vn/day-manh-giai-ngan-cho-vay-nha-o-xa-hoi-post837632.html,"1.295 tỷ cho chủ đầu tư 12 dự án, 49 tỷ người mua; ngày = ngày đăng bài"
+NOXH_145K,2025-05-16,doanh số giải ngân lũy kế,3400.0,,https://dantri.com.vn/bat-dong-san/goi-tin-dung-120000-ty-dong-mua-nha-o-xa-hoi-van-e-du-4-lan-giam-lai-suat-20250516154955261.htm,Khoảng; ngày = ngày đăng bài
+NOXH_145K,2026-01-31,doanh số giải ngân lũy kế,8293.7,,https://tapchinganhang.gov.vn/giai-ngan-cho-vay-nha-o-xa-hoi-dang-dan-khoi-sac-17253.html,"Chủ đầu tư 6.934,2 (49 dự án); người mua 1.359,5 (35 dự án)"
+NOXH_145K,2026-01-31,dư nợ,6602.9,,https://tapchinganhang.gov.vn/giai-ngan-cho-vay-nha-o-xa-hoi-dang-dan-khoi-sac-17253.html,
+NOXH_145K,2026-05-31,doanh số giải ngân lũy kế,12440.0,,https://doanhnghiephoinhap.vn/hon-219000-ty-dong-da-giai-ngan-cho-chuong-trinh-tin-dung-nong-lam-thuy-san-141881.html ; https://vietstock.vn/2026/07/sau-3-nam-145000-ty-danh-cho-nha-o-xa-hoi-giai-ngan-duoc-bao-nhieu-757-1468002.htm,"Khoảng 8,5% quy mô"
+NOXH_145K,2026-05-31,dư nợ,10175.0,,https://doanhnghiephoinhap.vn/hon-219000-ty-dong-da-giai-ngan-cho-chuong-trinh-tin-dung-nong-lam-thuy-san-141881.html,
+NOXH_U35,2026-01-31,doanh số giải ngân lũy kế,252.0,,https://tapchinganhang.gov.vn/giai-ngan-cho-vay-nha-o-xa-hoi-dang-dan-khoi-sac-17253.html,ghi 'hơn'
+NOXH_U35,2026-01-31,dư nợ,239.0,,https://tapchinganhang.gov.vn/giai-ngan-cho-vay-nha-o-xa-hoi-dang-dan-khoi-sac-17253.html,ghi 'hơn'
+NOXH_U35,2026-05-31,doanh số giải ngân lũy kế,383.0,,https://doanhnghiephoinhap.vn/hon-219000-ty-dong-da-giai-ngan-cho-chuong-trinh-tin-dung-nong-lam-thuy-san-141881.html,
+NOXH_U35,2026-05-31,dư nợ,353.0,,https://vietstock.vn/2026/07/sau-3-nam-145000-ty-danh-cho-nha-o-xa-hoi-giai-ngan-duoc-bao-nhieu-757-1468002.htm,
+HATANG_500K,2026-05-31,dư nợ,10527.0,,https://doanhnghiephoinhap.vn/hon-219000-ty-dong-da-giai-ngan-cho-chuong-trinh-tin-dung-nong-lam-thuy-san-141881.html,
+ND31_2PCT,2023-12-31,số tiền hỗ trợ lãi suất lũy kế,1218.0,2300.0,https://tuoitre.vn/de-xuat-huy-thuc-hien-goi-ho-tro-lai-suat-2-vi-chi-giai-ngan-duoc-3-20240508165120748.htm,"3,05% của 40.000 tỷ; khách hàng 'gần 2.300'"
+THIENTAI_TT53,2024-12,dư nợ bị ảnh hưởng (NHNN ước),190000.0,,https://vietnambiz.vn/nhnn-cho-phep-co-cau-lai-khoan-no-anh-huong-boi-bao-yagi-den-het-nam-2025-20241210122722958.htm,"Bão số 3 Yagi, 26 tỉnh"

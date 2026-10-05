@@ -1,0 +1,89 @@
+﻿nhóm,cột,ý nghĩa,đơn vị,vai trò,ký hiệu,ghi chú điều tra
+A Chất lượng tài sản,loans_g2_percent,Nợ nhóm 2 / dư nợ,%,Lõi dự báo,★,"Đi cùng thay đổi ROE quý sau (ρ = −0,21, cùng dấu ở hai nửa giai đoạn)."
+A Chất lượng tài sản,npl_percent,Nợ xấu / dư nợ (thuyết minh → VCI),%,Lõi dự báo,🎯 ⚠️ 🔍,"Mục tiêu dự báo (NPL). Ngoại lai 2,6% ô, 94% là của NVB. Lệch mạnh (skew 6,8): cần biến đổi nếu dùng mô hình tuyến tính. NVB (đang tái cơ cấu) lên 35% kéo lệch cả phân phối. NPL giảm ở quý 4 rồi tăng lại quý 1."
+C Vốn,equity_to_assets_pct,Vốn chủ / tổng tài sản,%,Lõi dự báo,★,"Đi cùng thay đổi ROE quý sau (ρ = −0,21, cùng dấu ở hai nửa giai đoạn)."
+D Động lượng,casa_chg_qoq_pp,Thay đổi casa_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi CASA quý sau (ρ = −0,23, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với CASA trong cùng quý: chỉ dùng số quý trước."
+D Động lượng,cof_chg_qoq_pp,Thay đổi cof_ttm_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi COF quý sau (ρ = +0,66, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với COF trong cùng quý: chỉ dùng số quý trước. Ngoại lai 2,4% ô, 25% là của BVB."
+D Động lượng,ldr_chg_qoq_pp,Thay đổi ldr_computed_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi NIM quý sau (ρ = +0,15, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với LDR trong cùng quý: chỉ dùng số quý trước."
+D Động lượng,nim_chg_qoq_pp,Thay đổi nim_ttm_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi NIM quý sau (ρ = +0,30, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với NIM trong cùng quý: chỉ dùng số quý trước."
+D Động lượng,npl_chg_qoq_pp,Thay đổi npl_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi CASA quý sau (ρ = +0,23, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với NPL trong cùng quý: chỉ dùng số quý trước. Ngoại lai 3,1% ô, 65% là của NVB."
+D Động lượng,roe_chg_qoq_pp,Thay đổi roe_ttm_percent so quý trước,điểm %,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi ROE quý sau (ρ = +0,21, cùng dấu ở hai nửa giai đoạn). Cùng định nghĩa với ROE trong cùng quý: chỉ dùng số quý trước."
+E Thu nhập & chi phí vốn,cof_ttm_percent,Chi phí vốn TTM (VCI → MAS),%,Lõi dự báo,🎯,"Mục tiêu dự báo (COF). Đi theo lãi điều hành, trễ 1–2 quý (số riêng quý). 60% thay đổi là chung cả ngành."
+E Thu nhập & chi phí vốn,deposit_cost_implied_ttm_percent,Trả lãi tiền gửi TTM / tiền gửi bình quân (suy ra),%,Lõi dự báo,⚠️,Cùng định nghĩa với COF trong cùng quý: chỉ dùng số quý trước.
+E Thu nhập & chi phí vốn,loan_yield_ttm_pct,Thu lãi cho vay TTM / dư nợ bình quân,%,Lõi dự báo,,—
+E Thu nhập & chi phí vốn,nim_ttm_percent,Biên lãi thuần TTM (VCI → MAS),%,Lõi dự báo,🎯,Mục tiêu dự báo (NIM). Bị ép khi chi phí vốn tăng (trễ khoảng 2 quý).
+E Thu nhập & chi phí vốn,roa_ttm_percent,ROA TTM (MAS),%,Lõi dự báo,⚠️,Cùng định nghĩa với ROE trong cùng quý: chỉ dùng số quý trước. Trùng thông tin với ROE (VIF ≈ 12): chỉ nên giữ một.
+E Thu nhập & chi phí vốn,roe_ttm_percent,ROE TTM (MAS),%,Lõi dự báo,🎯 🔍,"Mục tiêu dự báo (ROE). Lệch mạnh (skew −5,1): cần biến đổi nếu dùng mô hình tuyến tính. Gần như toàn bộ thay đổi là nhiễu riêng từng NH–quý."
+G Quy mô & tăng trưởng,loans_qoq_percent,Tăng trưởng dư nợ so quý trước,%,Lõi dự báo,★,"Đi cùng thay đổi CASA quý sau (ρ = −0,28, cùng dấu ở hai nửa giai đoạn). Tín dụng dồn vào quý 4 (mùa vụ)."
+G Quy mô & tăng trưởng,loans_yoy_percent,Tăng trưởng dư nợ so cùng kỳ,%,Lõi dự báo,★,"Đi cùng thay đổi ROE quý sau (ρ = +0,17, cùng dấu ở hai nửa giai đoạn)."
+L Thanh khoản,casa_percent,Tiền gửi không kỳ hạn / tổng tiền gửi,%,Lõi dự báo,🎯 ★,"Mục tiêu dự báo (CASA). Đi cùng thay đổi CASA quý sau (ρ = −0,28, cùng dấu ở hai nửa giai đoạn). So giữa các NH: CASA cao thì vốn rẻ (ρ = −0,95 với COF). Trong từng NH gần như không liên quan. Giảm ở quý 1."
+L Thanh khoản,deposits_to_liabilities_pct,Tiền gửi khách hàng / tổng nợ,%,Lõi dự báo,⚠️,Cùng định nghĩa với LDR trong cùng quý: chỉ dùng số quý trước.
+L Thanh khoản,gov_sbv_funding_pct,Nợ Chính phủ và NHNN / tổng nợ,%,Lõi dự báo,⚠️ 🔍,"Ngoại lai 8,5% ô, 32% là của CTG. Lệch mạnh (skew 2,2): cần biến đổi nếu dùng mô hình tuyến tính."
+L Thanh khoản,ldr_computed_percent,Dư nợ / tiền gửi khách hàng,%,Lõi dự báo,🎯,"Mục tiêu dự báo (LDR). Có xu hướng (drift), không có mùa vụ."
+M Quản trị,cir_ttm_pct,(TNHĐ − LN trước dự phòng) TTM / TNHĐ TTM,%,Lõi dự báo,🔍,"Lệch mạnh (skew 3,1): cần biến đổi nếu dùng mô hình tuyến tính."
+T Thị trường,log_adtv,"ln(giá trị giao dịch bình quân phiên, đồng)",ln,Lõi dự báo,,—
+T Thị trường,pe,P/E (MAS),lần,Lõi dự báo,★ ⚠️ 🔍,"Đi cùng thay đổi COF quý sau (ρ = −0,25, cùng dấu ở hai nửa giai đoạn). Ngoại lai 5,4% ô, 58% là của NVB. Lệch mạnh (skew 20,1): cần biến đổi nếu dùng mô hình tuyến tính."
+V Vĩ mô,overnight_sbv_rate_pct,Lãi suất cho vay qua dem NHNN có hiệu lực cuối quý,%,Lõi dự báo,★,"Đi cùng thay đổi COF quý sau (ρ = +0,37, cùng dấu ở hai nửa giai đoạn). Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý."
+V Vĩ mô,refinancing_rate_pct,Lãi suất tai cap von NHNN có hiệu lực cuối quý,%,Lõi dự báo,★,"Đi cùng thay đổi COF quý sau (ρ = +0,47, cùng dấu ở hai nửa giai đoạn). Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý. Chỉ đổi 7 lần từ 2019, nên ít điểm để ước lượng độ trễ."
+V Vĩ mô,system_credit_growth_asof_pct,Tăng trưởng tín dụng toàn hệ thống năm gần nhất,%,Lõi dự báo,★ ⚠️,"Đi cùng thay đổi COF quý sau (ρ = +0,48, cùng dấu ở hai nửa giai đoạn). Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý. Số năm gán cho các quý sau (as-of): đổi theo bậc mỗi năm. Ngoại lai 10,0% ô, 5% là của ACB."
+V Vĩ mô,vnindex_ret_q_pct,Lợi suất VN-Index trong quý,%,Lõi dự báo,★,"Đi cùng thay đổi COF quý sau (ρ = −0,28, cùng dấu ở hai nửa giai đoạn). Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý."
+A Chất lượng tài sản,credit_cost_ttm_pct,Chi phí dự phòng tín dụng TTM / dư nợ bình quân,%,Mô tả / xếp hạng,⚠️ 🔍,"Ngoại lai 3,8% ô, 100% là của VPB. Lệch mạnh (skew 2,6): cần biến đổi nếu dùng mô hình tuyến tính."
+A Chất lượng tài sản,npl_group5_share_pct,Nợ nhóm 5 / nợ xấu (nhóm 3–5),%,Mô tả / xếp hạng,,—
+A Chất lượng tài sản,provision_over_loans_percent,Dự phòng / dư nợ,%,Mô tả / xếp hạng,,—
+A Chất lượng tài sản,recovery_ttm_pct,Thu hồi nợ đã xử lý TTM / dư nợ bình quân,%,Mô tả / xếp hạng,,—
+C Vốn,car_asof_percent,CAR hợp nhất gần nhất đã công bố,%,Mô tả / xếp hạng,⚠️,Số năm gán cho các quý sau (as-of): đổi theo bậc mỗi năm. Thiếu 13% ô. Nhiều NH chỉ công bố CAR theo năm hoặc nửa năm; NVB không có số sau 2024-Q1.
+C Vốn,dividend_payout_ttm_pct,Cổ tức tiền mặt đã trả TTM / LNST TTM,%,Mô tả / xếp hạng,⚠️ 🔍,"Ngoại lai 8,8% ô, 47% là của BAB. Lệch mạnh (skew 3,8): cần biến đổi nếu dùng mô hình tuyến tính."
+C Vốn,retained_to_equity_pct,LN chưa phân phối / vốn chủ,%,Mô tả / xếp hạng,🔍,"Lệch mạnh (skew −2,4): cần biến đổi nếu dùng mô hình tuyến tính."
+E Thu nhập & chi phí vốn,earning_asset_yield_ttm_percent,Lợi suất tài sản sinh lãi TTM (MAS → suy ra),%,Mô tả / xếp hạng,,—
+E Thu nhập & chi phí vốn,fee_share_ttm_pct,Lãi thuần dịch vụ TTM / TNHĐ TTM,%,Mô tả / xếp hạng,,—
+E Thu nhập & chi phí vốn,noii_share_ttm_pct,Thu nhập ngoài lãi TTM / TNHĐ TTM,%,Mô tả / xếp hạng,,—
+E Thu nhập & chi phí vốn,npat_yoy_sym_pct,Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,Mô tả / xếp hạng,⚠️,"Cùng định nghĩa với ROE trong cùng quý: chỉ dùng số quý trước. Ngoại lai 4,7% ô, 71% là của NVB."
+E Thu nhập & chi phí vốn,toi_yoy_sym_pct,Tăng trưởng đối xứng TNHĐ TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,Mô tả / xếp hạng,,—
+E Thu nhập & chi phí vốn,yield_cof_spread_pp,Lợi suất TSSL TTM − chi phí vốn TTM,điểm %,Mô tả / xếp hạng,⚠️,"Cùng định nghĩa với NIM, COF trong cùng quý: chỉ dùng số quý trước."
+G Quy mô & tăng trưởng,assets_yoy_pct,Tổng tài sản so cùng kỳ,%,Mô tả / xếp hạng,★,"Đi cùng thay đổi ROE quý sau (ρ = +0,18, cùng dấu ở hai nửa giai đoạn)."
+G Quy mô & tăng trưởng,atm_per_branch,Số ATM / số chi nhánh,lần,Mô tả / xếp hạng,,Không đổi theo thời gian: chỉ dùng để so sánh giữa các NH.
+G Quy mô & tăng trưởng,deposits_yoy_pct,Tiền gửi khách hàng so cùng kỳ,%,Mô tả / xếp hạng,,—
+G Quy mô & tăng trưởng,equity_yoy_pct,Vốn chủ so cùng kỳ,%,Mô tả / xếp hạng,🔍,"Lệch mạnh (skew 2,4): cần biến đổi nếu dùng mô hình tuyến tính."
+G Quy mô & tăng trưởng,log_branches,ln(1 + số chi nhánh/PGD trên OSM),ln,Mô tả / xếp hạng,,Không đổi theo thời gian: chỉ dùng để so sánh giữa các NH.
+G Quy mô & tăng trưởng,log_total_assets,"ln(tổng tài sản, tỷ đồng)",ln,Mô tả / xếp hạng,,"Giả thuyết: NH càng lớn trả lãi tiền gửi càng thấp (ρ = −0,27 với lãi 12 tháng online, chưa có ý nghĩa với 22 NH)."
+G Quy mô & tăng trưởng,n_provinces_present,Số tỉnh (34 tỉnh mới) có chi nhánh,số,Mô tả / xếp hạng,,Không đổi theo thời gian: chỉ dùng để so sánh giữa các NH.
+K Khách hàng số,app_reviews_log,ln(1 + số review trong quý),ln,Mô tả / xếp hạng,⚠️,Thiếu 17% ô.
+L Thanh khoản,cfo_to_assets_ttm_pct,Lưu chuyển tiền thuần HĐKD TTM / tổng tài sản bình quân,%,Mô tả / xếp hạng,,—
+L Thanh khoản,interbank_funding_pct,Tiền gửi và vay TCTD khác / tổng nợ,%,Mô tả / xếp hạng,,—
+L Thanh khoản,liquid_assets_pct,(Tiền + tiền gửi NHNN + tiền gửi/cho vay TCTD + CK kinh doanh) / tổng tài sản,%,Mô tả / xếp hạng,,—
+L Thanh khoản,loans_long_share_percent,Cho vay dài hạn / dư nợ,%,Mô tả / xếp hạng,,—
+L Thanh khoản,loans_medium_share_percent,Cho vay trung hạn / dư nợ,%,Mô tả / xếp hạng,,—
+L Thanh khoản,loans_over_assets_percent,Dư nợ / tổng tài sản,%,Mô tả / xếp hạng,⚠️,Cùng định nghĩa với LDR trong cùng quý: chỉ dùng số quý trước.
+L Thanh khoản,loans_short_share_percent,Cho vay ngắn hạn / dư nợ,%,Mô tả / xếp hạng,,—
+L Thanh khoản,paper_interest_share_pct,Trả lãi giấy tờ có giá TTM / (trả lãi GTCG + trả lãi tiền gửi) TTM,%,Mô tả / xếp hạng,,—
+L Thanh khoản,papers_funding_pct,Giấy tờ có giá phát hành / tổng nợ,%,Mô tả / xếp hạng,,—
+M Quản trị,deposit_insurance_to_deposits_pct,Phí bảo hiểm tiền gửi TTM / tiền gửi bình quân,%,Mô tả / xếp hạng,,—
+M Quản trị,foreign_own_percent,Sở hữu nước ngoài (ảnh chụp 09/09/2026),%,Mô tả / xếp hạng,,Không đổi theo thời gian: chỉ dùng để so sánh giữa các NH.
+M Quản trị,opex_to_assets_ttm_pct,Chi phí hoạt động TTM / tổng tài sản bình quân,%,Mô tả / xếp hạng,,—
+M Quản trị,staff_cost_share_pct,"Chi lương, phụ cấp TTM / chi phí hoạt động TTM",%,Mô tả / xếp hạng,⚠️,"Ngoại lai 6,3% ô, 76% là của ACB."
+M Quản trị,state_own_percent,Sở hữu nhà nước (ảnh chụp 09/09/2026),%,Mô tả / xếp hạng,⚠️,"Không đổi theo thời gian: chỉ dùng để so sánh giữa các NH. Ngoại lai 18,2% ô, 25% là của BID. Phân ba nhóm rõ: 4 NH trên 40% (BID, VCB, CTG, MBB), 7 NH vài phần trăm, 11 NH bằng 0."
+P Chính sách & cơ cấu tín dụng,agri_share_asof_pct,"Dư nợ nông, lâm, thủy sản / dư nợ theo ngành",%,Mô tả / xếp hạng,,Số năm gán cho các quý sau (as-of): đổi theo bậc mỗi năm.
+P Chính sách & cơ cấu tín dụng,disaster_branch_share_pct,% chi nhánh nằm ở tỉnh bị thiên tai trong cửa sổ hiệu lực (Yagi 9/2024–12/2025; bão 10–12 7/2025–),%,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,ind_share_C_asof_pct,Tỷ trọng dư nợ ngành công nghiệp chế biến (BCTC kiểm toán),%,Mô tả / xếp hạng,⚠️,"Số năm gán cho các quý sau (as-of): đổi theo bậc mỗi năm. Thiếu 21% ô. Dư nợ theo ngành chép tay từ BCTC năm, còn 33 NH–năm chưa nhập."
+P Chính sách & cơ cấu tín dụng,ind_share_F_asof_pct,Tỷ trọng dư nợ ngành xây dựng (BCTC kiểm toán),%,Mô tả / xếp hạng,⚠️ 🔍,"Số năm gán cho các quý sau (as-of): đổi theo bậc mỗi năm. Thiếu 19% ô. Ngoại lai 3,7% ô, 100% là của NVB. Lệch mạnh (skew 2,7): cần biến đổi nếu dùng mô hình tuyến tính. Dư nợ theo ngành chép tay từ BCTC năm, còn 33 NH–năm chưa nhập."
+P Chính sách & cơ cấu tín dụng,n_programs_active,Số chương trình tín dụng chính sách đang tham gia,số,Mô tả / xếp hạng,⚠️ 🔍,"Ngoại lai 5,6% ô, 11% là của BID. Lệch mạnh (skew 2,6): cần biến đổi nếu dùng mô hình tuyến tính."
+P Chính sách & cơ cấu tín dụng,prog_hatang_500k,= 1 nếu NH có trong danh sách HATANG_500K và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,prog_lts_15k,= 1 nếu NH có trong danh sách LTS_15K và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,prog_nlts_100k,= 1 nếu NH có trong danh sách NLTS_100K và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,prog_nlts_185k,= 1 nếu NH có trong danh sách NLTS_185K và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,prog_noxh_145k,= 1 nếu NH có trong danh sách NOXH_145K và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+P Chính sách & cơ cấu tín dụng,prog_noxh_u35,= 1 nếu NH có trong danh sách NOXH_U35 và quý kết thúc sau ngày danh sách,0/1,Mô tả / xếp hạng,,—
+S Nhạy cảm thị trường,ci_bond_to_assets_pct,Trái phiếu TCTD khác / tổng tài sản,%,Mô tả / xếp hạng,,—
+S Nhạy cảm thị trường,corp_bond_to_assets_pct,Trái phiếu TCKT trong nước / tổng tài sản,%,Mô tả / xếp hạng,⚠️ 🔍,"Ngoại lai 4,4% ô, 52% là của TCB. Lệch mạnh (skew 2,7): cần biến đổi nếu dùng mô hình tuyến tính."
+S Nhạy cảm thị trường,gov_bond_share_invsec_pct,Trái phiếu Chính phủ / chứng khoán đầu tư,%,Mô tả / xếp hạng,,—
+S Nhạy cảm thị trường,invsec_to_assets_pct,Chứng khoán đầu tư / tổng tài sản,%,Mô tả / xếp hạng,,—
+T Thị trường,beta,Beta (MAS),lần,Mô tả / xếp hạng,,—
+T Thị trường,dividend_yield,Tỷ suất cổ tức (MAS),%,Mô tả / xếp hạng,🔍,"Lệch mạnh (skew 4,0): cần biến đổi nếu dùng mô hình tuyến tính."
+T Thị trường,excess_ret_q_pct,Lợi suất cổ phiếu − lợi suất VN-Index trong quý,%,Mô tả / xếp hạng,🔍,"Lệch mạnh (skew 2,6): cần biến đổi nếu dùng mô hình tuyến tính."
+T Thị trường,pb,P/B (MAS),lần,Mô tả / xếp hạng,★,"Đi cùng thay đổi COF quý sau (ρ = −0,22, cùng dấu ở hai nửa giai đoạn)."
+T Thị trường,stock_ret_q_pct,Lợi suất cổ phiếu trong quý,%,Mô tả / xếp hạng,,—
+T Thị trường,stock_vol_q_pct,Độ lệch chuẩn lợi suất log ngày × √252,%,Mô tả / xếp hạng,,—
+V Vĩ mô,cpi_yoy_q_pct,"CPI so cùng kỳ, trung bình 3 tháng",%,Mô tả / xếp hạng,,Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý.
+V Vĩ mô,gold_index_yoy_q_pct,"Chỉ số giá vàng so cùng kỳ, trung bình 3 tháng",%,Mô tả / xếp hạng,⚠️,Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý. Thiếu 30% ô. Chỉ số giá vàng (NSO) thiếu 9 quý nằm giữa 2021-Q2 và 2024-Q1.
+V Vĩ mô,usd_index_yoy_q_pct,"Chỉ số giá USD so cùng kỳ, trung bình 3 tháng",%,Mô tả / xếp hạng,,Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý.
+V Vĩ mô,vnindex_vol_q_pct,Biến động VN-Index (năm hóa),%,Mô tả / xếp hạng,,Chung cho mọi NH (vĩ mô): chỉ giải thích phần biến động chung theo quý.

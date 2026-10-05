@@ -1,0 +1,3 @@
+code,name,camels_group,unit,direction,description,display_order
+npl,Tỷ lệ nợ xấu (NPL),A,PERCENT,LOWER_BETTER,"Nợ nhóm 3–5 / tổng dư nợ, theo thuyết minh",0
+nim,Biên lãi thuần (NIM),E,PERCENT,HIGHER_BETTER,Thu nhập lãi thuần / tài sản sinh lãi,1

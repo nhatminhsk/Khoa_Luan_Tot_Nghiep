@@ -1,0 +1,54 @@
+NAB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và động cơ khác|G|63.848.634|71.636.507
+NAB_2025|I|Hoạt động kinh doanh bất động sản|L|33.186.221|19.982.380
+NAB_2025|I|Dịch vụ lưu trú và ăn uống|I|20.724.976|23.416.639
+NAB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|17.033.857|2.147.909
+NAB_2025|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|16.865.473|12.243.761
+NAB_2025|I|Xây dựng|F|12.035.529|12.418.316
+NAB_2025|I|Nghệ thuật, vui chơi và giải trí|R|9.950.308|2.687.391
+NAB_2025|I|Nông nghiệp, lâm nghiệp và thủy sản|A|8.721.840|9.138.305
+NAB_2025|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí|D|6.806.444|7.758.888
+NAB_2025|I|Công nghiệp chế biến, chế tạo|C|3.676.317|3.560.168
+NAB_2025|I|Vận tải kho bãi|H|1.345.197|963.352
+NAB_2025|I|Y tế và hoạt động trợ giúp xã hội|Q|1.115.510|137.800
+NAB_2025|I|Hoạt động chuyên môn, khoa học và công nghệ|M|962.848|877.937
+NAB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|709.952|317.026
+NAB_2025|I|Khai khoáng|B|268.008|251.707
+NAB_2025|I|Giáo dục và đào tạo|P|188.488|150.859
+NAB_2025|I|Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải|E|105.118|24.518
+NAB_2025|I|Thông tin và truyền thông|J|26.654|1.710
+NAB_2025|I|Hoạt động dịch vụ khác|S|36.219|22.824
+NAB_2025|T|Tổng|TOTAL|197.607.593|167.737.997
+NAB_2020|I|Bán buôn và bán lẻ; sửa chữa ôtô, môtô, xe máy và các xe có động cơ khác|G|22.201.440|20.104.275
+NAB_2020|I|Dịch vụ lưu trú và ăn uống|I|16.059.283|10.026.674
+NAB_2020|I|Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí|D|14.176.618|8.823.734
+NAB_2020|I|Xây dựng|F|12.813.543|4.651.534
+NAB_2020|I|Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm vật chất và dịch vụ tự tiêu dùng của hộ gia đình|T|12.778.543|11.267.393
+NAB_2020|I|Công nghiệp chế biến và chế tạo|C|2.923.639|3.107.444
+NAB_2020|I|Hoạt động kinh doanh bất động sản|L|2.786.735|3.929.980
+NAB_2020|I|Nghệ thuật vui chơi giải trí|R|1.222.786|2.319.161
+NAB_2020|I|Các ngành khác|OTHER|4.209.031|3.315.458
+NAB_2020|T|Tổng|TOTAL|89.171.618|67.545.653
+NVB_2025|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|776.365|718.772
+NVB_2025|I|Công nghiệp chế biến, chế tạo|C|3.141.970|1.990.505
+NVB_2025|I|Xây dựng và kinh doanh bất động sản|FL|36.903.911|28.306.905
+NVB_2025|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|5.813.629|3.883.557
+NVB_2025|I|Dịch vụ lưu trú và ăn uống|I|4.007.722|2.722.327
+NVB_2025|I|Thông tin và truyền thông|J|299.525|799.147
+NVB_2025|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|216.933|45.918
+NVB_2025|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|3.444.822|4.774.614
+NVB_2025|I|Hoạt động dịch vụ khác|S|3.604.409|109.527
+NVB_2025|I|Các ngành khác|OTHER|10.882.953|7.560.896
+NVB_2025|I|Cá nhân|INDIV|28.452.354|20.262.552
+NVB_2025|T|Tổng cộng|TOTAL|97.544.593|71.174.720
+NVB_2024|I|Nông nghiệp, lâm nghiệp và thuỷ sản|A|718.772|312.596
+NVB_2024|I|Công nghiệp chế biến, chế tạo|C|1.990.505|3.044.725
+NVB_2024|I|Xây dựng|F|28.306.905|22.482.468
+NVB_2024|I|Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác|G|3.883.557|3.492.150
+NVB_2024|I|Dịch vụ lưu trú và ăn uống|I|2.722.327|719.091
+NVB_2024|I|Thông tin và truyền thông|J|799.147|798.752
+NVB_2024|I|Hoạt động tài chính, ngân hàng và bảo hiểm|K|45.918|100.000
+NVB_2024|I|Hoạt động hành chính và dịch vụ hỗ trợ|N|4.774.614|1.474.320
+NVB_2024|I|Hoạt động dịch vụ khác|S|109.527|28.023
+NVB_2024|I|Các ngành khác|OTHER|7.560.896|3.975.051
+NVB_2024|I|Cá nhân|INDIV|20.262.552|18.917.083
+NVB_2024|T|Tổng cộng|TOTAL|71.174.720|55.344.259
