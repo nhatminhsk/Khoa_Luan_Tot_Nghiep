@@ -18,10 +18,11 @@ __pycache__/
 crawl_log.txt
 _snapshots/
 
-# Ghi chú làm việc nội bộ
+# Ghi chú làm việc nội bộ và chỉ dẫn cho trợ lý AI (ở mọi thư mục)
 /TIEP_TUC.md
 /PHIEN_*.md
-/AGENTS.md
+CLAUDE.md
+AGENTS.md
 
 # Dữ liệu thô nặng hoặc tải lại được bằng crawler / vnstock
 data/app_reviews/
