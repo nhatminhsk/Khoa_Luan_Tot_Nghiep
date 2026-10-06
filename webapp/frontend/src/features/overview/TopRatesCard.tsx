@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Button, Link as MuiLink, Stack, Tooltip, Typography } from "@mui/material";
+import { keyframes } from "@mui/material/styles";
 import { IconArrowRight } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -10,18 +11,32 @@ import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States
 import { queryKeys } from "@/lib/query/keys";
 import { marketRepository } from "@/repositories/market.repository";
 import { useChartPalette } from "@/theme/chart-palette";
+import type { Channel } from "@/types/api";
 import { formatDelta, formatPercent } from "@/utils/format";
+import { CHANNEL_LABEL } from "@/utils/labels";
 
 const TERM = "12";
 const TOP = 6;
 
+// Giống thẻ KPI (StatTile swapKey): danh sách hiện dần khi đổi kênh để người xem thấy số vừa đổi.
+const swapIn = keyframes`
+  from { opacity: 0.15; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+`;
+
 /**
- * Danh sách thanh: các ngân hàng trả lãi 12 tháng trực tuyến cao nhất hôm nay.
+ * Danh sách thanh: các ngân hàng trả lãi 12 tháng cao nhất hôm nay cho một kênh.
  * Thanh bắt đầu từ 0 (độ dài đúng tỉ lệ lãi suất), số in ở đầu thanh; ngân hàng cùng mức thì cùng hạng.
+ *
+ * @param channel kênh đang hiện; trang Tổng quan truyền kênh của thẻ KPI để hai khối tự chuyển cùng nhau
  */
-export function TopRatesCard() {
+export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
   const palette = useChartPalette();
-  const table = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
+  // Tải sẵn cả hai kênh: lúc tự chuyển kênh danh sách đổi ngay, không hiện khung chờ.
+  const online = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
+  const counter = useQuery({ queryKey: queryKeys.depositTable("COUNTER"), queryFn: () => marketRepository.depositTable("COUNTER") });
+  const table = channel === "COUNTER" ? counter : online;
+  const channelText = CHANNEL_LABEL[channel].toLowerCase();
 
   const ranked = (table.data?.rows ?? [])
     .map((row) => ({ ticker: row.ticker, shortName: row.shortName, cell: row.cells[TERM] }))
@@ -33,9 +48,15 @@ export function TopRatesCard() {
   return (
     <SectionCard
       title="Top lãi 12 tháng hôm nay"
-      subtitle="Kênh trực tuyến"
+      subtitle={`Kênh ${channelText}`}
       action={
-        <Button component={Link} href="/savings" size="small" endIcon={<IconArrowRight size={16} />} sx={{ minHeight: 32 }}>
+        <Button
+          component={Link}
+          href={`/savings?term=${TERM}&channel=${channel}`}
+          size="small"
+          endIcon={<IconArrowRight size={16} />}
+          sx={{ minHeight: 32 }}
+        >
           Tất cả
         </Button>
       }
@@ -48,7 +69,19 @@ export function TopRatesCard() {
       ) : top.length === 0 ? (
         <EmptyState title="Chưa có số liệu lãi suất" />
       ) : (
-        <Stack component="ol" spacing={1.75} sx={{ listStyle: "none", m: 0, p: 0 }} aria-label="Ngân hàng trả lãi 12 tháng trực tuyến cao nhất">
+        <Stack
+          key={channel}
+          component="ol"
+          spacing={1.75}
+          aria-label={`Ngân hàng trả lãi 12 tháng ${channelText} cao nhất`}
+          sx={{
+            listStyle: "none",
+            m: 0,
+            p: 0,
+            animation: `${swapIn} 1000ms cubic-bezier(0.22, 1, 0.36, 1)`,
+            "@media (prefers-reduced-motion: reduce)": { animation: "none" },
+          }}
+        >
           {top.map((row) => {
             const rank = ranked.findIndex((r) => r.cell.rate === row.cell.rate) + 1;
             const change = row.cell.change;

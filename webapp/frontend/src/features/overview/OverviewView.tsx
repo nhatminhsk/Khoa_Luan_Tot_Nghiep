@@ -87,7 +87,10 @@ export function OverviewView() {
           <MarketTrendCard />
         </Grid>
         <Grid size={{ xs: 12, lg: 4 }}>
-          <TopRatesCard />
+          {/* Cùng kênh với thẻ KPI (tự chuyển, ghim, tạm dừng khi rê chuột). */}
+          <Box sx={{ height: "100%" }} onMouseEnter={() => kpi.setPaused(true)} onMouseLeave={() => kpi.setPaused(false)}>
+            <TopRatesCard channel={kpi.channel} />
+          </Box>
         </Grid>
 
         <Grid size={{ xs: 12, lg: 8 }}>
@@ -139,8 +142,8 @@ export function OverviewView() {
 type RotatingChannel = ReturnType<typeof useRotatingChannel>;
 
 /**
- * Kênh của thẻ KPI: tự chuyển trực tuyến ↔ tại quầy sau mỗi KPI_ROTATE_MS.
- * Dừng khi người dùng chọn một kênh hoặc bấm nút dừng (ghim), và tạm dừng khi rê chuột lên thẻ.
+ * Kênh của thẻ KPI và thẻ Top lãi 12 tháng: tự chuyển trực tuyến ↔ tại quầy sau mỗi KPI_ROTATE_MS.
+ * Dừng khi người dùng chọn một kênh hoặc bấm nút dừng (ghim), và tạm dừng khi rê chuột lên các thẻ đó.
  * Không phụ thuộc prefers-reduced-motion: đổi số không phải chuyển động (chỉ hiệu ứng mờ dần bị tắt),
  * và Windows tắt "Animation effects" là bật cờ này cho mọi trình duyệt.
  */
@@ -169,15 +172,15 @@ function useRotatingChannel(enabled: boolean) {
   };
 }
 
-/** Nút chọn kênh cho thẻ KPI, kèm nút dừng/tiếp tục tự chuyển. */
+/** Nút chọn kênh cho thẻ KPI và thẻ Top lãi, kèm nút dừng/tiếp tục tự chuyển. */
 function KpiChannelControl({ kpi }: { kpi: RotatingChannel }) {
   const autoLabel = kpi.pinned ? "Tự chuyển giữa trực tuyến và tại quầy" : "Dừng tự chuyển kênh";
   return (
     <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
       {/* Không dùng onChange của nhóm: bấm lại nút đang chọn cho giá trị null, trong khi ở đây nó nghĩa là "giữ kênh này". */}
-      <ToggleButtonGroup exclusive size="small" value={kpi.channel} aria-label="Kênh gửi của thẻ số">
+      <ToggleButtonGroup exclusive size="small" value={kpi.channel} aria-label="Kênh gửi của thẻ số và top lãi">
         {KPI_CHANNELS.map((c) => (
-          <ToggleButton key={c} value={c} title={`Thẻ số: ${CHANNEL_LABEL[c].toLowerCase()}`} onClick={() => kpi.choose(c)} sx={{ px: 1.5 }}>
+          <ToggleButton key={c} value={c} title={`Thẻ số và top lãi: ${CHANNEL_LABEL[c].toLowerCase()}`} onClick={() => kpi.choose(c)} sx={{ px: 1.5 }}>
             {CHANNEL_LABEL[c]}
           </ToggleButton>
         ))}
