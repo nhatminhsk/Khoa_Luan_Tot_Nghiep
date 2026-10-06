@@ -324,6 +324,8 @@ export interface SavingsOffer {
   interest: number;
   maturityAmount: number;
   appScore: number | null;
+  /** Bậc số tiền đã áp (ví dụ "Từ 500 triệu"); null khi ngân hàng không chia bậc hoặc dưới mọi bậc. */
+  tierLabel: string | null;
 }
 
 export interface SavingsAdvice {

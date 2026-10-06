@@ -98,7 +98,9 @@ export function SavingsView() {
                           tone="primary"
                           label="Lãi suất cao nhất"
                           value={formatPercent(best.ratePercent)}
-                          hint={`${best.shortName} · ${advice.data.termMonths} tháng, ${CHANNEL_LABEL[advice.data.channel].toLowerCase()}`}
+                          hint={`${best.shortName} · ${advice.data.termMonths} tháng, ${CHANNEL_LABEL[advice.data.channel].toLowerCase()}${
+                            best.tierLabel ? ` · bậc ${best.tierLabel.toLowerCase()}` : ""
+                          }`}
                         />
                       </Grid>
                       <Grid size={{ xs: 12, sm: 4 }}>
@@ -146,7 +148,7 @@ export function SavingsView() {
 
                   <SectionCard
                     title={`Lãi suất hôm nay · ${advice.data.termMonths} tháng · ${CHANNEL_LABEL[advice.data.channel].toLowerCase()}`}
-                    subtitle={`Sắp theo lãi suất (một tiêu chí). Tiền lãi tính cho ${formatVnd(advice.data.amount)}, trả cuối kỳ.`}
+                    subtitle={`Sắp theo lãi suất (một tiêu chí), theo bậc số tiền với ngân hàng có chia bậc. Tiền lãi tính cho ${formatVnd(advice.data.amount)}, trả cuối kỳ.`}
                     flush
                   >
                     {advice.data.offers.length === 0 ? (

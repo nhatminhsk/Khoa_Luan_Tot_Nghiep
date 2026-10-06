@@ -895,6 +895,33 @@ def check_deposit_caps():
     return out
 
 
+def check_deposit_amount_tiers():
+    """Bac lai suat theo so tien (deposit_tiers.AMOUNT_TIERS) con khop bac thap nhat trong du lieu khong.
+
+    Bac chi duoc xuat cho o khop; o lech nghia la NH da doi bieu (hoac 24hmoney doi bac) - trang gui
+    tiet kiem se tu quay ve bac thap nhat cho o do cho toi khi cap nhat bang bac.
+    """
+    try:
+        from crawlers import deposit_tiers
+        table = deposit_tiers.amount_tier_status()
+    except Exception as exc:
+        return [Finding(WARN, "deposit.amount_tier", DEPOSIT_24H,
+                        f"khong doc duoc bang bac theo so tien ({type(exc).__name__}: {exc})")]
+    present = table[table["present"]]
+    stale = present[~present["matches"]]
+    if len(stale):
+        return [Finding(
+            WARN, "deposit.amount_tier", DEPOSIT_24H,
+            f"{len(stale)}/{len(present)} o bac theo so tien khong con khop bac thap nhat ngay "
+            f"{table['latest_date'].iloc[0]} - doi chieu bieu moi roi sua deposit_tiers.AMOUNT_TIERS",
+            _sample(stale, ["ticker", "channel", "term_months", "lowest_tier", "current"]))]
+    banks = sorted(present["ticker"].unique())
+    return [Finding(
+        INFO, "deposit.amount_tier", DEPOSIT_24H,
+        f"{len(present)} o co bac theo so tien ({', '.join(banks)}) khop bac thap nhat; "
+        f"{int((~table['present']).sum())} ky han trong bieu khong co trong du lieu")]
+
+
 def check_deposit_tier_overrides():
     """Bang ghi de bac lai suat (crawlers/deposit_tiers.py) con khop so nguon dang ghi khong.
 
@@ -1147,6 +1174,7 @@ def run(scope="all"):
         findings += check_deposit_cross_source()
         findings += check_deposit_caps()
         findings += check_deposit_tier_overrides()
+        findings += check_deposit_amount_tiers()
         findings += check_ohlc(PRICE_DIR, "gia co phieu")
         findings += check_ohlc(MARKET_DIR, "chi so thi truong")
         findings += check_future_dates([

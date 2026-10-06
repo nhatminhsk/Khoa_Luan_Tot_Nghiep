@@ -1,0 +1,4 @@
+ticker,term_months,channel,min_amount_vnd,rate_percent,base_rate_percent,tier_label,valid_from,source
+ACB,12,ONLINE,1000000000,6.3,6.1,Từ 1 tỷ,2026-09-01,test
+ACB,12,ONLINE,5000000000,6.4,6.1,Từ 5 tỷ,2026-09-01,test
+VCB,12,ONLINE,1000000000,6.5,5.6,Từ 1 tỷ,2026-09-01,test - lãi gốc 5.6 không khớp 5.7 đang niêm yết

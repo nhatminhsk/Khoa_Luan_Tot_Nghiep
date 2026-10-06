@@ -168,6 +168,19 @@ def export_deposit_rates() -> pd.DataFrame:
         ["rate_date", "ticker", "channel", "term_months"])
 
 
+def export_deposit_rate_tiers() -> pd.DataFrame:
+    """Bac lai suat theo so tien gui (bieu chinh thuc) cho ngay moi nhat cua deposit_rates.
+
+    deposit_rates giu bac thap nhat de so sanh 22 NH cung mot bac; trang gui tiet kiem doc them file nay
+    de tinh dung lai theo so tien nguoi dung nhap. Chi co o nao lai trong deposit_rates bang bac thap
+    nhat cua bieu (xem deposit_tiers.amount_tiers).
+    """
+    tiers = deposit_tiers.amount_tiers()
+    tiers = tiers[tiers["ticker"].isin(TICKERS)].copy()
+    tiers["channel"] = tiers["channel"].map({"online": "ONLINE", "quay": "COUNTER"})
+    return tiers.sort_values(["ticker", "channel", "term_months", "min_amount_vnd"])
+
+
 def export_lending_rates() -> pd.DataFrame:
     lend = pd.read_csv(LENDING)
     lend = lend[lend["ticker"].isin(TICKERS)].dropna(subset=["lending_avg_percent"])
@@ -235,6 +248,7 @@ def export_datasets(parts: dict[str, pd.DataFrame]) -> pd.DataFrame:
     quarterly = parts["bank_quarterly"]
     lending = parts["lending_rates"]
     latest_lending = lending[lending["month"] == lending["month"].max()]
+    tiers = parts["deposit_rate_tiers"]
     app = parts["app_store"]
     reviews = parts["app_reviews_monthly"]
     participation = parts["program_participation"]
@@ -244,6 +258,10 @@ def export_datasets(parts: dict[str, pd.DataFrame]) -> pd.DataFrame:
         ("deposit_rates", "Lãi suất tiết kiệm niêm yết", "24hmoney (đối chiếu CafeF, web ngân hàng)",
          "DAILY", deposit["rate_date"].max(), len(deposit),
          f"{latest['ticker'].nunique()}/22 ngân hàng có số ngày gần nhất"),
+        ("deposit_rate_tiers", "Bậc lãi suất theo số tiền gửi", "Biểu lãi suất chính thức của ngân hàng (nhập tay)",
+         "IRREGULAR", tiers["valid_from"].max() if len(tiers) else None, len(tiers),
+         f"{tiers['ticker'].nunique()}/22 ngân hàng có bậc theo số tiền ({', '.join(sorted(tiers['ticker'].unique()))}); "
+         "ngân hàng khác không chia bậc hoặc chưa đọc được biểu"),
         ("lending_rates", "Lãi suất cho vay bình quân", "Báo VietnamNet tổng hợp số ngân hàng công bố",
          "MONTHLY", lending["month"].max(), len(lending),
          f"{latest_lending['ticker'].nunique()}/22 ngân hàng có số tháng gần nhất"),
@@ -278,6 +296,7 @@ def main() -> None:
         "indicators": export_indicators(),
         "bank_quarterly": export_bank_quarterly(),
         "deposit_rates": export_deposit_rates(),
+        "deposit_rate_tiers": export_deposit_rate_tiers(),
         "lending_rates": export_lending_rates(),
         "app_store": export_app_store(),
         "app_reviews_monthly": export_app_reviews_monthly(),

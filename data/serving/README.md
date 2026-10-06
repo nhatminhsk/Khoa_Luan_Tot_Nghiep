@@ -23,6 +23,7 @@ python -m serving.export
 | `indicators.csv` | code | code, name, camels_group (C/A/M/E/L/G), unit (PERCENT/VND), direction (HIGHER_BETTER/LOWER_BETTER/NEUTRAL), description, display_order |
 | `bank_quarterly.csv` | ticker, period, indicator | ticker, period, period_end, indicator, value |
 | `deposit_rates.csv` | rate_date, ticker, term_months, channel | rate_date, ticker, term_months, channel (ONLINE/COUNTER), rate_percent, source |
+| `deposit_rate_tiers.csv` | ticker, term_months, channel, min_amount_vnd | ticker, term_months, channel, min_amount_vnd, rate_percent, base_rate_percent, tier_label, valid_from, source — bậc trên bậc thấp nhất theo số tiền gửi, cho ngày mới nhất của `deposit_rates`; chỉ áp khi lãi trong `deposit_rates` bằng `base_rate_percent` |
 | `lending_rates.csv` | month, ticker | month, ticker, lending_avg_percent, deposit_avg_percent, source_url |
 | `app_store.csv` | ticker, store | ticker, store (GOOGLE_PLAY/APP_STORE), snapshot_date, app_name, score, ratings |
 | `app_reviews_monthly.csv` | ticker, month | ticker, month, n_reviews, mean_score, pct_1star, pct_5star, usable |

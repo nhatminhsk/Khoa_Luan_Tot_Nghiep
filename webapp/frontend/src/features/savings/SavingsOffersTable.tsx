@@ -104,6 +104,12 @@ export function SavingsOffersTable({ offers, inflation }: { offers: SavingsOffer
                     <Typography variant="body2" sx={{ fontWeight: 700 }}>
                       {formatPercent(offer.ratePercent)}
                     </Typography>
+                    {/* Ngân hàng có lãi theo bậc số tiền: ghi bậc đã áp để người dùng biết vì sao khác bảng lãi chung. */}
+                    {offer.tierLabel && (
+                      <Typography variant="caption" color="primary.main" sx={{ display: "block", whiteSpace: "nowrap", fontWeight: 500 }}>
+                        Bậc {offer.tierLabel.toLowerCase()}
+                      </Typography>
+                    )}
                     <RateDelta value={offer.changeFromPrevious} />
                     {/* Điện thoại: cột tiền lãi bị ẩn, hiện ngay dưới lãi suất. */}
                     <Typography

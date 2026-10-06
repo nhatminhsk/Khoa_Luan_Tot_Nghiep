@@ -155,6 +155,30 @@ class BankAdvisorApiApplicationTests {
     }
 
     @Test
+    void savingsAdviceAppliesAmountTierOnlyWhenBaseRateStillMatches() throws Exception {
+        // 100 triệu: dưới mọi bậc → lãi niêm yết, không có tierLabel.
+        mvc.perform(post("/api/v1/advisor/savings").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"amount\":100000000,\"termMonths\":12,\"channel\":\"ONLINE\"}"))
+                .andExpect(jsonPath("$.data.offers[0].ratePercent").value(6.1))
+                .andExpect(jsonPath("$.data.offers[0].tierLabel").doesNotExist());
+        // 1 tỷ: ACB lên bậc "Từ 1 tỷ" 6,3%. Bậc 6,5% của VCB bị bỏ qua vì lãi gốc 5,6 ≠ 5,7 đang niêm yết.
+        mvc.perform(post("/api/v1/advisor/savings").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"amount\":1000000000,\"termMonths\":12,\"channel\":\"ONLINE\"}"))
+                .andExpect(jsonPath("$.data.offers[0].ticker").value("ACB"))
+                .andExpect(jsonPath("$.data.offers[0].ratePercent").value(6.3))
+                .andExpect(jsonPath("$.data.offers[0].tierLabel").value("Từ 1 tỷ"))
+                .andExpect(jsonPath("$.data.offers[0].interest").value(63_000_000))
+                .andExpect(jsonPath("$.data.offers[1].ticker").value("VCB"))
+                .andExpect(jsonPath("$.data.offers[1].ratePercent").value(5.7))
+                .andExpect(jsonPath("$.data.offers[1].tierLabel").doesNotExist());
+        // 6 tỷ: lấy bậc cao nhất có ngưỡng ≤ số tiền.
+        mvc.perform(post("/api/v1/advisor/savings").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"amount\":6000000000,\"termMonths\":12,\"channel\":\"ONLINE\"}"))
+                .andExpect(jsonPath("$.data.offers[0].ratePercent").value(6.4))
+                .andExpect(jsonPath("$.data.offers[0].tierLabel").value("Từ 5 tỷ"));
+    }
+
+    @Test
     void savingsAdviceValidatesInput() throws Exception {
         mvc.perform(post("/api/v1/advisor/savings").contentType(MediaType.APPLICATION_JSON)
                         .content("{\"amount\":1000,\"termMonths\":12,\"channel\":\"ONLINE\"}"))
