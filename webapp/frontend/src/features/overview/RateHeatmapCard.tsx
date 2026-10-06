@@ -91,7 +91,7 @@ function Heatmap({ data }: { data: DepositRateTable }) {
         >
           <thead>
             <tr>
-              <Box component="th" scope="col" sx={{ width: 84 }} />
+              <Box component="th" scope="col" sx={{ width: 84, position: "sticky", left: 0, zIndex: 1, bgcolor: "background.paper" }} />
               {banks.map((b) => (
                 <Box component="th" scope="col" key={b.ticker} sx={{ pb: 0.5, fontWeight: 600 }}>
                   <MuiLink
@@ -116,7 +116,19 @@ function Heatmap({ data }: { data: DepositRateTable }) {
                   <Box
                     component="th"
                     scope="row"
-                    sx={{ textAlign: "left", pr: 1, fontSize: "0.75rem", fontWeight: 600, color: "text.secondary", whiteSpace: "nowrap" }}
+                    sx={{
+                      textAlign: "left",
+                      pr: 1,
+                      fontSize: "0.75rem",
+                      fontWeight: 600,
+                      color: "text.secondary",
+                      whiteSpace: "nowrap",
+                      // Cuộn ngang qua 22 ngân hàng (điện thoại) thì cột kỳ hạn vẫn đứng yên.
+                      position: "sticky",
+                      left: 0,
+                      zIndex: 1,
+                      bgcolor: "background.paper",
+                    }}
                   >
                     {formatTerm(term)}
                   </Box>

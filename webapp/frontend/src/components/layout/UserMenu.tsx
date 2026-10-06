@@ -23,15 +23,35 @@ export function UserMenu() {
   if (isLoading) return <Skeleton variant="circular" width={36} height={36} />;
 
   if (!user) {
+    const href = `/login?next=${encodeURIComponent(pathname)}`;
     return (
-      <Button
-        component={Link}
-        href={`/login?next=${encodeURIComponent(pathname)}`}
-        variant="contained"
-        startIcon={<IconLogin size={18} />}
-      >
-        Đăng nhập
-      </Button>
+      <>
+        <Button
+          component={Link}
+          href={href}
+          variant="contained"
+          startIcon={<IconLogin size={18} />}
+          sx={{ display: { xs: "none", sm: "inline-flex" } }}
+        >
+          Đăng nhập
+        </Button>
+        {/* Điện thoại: chỉ để biểu tượng, nhường chỗ cho ô tìm ngân hàng. */}
+        <IconButton
+          component={Link}
+          href={href}
+          aria-label="Đăng nhập"
+          sx={{
+            display: { xs: "inline-flex", sm: "none" },
+            width: 40,
+            height: 40,
+            color: "primary.contrastText",
+            bgcolor: "primary.main",
+            "&:hover": { bgcolor: "primary.dark" },
+          }}
+        >
+          <IconLogin size={20} />
+        </IconButton>
+      </>
     );
   }
 

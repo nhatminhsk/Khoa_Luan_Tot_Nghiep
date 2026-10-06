@@ -26,7 +26,7 @@ export function SectionCard({ title, subtitle, info, action, children, flush, id
           sx={{
             alignItems: { xs: "flex-start", sm: "center" },
             justifyContent: "space-between",
-            px: 2.5,
+            px: { xs: 2, sm: 2.5 },
             pt: 2,
             pb: flush ? 1.5 : 0,
           }}
@@ -60,7 +60,7 @@ export function SectionCard({ title, subtitle, info, action, children, flush, id
           {action && <Box sx={{ flexShrink: 0, maxWidth: "100%" }}>{action}</Box>}
         </Stack>
       )}
-      {flush ? children : <CardContent sx={{ px: 2.5, pt: 2, flex: 1, "&:last-child": { pb: 2.5 } }}>{children}</CardContent>}
+      {flush ? children : <CardContent sx={{ px: { xs: 2, sm: 2.5 }, pt: 2, flex: 1, "&:last-child": { pb: { xs: 2, sm: 2.5 } } }}>{children}</CardContent>}
     </Card>
   );
 }

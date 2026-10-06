@@ -76,12 +76,14 @@ export function LoansView() {
       />
 
       <Grid container spacing={2.5}>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Card sx={{ p: 2.5, position: { md: "sticky" }, top: { md: 88 } }}>
+        {/* Chỉ chia cột form/kết quả từ lg: ở iPad (≤ 1199px, có thêm menu trái từ md) cột kết quả 8/12 còn ~470px,
+            thẻ KPI bị cắt số và bảng phải cuộn ngang. Dưới lg form nằm trên, trường xếp nhiều cột. */}
+        <Grid size={{ xs: 12, lg: 4 }}>
+          <Card sx={{ p: { xs: 2, sm: 2.5 }, position: { lg: "sticky" }, top: { lg: 88 } }}>
             <LoanForm key={toLoanQuery(request)} initial={request} onSubmit={submit} submitting={advice.isFetching} />
           </Card>
         </Grid>
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           {advice.isError ? (
             <ErrorState error={advice.error} onRetry={() => advice.refetch()} />
           ) : !advice.data ? (

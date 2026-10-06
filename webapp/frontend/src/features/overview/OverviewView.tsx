@@ -212,9 +212,9 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
 
   if (!market) {
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={{ xs: 1.5, sm: 2 }}>
         {[0, 1, 2, 3].map((i) => (
-          <Grid key={i} size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Grid key={i} size={{ xs: 6, lg: 3 }}>
             <LoadingBlock height={178} />
           </Grid>
         ))}
@@ -237,8 +237,8 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
 
   return (
     // Thẻ giữ nguyên khi đổi kênh (dựng lại cả thẻ làm sparkline trống một nhịp → nháy); chỉ phần chữ hiện dần theo swapKey.
-    <Grid container spacing={2}>
-      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+    <Grid container spacing={{ xs: 1.5, sm: 2 }}>
+      <Grid size={{ xs: 6, lg: 3 }}>
         <StatTile
           swapKey={channel}
           icon={<IconTrophy size={18} aria-hidden />}
@@ -250,7 +250,7 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
           trend={sparkOf(spark.max)}
         />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+      <Grid size={{ xs: 6, lg: 3 }}>
         <StatTile
           swapKey={channel}
           icon={<IconChartLine size={18} aria-hidden />}
@@ -261,7 +261,7 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
           trend={sparkOf(spark.median)}
         />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+      <Grid size={{ xs: 6, lg: 3 }}>
         <StatTile
           swapKey={channel}
           icon={<IconTrendingDown size={18} aria-hidden />}
@@ -273,7 +273,7 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
           trend={sparkOf(spark.min)}
         />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+      <Grid size={{ xs: 6, lg: 3 }}>
         <StatTile
           swapKey={channel}
           icon={<IconScale size={18} aria-hidden />}

@@ -275,7 +275,25 @@ function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, 
 
   return (
     <TableContainer>
-      <Table size="small" aria-label="Bảng so sánh chỉ tiêu giữa các ngân hàng">
+      <Table
+        size="small"
+        aria-label="Bảng so sánh chỉ tiêu giữa các ngân hàng"
+        sx={{
+          // Cột tên chỉ tiêu đủ rộng để đọc (trước đây bị bóp còn một chữ mỗi dòng trên điện thoại),
+          // và đứng yên khi bảng cuộn ngang qua các ngân hàng.
+          "& thead th:first-of-type, & tbody td:first-of-type:not([colspan])": {
+            minWidth: { xs: 132, sm: 200 },
+            position: { xs: "sticky", md: "static" },
+            left: 0,
+            zIndex: 1,
+            bgcolor: "background.paper",
+            boxShadow: { xs: "inset -1px 0 0 var(--mui-palette-divider)", md: "none" },
+          },
+          "& thead th:first-of-type": {
+            backgroundImage: "linear-gradient(rgba(148, 163, 184, 0.06), rgba(148, 163, 184, 0.06))",
+          },
+        }}
+      >
         <TableHead>
           <TableRow>
             <TableCell>Chỉ tiêu</TableCell>
@@ -283,7 +301,13 @@ function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, 
               <TableCell key={b.ticker} align="right">
                 <Stack direction="row" spacing={0.75} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
                   <Box component="span" aria-hidden sx={{ width: 10, height: 10, borderRadius: "50%", bgcolor: colors[slots.get(b.ticker) ?? 0] }} />
-                  <span>{b.shortName}</span>
+                  {/* Điện thoại: tiêu đề cột ghi mã (VCB) thay vì tên (Vietcombank) cho hẹp cột. */}
+                  <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
+                    {b.shortName}
+                  </Box>
+                  <Box component="span" sx={{ display: { xs: "inline", sm: "none" } }} title={b.shortName}>
+                    {b.ticker}
+                  </Box>
                 </Stack>
               </TableCell>
             ))}

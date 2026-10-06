@@ -125,8 +125,9 @@ export function AdminView() {
               <Table size="small" aria-label="Nhật ký nạp dữ liệu">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Thời gian</TableCell>
-                    <TableCell>Tập dữ liệu</TableCell>
+                    <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>Thời gian</TableCell>
+                    {/* Ô Thời gian bị ẩn trên điện thoại nên ô này thành cột đầu: giữ lề mép bảng 16px. */}
+                    <TableCell sx={{ pl: 2 }}>Tập dữ liệu</TableCell>
                     <TableCell>Trạng thái</TableCell>
                     <TableCell align="right">Số dòng</TableCell>
                     <TableCell>Ghi chú</TableCell>
@@ -135,8 +136,16 @@ export function AdminView() {
                 <TableBody>
                   {runs.data.map((r) => (
                     <TableRow key={r.id} hover>
-                      <TableCell sx={{ whiteSpace: "nowrap" }}>{formatDateTime(r.startedAt)}</TableCell>
-                      <TableCell>{r.dataset}</TableCell>
+                      <TableCell sx={{ whiteSpace: "nowrap", display: { xs: "none", sm: "table-cell" } }}>
+                        {formatDateTime(r.startedAt)}
+                      </TableCell>
+                      <TableCell sx={{ pl: 2 }}>
+                        {r.dataset}
+                        {/* Điện thoại: thời gian gộp dưới tên tập dữ liệu để cột Trạng thái hiện trong màn hình. */}
+                        <Typography variant="caption" color="text.secondary" sx={{ display: { xs: "block", sm: "none" }, whiteSpace: "nowrap" }}>
+                          {formatDateTime(r.startedAt)}
+                        </Typography>
+                      </TableCell>
                       <TableCell>
                         <Chip
                           size="small"

@@ -134,7 +134,22 @@ export function BankListView() {
             <Table
               size="small"
               aria-label="Chỉ tiêu chính của 22 ngân hàng"
-              sx={{ "& th, & td": { px: 1.25 }, "& th:first-of-type, & td:first-of-type": { pl: 2.5 } }}
+              sx={{
+                "& th, & td": { px: { xs: 1, sm: 1.25 } },
+                "& th:first-of-type, & td:first-of-type": {
+                  pl: { xs: 2, sm: 2.5 },
+                  // Màn hẹp: bảng cuộn ngang, cột tên ngân hàng đứng yên để biết đang xem dòng nào.
+                  position: { xs: "sticky", lg: "static" },
+                  left: 0,
+                  zIndex: 1,
+                  bgcolor: "background.paper",
+                  boxShadow: { xs: "inset -1px 0 0 var(--mui-palette-divider)", lg: "none" },
+                },
+                // Giữ lớp màu nhạt của hàng tiêu đề trên nền đặc của ô ghim.
+                "& thead th:first-of-type": {
+                  backgroundImage: "linear-gradient(rgba(148, 163, 184, 0.06), rgba(148, 163, 184, 0.06))",
+                },
+              }}
             >
               <TableHead>
                 <TableRow>

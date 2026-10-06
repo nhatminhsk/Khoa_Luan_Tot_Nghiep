@@ -39,8 +39,11 @@ export function BankLabel({ ticker, shortName, link = true, secondary }: BankLab
     </Typography>
   );
   return (
-    <Stack direction="row" spacing={1.25} sx={{ alignItems: "center", minWidth: 0 }}>
-      <BankAvatar ticker={ticker} />
+    <Stack direction="row" spacing={{ xs: 0, sm: 1.25 }} sx={{ alignItems: "center", minWidth: 0 }}>
+      {/* Điện thoại: bỏ logo chữ (mã đã có ở dòng dưới) để bảng vừa màn hình. */}
+      <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+        <BankAvatar ticker={ticker} />
+      </Box>
       <Box sx={{ minWidth: 0 }}>
         {link ? (
           <MuiLink component={Link} href={`/banks/${ticker}`} underline="hover" color="inherit">

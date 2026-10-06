@@ -165,8 +165,13 @@ function WatchItemsCard() {
             <TableHead>
               <TableRow>
                 <TableCell>Ngân hàng</TableCell>
-                <TableCell align="right">Lãi 12T trực tuyến</TableCell>
-                <TableCell>Ngưỡng báo</TableCell>
+                <TableCell align="right">
+                  Lãi 12T
+                  <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
+                    {" "}trực tuyến
+                  </Box>
+                </TableCell>
+                <TableCell>Ngưỡng (điểm %)</TableCell>
                 <TableCell align="right">
                   <Box component="span" sx={visuallyHidden}>
                     Thao tác
@@ -181,7 +186,10 @@ function WatchItemsCard() {
                     <BankLabel ticker={item.ticker} shortName={item.shortName} />
                   </TableCell>
                   <TableCell align="right">
-                    {formatPercent(item.rate12mOnline)} <RateDelta value={item.change12mOnline} />
+                    {formatPercent(item.rate12mOnline)}{" "}
+                    <Box component="span" sx={{ display: { xs: "block", sm: "inline" } }}>
+                      <RateDelta value={item.change12mOnline} />
+                    </Box>
                   </TableCell>
                   <TableCell>
                     <TextField
@@ -189,8 +197,12 @@ function WatchItemsCard() {
                       size="small"
                       value={item.rateThreshold}
                       onChange={(e) => update.mutate({ ticker: item.ticker, value: Number(e.target.value) })}
-                      slotProps={{ htmlInput: { "aria-label": `Ngưỡng báo của ${item.shortName}` } }}
-                      sx={{ minWidth: 130 }}
+                      slotProps={{
+                        htmlInput: { "aria-label": `Ngưỡng báo của ${item.shortName}` },
+                        // Ô chọn chỉ ghi "≥ 0,1" (đơn vị ở tiêu đề cột) để bảng vừa màn hình điện thoại.
+                        select: { renderValue: (v) => `≥ ${formatNumber(v as number)}` },
+                      }}
+                      sx={{ minWidth: { xs: 80, sm: 110 } }}
                     >
                       {[...new Set([...THRESHOLDS, item.rateThreshold])].sort((a, b) => a - b).map((t) => (
                         <MenuItem key={t} value={t}>
@@ -261,14 +273,12 @@ function NotificationsCard() {
             <Box key={n.id}>
               {i > 0 && <Divider component="li" />}
               <ListItem
-                sx={{ px: 2.5, alignItems: "flex-start", bgcolor: n.read ? undefined : "action.hover" }}
-                secondaryAction={
-                  !n.read && (
-                    <Button size="small" onClick={() => markRead.mutate(n.id)}>
-                      Đã đọc
-                    </Button>
-                  )
-                }
+                sx={{
+                  px: { xs: 2, sm: 2.5 },
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  bgcolor: n.read ? undefined : "action.hover",
+                }}
               >
                 <ListItemText
                   primary={n.title}
@@ -283,8 +293,15 @@ function NotificationsCard() {
                       </Typography>
                     </>
                   }
-                  slotProps={{ primary: { sx: { fontWeight: n.read ? 500 : 700, pr: 8 } } }}
+                  slotProps={{ primary: { sx: { fontWeight: n.read ? 500 : 700 } } }}
+                  sx={{ m: 0 }}
                 />
+                {/* Nút nằm dưới nội dung (không đặt góc phải) để không đè lên chữ trên màn hẹp. */}
+                {!n.read && (
+                  <Button size="small" onClick={() => markRead.mutate(n.id)} sx={{ mt: 0.5, ml: -1 }}>
+                    Đã đọc
+                  </Button>
+                )}
               </ListItem>
             </Box>
           ))}
@@ -340,7 +357,7 @@ function SavedNeedsCard() {
                 <ListItemText
                   primary={need.label}
                   secondary={describeNeed(need)}
-                  slotProps={{ primary: { sx: { fontWeight: 600 } }, secondary: { sx: { pr: 10 } } }}
+                  slotProps={{ primary: { sx: { fontWeight: 600, pr: 10 } }, secondary: { sx: { pr: 10 } } }}
                 />
               </ListItem>
             </Box>

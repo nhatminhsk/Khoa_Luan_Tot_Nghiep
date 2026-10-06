@@ -13,7 +13,9 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { IconChartBar, IconTable } from "@tabler/icons-react";
 import Link from "next/link";
@@ -66,7 +68,8 @@ export function BestByTermCard({ items }: { items: BestRateItem[] | undefined })
 
 function BestByTermChart({ items }: { items: BestRateItem[] }) {
   const palette = useChartPalette();
-  const labels = items.map((i) => formatTerm(i.termMonths));
+  // Điện thoại: 7 cột trong ~300px, nhãn "1 năm 6 tháng" đè lên nhau → nhãn trục ngắn (18T); chú thích vẫn ghi đầy đủ.
+  const compact = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   return (
     <Box role="img" aria-label="Biểu đồ cột: lãi suất trực tuyến cao nhất và trung vị theo kỳ hạn" sx={{ width: "100%" }}>
       <Stack direction="row" spacing={2.5} sx={{ mb: 0.5 }} aria-hidden>
@@ -79,7 +82,16 @@ function BestByTermChart({ items }: { items: BestRateItem[] }) {
         skipAnimation
         borderRadius={4}
         grid={{ horizontal: true }}
-        xAxis={[{ scaleType: "band", data: labels, categoryGapRatio: 0.5, barGapRatio: 0.2 }]}
+        xAxis={[
+          {
+            scaleType: "band",
+            data: items.map((i) => i.termMonths),
+            valueFormatter: (months: number, context) =>
+              compact && context.location === "tick" ? `${months}T` : formatTerm(months),
+            categoryGapRatio: 0.5,
+            barGapRatio: 0.2,
+          },
+        ]}
         yAxis={[{ valueFormatter: (v: number) => `${v}%`, width: 44 }]}
         margin={{ left: 0, right: 8, top: 8, bottom: 0 }}
         series={[

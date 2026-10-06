@@ -122,9 +122,13 @@ def _write(frame: pd.DataFrame, name: str) -> int:
 
 
 def export_banks() -> pd.DataFrame:
+    # Catalog ghi nối theo ngày crawl: mỗi mã có nhiều dòng, chỉ lấy tên app ở lần chụp mới nhất
+    # (không lọc thì play.get(t) trả về cả một Series và chuỗi repr của nó bị ghi vào CSV).
     play = pd.read_csv(PLAY_CATALOG)
-    play = play[play["app_role"] == "retail"].set_index("ticker")["app_name"]
-    ios = pd.read_csv(IOS_CATALOG).set_index("ticker")["app_name"]
+    play = play[play["app_role"] == "retail"].sort_values("date").drop_duplicates("ticker", keep="last")
+    play = play.set_index("ticker")["app_name"]
+    ios = pd.read_csv(IOS_CATALOG).sort_values("date").drop_duplicates("ticker", keep="last")
+    ios = ios.set_index("ticker")["app_name"]
     rows = [{
         "ticker": t,
         "short_name": BANKS[t][0],

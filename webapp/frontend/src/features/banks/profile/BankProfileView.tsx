@@ -47,11 +47,12 @@ export function BankProfileView({ ticker }: { ticker: string }) {
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={2}
-        sx={{ alignItems: { xs: "flex-start", sm: "center" }, justifyContent: "space-between", mb: 2 }}
+        // stretch trên điện thoại: khối tên bị bó theo bề rộng màn hình, chip dài tự xuống dòng/cắt thay vì làm tràn trang.
+        sx={{ alignItems: { xs: "stretch", sm: "center" }, justifyContent: "space-between", mb: 2 }}
       >
-        <Stack direction="row" spacing={2} sx={{ alignItems: "center", minWidth: 0 }}>
+        <Stack direction="row" spacing={{ xs: 1.5, sm: 2 }} sx={{ alignItems: "center", minWidth: 0 }}>
           <BankAvatar ticker={bank.data.ticker} size={56} />
-          <Box sx={{ minWidth: 0 }}>
+          <Box sx={{ minWidth: 0, flex: 1 }}>
             <Typography variant="h1">{bank.data.shortName}</Typography>
             <Typography color="text.secondary">{bank.data.fullName}</Typography>
             <Stack direction="row" spacing={0.75} sx={{ mt: 0.75, flexWrap: "wrap", rowGap: 0.75 }} useFlexGap>
@@ -61,7 +62,8 @@ export function BankProfileView({ ticker }: { ticker: string }) {
             </Stack>
           </Box>
         </Stack>
-        <Stack direction="row" spacing={1}>
+        {/* Không co lại: trên iPad dọc nút từng bị ép thành "Theo / dõi" hai dòng. */}
+        <Stack direction="row" spacing={1} sx={{ flexShrink: 0, "& .MuiButton-root": { whiteSpace: "nowrap" } }}>
           <WatchButton ticker={bank.data.ticker} shortName={bank.data.shortName} />
           <Button
             component={Link}

@@ -47,7 +47,7 @@ export function SavingsOffersTable({ offers, inflation }: { offers: SavingsOffer
       <Table size="small" aria-label="Lãi suất và tiền lãi ước tính theo ngân hàng">
         <TableHead>
           <TableRow>
-            <TableCell sx={{ width: 48 }}>#</TableCell>
+            <TableCell sx={{ width: { xs: 40, sm: 48 } }}>#</TableCell>
             <TableCell>Ngân hàng</TableCell>
             <TableCell align="right" sortDirection={sortKey === "rate" ? "desc" : false}>
               <TableSortLabel active={sortKey === "rate"} direction="desc" onClick={() => setSortKey("rate")}>
@@ -64,14 +64,19 @@ export function SavingsOffersTable({ offers, inflation }: { offers: SavingsOffer
                 </Tooltip>
               </TableCell>
             )}
-            <TableCell align="right">Tiền lãi ước tính</TableCell>
-            <TableCell align="right" sx={{ display: { xs: "none", md: "table-cell" } }}>
+            {/* Tiêu đề ngắn để bảng vừa cột kết quả 8/12 trên laptop; "ước tính" và số tiền gốc đã ghi ở phụ đề thẻ. */}
+            <TableCell align="right" sx={{ display: { xs: "none", sm: "table-cell" } }}>
+              Tiền lãi
+            </TableCell>
+            <TableCell align="right" sx={{ display: { xs: "none", xl: "table-cell" } }}>
               Nhận khi đáo hạn
             </TableCell>
             <TableCell align="right" sortDirection={sortKey === "app" ? "desc" : false} sx={{ display: { xs: "none", sm: "table-cell" } }}>
-              <TableSortLabel active={sortKey === "app"} direction="desc" onClick={() => setSortKey("app")}>
-                Điểm ứng dụng
-              </TableSortLabel>
+              <Tooltip title="Điểm đánh giá ứng dụng trên Google Play (không có thì App Store)">
+                <TableSortLabel active={sortKey === "app"} direction="desc" onClick={() => setSortKey("app")}>
+                  Điểm app
+                </TableSortLabel>
+              </Tooltip>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -100,6 +105,14 @@ export function SavingsOffersTable({ offers, inflation }: { offers: SavingsOffer
                       {formatPercent(offer.ratePercent)}
                     </Typography>
                     <RateDelta value={offer.changeFromPrevious} />
+                    {/* Điện thoại: cột tiền lãi bị ẩn, hiện ngay dưới lãi suất. */}
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ display: { xs: "block", sm: "none" }, whiteSpace: "nowrap" }}
+                    >
+                      Lãi {formatVnd(offer.interest)}
+                    </Typography>
                   </Box>
                 </Stack>
               </TableCell>
@@ -108,10 +121,18 @@ export function SavingsOffersTable({ offers, inflation }: { offers: SavingsOffer
                   <RealRateValue value={realRate(offer.ratePercent, inflation)} />
                 </TableCell>
               )}
-              <TableCell align="right" sx={{ fontWeight: 600 }}>
+              <TableCell align="right" sx={{ fontWeight: 600, display: { xs: "none", sm: "table-cell" } }}>
                 {formatVnd(offer.interest)}
+                {/* iPad và màn laptop: cột "Nhận khi đáo hạn" ẩn cho bảng vừa khung, số đó hiện dưới tiền lãi. */}
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ display: { xs: "none", sm: "block", xl: "none" }, fontWeight: 400, whiteSpace: "nowrap" }}
+                >
+                  Nhận {formatVnd(offer.maturityAmount)}
+                </Typography>
               </TableCell>
-              <TableCell align="right" sx={{ display: { xs: "none", md: "table-cell" } }}>
+              <TableCell align="right" sx={{ display: { xs: "none", xl: "table-cell" } }}>
                 {formatVnd(offer.maturityAmount)}
               </TableCell>
               <TableCell align="right" sx={{ display: { xs: "none", sm: "table-cell" } }}>

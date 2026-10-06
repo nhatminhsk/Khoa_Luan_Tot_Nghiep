@@ -27,7 +27,14 @@ export function BankSearch() {
           : options;
       }}
       onChange={(_, bank) => bank && router.push(`/banks/${bank.ticker}`)}
-      sx={{ width: { xs: "100%", sm: 320 } }}
+      sx={(theme) => ({
+        width: { xs: "100%", sm: 320 },
+        // Điện thoại: bỏ mũi tên mở danh sách (gõ hoặc chạm là mở) để chữ gợi ý không bị cắt.
+        [theme.breakpoints.down("sm")]: {
+          "& .MuiAutocomplete-endAdornment": { display: "none" },
+          "&.MuiAutocomplete-hasPopupIcon .MuiOutlinedInput-root, &.MuiAutocomplete-hasClearIcon .MuiOutlinedInput-root": { pr: 1 },
+        },
+      })}
       renderInput={(params) => (
         <TextField
           {...params}

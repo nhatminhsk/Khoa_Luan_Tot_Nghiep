@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Box sx={{ flex: 1, minWidth: 0, display: "flex" }}>
               <BankSearch />
             </Box>
-            <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
+            <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} sx={{ alignItems: "center" }}>
               <DataStatusChip />
               <ThemeToggle />
               {isAuthenticated && <NotificationBell />}

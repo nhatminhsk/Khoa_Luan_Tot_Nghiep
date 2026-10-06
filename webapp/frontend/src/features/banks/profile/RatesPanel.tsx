@@ -134,7 +134,12 @@ export function RatesPanel({ ticker }: { ticker: string }) {
             <EmptyState title="Ngân hàng chưa công bố số liệu này" />
           ) : (
             <TableContainer>
-              <Table size="small" aria-label="Lãi suất cho vay và huy động bình quân theo tháng">
+              <Table
+                size="small"
+                aria-label="Lãi suất cho vay và huy động bình quân theo tháng"
+                // Điện thoại: tiêu đề "Cho vay bình quân" xuống hai dòng để 4 cột vừa màn hình.
+                sx={{ "& th": { whiteSpace: { xs: "normal", sm: "nowrap" } } }}
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell>Tháng</TableCell>

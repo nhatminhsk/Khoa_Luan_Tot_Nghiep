@@ -92,6 +92,19 @@ export const theme = createTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           borderBottomColor: (theme.vars ?? theme).palette.divider,
+          // Điện thoại: lề ngang 8px; iPad và laptop (đến hết lg): 12px. Mép bảng giữ 16px. Bảng bớt phải cuộn ngang.
+          [theme.breakpoints.down("sm")]: {
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
+            "&:first-of-type": { paddingLeft: theme.spacing(2) },
+            "&:last-of-type": { paddingRight: theme.spacing(2) },
+          },
+          [theme.breakpoints.between("sm", "xl")]: {
+            paddingLeft: theme.spacing(1.5),
+            paddingRight: theme.spacing(1.5),
+            "&:first-of-type": { paddingLeft: theme.spacing(2) },
+            "&:last-of-type": { paddingRight: theme.spacing(2) },
+          },
         }),
         head: ({ theme }) => ({
           fontWeight: 600,

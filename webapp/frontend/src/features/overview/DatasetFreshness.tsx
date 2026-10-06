@@ -25,7 +25,25 @@ export function DatasetFreshness({ datasets, showRows }: { datasets: DatasetSour
   }
   return (
     <TableContainer>
-      <Table size="small" aria-label="Nguồn dữ liệu và ngày cập nhật">
+      <Table
+        size="small"
+        aria-label="Nguồn dữ liệu và ngày cập nhật"
+        sx={{
+          // Màn hẹp: giữ bề rộng tối thiểu để cột không bị bóp còn một chữ mỗi dòng; bảng cuộn ngang, cột tên ghim trái.
+          minWidth: { xs: 680, md: 0 },
+          "& th:first-of-type, & td:first-of-type": {
+            minWidth: 128,
+            position: { xs: "sticky", md: "static" },
+            left: 0,
+            zIndex: 1,
+            bgcolor: "background.paper",
+            boxShadow: { xs: "inset -1px 0 0 var(--mui-palette-divider)", md: "none" },
+          },
+          "& thead th:first-of-type": {
+            backgroundImage: "linear-gradient(rgba(148, 163, 184, 0.06), rgba(148, 163, 184, 0.06))",
+          },
+        }}
+      >
         <TableHead>
           <TableRow>
             <TableCell>Dữ liệu</TableCell>

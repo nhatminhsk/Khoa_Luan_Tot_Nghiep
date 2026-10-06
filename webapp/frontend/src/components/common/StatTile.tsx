@@ -50,7 +50,7 @@ const swapIn = keyframes`
  */
 export function StatTile({ label, value, hint, icon, tone = "primary", delta, trend, swapKey }: StatTileProps) {
   return (
-    <Card sx={{ p: 2.25, height: "100%", display: "flex", flexDirection: "column" }}>
+    <Card sx={{ p: { xs: 1.5, sm: 2.25 }, height: "100%", display: "flex", flexDirection: "column" }}>
       <Box
         key={swapKey}
         sx={
@@ -59,7 +59,7 @@ export function StatTile({ label, value, hint, icon, tone = "primary", delta, tr
             : { animation: `${swapIn} 1000ms cubic-bezier(0.22, 1, 0.36, 1)`, "@media (prefers-reduced-motion: reduce)": { animation: "none" } }
         }
       >
-        <Stack direction="row" spacing={1.25} sx={{ alignItems: "center", mb: 1.5 }}>
+        <Stack direction="row" spacing={1.25} useFlexGap sx={{ alignItems: "center", mb: { xs: 1, sm: 1.5 } }}>
           {icon && (
             <Box
               aria-hidden
@@ -67,7 +67,8 @@ export function StatTile({ label, value, hint, icon, tone = "primary", delta, tr
                 width: 34,
                 height: 34,
                 borderRadius: 2.5,
-                display: "grid",
+                // Điện thoại xếp 2 thẻ một hàng: bỏ ô icon để nhãn có chỗ.
+                display: { xs: "none", sm: "grid" },
                 placeItems: "center",
                 flexShrink: 0,
                 color: `${tone}.main`,
@@ -77,16 +78,23 @@ export function StatTile({ label, value, hint, icon, tone = "primary", delta, tr
               {icon}
             </Box>
           )}
-          <Typography variant="body2" color="text.secondary" component="h3" sx={{ fontWeight: 500, lineHeight: 1.35 }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            component="h3"
+            sx={{ fontWeight: 500, lineHeight: 1.35, fontSize: { xs: "0.8125rem", sm: "0.875rem" } }}
+          >
             {label}
           </Typography>
         </Stack>
         <Stack direction="row" spacing={1} sx={{ alignItems: "center", flexWrap: "wrap", rowGap: 0.5 }}>
-          <Typography sx={{ fontSize: "1.75rem", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.01em" }}>{value}</Typography>
+          <Typography sx={{ fontSize: { xs: "1.375rem", sm: "1.75rem" }, fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+            {value}
+          </Typography>
           {delta && <DeltaChip delta={delta} />}
         </Stack>
         {(hint || delta) && (
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.75, fontSize: "0.8125rem" }}>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.75, fontSize: { xs: "0.75rem", sm: "0.8125rem" } }}>
             {hint}
             {hint && delta ? " · " : null}
             {delta?.label}
@@ -142,7 +150,7 @@ function TrendSpark({ trend, tone }: { trend: NonNullable<StatTileProps["trend"]
     <Box
       sx={{
         mt: "auto",
-        pt: 1.5,
+        pt: { xs: 1, sm: 1.5 },
         mx: -0.5,
         [`& .MuiLineChart-area`]: { fill: `url(#${gradientId})` },
         [`& .MuiLineChart-line`]: { strokeWidth: 2 },

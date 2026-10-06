@@ -1,5 +1,5 @@
 dataset,name,source,frequency,last_updated,row_count,coverage_note
-deposit_rates,Lãi suất tiết kiệm niêm yết,"24hmoney (đối chiếu CafeF, web ngân hàng)",DAILY,2026-10-04,15230,22/22 ngân hàng có số ngày gần nhất
+deposit_rates,Lãi suất tiết kiệm niêm yết,"24hmoney (đối chiếu CafeF, web ngân hàng)",DAILY,2026-10-05,15526,22/22 ngân hàng có số ngày gần nhất
 lending_rates,Lãi suất cho vay bình quân,Báo VietnamNet tổng hợp số ngân hàng công bố,MONTHLY,2026-08,239,14/22 ngân hàng có số tháng gần nhất
 bank_quarterly,Chỉ tiêu tài chính theo quý,"BCTC và thuyết minh (vnstock: VCI, MAS)",QUARTERLY,2026-Q2,9513,"22/22 ngân hàng, từ 2019-Q1"
 app_store,Điểm ứng dụng trên kho ứng dụng,"Google Play, App Store",SNAPSHOT,2026-10-01,44,"Google Play 22/22, App Store 22/22"
