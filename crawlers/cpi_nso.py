@@ -150,14 +150,19 @@ def parse_figures(content_html: str, month: str,
     return grab(mom_anchor), grab(yoy_anchor)
 
 
-def fetch_posts(session: requests.Session | None = None, pause: float = 0.3) -> list[dict]:
+def fetch_posts(session: requests.Session | None = None, pause: float = 0.3,
+                per_page: int = 100, max_pages: int | None = None) -> list[dict]:
+    """Bai thong cao CPI tren nso.gov.vn, moi nhat truoc. `max_pages` gioi han so trang (buoc hang ngay
+    chi can trang dau); None = doc het (backfill)."""
     s = session or requests.Session()
     s.headers.update(HEADERS)
     out, page = {}, 1
     while True:
         r = s.get(
             API,
-            params={"search": SEARCH, "per_page": 100, "page": page,
+            # Co `search` thi WordPress mac dinh sap theo do lien quan -> phai sap theo ngay de trang dau
+            # la cac bai moi nhat.
+            params={"search": SEARCH, "per_page": per_page, "page": page, "orderby": "date", "order": "desc",
                     "_fields": "id,date,slug,link,title,content"},
             timeout=60,
         )
@@ -169,7 +174,7 @@ def fetch_posts(session: requests.Session | None = None, pause: float = 0.3) -> 
             if post["slug"].startswith(SLUG_PREFIX):
                 out[post["id"]] = post
         total_pages = int(r.headers.get("X-WP-TotalPages", 1))
-        if page >= total_pages:
+        if page >= total_pages or (max_pages is not None and page >= max_pages):
             break
         page += 1
         time.sleep(pause)
@@ -234,6 +239,14 @@ def backfill(since: str = "2018-01", write: bool = True,
         for line in conflicts:
             print("  " + line)
     return result
+
+
+def run(per_page: int = 10) -> str:
+    """Buoc hang ngay trong run_daily_crawl: chi doc vai bai moi nhat (CPI thang truoc duoc dang khoang
+    ngay 3-6 thang sau), them thang moi vao cpi.csv. Khong ghi de so da co: lech thi bao xung dot nhu backfill."""
+    result = backfill(posts=fetch_posts(per_page=per_page, max_pages=1))
+    latest = result.dropna(subset=["cpi_yoy_percent"]).iloc[-1]
+    return f"cpi.csv toi {latest['month']} (so cung ky {latest['cpi_yoy_percent']}%)"
 
 
 if __name__ == "__main__":

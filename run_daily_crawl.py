@@ -18,8 +18,13 @@ files the crawlers just updated; webapp/backend picks it up at 16:00.
 market_index (VN-Index, VN30) joined the daily run on 2026-10-01: run by hand
 only, it had left a 10-session gap (10/09 -> 23/09/2026).
 
-Does NOT run crawlers.macro here: that module has no daily crawl step (SBV
-policy rate / CPI are manually-logged event series, see crawl_macro.ipynb).
+cpi_nso (CPI from the NSO press release) joined on 2026-10-06: run by hand only,
+the web app kept showing August inflation after September's figure was out
+(published 03/10). NSO posts last month's CPI around the 3rd-6th; on other days
+the step reads the latest posts and adds nothing.
+
+Does NOT run crawlers.macro here: that module has no daily crawl step (the SBV
+policy rate is a manually-logged event series, see crawl_macro.ipynb).
 
 The two deposit cross-check crawlers run right after deposit_rates so all three
 readings of the same day land together. They exist because three sources that
@@ -35,7 +40,7 @@ from datetime import datetime, timezone
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from crawlers import (deposit_24hmoney, deposit_crosscheck, deposit_rates,
+from crawlers import (cpi_nso, deposit_24hmoney, deposit_crosscheck, deposit_rates,
                       loan_rates, market_index, price)
 from serving import export as serving_export
 
@@ -47,6 +52,9 @@ CRAWLERS = {
     "price": price.run,
     # VN-Index, VN30: truoc 01/10/2026 chi chay tay nen tung hong 10/09 -> 23/09.
     "market_index": market_index.build,
+    # CPI thang (Cuc Thong ke): truoc 06/10/2026 chi chay tay nen web dung o lam phat thang 8 khi thang 9
+    # da cong bo. Chi doc vai bai moi nhat; ngay khong co bai moi thi khong them gi.
+    "cpi_nso": cpi_nso.run,
     # Chay SAU cac crawler: xuat lai data/serving/ cho web app (webapp/backend tu nap luc 16:00).
     # Khong goi mang; loi o day khong anh huong so lieu da crawl.
     "serving_export": serving_export.main,
