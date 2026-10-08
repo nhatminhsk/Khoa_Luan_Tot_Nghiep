@@ -44,7 +44,7 @@ from datetime import datetime, timezone
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from crawlers import (cpi_nso, deposit_24hmoney, deposit_crosscheck, deposit_rates,
-                      loan_rates, market_index, price, price_index_nso)
+                      lending_rates_official, loan_rates, market_index, price, price_index_nso)
 from serving import export as serving_export
 
 CRAWLERS = {
@@ -61,6 +61,10 @@ CRAWLERS = {
     # Chi so gia USD/vang/lam phat co ban, cung bai NSO voi CPI: truoc 07/10/2026 chi chay tay nen file
     # dung o thang 8 khi thang 9 da cong bo. Chi them thang moi / bu o trong, khong ghi de.
     "price_index_nso": price_index_nso.run,
+    # Lai cho vay binh quan tu web cua tung ngan hang (Chi thi 01/CT-NHNN), them tu 08/10/2026. So thang,
+    # nen ngan hang da co so thang truoc thi bo qua; chi ton thoi gian vao dau thang khi ngan hang dang so moi.
+    # Can Microsoft Edge (dung trang JavaScript bang --headless --dump-dom).
+    "lending_rates_official": lending_rates_official.run,
     # Chay SAU cac crawler: xuat lai data/serving/ cho web app (webapp/backend tu nap luc 16:00).
     # Khong goi mang; loi o day khong anh huong so lieu da crawl.
     "serving_export": serving_export.main,

@@ -20,6 +20,9 @@ html5lib>=1.1
 matplotlib>=3.11.1
 seaborn>=0.13.2
 
+# Lai cho vay binh quan tu web tung ngan hang, nhieu ngan hang dang PDF (crawlers/lending_rates_official.py)
+pdfplumber>=0.11
+
 # Danh gia app ngan hang tren Google Play (crawlers/app_reviews.py)
 google-play-scraper>=1.2.7
 
