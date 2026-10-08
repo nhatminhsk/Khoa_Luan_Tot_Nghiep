@@ -184,7 +184,42 @@ DISCLOSED: list[tuple] = [
         "Khop tuyet doi voi vnstock 2024-Q2 = 13.17, va con so nay xac nhan THU TU COT la "
         "rieng le truoc, hop nhat sau (13.14 | 13.17) - co so de suy cot cho SHB/BID.",
     ),
+    # Ky 30/06/2026, trich 07/10/2026 tu ban Vietstock luu lai (xem VIETSTOCK_CAR). Ca bon
+    # bang deu co NHAN COT "Rieng le | Hop nhat" ngay tren dong so -> do_tin_cay cao.
+    (
+        "BID", "2026-Q2", 10.01, 9.84, 7.12, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/BID_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "Bang 2 trang 6, nhan cot 'Rieng le 30/06/2026 | Hop nhat 30/06/2026'. Ghi chu cua "
+        "bang: tinh theo TT41 va TT22/2023. Hop nhat 9.18 (2025-H2) -> 10.01.",
+    ),
+    (
+        "EIB", "2026-Q2", 12.60, 12.55, 12.80, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/EIB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "Muc 5 'Cac ty le von' trang 3, nhan cot Rieng le | Hop nhat. Ty le von cap 1 (12.80) "
+        "CAO HON CAR (12.60) dung nhu nguon in - cung hien tuong TCB 2025-Q4, khong phai loi doc.",
+    ),
+    (
+        "SSB", "2026-Q2", 12.06, 12.02, 11.89, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/SSB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "Bang 1 trang 5 (doc tu anh: trich text lam lech dong nhan va so). Kiem so hoc: von tu "
+        "co hop nhat 42,763,758 / TSCRR 354,736,711 = 12.055%. Giam 1.33 diem so voi 13.39 "
+        "(2025-H2); ban cong bo khong in ky so sanh.",
+    ),
+    (
+        "BAB", "2026-Q2", 8.95, 8.88, 7.06, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HNX/2026/BCTLATV/VN/QUY%202/BAB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN, khong co lop text - doc Bang 2 trang 6 bang cach render thanh anh. Giam 1.07 "
+        "diem so voi 10.02 (2025-H2); ban cong bo khong in ky so sanh.",
+    ),
 ]
+
+# Vietstock luu lai ban cong bo CAR nua nam cua phan lon NH niem yet theo mot mau ten co dinh
+# (tim ra 07/10/2026), on dinh hon trang IR cua tung NH:
+#   https://static2.vietstock.vn/data/{HOSE|HNX}/{nam}/BCTLATV/VN/QUY%202/{MA}_BaocaoTyleAnToanVon_6T_{nam}.pdf
+# Ngay 07/10/2026 da co ban 2026 cua ACB, BAB, BID, EIB, SSB, VPB; CTG, HDB, NAB, NVB, PGB, SHB,
+# TPB chua co (nam truoc SHB, OCB dang cuoi thang 10).
+VIETSTOCK_CAR = ("https://static2.vietstock.vn/data/{san}/{nam}/BCTLATV/VN/QUY%202/"
+                 "{ma}_BaocaoTyleAnToanVon_6T_{nam}.pdf")
 
 # ---------------------------------------------------------------------------
 # MB Bank: 12 ban Tru cot 3, 30/06/2019 -> 31/12/2025, dung nhip 6 thang/lan.
@@ -308,6 +343,9 @@ VPB_QUARTERLY: list[tuple[str, float, float]] = [
     ("2025-Q3", 12.45, 13.61),
     ("2025-Q4", 12.45, 14.35),
     ("2026-Q1", 12.03, 13.74),
+    # Doc tu Bang 3 trang 5 (render anh), co nhan cot; cot 31/12/2025 in kem trong cung bang
+    # (12.45 / 14.35) trung dong 2025-Q4 o tren -> thu tu cot da kiem.
+    ("2026-Q2", 11.57, 13.29),
 ]
 
 _VPB_BASE = ("https://www.vpbank.com.vn/-/media/vpbank-latest/5nha-dau-tu/"
@@ -327,7 +365,16 @@ _VPB_FILES = {
 }
 
 
+# Ky chua tim ra file tren vpbank.com.vn (cac bien the ten da probe 07/10/2026 deu khong ra PDF)
+# -> dung ban Vietstock luu lai.
+_VPB_OTHER = {
+    "2026-Q2": VIETSTOCK_CAR.format(san="HOSE", nam=2026, ma="VPB"),
+}
+
+
 def vpb_url(period: str) -> str:
+    if period in _VPB_OTHER:
+        return _VPB_OTHER[period]
     folder, name = _VPB_FILES[period]
     return _VPB_BASE.format(folder=folder, name=name)
 
@@ -338,11 +385,11 @@ def vpb_url(period: str) -> str:
 # ---------------------------------------------------------------------------
 PILLAR3: dict[str, str] = {
     "ACB": "https://acb.com.vn/acbwebsite/files/12.2024_CONG%20BO%20THONG%20TIN%20THEO%20TT41_VN_10042025.pdf",
-    "BAB": "",
+    "BAB": VIETSTOCK_CAR.format(san="HNX", nam=2026, ma="BAB"),
     "BID": "https://bidv.com.vn/bidv/quan-he-nha-dau-tu/thong-tin-co-dong/congbothongtin",
     "BVB": "https://bvbank.net.vn/wp-content/uploads/2022/01/BAOCAOCONGBOTHONGTINTYLEANTOANVON__1588563611354.pdf",
     "CTG": "",
-    "EIB": "",
+    "EIB": VIETSTOCK_CAR.format(san="HOSE", nam=2026, ma="EIB"),
     "HDB": "https://cdn.hdbank.com.vn/hdbank-file/investor/editor/bM0oFeFPUJyfnjkNnAjK20240904113105/HDBankCongbothongtinCARTT4130062024dau_1725437683266.pdf",
     "LPB": "https://lpbank.com.vn/tin-tuc/3253-bao-cao-cong-bo-thong-tin-ty-le-an-toan-von-ky-31-12-2025",
     "MBB": "https://mbbank.com.vn/resources/files/NhaDauTu/2026/T05-2026/20260527---mbb---cbtt-ty-le-an-toan-von-tai-ngay-31122025-(vn-en).pdf",
@@ -685,30 +732,57 @@ def write(rebuild: bool = False) -> pd.DataFrame:
     """
     OUT.mkdir(parents=True, exist_ok=True)
     df = build()
-    conflicts, kept = [], 0
+    conflicts, replaced, kept = [], [], 0
 
     if MASTER.exists() and not rebuild:
-        old = pd.read_csv(MASTER, encoding="utf-8-sig").set_index(["ticker", "period"])
+        # Doc file cu NGUYEN VAN CHU: nguoi dung ghi "NA" (= NH khong cong bo ky do) o mot so o,
+        # doc mac dinh thi pandas bien "NA" thanh o trong va lan ghi sau xoa mat dau danh dau.
+        old = pd.read_csv(MASTER, encoding="utf-8-sig", keep_default_na=False,
+                          na_values=[""]).set_index(["ticker", "period"])
         new = df.set_index(["ticker", "period"])
+        new["car_percent"] = new["car_percent"].astype(object)
+        keep_cols = _VALUE_COLS + ["retrieved_at_utc"]
         for key in old.index.intersection(new.index):
             o, n = old.loc[key], new.loc[key]
             if pd.isna(o["car_percent"]):
+                # code cung chua co so -> giu nguyen dong cu (ky_goc, note nguoi dung da ghi)
+                if pd.isna(n["car_percent"]):
+                    for col in keep_cols:
+                        new.loc[key, col] = o[col]
+                continue
+            if str(o["car_percent"]).strip().upper() == "NA":
+                kept += 1
+                if pd.notna(n["car_percent"]):
+                    conflicts.append((key, "NA", float(n["car_percent"])))
+                for col in keep_cols:
+                    new.loc[key, col] = o[col]
+                continue
+            # Ky THAY THE (Q1/Q3 dung tam cho nua nam) chi giu den khi code co so cua KY CHOT.
+            # Khong coi la conflict: day la thay so tam bang so dung ky, vi du VPB 2026-H1
+            # mang so 31/03 cho toi khi ban 30/06/2026 duoc trich (07/10/2026).
+            if (str(o["dung_ky_thay_the"]) == "True" and pd.notna(n["car_percent"])
+                    and str(n["dung_ky_thay_the"]) != "True"):
+                replaced.append((key, o["ky_goc"], n["ky_goc"]))
                 continue
             kept += 1
             if pd.notna(n["car_percent"]) and abs(float(o["car_percent"]) - float(n["car_percent"])) > 1e-9:
                 conflicts.append((key, float(o["car_percent"]), float(n["car_percent"])))
-            for col in _VALUE_COLS:
+            for col in keep_cols:
                 new.loc[key, col] = o[col]
         df = new.reset_index()[COLUMNS].sort_values(["ticker", "period"]).reset_index(drop=True)
 
     df.to_csv(MASTER, index=False, encoding="utf-8-sig")
+    # doc lai theo cach mac dinh ("NA" -> NaN) de validate()/thong ke nhan cot so
+    df = pd.read_csv(MASTER, encoding="utf-8-sig")
     n_filled = int(df["car_percent"].notna().sum())
     msg = (f"car: {len(df)} dong ({df['ticker'].nunique()} NH x {df['period'].nunique()} ky), "
            f"da co so={n_filled}, con trong={len(df) - n_filled}, giu tu file cu={kept}, "
-           f"conflicts={len(conflicts)}")
+           f"thay ky thay the={len(replaced)}, conflicts={len(conflicts)}")
     with open("crawl_log.txt", "a", encoding="utf-8") as f:
         f.write(f"[{datetime.now(timezone.utc).isoformat()}] {msg} -> {MASTER}\n")
     print(f"ghi {MASTER}\n  {msg}")
+    for (tic, per), ky_cu, ky_moi in replaced:
+        print(f"  {tic} {per}: thay ky thay the {ky_cu} bang ky chot {ky_moi}")
     if conflicts:
         print("  !! O LECH giua file va code (GIU FILE, khong tu sua):")
         for (tic, per), o, n in conflicts:

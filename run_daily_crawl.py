@@ -18,6 +18,9 @@ files the crawlers just updated; webapp/backend picks it up at 16:00.
 market_index (VN-Index, VN30) joined the daily run on 2026-10-01: run by hand
 only, it had left a 10-session gap (10/09 -> 23/09/2026).
 
+price_index_nso (USD / gold price index, core inflation -- same NSO post) joined on
+2026-10-07 for the same reason.
+
 cpi_nso (CPI from the NSO press release) joined on 2026-10-06: run by hand only,
 the web app kept showing August inflation after September's figure was out
 (published 03/10). NSO posts last month's CPI around the 3rd-6th; on other days
@@ -41,7 +44,7 @@ from datetime import datetime, timezone
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from crawlers import (cpi_nso, deposit_24hmoney, deposit_crosscheck, deposit_rates,
-                      loan_rates, market_index, price)
+                      loan_rates, market_index, price, price_index_nso)
 from serving import export as serving_export
 
 CRAWLERS = {
@@ -55,6 +58,9 @@ CRAWLERS = {
     # CPI thang (Cuc Thong ke): truoc 06/10/2026 chi chay tay nen web dung o lam phat thang 8 khi thang 9
     # da cong bo. Chi doc vai bai moi nhat; ngay khong co bai moi thi khong them gi.
     "cpi_nso": cpi_nso.run,
+    # Chi so gia USD/vang/lam phat co ban, cung bai NSO voi CPI: truoc 07/10/2026 chi chay tay nen file
+    # dung o thang 8 khi thang 9 da cong bo. Chi them thang moi / bu o trong, khong ghi de.
+    "price_index_nso": price_index_nso.run,
     # Chay SAU cac crawler: xuat lai data/serving/ cho web app (webapp/backend tu nap luc 16:00).
     # Khong goi mang; loi o day khong anh huong so lieu da crawl.
     "serving_export": serving_export.main,

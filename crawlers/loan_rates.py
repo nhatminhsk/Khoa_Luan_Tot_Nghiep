@@ -48,6 +48,49 @@ FIELDS = ["deposit_0_to_1m", "deposit_1_to_6m", "deposit_6_to_12m",
           "deposit_12_to_24m", "deposit_over_24m", "loan_vnd_avg",
           "loan_priority_short_term"]
 
+# ---------------------------------------------------------------------------
+# NGUON GOC (tu 07/10/2026 la nguon chinh cho thang moi): ban "Developments of interest
+# rates applied by credit institutions (<thang> <nam>)" NHNN dang moi thang tren sbv.gov.vn,
+# so lieu nam trong file PDF dinh kem (tieng Anh). Thang 8/2026 dang ngay 18/09.
+#
+# Vi sao doi: thuvienphapluat (YEAR_PAGES) dung o thang 6/2026, nen suot thang 9 crawler bao
+# "no new month" ma khong loi gi trong khi NHNN da dang thang 7 va 8. Ban chep lai cung co the
+# sai: VNBA chep thang 8 thanh lai cho vay uu tien 3,9% trong khi ban goc NHNN ghi 4,0%.
+# YEAR_PAGES giu lai cho --selfcheck va lich su 2024-2025.
+#
+# BAY:
+#   - Slug trang KHONG deu: tieu de co ngoac "(June 2026)" -> slug co gach cuoi "june-2026-";
+#     tieu de khong ngoac "July 2026" -> "july-2026". Thu ca hai (SBV_TAILS).
+#   - Moi thang mot nguoi dich, cau chu doi: thang 7 viet "mobilization interest rates",
+#     "0.1% - 0.2%", "1month", va bo "p.a." o ky han tren 24 thang. Regex phai chiu ca hai kieu.
+#   - Do nhanh ~10 request lien tiep thi sbv.gov.vn chan IP (403 ca trang chu) mot luc lau.
+#     Vi vay chi do thang ke tiep sau thang cuoi trong file, nghi SBV_PAUSE giay giua cac lan,
+#     va gap 403 thi dung ngay, bao "blocked" chu khong thu tiep.
+# ---------------------------------------------------------------------------
+SBV_ARTICLE = ("https://sbv.gov.vn/en/w/developments-of-interest-rates-applied-by-credit-"
+               "institutions-{month}-{year}{tail}")
+SBV_TAILS = ("-", "")
+SBV_HOST = "https://sbv.gov.vn"
+SBV_PAUSE = 4
+MONTHS_EN = ["january", "february", "march", "april", "may", "june", "july", "august",
+             "september", "october", "november", "december"]
+SBV_PDF_RE = re.compile(r'href="(/documents/20117/[^"]+?\.pdf[^"]*)"')
+
+EN_NUM = r"\d+(?:\.\d+)?"
+EN_FIG = r"(" + EN_NUM + r")\s*%?\s*(?:[-–—]\s*(" + EN_NUM + r"))?\s*%\s*(?:p\.\s*a\.)?"
+EN_MONTH = r"\s*-?\s*month"
+EN_DEPOSIT_TAILS = {
+    "deposit_0_to_1m": r"for demand and below 1" + EN_MONTH,
+    "deposit_1_to_6m": r"for 1" + EN_MONTH + r" to below 6" + EN_MONTH,
+    "deposit_6_to_12m": r"for 6" + EN_MONTH + r" to (?:below )?12" + EN_MONTH,
+    "deposit_12_to_24m": r"for (?:over )?12" + EN_MONTH + r"(?: plus)? to 24" + EN_MONTH,
+    "deposit_over_24m": r"for (?:over )?24" + EN_MONTH,
+}
+EN_LOAN_RE = re.compile(r"average lending interest rates? (?:were|was)\s*(?:between|at|around|about|from)?\s*"
+                        + EN_FIG + r"\s*for new loans", re.I)
+EN_PRIORITY_RE = re.compile(r"priority sectors?(?: and areas)?\s*(?:was|were)\s*"
+                            r"(?:at|about|around|approximately)?\s*" + EN_FIG, re.I)
+
 
 def safe_fetch(label, func):
     last_error = None
@@ -120,6 +163,87 @@ def parse_block(block):
     return out
 
 
+def parse_sbv_text(text):
+    """Ban tieng Anh cua NHNN -> cung dang ket qua voi parse_block()."""
+    text = re.sub(r"\s+", " ", text.replace(" ", " "))
+    usd = text.find("in USD")  # doan VND dung truoc lan dau nhac USD (tien gui USD)
+    deposit_part = text[:usd] if usd > 0 else text
+    m = re.search(r"2\.\s*Lending", text)
+    loan_part = text[m.start():] if m else text
+    usd = loan_part.find("in USD")
+    loan_part = loan_part[:usd] if usd > 0 else loan_part
+
+    out = {}
+    for field, tail in EN_DEPOSIT_TAILS.items():
+        out[field] = pair(re.search(EN_FIG + r"\s*" + tail, deposit_part, re.I))
+    out["loan_vnd_avg"] = pair(EN_LOAN_RE.search(loan_part))
+    out["loan_priority_short_term"] = pair(EN_PRIORITY_RE.search(loan_part))
+    return out
+
+
+def sbv_pdf_text(content):
+    import pymupdf
+
+    with pymupdf.open(stream=content, filetype="pdf") as doc:
+        return "\n".join(page.get_text() for page in doc)
+
+
+def fetch_sbv_month(year, month, session):
+    """Trang + PDF cua mot thang. Tra (status, vals, url, title); status: ok / missing / blocked / bad."""
+    for tail in SBV_TAILS:
+        url = SBV_ARTICLE.format(month=MONTHS_EN[month - 1], year=year, tail=tail)
+        r = session.get(url, timeout=30)
+        time.sleep(SBV_PAUSE)
+        if r.status_code == 403:
+            return "blocked", None, url, ""
+        if r.status_code == 404:
+            continue
+        r.raise_for_status()
+        link = SBV_PDF_RE.search(r.text)
+        if not link:
+            return "bad", None, url, "trang khong co file PDF dinh kem"
+        title = BeautifulSoup(r.text, "lxml").title
+        title = (title.get_text(strip=True) if title else "").split(" - Ngân hàng")[0]
+        pdf = session.get(SBV_HOST + link.group(1).replace("&amp;", "&"), timeout=60)
+        time.sleep(SBV_PAUSE)
+        if pdf.status_code == 403:
+            return "blocked", None, url, title
+        if b"%PDF" not in pdf.content[:1024]:
+            return "bad", None, url, "file dinh kem khong phai PDF (HTTP %d)" % pdf.status_code
+        text = sbv_pdf_text(pdf.content)
+        # chan file nham thang: tieu de trong PDF phai nhac dung thang/nam dang tim
+        if not re.search(MONTHS_EN[month - 1] + r"\s+" + str(year), text, re.I):
+            return "bad", None, url, "PDF khong ghi thang %d/%d" % (month, year)
+        return "ok", parse_sbv_text(text), url, title
+    return "missing", None, "", ""
+
+
+def next_months(last_date, today=None):
+    """Cac thang sau thang cuoi trong file, toi thang truoc thang hien tai."""
+    today = today or datetime.now(timezone.utc).date()
+    y, m = int(last_date[:4]), int(last_date[5:7])
+    out = []
+    while True:
+        y, m = (y + 1, 1) if m == 12 else (y, m + 1)
+        if (y, m) >= (today.year, today.month):
+            return out
+        out.append((y, m))
+
+
+def scrape_sbv(months):
+    """Thang nao NHNN da dang. Dung o thang dau tien chua co (thang sau khong the co truoc)."""
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    found, status = {}, []
+    for y, m in months:
+        st, vals, url, title = fetch_sbv_month(y, m, session)
+        status.append("%04d-%02d:%s" % (y, m, st))
+        if st != "ok":
+            break
+        found["%04d-%02d-01" % (y, m)] = (vals, url, "NHNN (sbv.gov.vn) - " + title)
+    return found, status
+
+
 def read_master():
     if not MASTER.exists():
         return None, []
@@ -133,7 +257,8 @@ def scrape(years):
     for year in years:
         text, url = fetch_year(year)
         for y, mth, block in split_months(text, year):
-            found["%04d-%02d-01" % (y, mth)] = (parse_block(block), url, mth, y)
+            found["%04d-%02d-01" % (y, mth)] = (parse_block(block), url,
+                                                 "NHNN - dien bien lai suat TCTD thang %d/%d" % (mth, y))
         time.sleep(1)
     return found
 
@@ -160,11 +285,15 @@ def run(years=None) -> dict:
     idx = dict((name, i) for i, name in enumerate(header))
     by_date = dict((r[0], r) for r in existing)
 
+    # Nguon goc NHNN truoc (chi cac thang sau thang cuoi trong file), roi ban chep lai cua
+    # thuvienphapluat de bu o trong / bao lech. Trung thang thi ban NHNN thang.
+    sbv_found, sbv_status = scrape_sbv(next_months(max(by_date)))
     found = scrape(years)
+    found.update(sbv_found)
     added, incomplete, filled, conflicts = [], [], [], []
 
     for date in sorted(found):
-        vals, url, mth, y = found[date]
+        vals, url, title = found[date]
         row = by_date.get(date)
 
         if row is not None:
@@ -190,7 +319,7 @@ def run(years=None) -> dict:
         if vals["loan_vnd_avg"] == (None, None):
             incomplete.append(date)
             continue
-        new_row = [date, url, "NHNN - dien bien lai suat TCTD thang %d/%d" % (mth, y)]
+        new_row = [date, url, title]
         for field in FIELDS:
             lo, hi = vals[field]
             new_row += [fmt(lo), fmt(hi)]
@@ -205,7 +334,7 @@ def run(years=None) -> dict:
     skipped = len(found) - len(added) - len(incomplete)
     summary = {"added": len(added), "months": [r[0] for r in added], "skipped": skipped,
                "incomplete": incomplete, "filled": filled, "conflicts": conflicts,
-               "still_blank": still_blank}
+               "still_blank": still_blank, "sbv": sbv_status}
 
     if not added and not filled:
         with open(log_path, "a", encoding="utf-8") as f:
@@ -213,6 +342,7 @@ def run(years=None) -> dict:
                     + " already recorded, incomplete=" + str(incomplete or "none")
                     + ", still_blank=" + str(sorted(still_blank) or "none")
                     + ", conflicts=" + str(len(conflicts))
+                    + ", sbv=" + str(sbv_status or "none")
                     + "), file left untouched\n")
         summary["written"] = False
         return summary
@@ -227,6 +357,7 @@ def run(years=None) -> dict:
                 + ", filled " + str(len(filled)) + " o trong " + str(filled or "")
                 + ", still_blank=" + str(sorted(still_blank) or "none")
                 + ", conflicts=" + str(len(conflicts))
+                + ", sbv=" + str(sbv_status or "none")
                 + " -> " + str(MASTER) + "\n")
     summary["written"] = True
     return summary
@@ -267,6 +398,7 @@ if __name__ == "__main__":
             print("  ", p)
     else:
         r = run()
+        print("NHNN (sbv.gov.vn):", r["sbv"] or "khong co thang nao can do")
         print("them thang moi:", r["months"] or "khong")
         print("dien o trong :", len(r["filled"]))
         for x in r["filled"][:40]:

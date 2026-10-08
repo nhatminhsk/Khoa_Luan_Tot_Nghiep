@@ -37,13 +37,19 @@ tu tu do, va cat som neu gap chu ngu khac -- de con so cua vang khong bi doc
 nham thanh con so cua do la khi hai cau nam sat nhau.
 
 Chay:
-    python -m crawlers.price_index_nso
+    python -m crawlers.price_index_nso            # doc het bai, dung lai ca file (ghi de hang)
+    python -m crawlers.price_index_nso --run      # buoc hang ngay: chi them thang moi / bu o trong
     python -m crawlers.price_index_nso --validate
+
+Tu 07/10/2026 run() nam trong run_daily_crawl.py: truoc do module chi chay tay nen file dung o
+thang 8 khi NSO da dang thang 9 (03/10). Lam phat co ban THANG chi co trong file PDF dinh kem bai
+(ban HTML chi neu binh quan N thang), nen cot core_inflation_* van trong o cac thang gan day.
 """
 from __future__ import annotations
 
 import os
 import re
+import warnings
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -221,6 +227,38 @@ def build(since="2018-01", write=True, posts=None):
     }
 
 
+def run(per_page=10):
+    """Buoc hang ngay trong run_daily_crawl: chi doc vai bai moi nhat, them thang moi va bu o trong.
+    KHONG ghi de so da co (build() ghi de ca hang) -- lech thi bao xung dot nhu cpi_nso.backfill."""
+    incoming = build_frame(cpi_nso.fetch_posts(per_page=per_page, max_pages=1)).set_index("month")
+    existing = pd.read_csv(OUT_PATH, encoding="utf-8-sig", dtype={"month": str}).set_index("month")
+    value_cols = [c for c in COLUMNS if c.endswith("_percent")]
+
+    added, filled, conflicts = [], [], []
+    for month, row in incoming.iterrows():
+        if month not in existing.index:
+            with warnings.catch_warnings():  # cot lam phat co ban rong -> FutureWarning cua pandas
+                warnings.simplefilter("ignore", FutureWarning)
+                existing.loc[month] = row
+            added.append(month)
+            continue
+        for col in value_cols:
+            old, new = existing.loc[month, col], row[col]
+            if pd.isna(old) and pd.notna(new):
+                existing.loc[month, col] = new
+                filled.append(f"{month}.{col}")
+            elif pd.notna(old) and pd.notna(new) and abs(float(old) - float(new)) >= 0.005:
+                conflicts.append(f"{month}.{col}: giu {old}, nguon moi {new}")
+
+    if added or filled:
+        existing.sort_index().reset_index().to_csv(OUT_PATH, index=False, encoding="utf-8-sig",
+                                                   lineterminator="\r\n")
+    msg = (f"price_index_nso: thang moi={added or 'khong'}, o bu={len(filled)}, "
+           f"xung dot={conflicts or 'khong'}, toi {existing.index.max()}")
+    _log(msg)
+    return msg
+
+
 def validate():
     frame = pd.read_csv(OUT_PATH, encoding="utf-8-sig", dtype={"month": str})
     value_cols = [c for c in frame.columns if c.endswith("_percent")]
@@ -263,5 +301,7 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if "--validate" in sys.argv:
         print(json.dumps(validate(), indent=2, ensure_ascii=False, default=str))
+    elif "--run" in sys.argv:
+        print(run())
     else:
         print(json.dumps(build(), indent=2, ensure_ascii=False, default=str))

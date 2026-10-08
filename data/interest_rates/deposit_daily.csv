@@ -12176,3 +12176,597 @@
 2026-10-05,PVComBank,,18,online,6.3,,laisuattietkiem,2026-10-05T08:30:11.276152+00:00
 2026-10-05,PVComBank,,24,online,6.3,,laisuattietkiem,2026-10-05T08:30:11.276152+00:00
 2026-10-05,PVComBank,,36,online,6.3,,laisuattietkiem,2026-10-05T08:30:11.276152+00:00
+2026-10-06,Agribank,,1,quay,2.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,3,quay,2.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,6,quay,4.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,9,quay,4.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,12,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,18,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Agribank,,24,quay,6.0,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,1,quay,2.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,3,quay,4.45,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,6,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,9,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,12,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,18,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,24,quay,6.0,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,36,quay,6.0,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,1,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,3,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,6,online,6.6,5.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,9,online,6.6,5.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,12,online,6.8,5.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,18,online,6.6,6.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,24,online,6.8,6.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,BIDV,BID,36,online,6.8,6.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,1,quay,2.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,3,quay,2.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,6,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,9,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,12,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,24,quay,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,36,quay,5.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,1,online,2.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,3,online,2.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,6,online,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,9,online,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,12,online,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietcombank,VCB,24,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,1,quay,2.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,3,quay,2.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,6,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,9,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,12,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,18,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,24,quay,6.0,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietinbank,CTG,36,quay,6.0,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,1,quay,4.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,3,quay,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,6,quay,4.7,5.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,9,quay,4.6,5.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,12,quay,5.5,6.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,18,quay,5.6,6.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,24,quay,5.4,5.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,36,quay,5.4,5.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,1,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,3,online,5.1,5.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,6,online,5.3,5.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,9,online,5.9,6.4,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,ACB,ACB,12,online,5.7,6.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,1,quay,3.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,3,quay,3.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,6,quay,6.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,9,quay,6.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,12,quay,6.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,18,quay,5.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,24,quay,5.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,36,quay,5.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,1,online,3.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,3,online,4.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,6,online,6.25,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,9,online,6.25,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,12,online,6.25,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,18,online,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,24,online,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,An Binh Bank,,36,online,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,1,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,3,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,6,quay,7.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,9,quay,7.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,12,quay,7.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,18,quay,6.95,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,24,quay,6.95,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Bắc Á Bank,BAB,36,quay,6.95,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,1,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,3,quay,3.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,6,quay,4.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,9,quay,4.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,12,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,18,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,24,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Eximbank,EIB,36,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,1,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,3,quay,3.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,6,quay,5.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,9,quay,4.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,12,quay,5.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,18,quay,5.05,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,24,quay,5.05,6.65,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,36,quay,5.1,5.15,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,1,online,4.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,3,online,4.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,6,online,5.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,9,online,5.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,12,online,5.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,18,online,5.15,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,24,online,5.15,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Kiên Long Bank,,36,online,5.15,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,1,quay,4.3,4.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,3,quay,4.5,4.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,6,quay,6.6,6.7,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,9,quay,6.5,6.7,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,12,quay,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,18,quay,6.9,7.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,24,quay,7.0,7.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,36,quay,6.3,6.4,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,1,online,4.4,4.7,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,3,online,4.65,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,6,online,7.0,7.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,9,online,6.9,7.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,12,online,7.2,7.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,18,online,7.15,7.25,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,24,online,7.2,7.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,LP Bank,LPB,36,online,6.1,6.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,1,quay,3.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,3,quay,4.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,6,quay,4.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,9,quay,4.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,12,quay,6.3,6.4,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,18,quay,6.3,6.4,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,24,quay,7.0,7.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,36,quay,7.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,1,online,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,3,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,6,online,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,9,online,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,12,online,6.4,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,18,online,6.4,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,24,online,7.0,7.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MB Bank,MBB,36,online,7.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,1,quay,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,3,quay,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,6,quay,6.1,8.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,9,quay,6.1,8.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,12,quay,6.5,8.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,18,quay,6.3,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,24,quay,6.3,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,36,quay,5.8,6.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,1,online,4.75,4.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,3,online,4.75,4.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,6,online,6.3,8.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,9,online,6.3,8.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,12,online,6.8,8.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,18,online,6.6,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,24,online,6.6,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,MSB,MSB,36,online,6.1,6.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,1,quay,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,3,quay,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,6,quay,5.6,5.4,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,9,quay,5.8,5.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,12,quay,6.2,6.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,18,quay,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,24,quay,6.02,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,36,quay,5.85,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,1,online,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,3,online,4.7,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,6,online,6.4,6.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,9,online,6.6,6.2,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,12,online,6.6,6.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,18,online,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,24,online,6.9,6.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Nam A Bank,NAB,36,online,6.6,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,1,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,3,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,6,quay,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,9,quay,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,12,quay,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,18,quay,6.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,24,quay,6.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,36,quay,7.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,1,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,3,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,6,online,6.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,9,online,6.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,12,online,6.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,18,online,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,24,online,6.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,OCB,OCB,36,online,7.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,1,quay,0.5,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,3,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,6,quay,6.4,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,9,quay,6.4,6.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,12,quay,6.1,6.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,18,quay,6.2,6.3,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,24,quay,6.9,7.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Sacombank,STB,36,quay,6.9,7.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,1,online,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,3,online,4.65,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,6,online,6.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,9,online,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,12,online,6.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,18,online,6.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,24,online,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,SHB,SHB,36,online,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,1,quay,4.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,3,quay,4.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,6,quay,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,9,quay,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,12,quay,6.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,18,quay,5.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,24,quay,5.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,36,quay,5.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,1,online,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,3,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,6,online,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,9,online,6.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,12,online,6.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,18,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,24,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Techcombank,TCB,36,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,1,quay,4.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,3,quay,4.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,6,quay,5.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,18,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,36,quay,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,1,online,4.75,4.65,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,3,online,4.75,4.65,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,6,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,12,online,6.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,18,online,6.2,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,24,online,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,TPBank,TPB,36,online,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,1,quay,4.65,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,3,quay,4.75,4.45,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,6,quay,6.5,6.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,9,quay,6.5,6.6,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,12,quay,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,18,quay,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,24,quay,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,36,quay,6.8,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,1,online,4.75,4.45,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,3,online,4.75,4.45,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,6,online,7.0,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,9,online,7.0,7.5,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,12,online,7.0,7.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,18,online,7.0,7.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,24,online,7.0,7.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VCB Neo,,36,online,7.0,7.8,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,1,quay,4.35,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,3,quay,4.45,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,6,quay,5.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,9,quay,5.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,12,quay,6.5,7.0,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,18,quay,5.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,24,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,36,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,1,online,4.45,4.75,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,3,online,4.55,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,6,online,5.7,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,9,online,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,12,online,7.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,18,online,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,24,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VIB,VIB,36,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,1,quay,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,3,quay,4.5,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,6,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,9,quay,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,12,quay,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,18,quay,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,24,quay,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,36,quay,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,1,online,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,3,online,4.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,6,online,5.9,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,9,online,6.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,12,online,6.1,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,18,online,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,24,online,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,Vietbank,,36,online,6.4,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VP Bank,VPB,1,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VP Bank,VPB,6,quay,7.0,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VP Bank,VPB,12,quay,7.1,6.9,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,VP Bank,VPB,24,quay,7.1,6.1,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,1,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,3,quay,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,6,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,9,quay,5.0,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,12,quay,5.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,18,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,24,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,36,quay,5.8,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,1,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,3,online,4.75,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,6,online,5.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,9,online,5.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,12,online,5.6,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,18,online,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,24,online,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-06,PVComBank,,36,online,6.3,,laisuattietkiem,2026-10-06T08:30:08.355201+00:00
+2026-10-07,Agribank,,1,quay,2.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,3,quay,2.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,6,quay,4.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,9,quay,4.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,12,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,18,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Agribank,,24,quay,6.0,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,1,quay,2.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,3,quay,4.45,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,6,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,9,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,12,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,18,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,24,quay,6.0,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,36,quay,6.0,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,1,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,3,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,6,online,6.6,5.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,9,online,6.6,5.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,12,online,6.8,5.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,18,online,6.6,6.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,24,online,6.8,6.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,BIDV,BID,36,online,6.8,6.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,1,quay,2.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,3,quay,2.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,6,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,9,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,12,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,24,quay,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,36,quay,5.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,1,online,2.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,3,online,2.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,6,online,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,9,online,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,12,online,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietcombank,VCB,24,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,1,quay,2.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,3,quay,2.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,6,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,9,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,12,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,18,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,24,quay,6.0,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietinbank,CTG,36,quay,6.0,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,1,quay,4.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,3,quay,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,6,quay,4.7,5.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,9,quay,4.6,5.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,12,quay,5.5,6.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,18,quay,5.6,6.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,24,quay,5.4,5.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,36,quay,5.4,5.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,1,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,3,online,5.1,5.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,6,online,5.3,5.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,9,online,5.9,6.4,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,ACB,ACB,12,online,5.7,6.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,1,quay,3.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,3,quay,3.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,6,quay,6.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,9,quay,6.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,12,quay,6.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,18,quay,5.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,24,quay,5.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,36,quay,5.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,1,online,3.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,3,online,4.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,6,online,6.25,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,9,online,6.25,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,12,online,6.25,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,18,online,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,24,online,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,An Binh Bank,,36,online,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,1,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,3,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,6,quay,7.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,9,quay,7.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,12,quay,7.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,18,quay,6.95,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,24,quay,6.95,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Bắc Á Bank,BAB,36,quay,6.95,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,1,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,3,quay,3.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,6,quay,4.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,9,quay,4.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,12,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,18,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,24,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Eximbank,EIB,36,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,1,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,3,quay,3.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,6,quay,5.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,9,quay,4.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,12,quay,5.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,18,quay,5.05,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,24,quay,5.05,6.65,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,36,quay,5.1,5.15,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,1,online,4.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,3,online,4.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,6,online,5.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,9,online,5.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,12,online,5.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,18,online,5.15,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,24,online,5.15,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Kiên Long Bank,,36,online,5.15,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,1,quay,4.3,4.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,3,quay,4.5,4.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,6,quay,6.6,6.7,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,9,quay,6.5,6.7,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,12,quay,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,18,quay,6.9,7.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,24,quay,7.0,7.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,36,quay,6.3,6.4,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,1,online,4.4,4.7,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,3,online,4.65,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,6,online,7.0,7.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,9,online,6.9,7.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,12,online,7.2,7.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,18,online,7.15,7.25,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,24,online,7.2,7.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,LP Bank,LPB,36,online,6.1,6.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,1,quay,3.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,3,quay,4.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,6,quay,4.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,9,quay,4.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,12,quay,6.3,6.4,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,18,quay,6.3,6.4,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,24,quay,7.0,7.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,36,quay,7.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,1,online,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,3,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,6,online,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,9,online,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,12,online,6.4,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,18,online,6.4,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,24,online,7.0,7.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MB Bank,MBB,36,online,7.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,1,quay,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,3,quay,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,6,quay,6.1,8.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,9,quay,6.1,8.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,12,quay,6.5,8.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,18,quay,6.3,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,24,quay,6.3,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,36,quay,5.8,6.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,1,online,4.75,4.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,3,online,4.75,4.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,6,online,6.3,8.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,9,online,6.3,8.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,12,online,6.8,8.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,18,online,6.6,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,24,online,6.6,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,MSB,MSB,36,online,6.1,6.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,1,quay,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,3,quay,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,6,quay,5.6,5.4,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,9,quay,5.8,5.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,12,quay,6.2,6.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,18,quay,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,24,quay,6.02,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,36,quay,5.85,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,1,online,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,3,online,4.7,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,6,online,6.4,6.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,9,online,6.6,6.2,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,12,online,6.6,6.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,18,online,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,24,online,6.9,6.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Nam A Bank,NAB,36,online,6.6,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,1,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,3,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,6,quay,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,9,quay,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,12,quay,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,18,quay,6.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,24,quay,6.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,36,quay,7.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,1,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,3,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,6,online,6.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,9,online,6.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,12,online,6.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,18,online,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,24,online,6.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,OCB,OCB,36,online,7.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,1,quay,0.5,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,3,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,6,quay,6.4,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,9,quay,6.4,6.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,12,quay,6.1,6.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,18,quay,6.2,6.3,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,24,quay,6.9,7.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Sacombank,STB,36,quay,6.9,7.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,1,online,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,3,online,4.65,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,6,online,6.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,9,online,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,12,online,6.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,18,online,6.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,24,online,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,SHB,SHB,36,online,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,1,quay,4.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,3,quay,4.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,6,quay,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,9,quay,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,12,quay,6.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,18,quay,5.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,24,quay,5.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,36,quay,5.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,1,online,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,3,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,6,online,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,9,online,6.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,12,online,6.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,18,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,24,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Techcombank,TCB,36,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,1,quay,4.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,3,quay,4.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,6,quay,5.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,18,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,36,quay,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,1,online,4.75,4.65,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,3,online,4.75,4.65,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,6,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,12,online,6.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,18,online,6.2,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,24,online,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,TPBank,TPB,36,online,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,1,quay,4.65,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,3,quay,4.75,4.45,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,6,quay,6.5,6.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,9,quay,6.5,6.6,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,12,quay,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,18,quay,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,24,quay,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,36,quay,6.8,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,1,online,4.75,4.45,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,3,online,4.75,4.45,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,6,online,7.0,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,9,online,7.0,7.5,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,12,online,7.0,7.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,18,online,7.0,7.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,24,online,7.0,7.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VCB Neo,,36,online,7.0,7.8,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,1,quay,4.35,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,3,quay,4.45,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,6,quay,5.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,9,quay,5.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,12,quay,6.5,7.0,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,18,quay,5.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,24,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,36,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,1,online,4.45,4.75,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,3,online,4.55,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,6,online,5.7,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,9,online,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,12,online,7.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,18,online,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,24,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VIB,VIB,36,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,1,quay,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,3,quay,4.5,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,6,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,9,quay,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,12,quay,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,18,quay,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,24,quay,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,36,quay,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,1,online,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,3,online,4.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,6,online,5.9,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,9,online,6.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,12,online,6.1,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,18,online,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,24,online,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,Vietbank,,36,online,6.4,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VP Bank,VPB,1,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VP Bank,VPB,6,quay,7.0,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VP Bank,VPB,12,quay,7.1,6.9,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,VP Bank,VPB,24,quay,7.1,6.1,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,1,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,3,quay,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,6,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,9,quay,5.0,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,12,quay,5.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,18,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,24,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,36,quay,5.8,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,1,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,3,online,4.75,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,6,online,5.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,9,online,5.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,12,online,5.6,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,18,online,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,24,online,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
+2026-10-07,PVComBank,,36,online,6.3,,laisuattietkiem,2026-10-07T08:30:02.650175+00:00
