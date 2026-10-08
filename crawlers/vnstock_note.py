@@ -31,8 +31,9 @@ hoat dong...). Do phu rat khong deu: 85/210 id co so o >= 50% cua 748 o, 15 id r
 hoan toan (vi tri dia ly, tai san sinh lai...). Loc theo `id`, khong theo `name`.
 
 O VCI ghi sai da doi chieu voi BCTC goc nam trong CORRECTIONS (tien gui VND cua STB
-2026-Q2, BAB 2022-Q1, PGB 2022-Q3). build() sua tren bang tinh toan; raw_note/ va note_long.csv
-van la ban sao nguyen trang cua nguon.
+2026-Q2, BAB 2022-Q1, PGB 2022-Q3; cho vay ca nhan MSB 2022-Q4). build() va
+crawlers.build_features sua tren bang tinh toan; raw_note/ va note_long.csv van la ban sao
+nguyen trang cua nguon.
 
 Chay:
     python -m crawlers.vnstock_note
@@ -123,15 +124,44 @@ CORRECTIONS = {
                   "8108aeb3-7d5b-407a-bd2a-e2cda349586c.pdf",
         "reviewed": "2026-09-15",
     },
+    # Cho vay theo doi tuong khach hang: VCI chuyen nham 10.000 ty tu dong ca nhan sang dong
+    # cong ty TNHH + co phan (tong giu nguyen). Ty trong ca nhan 22,8% -> 31,1%.
+    ("MSB", "2022-Q4", "NT_BS_INDIVIDUALS"): {
+        "wrong": 27_563_927e6,
+        "value": 37_563_927e6,
+        "evidence": "BCTC hop nhat kiem toan 2022, thuyet minh 10.3 (trang 37): ca nhan "
+                    "37.563.927 trieu (31,14%), tong 120.643.542. BCTC 2023 cot dau nam ghi "
+                    "cung so. VCI ghi 27.563.927; hai quy lien ke 29,5% va 30,0%",
+        "source": "https://static2.vietstock.vn/data/HOSE/2022/BCTC/VN/NAM/"
+                  "MSB_Baocaotaichinh_2022_Kiemtoan_Hopnhat.pdf",
+        "reviewed": "2026-10-08",
+    },
+    ("MSB", "2022-Q4", "NT_BS_LIMITED_AND_JOINT_STOCK_COMPANIES"): {
+        "wrong": 88_936_306e6,
+        "value": 78_936_306e6,
+        "evidence": "Cung bang 10.3: cong ty TNHH tu nhan 29.215.085 + cong ty co phan khac "
+                    "49.721.221 = 78.936.306 trieu. VCI ghi 88.936.306 (thua dung 10.000.000 "
+                    "trieu ma dong ca nhan thieu)",
+        "source": "https://static2.vietstock.vn/data/HOSE/2022/BCTC/VN/NAM/"
+                  "MSB_Baocaotaichinh_2022_Kiemtoan_Hopnhat.pdf",
+        "reviewed": "2026-10-08",
+    },
 }
 
 
 def _apply_corrections(raw):
-    """Sua cac o trong CORRECTIONS tren bang tho (da loc KEEP). Tra ve (bang, log)."""
+    """Sua cac o trong CORRECTIONS tren bang tho. Tra ve (bang, log).
+
+    Chi xet cac o co `id` nam trong bang dua vao: build() da loc KEEP, build_features loc theo
+    NOTE_IDS, nen o cua id khac khong bi bao "khong con o nay".
+    """
     raw = raw.copy()
     raw["value"] = pd.to_numeric(raw["value"], errors="coerce")
     applied, skipped = [], []
+    ids = set(raw["id"])
     for (ticker, period, item), fix in CORRECTIONS.items():
+        if item not in ids:
+            continue
         mask = ((raw["ticker"] == ticker) & (raw["period"].astype(str) == period)
                 & (raw["id"] == item))
         current = raw.loc[mask, "value"]

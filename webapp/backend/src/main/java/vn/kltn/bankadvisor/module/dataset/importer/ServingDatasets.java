@@ -53,6 +53,7 @@ public final class ServingDatasets {
             new TableSpec("lending_rates", "lending_rates.csv", "lending_rate", REPLACE, List.of(), "rate_month",
                     List.of(req("month", "rate_month", TEXT), req("ticker", TICKER),
                             req("lending_avg_percent", DECIMAL), opt("deposit_avg_percent", DECIMAL),
+                            opt("segment", TEXT), opt("basis", TEXT), opt("source", TEXT),
                             opt("source_url", TEXT))),
             new TableSpec("app_store", "app_store.csv", "app_store_snapshot", REPLACE, List.of(), null, List.of(
                     req("ticker", TICKER), req("store", TEXT), req("snapshot_date", DATE), opt("app_name", TEXT),

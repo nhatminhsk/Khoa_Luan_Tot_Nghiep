@@ -47,6 +47,7 @@ ppop_to_assets_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,LN trư�
 noii_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Thu nhập ngoài lãi TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 fee_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Lãi thuần dịch vụ TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 loan_yield_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Thu lãi cho vay TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
+retail_loan_share_pct,P Chính sách & cơ cấu tín dụng,note_long.csv + loans_by_industry_annual,Cho vay cá nhân / dư nợ phân theo nhóm khách hàng,%,"quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; quý 4 thiếu lấy dòng 'Cá nhân' của bảng ngành BCTC kiểm toán (MSB, NVB, TCB)",theo NH-quý
 deposit_rate_paid_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Trả lãi tiền gửi TTM / tiền gửi bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 npat_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
 toi_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng TNHĐ TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
@@ -92,9 +93,9 @@ prog_noxh_u35,P Chính sách & cơ cấu tín dụng,program_participation,= 1 n
 prog_sme_7125,P Chính sách & cơ cấu tín dụng,program_participation,= 1 nếu NH có trong danh sách SME_7125 và quý kết thúc sau ngày danh sách,0/1,sự kiện → hiệu lực từ list_as_of,theo NH-quý
 n_programs_active,P Chính sách & cơ cấu tín dụng,program_participation,Số chương trình tín dụng chính sách đang tham gia,số,sự kiện → hiệu lực từ list_as_of,theo NH-quý
 disaster_branch_share_pct,P Chính sách & cơ cấu tín dụng,disaster_provinces + branch_by_province,% chi nhánh nằm ở tỉnh bị thiên tai trong cửa sổ hiệu lực (Yagi 9/2024–12/2025; bão 10–12 7/2025–),%,sự kiện × ảnh chụp chi nhánh 2026 (giả định mạng lưới ổn định),theo NH-quý
-state_own_percent,M Quản trị,bank_ownership,Sở hữu nhà nước (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
-foreign_own_percent,M Quản trị,bank_ownership,Sở hữu nước ngoài (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
-foreign_room_used_pct,M Quản trị,bank_ownership,Sở hữu nước ngoài / room tối đa (ảnh chụp 09/09/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+state_own_percent,M Quản trị,bank_ownership,Sở hữu nhà nước (ảnh chụp 01/10/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+foreign_own_percent,M Quản trị,bank_ownership,Sở hữu nước ngoài (ảnh chụp 01/10/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
+foreign_room_used_pct,M Quản trị,bank_ownership,Sở hữu nước ngoài / room tối đa (ảnh chụp 01/10/2026),%,ảnh chụp → lặp mọi quý,tĩnh theo NH
 log_branches,G Quy mô & tăng trưởng,branch_by_province,ln(1 + số chi nhánh/PGD trên OSM),ln,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
 atm_per_branch,G Quy mô & tăng trưởng,branch_by_province,Số ATM / số chi nhánh,lần,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
 n_provinces_present,G Quy mô & tăng trưởng,branch_by_province,Số tỉnh (34 tỉnh mới) có chi nhánh,số,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH

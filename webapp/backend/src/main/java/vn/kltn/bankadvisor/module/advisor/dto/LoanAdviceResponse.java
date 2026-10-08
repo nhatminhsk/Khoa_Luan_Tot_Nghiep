@@ -29,6 +29,7 @@ public record LoanAdviceResponse(
     /**
      * @param month        tháng của số lãi suất ngân hàng này (các ngân hàng công bố không đều)
      * @param monthsBehind số tháng cũ hơn {@code latestMonth}
+     * @param segment      nhóm khách hàng của con số (INDIVIDUAL, ALL, UNSPECIFIED), xem {@code LendingRateResponse}
      * @param programCodes chương trình liên quan mà ngân hàng này tham gia
      */
     public record Offer(
@@ -37,6 +38,10 @@ public record LoanAdviceResponse(
             String month,
             int monthsBehind,
             BigDecimal lendingAvgPercent,
+            String segment,
+            String basis,
+            String source,
+            String sourceUrl,
             long firstPayment,
             long lastPayment,
             long totalInterest,

@@ -191,13 +191,26 @@ export interface BankRates {
   history: { date: string; termMonths: number; channel: Channel; rate: number }[];
 }
 
-export interface LendingRate {
+/** Nhóm khách hàng của con số lãi cho vay bình quân: UNSPECIFIED = báo tổng hợp không ghi nhóm. */
+export type LendingSegment = "INDIVIDUAL" | "ALL" | "UNSPECIFIED";
+/** Cách tính: trên khoản vay mới trong kỳ hay trên toàn bộ dư nợ (null = ngân hàng không ghi). */
+export type LendingBasis = "NEW_LOANS" | "OUTSTANDING";
+export type LendingSource = "BANK" | "VIETNAMNET";
+
+/** Thông tin chung về nguồn gốc một con số lãi cho vay bình quân. */
+export interface LendingRateOrigin {
+  segment: LendingSegment | null;
+  basis: LendingBasis | null;
+  source: LendingSource | null;
+  sourceUrl: string | null;
+}
+
+export interface LendingRate extends LendingRateOrigin {
   ticker: string;
   shortName: string;
   month: string;
   lendingAvgPercent: number;
   depositAvgPercent: number | null;
-  sourceUrl: string | null;
 }
 
 // ===== Xếp hạng, dự báo (kết quả thuật toán) =====
@@ -354,7 +367,7 @@ export interface LoanAdviceRequest {
   repayment: RepaymentMethod;
 }
 
-export interface LoanOffer {
+export interface LoanOffer extends LendingRateOrigin {
   ticker: string;
   shortName: string;
   month: string;

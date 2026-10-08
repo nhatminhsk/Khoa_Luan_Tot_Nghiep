@@ -1,8 +1,8 @@
 dataset,name,source,frequency,last_updated,row_count,coverage_note
-deposit_rates,Lãi suất tiết kiệm niêm yết,"24hmoney (đối chiếu CafeF, web ngân hàng)",DAILY,2026-10-05,15526,22/22 ngân hàng có số ngày gần nhất
+deposit_rates,Lãi suất tiết kiệm niêm yết,"24hmoney (đối chiếu CafeF, web ngân hàng)",DAILY,2026-10-07,16118,22/22 ngân hàng có số ngày gần nhất
 deposit_rate_tiers,Bậc lãi suất theo số tiền gửi,Biểu lãi suất chính thức của ngân hàng (nhập tay),IRREGULAR,2026-10-01,57,"5/22 ngân hàng có bậc theo số tiền (ACB, MBB, SHB, STB, TCB); ngân hàng khác không chia bậc hoặc chưa đọc được biểu"
-lending_rates,Lãi suất cho vay bình quân,Báo VietnamNet tổng hợp số ngân hàng công bố,MONTHLY,2026-08,239,14/22 ngân hàng có số tháng gần nhất
-bank_quarterly,Chỉ tiêu tài chính theo quý,"BCTC và thuyết minh (vnstock: VCI, MAS)",QUARTERLY,2026-Q2,9513,"22/22 ngân hàng, từ 2019-Q1"
+lending_rates,Lãi suất cho vay bình quân,Web từng ngân hàng (Chỉ thị 01/CT-NHNN); báo VietnamNet tổng hợp khi ngân hàng chưa có,MONTHLY,2026-09,302,"4/22 ngân hàng có số tháng gần nhất; 15/22 lấy từ web ngân hàng, 7 có số riêng khách hàng cá nhân"
+bank_quarterly,Chỉ tiêu tài chính theo quý,"BCTC và thuyết minh (vnstock: VCI, MAS)",QUARTERLY,2026-Q2,10529,"22/22 ngân hàng, từ 2019-Q1"
 app_store,Điểm ứng dụng trên kho ứng dụng,"Google Play, App Store",SNAPSHOT,2026-10-01,44,"Google Play 22/22, App Store 22/22"
 app_reviews_monthly,Đánh giá ứng dụng theo tháng,Google Play (532.007 review),MONTHLY,2026-09,1684,"22/22 ngân hàng, từ 2019-01"
 programs,Chương trình tín dụng chính sách,"Văn bản NHNN, báo chí (nhập tay)",IRREGULAR,2026-08-24,176,Chỉ có việc tham gia; giải ngân theo ngân hàng không được công bố

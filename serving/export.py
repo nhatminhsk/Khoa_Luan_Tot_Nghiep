@@ -25,7 +25,9 @@ from crawlers import deposit_tiers
 
 OUT = Path("data/serving")
 PANEL = Path("data/model/bank_panel_quarterly.csv")
+FEATURES = Path("data/model/features_quarterly.csv")  # chi tieu khong co trong panel (build_features tinh)
 LENDING = Path("data/interest_rates/bank_lending_rates_monthly.csv")
+LENDING_OFFICIAL = Path("data/interest_rates/lending_rates_official.csv")
 PLAY_CATALOG = Path("data/app_reviews/app_catalog.csv")
 IOS_CATALOG = Path("data/app_reviews/app_catalog_ios.csv")
 REVIEWS_MONTHLY = Path("data/app_reviews/app_reviews_monthly.csv")
@@ -66,8 +68,9 @@ TICKERS = sorted(BANKS)
 
 # Chỉ tiêu hiển thị trên hồ sơ ngân hàng và trang so sánh. Nhóm theo khung CAMELS như
 # feature_spec.csv. direction là chiều "tốt hơn" nhìn từ độ an toàn của ngân hàng; NEUTRAL
-# nghĩa là không tô màu tốt/xấu (LDR, tăng trưởng, quy mô không có chiều tốt tuyệt đối).
-# (code, cột trong panel, tên, nhóm, đơn vị, chiều, mô tả)
+# nghĩa là không tô màu tốt/xấu (LDR, tăng trưởng, quy mô, cơ cấu cho vay không có chiều tốt
+# tuyệt đối; lợi suất cho vay cao là tốt cho ngân hàng nhưng đắt cho người vay).
+# (code, cột trong panel hoặc features_quarterly, tên, nhóm, đơn vị, chiều, mô tả)
 INDICATORS = [
     ("car", "car_percent", "Hệ số an toàn vốn (CAR)", "C", "PERCENT", "HIGHER_BETTER",
      "Vốn tự có / tài sản có rủi ro. Công bố nửa năm (quý 2, quý 4)."),
@@ -77,6 +80,9 @@ INDICATORS = [
      "Nợ nhóm 2 / tổng dư nợ."),
     ("npl_coverage", "npl_coverage_percent", "Bao phủ nợ xấu", "A", "PERCENT", "HIGHER_BETTER",
      "Dự phòng rủi ro / nợ xấu."),
+    ("retail_loan_share", "retail_loan_share_pct", "Tỷ trọng cho vay cá nhân", "A", "PERCENT", "NEUTRAL",
+     "Cho vay cá nhân / tổng dư nợ, theo thuyết minh BCTC. Nhiều ngân hàng chỉ công bố bảng này "
+     "nửa năm hoặc cuối năm."),
     ("cir", "cir_ttm_approx_percent", "Chi phí / thu nhập (CIR)", "M", "PERCENT", "LOWER_BETTER",
      "Chi phí hoạt động / tổng thu nhập hoạt động, cộng 4 quý (xấp xỉ)."),
     ("nim", "nim_ttm_percent", "Biên lãi thuần (NIM)", "E", "PERCENT", "HIGHER_BETTER",
@@ -89,6 +95,9 @@ INDICATORS = [
      "Chi phí lãi / nguồn vốn chịu lãi bình quân, cộng 4 quý."),
     ("asset_yield", "earning_asset_yield_ttm_percent", "Lợi suất tài sản sinh lãi", "E", "PERCENT",
      "NEUTRAL", "Thu nhập lãi / tài sản sinh lãi bình quân, cộng 4 quý."),
+    ("loan_yield", "loan_yield_ttm_pct", "Lợi suất cho vay", "E", "PERCENT", "NEUTRAL",
+     "Thu lãi cho vay / dư nợ cho vay bình quân, cộng 4 quý. Là giá vay bình quân của cả danh mục "
+     "(doanh nghiệp lẫn cá nhân), không phải lãi của một gói vay cụ thể."),
     ("casa", "casa_percent", "Tỷ lệ CASA", "L", "PERCENT", "HIGHER_BETTER",
      "Tiền gửi không kỳ hạn / tổng tiền gửi khách hàng."),
     ("ldr", "ldr_computed_percent", "Dư nợ / tiền gửi (LDR)", "L", "PERCENT", "NEUTRAL",
@@ -147,8 +156,12 @@ def export_indicators() -> pd.DataFrame:
 
 def export_bank_quarterly() -> pd.DataFrame:
     panel = pd.read_csv(PANEL)
-    panel = panel[(panel["period"] >= FIRST_PERIOD) & panel["ticker"].isin(TICKERS)]
     columns = {col: code for code, col, *_ in INDICATORS}
+    extra = [col for col in columns if col not in panel.columns]
+    if extra:
+        features = pd.read_csv(FEATURES, encoding="utf-8-sig", usecols=["ticker", "period", *extra])
+        panel = panel.merge(features, on=["ticker", "period"], how="left")
+    panel = panel[(panel["period"] >= FIRST_PERIOD) & panel["ticker"].isin(TICKERS)]
     long = panel.melt(id_vars=["ticker", "period", "period_end"], value_vars=list(columns),
                       var_name="column", value_name="value").dropna(subset=["value"])
     long["indicator"] = long["column"].map(columns)
@@ -182,11 +195,40 @@ def export_deposit_rate_tiers() -> pd.DataFrame:
 
 
 def export_lending_rates() -> pd.DataFrame:
-    lend = pd.read_csv(LENDING)
-    lend = lend[lend["ticker"].isin(TICKERS)].dropna(subset=["lending_avg_percent"])
-    lend = lend.drop_duplicates(["month", "ticker"], keep="last")
-    return lend[["month", "ticker", "lending_avg_percent", "deposit_avg_percent", "source_url"]].sort_values(
-        ["month", "ticker"])
+    """Lãi cho vay bình quân theo tháng, mỗi ngân hàng × tháng một số.
+
+    Ưu tiên số ngân hàng tự công bố trên web (Chỉ thị 01/CT-NHNN): khách hàng cá nhân trước, rồi số chung.
+    Không có thì dùng số VietnamNet tổng hợp; báo không ghi nhóm khách hàng (thường là số chung, riêng TCB là
+    số cá nhân) nên ghi UNSPECIFIED. Các nhóm hẹp hơn (vay tiêu dùng ngắn hạn, ngắn/trung dài hạn...) không dùng
+    vì không so được với ngân hàng khác. Lãi huy động bình quân = lãi vay − chênh lệch của cùng nhóm; đây là số
+    chung của cả ngân hàng (TCB: nhóm cá nhân và doanh nghiệp cho cùng một số ở 20/20 tháng).
+    """
+    off = pd.read_csv(LENDING_OFFICIAL)
+    off = off[off["ticker"].isin(TICKERS)]
+    keys = ["period", "ticker", "segment"]
+    pair = off[off["measure"] == "avg_lending"].merge(
+        off[off["measure"] == "spread"][keys + ["value_percent"]].rename(columns={"value_percent": "spread"}),
+        on=keys, how="left")
+    deposit = (pair["value_percent"] - pair["spread"]).groupby([pair["period"], pair["ticker"]]).first()
+    own = pair[pair["segment"].isin(["individual", "all"])].copy()
+    own["deposit_avg_percent"] = [deposit.get((p, t)) for p, t in zip(own["period"], own["ticker"])]
+    own = own.assign(
+        month=own["period"],
+        lending_avg_percent=own["value_percent"],
+        segment=own["segment"].map({"individual": "INDIVIDUAL", "all": "ALL"}),
+        basis=own["basis"].map({"new_loans": "NEW_LOANS", "all_loans": "OUTSTANDING"}),
+        source="BANK",
+        priority=own["segment"].map({"individual": 0, "all": 1}),
+    )
+    press = pd.read_csv(LENDING)
+    press = press[press["ticker"].isin(TICKERS)].dropna(subset=["lending_avg_percent"])
+    press = press.drop_duplicates(["month", "ticker"], keep="last").assign(
+        segment="UNSPECIFIED", basis=None, source="VIETNAMNET", priority=2)
+    cols = ["month", "ticker", "lending_avg_percent", "deposit_avg_percent", "segment", "basis", "source", "source_url"]
+    lend = pd.concat([own[cols + ["priority"]], press[cols + ["priority"]]])
+    lend = lend.sort_values("priority", kind="stable").drop_duplicates(["month", "ticker"], keep="first")
+    lend["deposit_avg_percent"] = lend["deposit_avg_percent"].round(4)
+    return lend[cols].sort_values(["month", "ticker"])
 
 
 def export_app_store() -> pd.DataFrame:
@@ -262,9 +304,12 @@ def export_datasets(parts: dict[str, pd.DataFrame]) -> pd.DataFrame:
          "IRREGULAR", tiers["valid_from"].max() if len(tiers) else None, len(tiers),
          f"{tiers['ticker'].nunique()}/22 ngân hàng có bậc theo số tiền ({', '.join(sorted(tiers['ticker'].unique()))}); "
          "ngân hàng khác không chia bậc hoặc chưa đọc được biểu"),
-        ("lending_rates", "Lãi suất cho vay bình quân", "Báo VietnamNet tổng hợp số ngân hàng công bố",
+        ("lending_rates", "Lãi suất cho vay bình quân",
+         "Web từng ngân hàng (Chỉ thị 01/CT-NHNN); báo VietnamNet tổng hợp khi ngân hàng chưa có",
          "MONTHLY", lending["month"].max(), len(lending),
-         f"{latest_lending['ticker'].nunique()}/22 ngân hàng có số tháng gần nhất"),
+         f"{latest_lending['ticker'].nunique()}/22 ngân hàng có số tháng gần nhất; "
+         f"{lending.loc[lending['source'] == 'BANK', 'ticker'].nunique()}/22 lấy từ web ngân hàng, "
+         f"{lending.loc[lending['segment'] == 'INDIVIDUAL', 'ticker'].nunique()} có số riêng khách hàng cá nhân"),
         ("bank_quarterly", "Chỉ tiêu tài chính theo quý", "BCTC và thuyết minh (vnstock: VCI, MAS)",
          "QUARTERLY", quarterly["period"].max(), len(quarterly),
          f"{quarterly['ticker'].nunique()}/22 ngân hàng, từ {FIRST_PERIOD}"),

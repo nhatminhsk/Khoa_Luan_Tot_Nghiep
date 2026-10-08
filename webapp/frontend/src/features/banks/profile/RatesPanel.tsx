@@ -20,6 +20,7 @@ import { PeriodToggle } from "@/components/common/PeriodToggle";
 import { RateDelta } from "@/components/common/RateDelta";
 import { SectionCard } from "@/components/common/SectionCard";
 import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States";
+import { LendingOriginTag } from "@/components/domain/LendingOriginTag";
 import { queryKeys } from "@/lib/query/keys";
 import { bankRepository } from "@/repositories/bank.repository";
 import { formatDate, formatMonth, formatPercent, formatTerm } from "@/utils/format";
@@ -123,7 +124,7 @@ export function RatesPanel({ ticker }: { ticker: string }) {
       <Grid size={12}>
         <SectionCard
           title="Lãi suất cho vay và huy động bình quân"
-          subtitle="Ngân hàng tự công bố theo tháng (tổng hợp từ báo VietnamNet). Là mức bình quân toàn danh mục."
+          subtitle="Ngân hàng tự công bố trên web theo tháng (Chỉ thị 01/CT-NHNN); tháng chưa lấy được thì dùng số báo VietnamNet tổng hợp. Là mức bình quân của khách hàng cá nhân hoặc toàn danh mục, xem cột Loại số."
           flush
         >
           {lending.isLoading ? (
@@ -146,6 +147,7 @@ export function RatesPanel({ ticker }: { ticker: string }) {
                     <TableCell align="right">Cho vay bình quân</TableCell>
                     <TableCell align="right">Huy động bình quân</TableCell>
                     <TableCell align="right">Chênh lệch</TableCell>
+                    <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>Loại số</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -165,6 +167,9 @@ export function RatesPanel({ ticker }: { ticker: string }) {
                                 maximumFractionDigits: 2,
                               })} điểm %`}
                         </Typography>
+                      </TableCell>
+                      <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                        <LendingOriginTag origin={row} />
                       </TableCell>
                     </TableRow>
                   ))}

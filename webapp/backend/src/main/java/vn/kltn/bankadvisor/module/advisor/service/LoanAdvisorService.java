@@ -18,7 +18,8 @@ import java.util.Map;
 
 /**
  * Trang vay: ước tính tiền trả theo lãi suất cho vay bình quân (chỉ để tham khảo), chương trình ưu đãi
- * liên quan, và xếp hạng tổng hợp (thuật toán).
+ * liên quan, và xếp hạng tổng hợp (thuật toán). Mỗi ngân hàng một số, kèm nhóm khách hàng của số đó
+ * (pipeline đã chọn: số cá nhân của ngân hàng → số chung của ngân hàng → VietnamNet).
  */
 @Service
 @Transactional(readOnly = true)
@@ -46,9 +47,9 @@ public class LoanAdvisorService {
                     List<String> programs = participation.getOrDefault(rate.ticker(), List.of()).stream()
                             .filter(request.purpose().programCodes()::contains).sorted().toList();
                     return new LoanAdviceResponse.Offer(rate.ticker(), rate.shortName(), rate.month(),
-                            monthsBetween(rate.month(), latestMonth), rate.lendingAvgPercent(),
-                            schedule.firstPayment(), schedule.lastPayment(), schedule.totalInterest(),
-                            schedule.totalPayment(), programs);
+                            monthsBetween(rate.month(), latestMonth), rate.lendingAvgPercent(), rate.segment(),
+                            rate.basis(), rate.source(), rate.sourceUrl(), schedule.firstPayment(),
+                            schedule.lastPayment(), schedule.totalInterest(), schedule.totalPayment(), programs);
                 })
                 .sorted(Comparator.comparing(LoanAdviceResponse.Offer::lendingAvgPercent)
                         .thenComparing(LoanAdviceResponse.Offer::ticker))

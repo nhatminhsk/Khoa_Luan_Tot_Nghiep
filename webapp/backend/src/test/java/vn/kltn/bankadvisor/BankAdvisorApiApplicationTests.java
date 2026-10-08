@@ -179,6 +179,29 @@ class BankAdvisorApiApplicationTests {
     }
 
     @Test
+    void loanAdviceCarriesSegmentAndSourceOfEachBankRate() throws Exception {
+        // Mỗi ngân hàng giữ tháng mới nhất của mình; nhãn nhóm khách hàng/nguồn đi kèm để giao diện ghi rõ số nào.
+        mvc.perform(post("/api/v1/advisor/loans").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"purpose\":\"HOME_PURCHASE\",\"amount\":1000000000,\"termMonths\":240,"
+                                + "\"repayment\":\"ANNUITY\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.latestMonth").value("2026-07"))
+                .andExpect(jsonPath("$.data.offers[0].ticker").value("VCB"))
+                .andExpect(jsonPath("$.data.offers[0].segment").value("UNSPECIFIED"))
+                .andExpect(jsonPath("$.data.offers[0].source").value("VIETNAMNET"))
+                .andExpect(jsonPath("$.data.offers[0].basis").doesNotExist())
+                .andExpect(jsonPath("$.data.offers[1].ticker").value("ACB"))
+                .andExpect(jsonPath("$.data.offers[1].segment").value("INDIVIDUAL"))
+                .andExpect(jsonPath("$.data.offers[1].basis").value("NEW_LOANS"))
+                .andExpect(jsonPath("$.data.offers[1].source").value("BANK"))
+                .andExpect(jsonPath("$.data.offers[1].sourceUrl").value("https://example.test/a"))
+                .andExpect(jsonPath("$.data.offers[1].monthsBehind").value(1));
+        mvc.perform(get("/api/v1/banks/acb/lending-rates"))
+                .andExpect(jsonPath("$.data[0].segment").value("INDIVIDUAL"))
+                .andExpect(jsonPath("$.data[0].depositAvgPercent").value(4.4));
+    }
+
+    @Test
     void savingsAdviceValidatesInput() throws Exception {
         mvc.perform(post("/api/v1/advisor/savings").contentType(MediaType.APPLICATION_JSON)
                         .content("{\"amount\":1000,\"termMonths\":12,\"channel\":\"ONLINE\"}"))

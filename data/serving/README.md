@@ -24,7 +24,7 @@ python -m serving.export
 | `bank_quarterly.csv` | ticker, period, indicator | ticker, period, period_end, indicator, value |
 | `deposit_rates.csv` | rate_date, ticker, term_months, channel | rate_date, ticker, term_months, channel (ONLINE/COUNTER), rate_percent, source |
 | `deposit_rate_tiers.csv` | ticker, term_months, channel, min_amount_vnd | ticker, term_months, channel, min_amount_vnd, rate_percent, base_rate_percent, tier_label, valid_from, source — bậc trên bậc thấp nhất theo số tiền gửi, cho ngày mới nhất của `deposit_rates`; chỉ áp khi lãi trong `deposit_rates` bằng `base_rate_percent` |
-| `lending_rates.csv` | month, ticker | month, ticker, lending_avg_percent, deposit_avg_percent, source_url |
+| `lending_rates.csv` | month, ticker | month, ticker, lending_avg_percent, deposit_avg_percent, segment (INDIVIDUAL/ALL/UNSPECIFIED), basis (NEW_LOANS/OUTSTANDING/trống), source (BANK/VIETNAMNET), source_url — mỗi ngân hàng × tháng một số: số khách hàng cá nhân ngân hàng công bố trên web, không có thì số chung, cuối cùng là số VietnamNet (UNSPECIFIED); deposit_avg_percent = lãi vay − chênh lệch ngân hàng công bố |
 | `app_store.csv` | ticker, store | ticker, store (GOOGLE_PLAY/APP_STORE), snapshot_date, app_name, score, ratings |
 | `app_reviews_monthly.csv` | ticker, month | ticker, month, n_reviews, mean_score, pct_1star, pct_5star, usable |
 | `programs.csv` | program_code | program_code, program_name, category (HOUSING/AGRICULTURE/BUSINESS/INFRASTRUCTURE/OTHER) |

@@ -163,7 +163,7 @@ export function CompareView() {
         </SectionCard>
       ) : (
         <Stack spacing={2.5}>
-          <SectionCard title={indicator ? `${indicator.name} theo quý` : "Biểu đồ"} subtitle="Đường xám là trung vị 22 ngân hàng.">
+          <SectionCard title={indicator ? `${indicator.name} theo quý` : "Biểu đồ"} subtitle="Đường xám là trung vị các ngân hàng có số cùng quý.">
             {comparison.isError ? (
               <ErrorState error={comparison.error} onRetry={() => comparison.refetch()} />
             ) : !comparison.data ? (
@@ -183,7 +183,7 @@ export function CompareView() {
                     })),
                     {
                       id: "median",
-                      label: "Trung vị 22 NH",
+                      label: "Trung vị các NH",
                       data:
                         comparison.data.indicator.unit === "VND"
                           ? comparison.data.median.map((v) => (v === null ? null : v / 1e12))

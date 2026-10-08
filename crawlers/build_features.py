@@ -44,7 +44,8 @@ FIN = "data/vnstock_financial/financial_long.csv"
 NOTE = "data/vnstock_financial/note_long.csv"
 CAR = "data/credit/bank_car_halfyear.csv"
 INDUSTRY = "data/credit/loans_by_industry_group_wide.csv"
-AGRI = "data/policy_credit/agri_loans_annual.csv"
+INDUSTRY_ROWS = "data/credit/loans_by_industry_annual.csv"
+AGRI ="data/policy_credit/agri_loans_annual.csv"
 PROGRAMS = "data/policy_credit/program_participation.csv"
 DISASTER = "data/policy_credit/disaster_provinces.csv"
 BRANCH = "data/branch_network/branch_by_province.csv"
@@ -192,29 +193,59 @@ NOTE_IDS = {
     "DEP_INT": "NT_IS_DEPOSIT_INTEREST_EXPENSES", "PAPER_INT": "NT_IS_INTEREST_EXPENSES_FOR_ISSUANCE_OF_VALUABLE_PAPERS",
     "LOAN_INT": "NT_IS_INTEREST_INCOME_FROM_LOANS_TO_CUSTOMERS", "SALARY": "NT_IS_SALARY_AND_ALLOWANCES",
     "DEP_INS": "NT_IS_INSURANCE_AND_DEPOSIT_INSURANCE_FEES",
+    "LOANS_INDIV": "NT_BS_INDIVIDUALS", "LOANS_BY_CUST": "NT_BS_LOANS_AND_ADVANCES_BY_TYPES_OF_CUSTOMERS",
 }
 FLOWS = {"NII", "FEE", "TOI", "PPOP", "PROV_EXP", "NPAT", "CFO", "RECOV", "DIV_PAID",
          "DEP_INT", "PAPER_INT", "LOAN_INT", "SALARY", "DEP_INS"}
 
 
-def _wide(path, ids, freq_filter=True):
+def _wide(path, ids, freq_filter=True, corrections=False):
     d = _read(path, usecols=lambda c: c in {"ticker", "freq", "period", "id", "value"})
     if freq_filter:
         d = d[d.freq == "quarter"]
     d = d[d.id.isin(ids.values())]
+    if corrections:  # o VCI ghi sai da doi chieu BCTC goc (note_long giu nguyen ban sao nguon)
+        from crawlers import vnstock_note
+        d, applied, skipped = vnstock_note._apply_corrections(d)
+        CLEAN_LOG["note_corrections_applied"] = len(applied)
+        CLEAN_LOG["note_corrections_skipped"] = len(skipped)
     w = d.pivot_table(index=["ticker", "period"], columns="id", values="value", aggfunc="first")
     w = w.rename(columns={v: k for k, v in ids.items()}) / 1e9  # dong -> ty dong
     return w.reset_index()
 
 
+def _indiv_share_audited() -> pd.DataFrame:
+    """Dong "Ca nhan" trong bang du no theo nganh cua BCTC kiem toan (so cuoi nam -> quy 4).
+
+    Chi MSB, NVB, TCB tach rieng dong nay (industry_group INDIV; dong "ho gia dinh" la khai niem
+    khac nen khong dung). O MSB va TCB no trung tung so voi ty trong ca nhan cua bang theo doi
+    tuong khach hang: 9/10 nam co ca hai bang, nam lech la MSB 2022 do VCI ghi sai.
+    """
+    ind = _read(INDUSTRY_ROWS)
+    ind = ind[ind.industry_group == "INDIV"]
+    return pd.DataFrame({"ticker": ind.ticker, "period": ind.year.astype(str) + "-Q4",
+                         "audited": 100 * ind.value_mn_vnd / ind.table_total_mn_vnd})
+
+
+def _retail_share(g: pd.DataFrame) -> pd.Series:
+    """Cho vay ca nhan / du no phan theo nhom khach hang; quy 4 thieu lay tu bang nganh kiem toan."""
+    share = _div(g.LOANS_INDIV, g.LOANS_BY_CUST, "retail_loan_share_pct")
+    audited = g[["ticker", "period"]].merge(_indiv_share_audited(), on=["ticker", "period"], how="left")["audited"]
+    audited.index = g.index
+    CLEAN_LOG["retail_share_note_vs_audited_gap_over_0_5pp"] = int(((share - audited).abs() > 0.5).sum())
+    fill = share.isna() & audited.notna()
+    CLEAN_LOG["retail_share_q4_from_audited_industry_table"] = int(fill.sum())
+    return share.where(~fill, audited)
+
+
 def add_financial(g: pd.DataFrame) -> pd.DataFrame:
-    w = _wide(FIN, FIN_IDS).merge(_wide(NOTE, NOTE_IDS, freq_filter=False), on=["ticker", "period"], how="outer")
+    w = _wide(FIN, FIN_IDS).merge(_wide(NOTE, NOTE_IDS, freq_filter=False, corrections=True), on=["ticker", "period"], how="outer")
     g = g.merge(w, on=["ticker", "period"], how="left").sort_values(["ticker", "qi"]).reset_index(drop=True)
     for c in ("PROV_EXP", "DIV_PAID"):  # KQKD/LCTT luu chi phi la so am -> tri tuyet doi truoc khi cong don
         g[c] = g[c].abs()
-    # Thuyet minh ghi 0 khi NH khong tach dong (chi luong, tra lai tien gui...) va co vai
+    # Thuyet minh ghi 0 khi NH khong tach dong (chi luong, tra lai tien gui, cho vay ca nhan...) va co vai
     # o am vo nghia -> NaN. Rieng tra lai giay to co gia: 0 la that (NH khong phat hanh).
-    for c in ("SALARY", "DEP_INS", "DEP_INT", "LOAN_INT"):
+    for c in ("SALARY", "DEP_INS", "DEP_INT", "LOAN_INT", "LOANS_INDIV"):
         bad = g[c] <= 0
         CLEAN_LOG[f"{c.lower()}_nonpositive_as_missing"] = int(bad.sum())
         g.loc[bad, c] = np.nan
@@ -257,6 +288,10 @@ def add_financial(g: pd.DataFrame) -> pd.DataFrame:
     put("noii_share_ttm_pct", _div(ttm["TOI"] - ttm["NII"], ttm["TOI"], "noii_share_ttm_pct"), "E Thu nhập & chi phí vốn", F, "Thu nhập ngoài lãi TTM / TNHĐ TTM")
     put("fee_share_ttm_pct", _div(ttm["FEE"], ttm["TOI"], "fee_share_ttm_pct"), "E Thu nhập & chi phí vốn", F, "Lãi thuần dịch vụ TTM / TNHĐ TTM")
     put("loan_yield_ttm_pct", _div(ttm["LOAN_INT"], avg["LOANS"], "loan_yield_ttm_pct"), "E Thu nhập & chi phí vốn", S, "Thu lãi cho vay TTM / dư nợ bình quân")
+    put("retail_loan_share_pct", _retail_share(g), "P Chính sách & cơ cấu tín dụng", N + " + loans_by_industry_annual",
+        "Cho vay cá nhân / dư nợ phân theo nhóm khách hàng",
+        processing="quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; "
+                   "quý 4 thiếu lấy dòng 'Cá nhân' của bảng ngành BCTC kiểm toán (MSB, NVB, TCB)")
     put("deposit_rate_paid_ttm_pct", _div(ttm["DEP_INT"], avg["DEP"], "deposit_rate_paid_ttm_pct"), "E Thu nhập & chi phí vốn", S, "Trả lãi tiền gửi TTM / tiền gửi bình quân")
     put("npat_yoy_sym_pct", _growth_sym(ttm["NPAT"], by["NPAT"].transform(lambda s: s.rolling(4, min_periods=4).sum().shift(4))),
         "E Thu nhập & chi phí vốn", F, "Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|)", processing="quý: TTM, đối xứng [−200, 200]")
@@ -368,12 +403,15 @@ def add_policy(g):
 
 
 def add_static(g):
-    ow = _read(OWNERSHIP)[["ticker", "state_own_percent", "foreign_own_percent", "foreign_room_percent"]]
+    # File ghi noi moi lan crawl (tu 01/10/2026 co hon mot anh chup): chi lay anh chup moi nhat cua moi NH.
+    ow = _read(OWNERSHIP).sort_values("date").drop_duplicates("ticker", keep="last")
+    asof = datetime.strptime(ow.date.max(), "%Y-%m-%d").strftime("%d/%m/%Y")
+    ow = ow[["ticker", "state_own_percent", "foreign_own_percent", "foreign_room_percent"]]
     ow["foreign_room_used_pct"] = _div(ow.foreign_own_percent, ow.foreign_room_percent, "foreign_room_used_pct")
     g = g.merge(ow.drop(columns="foreign_room_percent"), on="ticker", how="left")
     for c, f in (("state_own_percent", "Sở hữu nhà nước"), ("foreign_own_percent", "Sở hữu nước ngoài"),
                  ("foreign_room_used_pct", "Sở hữu nước ngoài / room tối đa")):
-        _meta(c, "M Quản trị", "bank_ownership", f"{f} (ảnh chụp 09/09/2026)", processing="ảnh chụp → lặp mọi quý", kind="tĩnh theo NH")
+        _meta(c, "M Quản trị", "bank_ownership", f"{f} (ảnh chụp {asof})", processing="ảnh chụp → lặp mọi quý", kind="tĩnh theo NH")
     br = _read(BRANCH).groupby("ticker").agg(n_bank=("n_bank", "sum"), n_atm=("n_atm", "sum"), n_prov=("province", "nunique"))
     br["log_branches"] = np.log1p(br.n_bank)
     br["atm_per_branch"] = _div(br.n_atm, br.n_bank, "atm_per_branch", scale=1.0)

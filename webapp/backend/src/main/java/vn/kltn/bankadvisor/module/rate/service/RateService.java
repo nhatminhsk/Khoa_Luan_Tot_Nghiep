@@ -182,7 +182,8 @@ public class RateService {
 
     private static LendingRateResponse toResponse(LendingRate r, Map<String, Bank> banks) {
         return new LendingRateResponse(r.getTicker(), shortName(banks, r.getTicker()), r.getMonth(),
-                r.getLendingAvgPercent(), r.getDepositAvgPercent(), r.getSourceUrl());
+                r.getLendingAvgPercent(), r.getDepositAvgPercent(), r.getSegment(), r.getBasis(), r.getSource(),
+                r.getSourceUrl());
     }
 
     private static Map<RateSnapshot.Key, BigDecimal> byKey(List<DepositRate> rates) {

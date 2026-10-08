@@ -25,6 +25,7 @@ import { PageHeader } from "@/components/common/PageHeader";
 import { SectionCard } from "@/components/common/SectionCard";
 import { StatTile } from "@/components/common/StatTile";
 import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States";
+import { LendingOriginTag, lendingOriginLabel } from "@/components/domain/LendingOriginTag";
 import { ProgramList } from "@/components/domain/ProgramList";
 import { RankingSection } from "@/components/domain/RankingSection";
 import { SaveNeedButton } from "@/features/needs/SaveNeedButton";
@@ -97,8 +98,9 @@ export function LoansView() {
       </Grid>
 
       <Disclaimer>
-        Lãi suất cho vay bình quân là mức bình quân trên toàn bộ danh mục cho vay mà ngân hàng công bố, không phải lãi suất bạn
-        sẽ được duyệt. Tiền trả hằng tháng chỉ để tham khảo; hệ thống không đánh giá khả năng vay của từng người.
+        Lãi suất cho vay bình quân là mức bình quân trên toàn bộ khách hàng cá nhân (hoặc toàn bộ danh mục cho vay) mà ngân
+        hàng công bố, không phải lãi suất bạn sẽ được duyệt. Tiền trả hằng tháng chỉ để tham khảo; hệ thống không đánh giá khả
+        năng vay của từng người.
       </Disclaimer>
     </>
   );
@@ -119,7 +121,9 @@ function LoanResults({ data }: { data: LoanAdvice }) {
               tone="primary"
               label="Lãi vay thấp nhất"
               value={formatPercent(cheapest.lendingAvgPercent)}
-              hint={`${cheapest.shortName} · tháng ${formatMonth(cheapest.month)}`}
+              hint={`${cheapest.shortName} · tháng ${formatMonth(cheapest.month)}${
+                cheapest.segment || cheapest.source ? ` · ${lendingOriginLabel(cheapest).toLowerCase()}` : ""
+              }`}
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 4 }}>
@@ -158,7 +162,7 @@ function LoanResults({ data }: { data: LoanAdvice }) {
 
       <SectionCard
         title="Ước tính tiền trả theo lãi suất cho vay bình quân"
-        subtitle={`Sắp theo lãi suất tăng dần. Tháng mới nhất trong dữ liệu: ${formatMonth(data.latestMonth)}.`}
+        subtitle={`Sắp theo lãi suất tăng dần. Mỗi ngân hàng một số: ưu tiên số khách hàng cá nhân ngân hàng công bố, không có thì số chung, cuối cùng là số báo tổng hợp; các số này không hoàn toàn cùng loại (rê chuột lên nhãn để xem). Tháng mới nhất trong dữ liệu: ${formatMonth(data.latestMonth)}.`}
         flush
       >
         {data.offers.length === 0 ? (
@@ -192,7 +196,13 @@ function LoanResults({ data }: { data: LoanAdvice }) {
                       <Typography variant="body2" sx={{ fontWeight: 700 }}>
                         {formatPercent(offer.lendingAvgPercent)}
                       </Typography>
-                      <Stack direction="row" spacing={0.5} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
+                      <Stack
+                        direction="row"
+                        spacing={0.5}
+                        useFlexGap
+                        sx={{ justifyContent: "flex-end", alignItems: "center", flexWrap: "wrap" }}
+                      >
+                        <LendingOriginTag origin={offer} />
                         {offer.monthsBehind >= STALE_MONTHS && (
                           <Tooltip title={`Số cũ hơn ${offer.monthsBehind} tháng so với tháng mới nhất`}>
                             <Box component="span" sx={{ color: "warning.main", display: "inline-flex" }}>

@@ -40,7 +40,7 @@ export function IndicatorTable({ data, mode }: { data: BankIndicators; mode: Tab
               </TableCell>
             ))}
             <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>
-              Trung vị 22 NH
+              Trung vị các NH
             </TableCell>
             <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>
               Thứ hạng
