@@ -190,7 +190,7 @@ def main():
         F, S = build()
         old = pd.read_csv(SELECTION, encoding="utf-8-sig")
         same = (old[["indicator", "h", "base", "method"]].values == S[["indicator", "h", "base", "method"]].values).all()
-        if not same:  # kho dai phai di voi DUNG lua chon dang dung (Nguoi 2, luot 3)
+        if not same:  # kho dai phai di voi DUNG lua chon dang dung
             raise SystemExit(f"lua chon phuong phap khong trung {SELECTION}: chay lai python -m serving.forecast truoc")
         dst = OOF.with_name(f"{OOF.stem}_tu{OOF_FROM[:4]}{OOF.suffix}")
         pd.concat(OOF_ROWS, ignore_index=True).to_csv(dst, index=False, encoding="utf-8-sig")

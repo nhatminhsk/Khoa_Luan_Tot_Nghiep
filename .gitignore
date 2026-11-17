@@ -9,7 +9,6 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-.claude/
 
 # File thăm dò tạm, log crawl, bản chụp zip
 /.*.csv
@@ -18,11 +17,9 @@ __pycache__/
 crawl_log.txt
 _snapshots/
 
-# Ghi chú làm việc nội bộ và chỉ dẫn cho trợ lý AI (ở mọi thư mục)
+# Ghi chú làm việc nội bộ
 /TIEP_TUC.md
 /PHIEN_*.md
-CLAUDE.md
-AGENTS.md
 
 # Dữ liệu thô nặng hoặc tải lại được bằng crawler / vnstock
 data/app_reviews/

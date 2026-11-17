@@ -63,7 +63,7 @@ LOAN = {
 }
 LOAN_TOP = {"gia": 1 / 3, "phu hop": 1 / 3, "suc cho vay": 1 / 3}
 # Nhom TUY CHON "suc khoe" ben cho vay = diem tai chinh tuong doi tham khao cac nhom chi tieu Moody's (serving.bank_health), theo
-# phan quyet Codex Nguoi B 27/10/2026: mac dinh 0% (khong vao bang vay), nguoi dung chon trong so; 10% / 20% chi la minh hoa.
+# quyet dinh 27/10/2026: mac dinh 0% (khong vao bang vay), nguoi dung chon trong so; 10% / 20% chi la minh hoa.
 # --suc-khoe-vay W chia lai: 3 nhom cu x (1 - W), nhom suc khoe W; --von von_chu doi dai dien von (do nhay).
 HEALTH_CRIT = {"loan_health_score": (+1, "suc khoe", "H")}
 LOAN_HEALTH_W, HEALTH_CAPITAL = 0.0, "car"
@@ -468,10 +468,9 @@ def run_amounts(inp: dict, amounts: list[float]) -> None:
 
 
 # --------------------------------------------------------------------------- ML trong vong Monte Carlo (--ml)
-# Thao luan 3 ben 26/10/2026 (Codex Nguoi 1 kien truc su, Codex Nguoi 2 phan bien, Claude chu tri; bien ban
-# reports/thao_luan_ml_montecarlo_2026-10-26.md). Vong NGOAI van la trong so (dinh nghia GVHD). Day la PHAN TICH DO NHAY,
+# Chot 26/10/2026. Vong NGOAI van la trong so (dinh nghia GVHD). Day la PHAN TICH DO NHAY,
 # khong phai bang chinh: bang chinh xep bang so cong bo (scope).
-# Cau hinh chot (Nguoi 3 theo ban toi thieu cua Nguoi 2): tam = SO CONG BO (anh chup); chi NPL / CASA / LDR (vay: chi LDR)
+# Cau hinh chot (ban toi thieu): tam = SO CONG BO (anh chup); chi NPL / CASA / LDR (vay: chi LDR)
 # duoc cong scale x z, z = sai so walk-forward co dau / thang cua NH (serving.forecast), lay theo CA QUY goc u (chung 22 NH x 3
 # chi tieu -> giu cu soc chung). Moi bo trong so ghep voi MOI quy u trong kho (liet ke du). Doi chung cung tam:
 #   cong_bo_sai_so  z cua phuong phap da chon (base hoac RF)   | cong_bo_base  z cua base

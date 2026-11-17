@@ -31,9 +31,9 @@ Yêu cầu: JDK 25 trở lên (máy đang có JDK 27), Node.js 20 trở lên, Py
 
 Kiểm thử: `mvnw.cmd test` (backend: 79 test — 30 test API trên H2, **cùng 30 test đó chạy lại trên PostgreSQL 17.5 thật** (nhúng, `PostgresCompatibilityTests`), 5 test gửi email qua máy chủ SMTP chạy trong bộ nhớ, 14 test đơn vị; test không đọc file `.env` của máy dev nhờ `APP_ENV_FILE`), `npx tsc --noEmit` và `npx eslint src` (frontend), `npm run build` (build production).
 
-Dùng PostgreSQL thay H2 khi chạy trên máy (không phải cài PostgreSQL vào Windows): `docker compose -f docker-compose.db.yml up -d` (từ `webapp`, cần `webapp/.env` có `APP_DB_PASSWORD`), điền cùng `APP_DB_PASSWORD` vào `backend/.env`, rồi chạy backend với `SPRING_PROFILES_ACTIVE=postgres` (cấu hình `api-postgres` trong `.claude/launch.json`). CSDL mới trống: Flyway tạo bảng, backend nạp lại CSV; tài khoản trong H2 không tự chuyển sang.
+Dùng PostgreSQL thay H2 khi chạy trên máy (không phải cài PostgreSQL vào Windows): `docker compose -f docker-compose.db.yml up -d` (từ `webapp`, cần `webapp/.env` có `APP_DB_PASSWORD`), điền cùng `APP_DB_PASSWORD` vào `backend/.env`, rồi chạy backend với `SPRING_PROFILES_ACTIVE=postgres`. CSDL mới trống: Flyway tạo bảng, backend nạp lại CSV; tài khoản trong H2 không tự chuyển sang.
 
-Thử gửi email khi chưa có máy chủ thư: chạy backend với `APP_MAIL_MODE=LOG` (cấu hình `api-email-log` trong `.claude/launch.json`). Email, kể cả link xác minh, được in ra log của backend.
+Thử gửi email khi chưa có máy chủ thư: chạy backend với `APP_MAIL_MODE=LOG`. Email, kể cả link xác minh, được in ra log của backend.
 
 ## Chạy bằng Docker (ít tài nguyên)
 
