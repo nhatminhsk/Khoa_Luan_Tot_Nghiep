@@ -14,6 +14,7 @@ crawl_loan_rates.ipynb     # Crawler lãi suất vay (industry-average, best-eff
 crawl_macro.ipynb          # Vĩ mô: SBV policy rate / CPI
 crawlers/                  # Logic crawler dùng chung, import bởi cả notebook lẫn run_daily_crawl.py
   deposit_rates.py
+  deposit_official.py      # NGUỒN CHÍNH từ 07/11/2026: biểu lãi suất đọc thẳng từ web/PDF của 20/22 NH (thiếu MBB, SSB)
   deposit_24hmoney.py      # Đối chứng #1: bảng HTML 24hmoney — 38 NH x 7 kỳ hạn x 2 kênh, đủ 22/22 ticker
   deposit_crosscheck.py    # Đối chứng #2: văn xuôi CafeF hàng ngày — CHỈ ô 12 tháng/online, nhưng lùi được lịch sử
   loan_rates.py
@@ -45,18 +46,27 @@ requirements.txt
 data/
   vnstock_financial/raw/   # BCTC ĐẦY ĐỦ (84 dòng CĐKT, 26 KQKD, 51 LCTT, 60 chỉ số) x 22 NH — tải bằng `vnstock_merge --fetch`
   vnstock_financial/financial_long.csv  # 176 file raw gộp thành 1 bảng long (dựng bằng crawlers/vnstock_merge.py)
+  vnstock_financial/raw_vci/     # Dữ liệu thô VCI theo mã (bsa/isb/cfb/nob) x 22 NH: nguồn thêm quý mới từ 02/11/2026 (crawlers/vci_raw.py)
+  vnstock_financial/vci_id_map.csv  # Đổi mã thô sang mã cũ, ghép bằng giá trị trên lịch sử, kèm độ khớp
   vnstock_financial/raw_mas/     # Chỉ số theo quý từ nguồn MAS x 22 NH (lịch sử về 2012-Q1)
-  vnstock_financial/ratio_mas_ttm.csv  # MAS đã cộng 4 quý thành TTM — 1.158 dòng, 2012-Q1 → 2026-Q2
+  vnstock_financial/ratio_mas_ttm.csv  # MAS đã cộng 4 quý thành TTM — 1.180 dòng, 2012-Q1 → 2026-Q3
   vnstock_financial/raw_note/    # Thuyết minh BCTC theo quý x 22 NH, đủ 210 chỉ tiêu (nguồn sơ cấp của NPL và CASA)
   vnstock_financial/note_long.csv  # 210 chỉ tiêu thuyết minh x 22 NH gộp thành 1 bảng long (dựng bằng vnstock_note.py)
   policy_credit/           # Tín dụng chính sách nhập tay: tham gia gói NHNN, lãi suất, tỉnh thiên tai, dư nợ nông nghiệp
-  _archive/vnstock_financial_2026-08-20_tomtat/  # Bản BCTC tóm tắt cũ (13/11/3/13 dòng) trước khi tải đầy đủ
-  model/bank_panel_quarterly.csv # PANEL CHÍNH cho mô hình: 748 dòng, mỗi cột tỷ lệ kèm cột `*_src`
+  model/bank_panel_quarterly.csv # PANEL CHÍNH cho mô hình: 770 dòng, mỗi cột tỷ lệ kèm cột `*_src`
   model/data_inventory.csv       # Kiểm kê 639+ file: vai trò và quyết định giữ/bỏ (crawlers/inventory.py)
-  model/features_quarterly.csv   # 120 đặc trưng ứng viên × 748 NH-quý, đã làm sạch (crawlers/build_features.py)
+  model/features_quarterly.csv   # 124 đặc trưng ứng viên × 770 NH-quý, đã làm sạch (crawlers/build_features.py)
   model/feature_catalog.csv      # Mỗi đặc trưng: nhóm, công thức, độ phủ, cờ, Giữ/Loại + lý do (crawlers/select_features.py)
-  model/features_selected.csv    # Chỉ các đặc trưng "Giữ" — đầu vào mô hình (chưa điền khuyết, chưa winsorize)
-  model/features_ranking_latest.csv # 22 NH × giá trị gần nhất trong 4 quý cuối — đầu vào xếp hạng
+  model/features_selected.csv    # 21 đặc trưng "Giữ" có tác dụng đo được — đầu vào dự án (chưa điền khuyết, chưa winsorize)
+  model/features_clean.csv       # 90 đặc trưng qua tầng chất lượng — EDA và thí nghiệm đo trên tập này, trước khi chọn
+  model/features_ranking_latest.csv # 22 NH — đầu vào xếp hạng: BCTC gần nhất trong 4 quý; lãi gửi ngày mới nhất cho mọi kỳ hạn × online/tại quầy (dep{T}_online_pct, dep{T}_counter_pct), lãi vay tháng mới nhất; cột dep_asof / lending_asof; điểm app đã bỏ khỏi xếp hạng 14/10/2026; dựng lại hằng ngày
+  model/features_selected_daily.csv   # Bản theo NGÀY (2018 → nay × 22 NH): lãi 12 tháng online/quầy, lợi suất & biến động cổ phiếu, VN-Index, lãi điều hành (crawlers/select_features_hf.py, chạy hằng ngày)
+  model/features_selected_monthly.csv # Bản theo THÁNG (2018-01 → tháng trước): như bản ngày + lãi cho vay bình quân, CPI, chỉ số giá USD
+  model/feature_spec_hf.csv           # Mỗi biến bản ngày/tháng: công thức, nguồn, độ phủ, Giữ/Loại + lý do, quyết định ở file quý
+  model/ranking_daily.csv     # XẾP HẠNG theo NGÀY: lãi tiết kiệm mọi kỳ hạn × online/tại quầy (dep{T}_online_pct, dep{T}_counter_pct), ngày crawl × 22 NH, không forward-fill (crawlers/ranking_panels.py, chạy hằng ngày)
+  model/ranking_monthly.csv   # XẾP HẠNG theo THÁNG: lãi cho vay bình quân (NH tự công bố, rồi VietnamNet; cột nhóm KH / cơ sở / nguồn), 2024-03 → nay × 22 NH
+  model/ranking_quarterly.csv # XẾP HẠNG theo QUÝ: 16 tiêu chí BCTC (14 an toàn CAMELS cho gửi + lợi suất cho vay, tỷ trọng cho vay cá nhân; LDR dùng cho cả hai) × 748 NH-quý
+  model/ranking_spec.csv      # Mỗi cột tiêu chí: tần suất, file, gửi/vay, nhóm trọng số, trụ CAMELS, chiều (+1 càng cao càng tốt / −1), nguồn, độ phủ
   market/                  # VNINDEX.csv + VN30.csv — OHLCV hàng ngày, 2015-01-05 → nay
   ownership/               # bank_ownership.csv (22 NH) + bank_shareholders.csv (1.124 dòng)
   price/                   # Giá cổ phiếu OHLCV hàng ngày x 22 NH
@@ -64,12 +74,15 @@ data/
   interest_rates/
     deposit_daily.csv      # Lãi suất tiết kiệm theo NH/kỳ hạn/kênh, tích lũy hàng ngày
     deposit_raw/           # Snapshot thô mỗi ngày
+    deposit_official_daily.csv    # Biểu từng NH, chụp mỗi ngày (bậc thấp nhất, lãi cuối kỳ) — nguồn chính từ 07/11/2026
     deposit_24hmoney_daily.csv    # Đối chứng 24hmoney — bảng HTML, 7 kỳ hạn x 2 kênh, có mốc cập nhật của nguồn
     deposit_crosscheck_daily.csv  # Đối chứng CafeF — chỉ 12 tháng/online, có cột checksum_ok
+    deposit_techcombank_daily.csv # Đối chứng blog Techcombank — 34 NH x 7 kỳ hạn x 2 kênh, không có Sacombank
     bank_lending_rates_monthly.csv  # Lãi suất cho vay bình quân theo từng NH, hàng tháng (CÔNG BỐ, từ 2025-01)
     bank_earning_asset_yield_quarterly.csv  # Lợi suất tài sản sinh lời theo NH (SUY RA, 2018-Q1→2026-Q2)
   loan_rates/
     loan_industry_avg.csv  # Lãi suất bình quân ngành (gửi + vay), 1 dòng/tháng số liệu, 2024-01 → 2026-08
+    loan_terms.csv         # Điều khoản vay nhập tay từ văn bản gốc 22 NH (phí trả trước, lãi cơ sở, biên độ, ưu đãi, tỷ lệ cho vay, thời hạn), kiểm bằng `python -m crawlers.loan_terms`
   credit/
     bank_credit_quarterly.csv  # Tín dụng theo NH/quý: dư nợ, tăng trưởng, NPL, LDR, dự phòng
     bank_asset_quality_quarterly.csv # NPL (5 nhóm nợ), CASA, cơ cấu kỳ hạn — từ thuyết minh BCTC
@@ -93,8 +106,6 @@ data/
     policy_rate.csv        # Lãi suất điều hành SBV (event log, 11 sự kiện)
     cpi.csv                # CPI hàng tháng (NSO + bù từ VnEconomy)
     credit_growth.csv      # Tăng trưởng tín dụng toàn hệ thống, 8 năm 2018-2025, mỗi dòng 1 source_url
-  powerbi/                 # Bản chụp star-schema CŨ — script dựng đã bị xoá, KHÔNG dùng làm input mô hình
-  _archive/                # Dữ liệu cũ/hỏng, giữ lại tham khảo, KHÔNG dùng làm input mô hình
 crawl_log.txt               # Log chung cho tất cả crawler
 ```
 
@@ -127,21 +138,23 @@ crawl_log.txt               # Log chung cho tất cả crawler
 
 ## Schema các file dữ liệu chính
 
-**`data/model/bank_panel_quarterly.csv`** — PANEL CHÍNH cho mô hình (748 dòng = 22 NH × 34 quý, 2018-Q1 → 2026-Q2)
+**`data/model/bank_panel_quarterly.csv`** — PANEL CHÍNH cho mô hình (770 dòng = 22 NH × 35 quý, 2018-Q1 → 2026-Q3)
 
 Dựng bằng `python -m crawlers.build_panel` (chỉ đọc lại các file đã có, không gọi mạng). Đây là file duy nhất mô hình nên đọc; mọi file khác là nguồn hoặc trung gian.
 
-Mỗi cột tỷ lệ đi kèm một cột **`<tên>_src`** ghi rõ ô đó lấy từ đâu — `vci` / `mas` / `note` / `derived` / `halfyear` — để truy nguyên được trong khoá luận. Thứ tự ưu tiên:
+Mỗi cột tỷ lệ đi kèm một cột **`<tên>_src`** ghi rõ ô đó lấy từ đâu — `vci` / `mas` / `note` / `derived` / `halfyear` / `bctc` — để truy nguyên được trong khoá luận. Thứ tự ưu tiên:
 
 | Cột | Ưu tiên 1 | Ưu tiên 2 | Độ phủ |
 |---|---|---|---|
-| `npl_percent` | `note` (sơ cấp) | `vci` | 98,5% |
-| `npl_coverage_percent` | `vci` (629 ô) | `note` = \|dự phòng cho vay\| / nợ nhóm 3–5 (108 ô) | 98,5% |
+| `npl_percent` | `bctc` (3 ô đọc tay), rồi `note` (sơ cấp) | `vci` | 98,5% |
+| `npl_coverage_percent` | `bctc` (3 ô tính lại), rồi `vci` (626 ô) | `note` = \|dự phòng cho vay\| / nợ nhóm 3–5 (108 ô) | 98,5% |
 | `casa_percent` | `note` | — | 98,5% |
-| `cof_ttm_percent` | `vci` (525 ô) | `mas` (213 ô) | 98,7% |
+| `cof_ttm_percent` | `vci` (525 ô) | `mas` (164 ô) | 92,1% |
 | `nim_ttm_percent` | `vci` (634 ô) | `mas` (104 ô) | 98,7% |
-| `earning_asset_yield_ttm_percent` | `mas` (công bố) | `derived` (suy ra) | 98,7% |
+| `earning_asset_yield_ttm_percent` | `mas` (công bố, 586 ô) | `derived` (suy ra, 76 ô) | 88,5% |
 | `car_percent` | `halfyear` (H1→Q2, H2→Q4) | — | 38,9% |
+
+Cột COF, lợi suất và các nhãn `bctc` tính theo code ngày 31/10/2026, khi MAS ghi 0 được coi là thiếu. Số ô trong bảng tính trên 34 quý tới 2026-Q2. Panel đã chạy lại ngày 02/11/2026 với 35 quý; riêng 2026-Q3, tỷ số VCI mới có 10/22 NH, thuyết minh 17/22 NH (xem `crawlers/vci_raw.py`).
 
 **Điều file này giải quyết.** Trước khi có nó, chuỗi quý *liên tục* dài nhất mà mọi ngân hàng đạt được đều đúng bằng **20 quý**, tất cả bắt đầu ở 2021-Q3 — không phải giới hạn của dữ liệu mà là ô 2021-Q2 bị thiếu đang cắt đôi chuỗi 34 quý. Sau khi vá bằng MAS và `note`:
 
@@ -154,6 +167,8 @@ Mỗi cột tỷ lệ đi kèm một cột **`<tên>_src`** ghi rõ ô đó lấ
 | Ngân hàng có dữ liệu ở 2021-Q2 | 1/22 | **22/22** |
 
 Ngắn nhất giờ là BVB 27 quý (2019-Q4 → 2026-Q2), do chuỗi của chính ngân hàng này bắt đầu muộn chứ không phải do thủng.
+
+**Đính chính 31/10/2026.** Các con số trên tính cả những ô COF và lợi suất cộng từ số 0 giả của MAS. Khi coi 0 là thiếu, chuỗi đủ 8 đặc trưng lõi còn trung vị 17 quý, ngắn nhất 14 quý, 3/22 ngân hàng đạt từ 20 quý và 656 dòng đủ cả 8 đặc trưng.
 
 **Sửa 15/09/2026 — ratio VCI lệch một quý quanh 2021-Q4.** Mọi cột lấy từ `vci` đọc qua `crawlers/vci_ratio.py` (xem mục `bank_credit_quarterly.csv`). Hệ quả trên panel: 2021-Q4 mang số thật của quý đó, còn 2022-Q1 lấy NIM/COF từ `mas` và bao phủ từ `note`. Cột `npl_coverage_percent` có thêm nguồn dự phòng `note`: công thức này khớp VCI đến 0,5 điểm ở 97% ô có cả hai nguồn, nên nó cũng lấp luôn 88 ô VCI vốn để trống (2018–2020, 2021-Q2, NVB 2025-Q2/Q3). Không cột "Giữ/Loại" nào đổi quyết định; `features_ranking_latest.csv` không đổi ô nào.
 
@@ -184,6 +199,16 @@ Ngắn nhất giờ là BVB 27 quý (2019-Q4 → 2026-Q2), do chuỗi của chí
 - **Bẫy `prev_rate_percent` của MSB**: cột "Trước đó" ghi 8,5% cho kỳ hạn 6 tháng và 8,3% cho 9 tháng, trong khi mức hiện hành là 6,1-6,3%. Chênh 2,2 điểm là **không thể** với một lần điều chỉnh lãi suất; 8,5%/năm cũng nằm ngoài hẳn mặt bằng thị trường (~6,4%). Nhiều khả năng là **lãi suất đặc biệt/khuyến mại** cho khoản tiền lớn, tức **khác cơ sở** với cột chính. Không được lấy `rate_percent - prev_rate_percent` làm mức thay đổi lãi suất.
 - `TERM_MAP` phủ **đúng cả 8 cột** nguồn đưa ra (1, 3, 6, 9, 12, 18, 24, 36 tháng) — không bỏ sót kỳ hạn nào.
 
+**`data/interest_rates/deposit_official_daily.csv`** — NGUỒN CHÍNH từ 07/11/2026 (biểu lãi suất của chính từng ngân hàng)
+`date, effective_date, ticker, term_months, channel, rate_percent, tier, product, source, source_url, source_updated_at, retrieved_at_utc`
+
+- **Vì sao đổi nguồn:** 24hmoney đứng ở bảng "19:30:02 29/10/2026" (không đổi cả dấu thời gian). Kiểm 07/11/2026 mọi trang tổng hợp khác đều đứng hoặc sai một phần: MoMo ghi "09:58 16/10/2026", Chợ Giá / Simplize / Thời báo Ngân hàng còn số trước đợt giảm 20/10 (có trang còn mặt bằng 2024), Stockbiz bảng trống; blog Techcombank chỉ cập nhật kỳ ≤ 12 tháng (khớp biểu 84%) còn 18–36 tháng giữ số cũ (khớp 28%, cao hơn biểu 0,5 điểm ở 15 NH); laisuattietkiem khớp biểu 61%, thiếu 6 mã. Trong khi đó NH vẫn đổi biểu: VPBank 02/11, Eximbank 31/10, OCB 06/11, TPBank 07/11.
+- `python -m crawlers.deposit_official` chụp hôm nay (chạy lại trong ngày thì thay số của ngày đó); `python -m crawlers.deposit_official VCB OCB` chỉ in, không ghi file. Cần Edge (headless) cho BID, PGB, VIB, BVB, HDB, SHB, NVB, TPB, EIB. Mỗi NH một hàm, docstring ghi rõ trang, mục, cột đã đọc.
+- Quy ước như ảnh chụp tay 22/10 (`deposit_official_manual.csv`): bậc số tiền thấp nhất, lãi cuối kỳ, KHCN, VND. Kỳ hạn NH không niêm yết trong kênh đó (ACB online 18–36T, VCB online 18/36T) để trống.
+- Ô vượt trần NHNN (kỳ 1–5 tháng > 4,75%) làm cả bảng của NH đó bị loại trong ngày — dấu hiệu đọc nhầm cột.
+- `deposit_tiers.read()` từ ngày chụp đầu tiên dựng mặt cắt 22 NH × 2 kênh × 7 kỳ hạn mỗi ngày: biểu NH hôm đó → biểu NH trong 7 ngày trước (NH lỗi crawl) → ảnh chụp tay còn hạn 30 ngày → blog Techcombank, riêng cho kênh NH không công bố (online BIDV, VietinBank, MB, Bắc Á, SeABank). Cột `source` ghi nguồn từng ô (`bieu NH`, `bieu NH 2026-11-05`, `bieu NH doc tay 2026-10-22`, `blog Techcombank`).
+- Chưa tự động: **MB** (CDN Akamai chặn tải PDF ngoài trình duyệt) và **SeABank** (trang treo Edge headless). Xem `deposit_official.GAPS`. `validate` báo `deposit.sheet` khi NH nào không đọc được hoặc ảnh chụp cũ quá 2 ngày.
+
 **`data/interest_rates/deposit_24hmoney_daily.csv`** — đối chứng #1 (24hmoney.vn)
 `date, effective_date, bank_24hmoney, bank_name, ticker, term_months, channel, rate_percent, source, source_updated_at, source_url, retrieved_at_utc`
 - Bảng HTML thật: **38 NH × 7 kỳ hạn (1, 3, 6, 12, 18, 24, 36) × 2 kênh = 478 ô/ngày**. Không có kỳ hạn 9 tháng.
@@ -201,6 +226,13 @@ Ngắn nhất giờ là BVB 27 quý (2019-Q4 → 2026-Q2), do chuỗi của chí
 - **Vì sao parser văn xuôi ở đây kiểm định được, trái với kết luận ở giới hạn 2**: loạt bài này **tự mang số tổng hợp** ("có N ngân hàng niêm yết từ 7%/năm trở lên", "Big4 thấp hơn 1 điểm so với ACB"). `validate()` đối chiếu kết quả trích với chính các con số đó và ghi vào cột **`checksum_ok`**. Checksum này bắt được 2 lỗi thật lúc dựng: Big4 mất trắng 4 NH, và kỳ hạn **13 tháng** của SCB (8,7%) lọt vào ô 12 tháng.
 - Hiện **21/31 ngày checksum đạt**; `--compare` chỉ dùng ngày đạt. 10 ngày còn lại lệch 1-2 NH ở nhóm ≥7% — **phải lọc `checksum_ok` trước khi dùng**.
 - Lùi được về **01/08/2026 (31 ngày)** qua sitemap CafeF, gồm cả 29-30/08 mà nguồn chính mất.
+
+**`data/interest_rates/deposit_techcombank_daily.csv`** — đối chứng #3 (bảng tổng hợp trên blog Techcombank, từ 03/11/2026)
+`date, effective_date, bank_techcombank, bank_name, ticker, term_months, channel, rate_percent, source, source_updated_at, source_url, retrieved_at_utc`
+- **34 NH × 7 kỳ hạn × 2 kênh = 476 ô/ngày, 21/22 ticker** (không có Sacombank). Không có kỳ hạn 9 tháng. Kênh đọc từ đoạn văn ngay trên mỗi bảng.
+- **Đây là bảng tổng hợp, không phải biểu của từng ngân hàng.** Dòng Techcombank là khách Private ≥ 3 tỷ; ACB online là bậc 200 triệu – 1 tỷ. Vì vậy chưa đưa lên web.
+- `effective_date` là ngày trong tiêu đề trang. Trang không có mốc "cập nhật lúc", nên ngày này không chứng minh bảng vừa đổi số. `source_updated_at` giữ `Last-Modified` của máy chủ theo giờ Việt Nam.
+- Đối chiếu 03/11/2026: 235/288 ô trùng 24hmoney ngày 29/10. Trong 42 ô khác nhau có biểu chính thức để phân xử, trang đúng 27, 24hmoney đúng 0, cả hai sai 15. Trang có đổi số thật: 139/476 ô khác bản Wayback 17/10.
 
 **Ba nguồn, cùng một ô, KHÔNG cùng một số** — phát hiện quan trọng nhất về lãi suất tiết kiệm (03/09/2026)
 
@@ -277,10 +309,10 @@ Hệ quả phải nêu trong luận văn:
 
 **`data/vnstock_financial/financial_long.csv`** (197.669 dòng, 22 NH, dạng long)
 `ticker, statement, freq, period, id, name, order, level, off_balance, unit, value`
-- Dựng bằng `python -m crawlers.vnstock_merge` (chỉ đọc lại `data/vnstock_financial/raw/`, không gọi mạng). `raw/` vẫn là nguồn sự thật; file này là **dẫn xuất**, dựng lại lúc nào cũng được. Tải lại `raw/` bằng `python -m crawlers.vnstock_merge --fetch`.
+- Dựng bằng `python -m crawlers.vnstock_merge` (chỉ đọc lại `data/vnstock_financial/raw/`, không gọi mạng). `raw/` vẫn là nguồn sự thật; file này là **dẫn xuất**, dựng lại lúc nào cũng được. **Từ 02/11/2026 không dùng `--fetch`:** tài khoản vnstock ở gói miễn phí nên `Finance(source="VCI")` chỉ trả 18/84 dòng cân đối và thuyết minh mã thô; `fetch()` giờ từ chối ghi đè. Thêm quý mới bằng `python -m crawlers.vci_raw --fetch` rồi `--add <kỳ>` (giữ nguyên lịch sử).
 - **Từ 14/09/2026 là bản đầy đủ**:
   - `balance_sheet` có 84 id, trong đó 57 id có số ở ≥50% trên 748 ô; `income_statement` 26 id (21); `cash_flow` 51 id (31); `ratio` 60 id.
-  - Bản cũ (35.556 dòng) chỉ có 13/11/3/13 id, lưu ở `data/_archive/vnstock_financial_2026-08-20_tomtat/`.
+  - Bản cũ (35.556 dòng) chỉ có 13/11/3/13 id, từng lưu ở `data/_archive/vnstock_financial_2026-08-20_tomtat/` (đã xoá 16/10/2026, sau khi đối chiếu xong).
   - Mọi id cũ đều còn. 35.556 ô cũ: 31.501 trùng tuyệt đối, 450 lệch do MBB cũ làm tròn, 123 do nguồn cập nhật lại (P/E–P/B kỳ mới nhất, HDB 2024 năm, HDB/SHB 2026-Q2).
   - Panel sau khi dựng lại chỉ đổi đúng các ô đó; cổng `validate` giữ nguyên 0 ERROR.
 - **Cột `name` giờ là tiếng Việt** ("TỔNG CỘNG TÀI SẢN"): `lang="en"` không có tác dụng với bản đầy đủ. Chọn chỉ tiêu bằng `id`, không bằng `name`. `validate.check_ratio_shape` đã chuyển sang khớp theo `id`.
@@ -393,8 +425,9 @@ Hệ quả phải nêu trong luận văn:
 Bốn ô đã phải sửa vì dính bẫy lạm phát cơ bản: `2019-09` yoy, `2019-10` mom, `2019-12` yoy, `2020-07` yoy. Ba ô đầu có trích dẫn trực tiếp — đã **đối chiếu lại nguyên văn** vào 24/08/2026, trong đó `2019-09` phải đổi tên miền (`gso.gov.vn` không còn phân giải) và `2019-12` phải đổi hẳn nguồn (bài Vietstock cũ **không hề chứa con số 5,23**, chỉ có MoM 1,4 và bình quân năm 2,79). **`2020-07` yoy = 3,39 vẫn là giá trị SUY RA** (từ quan hệ liên tháng, kiểm chéo bằng bình quân năm 2020) — chưa có trích dẫn trực tiếp, cần xác minh trước khi đưa vào luận văn.
 
 **`data/price/<TICKER>.csv`**: `time, open, high, low, close, volume`
-- 22 file, tổng **47.074 phiên**, `time` dạng `YYYY-MM-DD 07:00:00`. Độ dài rất lệch: EIB/STB 2.724 phiên (từ 2015), SSB chỉ 1.352 (lên sàn 2021).
-- Cập nhật: `python -m crawlers.price` (idempotent — ghi đè ngày trùng, sắp xếp theo `time`).
+- 22 file, tổng **60.054 phiên** (13/10/2026), `time` dạng `YYYY-MM-DD 07:00:00`, giá **đã điều chỉnh** theo cổ tức/thưởng cổ phiếu (VCI), khối lượng **không** điều chỉnh. Độ dài rất lệch: VCB/CTG/EIB/STB 4.182 phiên (từ 2010), SSB chỉ 1.386 (lên sàn 2021). Không lưu phiên khối lượng 0.
+- Cập nhật: `python -m crawlers.price` (idempotent). Từ 14/10/2026 mỗi lần chạy tải lại **toàn bộ lịch sử** của mã: trước đó chỉ làm mới 7 ngày nên khi NH chia cổ phiếu, phiên trước ngày GDKHQ giữ giá chưa điều chỉnh → rơi giả HDB −21,9% (02/10/2026), VPB −18,9% (17/09), TPB −16,6% (25/09), MSB −15,9% (21/08).
+- **Bẫy:** giá × khối lượng KHÔNG ra giá trị giao dịch thật cho phiên quá khứ (giá chia hệ số điều chỉnh, khối lượng thì không) → `log_adtv` / `log_value_vnd` có bậc giả mỗi lần chia cổ phiếu.
 - **Giới hạn đã biết**: 19 dòng có OHLC không nhất quán (close nằm ngoài khoảng high-low), rải rác 2019-2024 — do vnstock điều chỉnh giá theo cổ tức không đồng nhất giữa các cột. Cần lọc hoặc xử lý khi build feature. Danh sách: BAB 2020-02-18; EIB 2019-07-15, 2019-08-07; HDB 2019-08-07, 2019-09-04; LPB 2020-02-18; MBB 2019-09-04; NVB 2020-12-07; PGB 2024-09-23, 2024-12-20; STB 2019-08-07; TCB 2019-07-18; TPB 2019-07-18, 2019-07-19, 2019-09-04; VCB 2019-07-19, 2019-08-30; VIB 2019-12-31, 2020-02-18.
 
 **`data/external/vn_banking_system_2002_2021_data.csv`** (667 dòng, 45 ngân hàng x 2002-2022)
@@ -504,7 +537,10 @@ Chạy theo thứ tự, mỗi bước chỉ đọc file đã có, không gọi m
 python -m crawlers.build_panel       # panel sạch + cổng validate (mã thoát 1 nếu còn ERROR)
 python -m crawlers.inventory         # kiểm kê mọi CSV → data/model/data_inventory.csv
 python -m crawlers.build_features    # 120 đặc trưng → features_quarterly.csv + feature_spec.csv
-python -m crawlers.select_features   # quyết định Giữ/Loại → feature_catalog.csv, features_selected.csv, features_ranking_latest.csv
+python -m crawlers.select_features   # quyết định Giữ/Loại → feature_catalog.csv, features_selected.csv, features_clean.csv, features_ranking_latest.csv
+python -m crawlers.select_features_hf  # bản ngày/tháng → features_selected_daily.csv, features_selected_monthly.csv, feature_spec_hf.csv (có trong run_daily_crawl)
+python -m crawlers.ranking_panels      # tiêu chí xếp hạng ở tần suất gốc → ranking_daily.csv, ranking_monthly.csv, ranking_quarterly.csv, ranking_spec.csv (có trong run_daily_crawl)
+# tầng 3 đọc số đo của: python -m experiments.feature_effect  (~70 phút; chỉ chạy lại khi thêm biến hoặc thêm quý)
 ```
 
 **Kiểm kê (15/09/2026):** 639 file, 2,16 triệu dòng. Bỏ 288 file lưu trữ và 261 file trùng (1,07 triệu dòng: `powerbi/`, `raw*/` theo mã, `deposit_raw/`, bản sao nhập tay). Giữ 60 file cho mô hình, 7 file cho xếp hạng/giao diện, 15 file tham khảo, 8 file trung gian.
@@ -515,7 +551,12 @@ python -m crawlers.select_features   # quyết định Giữ/Loại → feature_
 
 **Chọn lọc — tầng 1 (chất lượng):** mức tuyệt đối đồng → Loại; cùng khái niệm với biến khác → Loại; một giá trị ≥ 95% số ô → Loại; phủ < 70% hoặc < 20 NH → Loại, trừ biến có ≥ 20 NH trong 4 quý gần nhất → **Giữ cho xếp hạng**; |Spearman| ≥ 0,90 với biến ưu tiên hơn → Loại. Kết quả: **88 Giữ · 7 Giữ cho xếp hạng · 25 Loại**.
 
-**Chọn lọc — tầng 2 (liên hệ dự báo, không loại biến):** Spearman giữa đặc trưng quý t (trừ trung bình từng NH) và **thay đổi** của 6 mục tiêu (NIM, COF, NPL, CASA, LDR, ROE) từ t sang t+1; đạt khi |ρ| ≥ 0,15 và cùng dấu, |ρ| ≥ 0,10 ở cả hai nửa (≤ 2022-Q2 và sau). 28 biến là **Lõi dự báo**, 60 biến là **Mô tả / xếp hạng**. Đáng chú ý: thay đổi COF đi theo lãi suất tái cấp vốn (ρ = +0,41) và tăng trưởng tín dụng hệ thống (+0,47) — nhân tố chung; NPL và LDR chỉ có động lượng của chính nó. Trung bình NH tính trên cả mẫu nên đây là số **mô tả**, không phải kiểm định ngoài mẫu.
+**Chọn lọc — tầng 2 (liên hệ dự báo, không loại biến):** Spearman giữa đặc trưng quý t (trừ trung bình từng NH) và **thay đổi** của 6 mục tiêu (NIM, COF, NPL, CASA, LDR, ROE) từ t sang t+1; đạt khi |ρ| ≥ 0,15 và cùng dấu, |ρ| ≥ 0,10 ở cả hai nửa (≤ 2022-Q2 và sau). 28 biến là **Lõi dự báo**, 60 biến là **Mô tả / xếp hạng**. Đáng chú ý: thay đổi COF đi theo lãi suất tái cấp vốn (ρ = +0,41) và tăng trưởng tín dụng hệ thống (+0,47) — nhân tố chung; NPL và LDR chỉ có động lượng của chính nó. Trung bình NH tính trên cả mẫu nên đây là số **mô tả**, không phải kiểm định ngoài mẫu. *(Từ 13/10/2026: trừ trung bình quá khứ của NH thay cho trung bình cả mẫu; tầng 2 chỉ còn là cột mô tả, không gắn nhãn "Lõi dự báo" nữa — tầng 3 cho thấy nhãn đó không đứng được.)*
+
+**Chọn lọc — tầng 3 (tác dụng, 13/10/2026; `experiments/feature_effect.py`):** biến sạch chỉ được giữ khi có ít nhất một vai trò đo được: mục tiêu dự báo, đầu vào dự báo, tiêu chí xếp hạng gửi/vay, hoặc chỉ tiêu trên hồ sơ NH của web.
+- *Dự báo* (walk-forward từ 2023-Q1, 6 chỉ tiêu × 3 tầm, base + Random Forest học phần dư): thêm từng nhóm CAMELS vào bộ lõi (lịch sử chính chỉ tiêu, quý rơi khỏi TTM, lãi tái cấp vốn trễ, quý trong năm) tốt lên có ý nghĩa 13 lần, tệ đi 30 lần trên 216 phép thử. Chọn nhóm lồng trên 2021–22 rồi chấm trên 2023+: **0/18 ô thắng bộ lõi**. Đưa cả 90 biến sạch vào làm COF 4 quý tệ hơn base 16,8%. Biến catalog duy nhất có tác dụng là **lãi tái cấp vốn** (bỏ ra tệ đi ở 9/18 ô); tăng trưởng tín dụng hệ thống thì không.
+- *Xếp hạng* (cắt ngang 22 NH): thứ hạng NH sau 4 quý phải còn ρ ≥ 0,5 (lãi suất, điểm app: sau 1 quý), không trùng cắt ngang |ρ| ≥ 0,9 với tiêu chí khác. Không biến an toàn nào báo trước được thay đổi NPL/ROA 4 quý tới (|t| < 2 ở 76/78 biến) → tiêu chí chọn theo trụ CAMELS, không theo khả năng báo trước.
+- Kết quả: **21 Giữ · 5 Giữ cho xếp hạng · 98 Loại** (25 không sạch + 73 sạch nhưng không tác dụng). Thêm mới từ dữ liệu cũ: **lãi dự thu / tổng tài sản** (gần như không trùng NPL, ρ cắt ngang 0,10). Thử nhưng loại: tỷ trọng tiền gửi cá nhân (trùng phí BHTG / tiền gửi ρ 0,91), trái phiếu VAMC (2026-Q2 chỉ 5/22 NH còn số).
 
 ### Thử nghiệm điền khuyết (`experiments/imputation_benchmark.py`)
 
@@ -566,6 +607,141 @@ Hai kết luận của bài lặp lại được:
 | Bỏ ngân hàng | — | — | 11,8% | 0,19 |
 
 Đổi trọng số (Dirichlet α = 8, 300 bộ) trên cùng khung làm mỗi NH dịch trung bình **1,92 bậc** — một ô điền bằng trung bình tạo ra khoảng một nửa mức bất định đó cho NH bị thiếu. Điền trung bình **kéo về giữa**: NH hạng 16+ được đẩy lên +0,52 bậc, NH top 5 bị kéo xuống −0,48. Ảnh chụp thật 4 quý gần nhất thiếu đúng hai ô quan trọng: BAB thiếu điểm app (số gần nhất 1,38 sao, 2024-Q4) → hạng 16 nếu điền trung bình, 19 nếu dùng số gần nhất; NVB thiếu CAR (9,22%, 2024-Q1) → 20 hoặc 21. Mô phỏng dùng số của quý liền trước nên ưu thế của "số gần nhất" là lạc quan với ô đã cũ nhiều quý.
+
+**Phần 4 — điền ô thiếu cho học không giám sát** (`python -m experiments.unsup_imputed`, ~15 phút, 25/10/2026; thiết kế bàn với Codex/GPT-6-Astra). Câu hỏi: điền ô thiếu sát BCTC có giúp bộ dò bất thường thắng luật nợ nhóm 2 trong việc báo trước NPL tăng ≥ 0,5 điểm trong 4 quý tới không.
+
+- **Ô thiếu.** Cửa sổ 2019-Q4+ của 14 tiêu chí an toàn chỉ thiếu 34/8.316 ô (CAR 30, trong đó NVB 17; CIR 4). Bộ dài 6 tiêu chí 2013+ (NPL, nhóm 2, CASA, LDR, ROA, CIR) thiếu chủ yếu nguyên khối ở 10 NH chưa niêm yết. Khối đó không điền, vì không có quá khứ để điền từ đó.
+- **Cách điền.** Chỉ dùng quá khứ, vì sự kiện là NPL tương lai. Không điền qua chỗ BCTC đổi phạm vi công ty mẹ ↔ hợp nhất. Độ cũ tối đa: NPL/nhóm 2/ROA/CIR 1 quý, CASA/LDR 2 quý, CAR một nửa năm. Trước bước đoán có một lớp nguồn: ô quý 4 lấy từ bộ Harvard. Harvard khớp NPL BCTC với độ lệch trung vị 0,001 điểm trên 183 ô; chỉ dùng cho NH đã khớp trước 2018, tổng cộng 20 ô.
+- **Sai số trên ô thật bị che** (2021+, cũ 1 quý), tính bằng MAE, trong ngoặc là trung vị: NPL 0,38 (0,19) điểm; nhóm 2 0,43 (0,20); CASA 1,67 (1,37); LDR 3,45 (2,70); ROA 0,13 (0,08); CAR một nửa năm 0,67 (0,46). LOCF từ quý 3 sang quý 4 lệch có hệ thống, do mùa vụ cuối năm.
+- **Kết quả.** Kiểm tra trên các gốc 2021-Q1..2025-Q2. Cấu hình bộ dò được khóa trên các gốc 2016–2019 trước khi chấm.
+
+| Bộ | AUC | AP | P@2 |
+|---|---|---|---|
+| Luật nợ nhóm 2 (mốc) | 0,680 | 0,471 | 0,583 |
+| 14 tiêu chí, có điền / không điền | 0,632 / 0,635 | 0,502 | 0,778 |
+| 6 tiêu chí, học từ 2019-Q4 | 0,653 | 0,509 | 0,667 |
+| 6 tiêu chí, học từ 2014, có điền / không điền | 0,669 / 0,670 | 0,516 | 0,667 |
+
+Bộ dài trừ nhóm 2: AUC −0,011, khoảng tin cậy 95% [−0,109; +0,078] theo NH và [−0,095; +0,071] theo thời gian; AP +0,046 [−0,078; +0,142]. **Việc điền không đổi kết quả. Chưa có bằng chứng bộ dò không giám sát vượt luật nợ nhóm 2**, và khoảng bất định rộng nên cũng không chứng minh được hai bên tương đương. Lùi lịch sử về 2014 thêm khoảng +0,017 AUC. Cả 36/36 lần gắn cờ (top 2 mỗi quý) rơi vào NVB, VPB, BVB; bỏ ba NH này thì bộ dò 0,624, nhóm 2 0,648. Cấu hình khóa đo *mức* bất lợi tương đối trong quý, không đo "đang xấu đi". Chọn cấu hình trên mẫu nhỏ rất không ổn định: chọn trên 2016–17 được AUC 0,867, sang 2018–19 chỉ còn 0,481 (nhóm 2 0,504). Bảng đã điền nằm ở `data/model/experiments/unsup_imputed_panel_{w14,dai}.csv`, với cột `dien_<cột>` ghi cách điền.
+
+### Kiểm NPL/nhóm 2 với BCTC gốc (`crawlers/audit_npl_bctc.py`, từ 25/10/2026)
+
+Đối chiếu NPL và nợ nhóm 2 của panel (VCI) với thuyết minh phân loại nợ trong BCTC quý trên Vietstock, cho 22 NH × 2021-Q1..2026-Q2 (484 NH-quý). Script dùng lại `crawlers/ocr_bctc.py`, đọc bằng lớp chữ hoặc RapidOCR, và chỉ nhận bảng khớp đúng dòng tổng in trong bảng (lệch ≤ 3 đơn vị). Thứ tự chọn file: BCTC quý hợp nhất → BCTC quý → 6T soát xét → công ty mẹ. Kết luận mỗi ô là `khop_chinh_xac`, `khop_duoi_nguong` (lệch ≤ 0,05 điểm NPL và ≤ 0,1 điểm nhóm 2) hoặc `LECH`. Ô LECH phải đọc lại trang gốc bằng mắt.
+
+Kết quả ghi ra `data/credit/audit_npl_bctc_2021_2026.csv`. Bản scan mất 3–9 phút/báo cáo; có thể dừng rồi chạy tiếp bằng `--resume`.
+
+- **Kết quả 26/10** (466/484 ô đã chạy; 18 ô VIB dừng vì bản scan mất 1–2 giờ/báo cáo): 341 ô khớp chính xác, 60 ô dưới ngưỡng (22 ô ACB), 8 ô gần khớp nhưng chỉ đọc được bản công ty mẹ, 41 ô lệch, 16 ô chưa đọc đạt. Giải trình từng ô ở `data/credit/audit_npl_bctc_giai_trinh.csv`.
+- **12 ô lệch là do khác phiên bản, panel đúng.** Ở quý 2, VCI lấy BCTC 6 tháng đã soát xét; ở quý 4, VCI lấy BCTC năm đã kiểm toán. Bản soát xét thường nâng NPL, ví dụ BVB 2023-Q2: bản quý 3,17%, bản soát xét 4,38%. Đọc bản soát xét/kiểm toán thì khớp panel tuyệt đối.
+- **22 ô lệch là do khác định nghĩa mẫu số, không phải lỗi.** NPL của VCI = nợ nhóm 3–5 trong thuyết minh chia cho dư nợ trên bảng cân đối, gồm cả cho vay ký quỹ và ứng trước của công ty chứng khoán con. Bảng 5 nhóm của NH thì không gồm các khoản này. Kiểm bằng số khớp 53/55 ô ở ACB, VPB, TCB, HDB và TPB.
+- **3 ô VCI sai thật, đã sửa** trong `data/credit/npl_bctc_corrections.csv`, đều đã đọc bằng mắt trang gốc:
+
+| Ô | VCI ghi | BCTC ghi |
+|---|---|---|
+| BAB 2021-Q1 | 0,4198% | 0,7898% |
+| EIB 2021-Q1 | 2,3105% | 2,6350% |
+| TPB 2026-Q1 | 2,1661% | 1,8497% |
+
+- **4 ô chưa kết luận được**, vì chỉ đọc được bản công ty mẹ.
+- **Độ trễ công bố** (theo thời điểm đăng file trong danh mục Vietstock, 749 BCTC quý 2018–2026): trung vị 29 ngày, 95% trong 46 ngày. Riêng BCTC 6 tháng soát xét và BCTC năm kiểm toán ra muộn hơn mốc t + 45 ngày, nên số quý 2 và quý 4 trong panel là số đã cập nhật về sau.
+
+```bash
+python -m crawlers.audit_npl_bctc --catalog
+```
+
+```bash
+python -m crawlers.audit_npl_bctc --all --workers 3 --resume
+```
+
+### Học có giám sát: cảnh báo "NH sắp xấu đi" (`experiments/supervised_warning.py`, 25/10/2026)
+
+Đây là phần **có giám sát**, và không phải chờ tới 2027: mọi kết cục đã quan sát trong lịch sử đều là nhãn.
+
+**Thiết kế.** Đặc tả khóa sau 3 lượt tranh luận với Codex/GPT-6-Astra; tổng cộng 5 lượt mỗi bên, biên bản ở `reports/tranh_luan_codex_co_giam_sat_2026-10-25.md`.
+- **Nhãn:** NPL tăng ≥ 0,5 điểm trong 4 quý tới, chỉ tính khi NPL gốc và 4 quý sau đều là số quan sát, cùng phạm vi BCTC, và cửa sổ không đi qua sáp nhập có nguồn.
+- **Thời điểm dự báo:** cuối quý t + 45 ngày. Chỉ học các gốc s ≤ t − 4, tính từ 2013.
+- **Mô hình chính:** logistic L2 trên 8 biến có từ 2013: nhóm 2, NPL, ΔNPL 4 quý, CASA, LDR, ROA, CIR, tăng trưởng tín dụng.
+- **Thước đo chính:** AUC trong từng quý, lấy trung bình, so với luật nợ nhóm 2. KTC tính bằng bootstrap khối 4 quý, 10.000 lần.
+
+**Kết quả** (gốc 2021-Q1..2025-Q2; giai đoạn này đã bị xem ở các phân tích trước, nên đây là đánh giá hồi cứu):
+
+| Cách | AUC trong quý | Chênh so với nhóm 2 [KTC 95%] | P@2 |
+|---|---|---|---|
+| Luật nợ nhóm 2 (mốc) | 0,683 | — | 0,583 |
+| **M2 logistic 8 biến (chính)** | **0,526** | **−0,157 [−0,212; −0,131]** | 0,417 |
+| M1 logistic 3 biến | 0,549 | −0,134 | 0,639 |
+| M3 LightGBM | 0,542 | −0,141 | 0,333 |
+| Logistic chỉ nhóm 2 | 0,683 | 0 | 0,583 |
+| X1 cửa sổ trượt 12 quý (khám phá) | 0,552 | −0,131 | 0,389 |
+| X2 nhóm 2 cố định + học phần chỉnh (khám phá) | 0,639 | −0,044 [−0,089; −0,026] | 0,556 |
+| X3 học từ 2018 (khám phá) | 0,526 | −0,158 | 0,389 |
+
+Số liệu trên đã sửa 3 ô VCI sai theo phần kiểm BCTC. Việc sửa làm lật 1 nhãn, ở EIB 2020-Q2, thuộc tập học.
+
+- **Kết luận.** Không cấu hình đa biến nào vượt luật nhóm 2 về AUC trong quý. Chênh P@2 của M1 (+0,056) không có ý nghĩa. Mọi độ nhạy nhãn đều cho kết quả âm: cho phép phạm vi "?", bỏ phạm vi, nhãn tương đối.
+- **Giới hạn thời điểm.** Số quý 2/quý 4 là bản soát xét/kiểm toán, ra sau mốc t + 45 ngày. Vì vậy đây là đánh giá hồi cứu trên dữ liệu đã cập nhật, chưa phải mô phỏng triển khai thật. Chấm riêng 9 gốc quý 1/quý 3 (chỉ dùng BCTC quý thường): nhóm 2 đạt 0,677, M2 đạt 0,527, chênh −0,150.
+- **Bằng chứng về bất ổn qua thời gian.** AUC trong quý của riêng nhóm 2 là 0,27 ở 2013–16, 0,53 ở 2017–20 và 0,68 ở 2021–25. Đây mới là dấu hiệu quan hệ dự báo không ổn định; chưa xác định được nguyên nhân.
+- **Trên web:** cảnh báo để riêng, ghi rõ là luật nhóm 2. Không đưa vào điểm MCDM.
+- **Dự báo đóng băng** cho các gốc 2025-Q3..2026-Q2 nằm ở `supervised_warning_frozen.csv`. Các gốc này đã qua nên đây không phải kiểm chứng tiền nghiệm.
+
+Chạy khoảng 5 phút; tự đọc kết quả kiểm BCTC nếu đã có:
+
+```bash
+python -m experiments.supervised_warning
+```
+
+### Xếp hạng gửi/vay: MCDM × Monte Carlo (`experiments/montecarlo_ranking.py`)
+
+**Cách làm.**
+- Bốn thuật toán bù trừ: SAW, TOPSIS, VIKOR, PROMETHEE II. Thêm WPM và WPM theo nhóm để đối chiếu.
+- Trọng số thứ bậc: nhóm → trụ CAMELS → tiêu chí.
+- Monte Carlo rút 10.000 bộ trọng số cho mỗi kịch bản, rồi báo hạng điểm, P(top1), P(top3) và khoảng hạng cho mọi kỳ hạn × kênh gửi, cùng phần vay.
+- Đầu vào là ảnh chụp `data/model/features_ranking_latest.csv`. Muốn tái lập thì chạy với `--ranking`, trỏ tới bản đóng băng trong `data/model/experiments/inputs/`.
+
+**Lần chạy 26/10/2026** (lãi ngày 25/10, BCTC 2026-Q2). Báo cáo đầy đủ, gồm danh sách file và bảng 22 NH, ở `reports/xep_hang_2026-10-26.md`. Biên bản 3 vòng soát với Codex ở `reports/soat_xep_hang_codex_2026-10-26.md`.
+- **Gửi 12 tháng online:** BID hạng 1 ở cả 4 thuật toán, P(top1) 89%. VPB hạng 2.
+- **Vay:** VCB hạng 1, P(top1) 75%. Phần vay kém bền hơn: 4 thuật toán chỉ cùng chọn một NH đứng đầu ở 49% số vòng.
+- **Sửa sau soát:**
+  - Hạng "min" khi điểm hòa (dung sai 10⁻⁹) và chia đều P(top1) cho các NH hòa.
+  - Ô tranh chấp CTG chỉ còn ở kênh online.
+  - NH không có sản phẩm ở một kỳ hạn × kênh bị loại khỏi tập xếp hạng, thay vì được điền số (ACB online 18/24/36 tháng, BVB online 36 tháng).
+  - Giá trị điền ô thiếu tính trên đủ 22 NH.
+  - Thêm cờ `--thieu-bat-loi` để chạy độ nhạy với ô thiếu điền giá trị xấu nhất.
+
+**ML trong vòng Monte Carlo — phân tích độ nhạy (`--ml`, 26/10/2026).** Thiết kế chốt sau thảo luận 3 bên với Codex (một vai kiến trúc sư, một vai phản biện, Claude chủ trì; biên bản `reports/thao_luan_ml_montecarlo_2026-10-26.md`). Vòng ngoài vẫn là trọng số. Bên trong, mỗi bộ trọng số được ghép với **mọi quý sai số** trong kho: NPL, CASA, LDR (vay chỉ có LDR) = số công bố + thang của NH × sai số walk-forward chuẩn hóa của cả quý đó (giữ cú sốc chung 22 NH).
+- **Phương án:**
+  - `cong_bo_sai_so`: sai số của phương pháp dự báo đã chọn.
+  - `cong_bo_base`: sai số của base, làm đối chứng cùng tâm.
+  - Định tâm `tru_TB_NH` (trừ TB riêng từng NH trên đúng kho), `giu_nguyen` làm độ nhạy. Kho chính: gốc từ 2023-Q1.
+- **Không phải bảng chính, không lên web.** Bảng chính vẫn xếp bằng số công bố.
+- **Kết quả** (quanh mặc định, TB 4 thuật toán bù trừ):
+  - Gửi 12T online: BID 88,96% → 88,77% (h4), không đổi.
+  - Vay: VCB 74,76% → 65,67% (sai số base) / 62,80% (sai số phương pháp chọn) ở h4. Kho yêu cầu từ 2015, quý đầy đủ thực dùng từ 2019-Q4: 58,56%.
+  - NH dẫn đầu không đổi ở mọi đối chiếu.
+- **Giới hạn đo được:**
+  - Khoảng 80% của bộ lấy mẫu phủ thấp: LDR h4 39% (kho 2023) → 55% (kho 2015) → 59% (gộp 22 NH, kho 2015); NPL, CASA gần danh nghĩa hơn.
+  - Cắt miền làm lệch tâm NVB NPL h4 +2,65 điểm.
+  - Bỏ một quý dịch VCB vay h4 tối đa 3,1 điểm, nhưng từng quý phân tán 4–92%.
+  - P(top1) chỉ là tỷ lệ trong mô phỏng theo giả định, chưa hiệu chuẩn.
+- **Dự báo chọn lại sạch** (`serving/forecast.py`, `SELECT_LABEL_TO = "2022-Q4"` cho cả kiểu base lẫn base/RF): 16/24 ô đổi. LDR h4 còn +3,7% so base (trước báo +15,8%); COF vẫn +12…+22,5%. `--oof-from 2015-Q1` chỉ kéo kho sai số lùi, không đổi lựa chọn.
+- **Tập chọn base/RF từ 2019 (`SELECT_FROM`, 26/10/2026)** sau `experiments/hyperparam_tuning.py` (lưới 99 cấu hình RF/LightGBM × 3 cửa sổ học):
+  - Tinh chỉnh tham số mỗi ô tự chọn: TB −0,8 điểm so với tham số cố định; hơn có ý nghĩa 1/24, kém 2/24 (COF h1 −11,3%, ROE h1 −5,2%); 19 ô ra 16 cấu hình khác nhau → chọn theo nhiễu. Giữ tham số cố định.
+  - Chọn cửa sổ học trên gốc từ 2019 thay vì 2021 (tập chọn 88–154 → tới 264 dòng): TB so base +4,4% → +5,5%; hơn có ý nghĩa 4/24 (NPL h1 +8,0%, CASA h1 +13,7%, CASA h2 +9,2%, LDR h2 +1,1%), kém 0/24; 9 ô đổi phương pháp. Phát hiện sau khi nhìn tập kiểm tra → quy tắc cũ ghi là độ nhạy.
+  - Tinh chỉnh lần 2 theo các phương pháp chuẩn (`experiments/hyperparam_search.py`, Optuna; ~85 phút): một bộ tham số dùng chung cho 24 ô, tối ưu trên tập chọn từ 2019; RF và LightGBM, mỗi họ 4 cách (lưới, Random Search 40 lần, Hyperband 40, Bayes TPE + Hyperband 60). Tối ưu tốt hơn trên tập chọn (mục tiêu 0,9376 → 0,9297) nhưng trên kiểm tra không cách nào hơn bản đang dùng: TB −0,3% … −1,6%, bốn cách kém có ý nghĩa; các cấu hình tìm được (lá 1–4, rút mẫu con) làm hỏng COF h1–h3 (−3 … −17%). Giữ tham số cố định.
+  - ML × MC ở h4 (số trong bản nháp) không đổi vì lựa chọn h4 không đổi; ở h1–h2 độ phủ khoảng tiêu chí của bộ lấy mẫu giảm (khoảng 80%: CASA h1 72% → 60%, NPL h1 78% → 73%) vì sai số RF hẹp hơn, trong khi độ phủ conformal của dự báo tăng (CASA h1 95% → 96%, NPL h1 85% → 87%).
+- **Kiểm chứng:** `python -m experiments.ml_montecarlo_checks [--theo-quy] [--kho2015]` — độ phủ khoảng tiêu chí, chọn lại phương pháp, từng quý / bỏ từng quý (định tâm lại).
+
+**Nhóm sức khỏe bên cho vay — tùy chọn, mặc định 0% (27/10/2026).** Cài theo phán quyết của Người B trong tranh luận "ML thay MCDM?" (`reports/tranh_luan_ml_thay_mcdm_2026-10-26.md`).
+- **Bảng điểm:** `python -m serving.bank_health` → `data/serving/bank_health.csv`, tên bảng "Điểm tài chính tương đối tham khảo các nhóm chỉ tiêu Moody's". Web chưa nạp file này.
+  - Năm nhóm, trọng số 25/25/15/20/15: nợ xấu + nhóm 2, CAR, ROA 4 quý, tiền gửi KH/TTS, tài sản thanh khoản.
+  - Điểm mỗi chỉ tiêu là phân vị trong 22 NH. Bảng có thêm hạng tính bằng vốn chủ/TTS để kiểm độ nhạy.
+- **Gộp vào bảng vay:** `montecarlo_ranking --suc-khoe-vay W [--von von_chu]`. Ba nhóm vay cũ nhân với (1 − W), nhóm sức khỏe nhận W.
+- **6 phép kiểm:** `python -m experiments.loan_health_checks` (~3 phút); báo cáo `reports/kiem_suc_khoe_vay_2026-10-27.md`.
+  - Pareto, đơn điệu và hòa đều đạt.
+  - Ở 10%, top 3 theo hạng trung bình 4 thuật toán không đổi, hạng dịch tối đa 4 bậc. Ở 20%, top 3 đổi và STB tụt từ 4 xuống 11. Ở 1/3, STB tụt xuống 18.
+  - Đổi CAR sang vốn chủ/TTS ở cùng mức trọng số làm hạng dịch tới 8 bậc.
+  - Monte Carlo ghép cặp: VCB P(top1) 74,8% → 88,7% (10%) → 98,8% (20%).
+  - LDR tương quan −0,69 với tiền gửi/TTS: chồng lấn, chưa chốt quy tắc xử lý.
+  - Không có dữ liệu gia hạn hay giải ngân theo NH, nên chưa có bằng chứng nhóm này giúp người vay chọn tốt hơn.
 
 ### EDA — các nhóm dữ liệu liên hệ với nhau thế nào (`experiments/eda.py`)
 
@@ -748,7 +924,7 @@ Tất cả đều idempotent. Các module có `--validate` in ra bộ kiểm đ�
 
 ## Trực quan hóa bằng Power BI
 
-`data/powerbi/` là **bản chụp cũ, không còn dựng lại được**. Script `export_powerbi.py` từng gộp `data/` thành mô hình sao đã bị xoá khỏi dự án. Thư mục `data/powerbi/` vẫn giữ lại để tham khảo nhưng đang trôi dần khỏi nguồn: `fact_price_daily` thiếu 66 dòng so với `price/`, `fact_deposit_rate` giữ 12.502 dòng 24hmoney trong khi nguồn đã lên 14.892, và không có bảng nào cho panel mới ở `data/model/`.
+**Đã xoá `data/powerbi/` ngày 16/10/2026.** Script `export_powerbi.py` từng gộp `data/` thành mô hình sao đã bị xoá trước đó, nên bản chụp không dựng lại được và đã trôi khỏi nguồn (`fact_price_daily` thiếu 66 dòng so với `price/`, `fact_deposit_rate` giữ 12.502 dòng 24hmoney trong khi nguồn đã lên 14.892, không có bảng nào cho panel ở `data/model/`). Phần dưới chỉ còn là ghi chép cách làm cũ. Ba notebook `bieu_do.ipynb`, `bieu_do_kltn.ipynb`, `bieu_do_theo_doc.ipynb` đọc thư mục này nên không chạy lại được nữa.
 
 **Đừng dùng `data/powerbi/` làm đầu vào mô hình.** File dùng cho mô hình là `data/model/bank_panel_quarterly.csv`.
 

@@ -22,6 +22,8 @@ interface RangeBandChartProps {
  * Phân bố theo thời gian: đường trung vị + vùng thấp nhất–cao nhất.
  * Vùng được vẽ bằng hai lớp diện tích xếp chồng (lớp đáy trong suốt = mức thấp nhất,
  * lớp trên = cao nhất − thấp nhất); tooltip vẫn hiện giá trị thật của từng mức.
+ * Lãi niêm yết đổi theo bậc nên cả ba chuỗi vẽ bậc thang (cùng một kiểu để mép hai lớp diện tích khớp nhau);
+ * đường cong làm mềm từng tạo "bụng" giả giữa hai lần đổi lãi.
  */
 export function RangeBandChart({
   dates,
@@ -65,6 +67,7 @@ export function RangeBandChart({
         series={[
           {
             id: "min",
+            curve: "stepAfter",
             label: "Thấp nhất",
             data: min,
             stack: "range",
@@ -75,6 +78,7 @@ export function RangeBandChart({
           },
           {
             id: "spread",
+            curve: "stepAfter",
             label: "Cao nhất",
             data: spread,
             stack: "range",
@@ -85,6 +89,7 @@ export function RangeBandChart({
           },
           {
             id: "median",
+            curve: "stepAfter",
             label: "Trung vị",
             data: median,
             showMark: false,

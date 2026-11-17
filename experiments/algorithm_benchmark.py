@@ -1,22 +1,3 @@
-"""So sanh thuat toan du bao cho 6 chi tieu, tam 1/2/4 quy, walk-forward.
-
-Ung vien:
-  naive     giu nguyen so quy goc
-  drift     + h * trung vi thay doi 1 quy da biet (xu huong chung)
-  seasonal  + tong trung vi thay doi cua dung cac quy toi (xu huong + mua vu, cau 9 EDA)
-  rolloff   chi cho chi tieu cong 4 quy (NIM, COF, ROE): TTM(t+h) - TTM(t) = tong quy moi vao - tong quy roi ra.
-            Quy roi ra da biet tai t; quy moi vao gia su bang quy t. So rieng tung quy lay tu MAS.
-  base      baseline tot nhat cua tung chi tieu x tam, chon tren cac goc 2021-Q1..2022-Q4 (khong nhin tap kiem tra)
-  ridge     base + Ridge du bao phan du (bo bien nho, chuan hoa tren tap train)
-  lgbm      LightGBM du bao thang thay doi, 88 bien + so rieng tung quy + quy trong nam + ma NH
-  lgbm_res  base + LightGBM du bao phan du, cung bo bien
-
-Kiem tra tren cac goc tu 2023-Q1; moi goc huan luyen lai tren moi dong co nhan da biet tai goc do.
-Loi = 1 - MAE(a) / MAE(b); KTC 95% bootstrap theo NH.
-
-Chay:
-    python -m experiments.algorithm_benchmark
-"""
 from __future__ import annotations
 
 import os
@@ -28,7 +9,7 @@ import pandas as pd
 
 warnings.filterwarnings("ignore")
 
-FEATURES = "data/model/features_selected.csv"
+FEATURES = "data/model/features_clean.csv"  # tap sach tang 1 (= features_selected truoc 13/10/2026)
 MAS = "data/vnstock_financial/ratio_mas_ttm.csv"
 OUT_DIR = "data/model/experiments"
 START = "2019-Q1"
@@ -68,7 +49,6 @@ def load():
 
 
 def baselines(f, t, h, per, io):
-    """Du bao thay doi h quy tu goc per[io] cho moi NH, chi dung so da biet tai goc."""
     known = f[f.period <= per[io]]
     d1 = known[f"{t}_d1"]
     med_q = d1.groupby(known.q).median()

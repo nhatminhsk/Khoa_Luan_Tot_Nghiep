@@ -28,8 +28,8 @@ public class SessionCookieService {
         return props.cookieName();
     }
 
-    public void write(HttpServletResponse response, String token) {
-        response.addHeader(HttpHeaders.SET_COOKIE, build(token, props.ttl()).toString());
+    public void write(HttpServletResponse response, JwtTokenService.IssuedToken token) {
+        response.addHeader(HttpHeaders.SET_COOKIE, build(token.value(), token.ttl()).toString());
     }
 
     public void clear(HttpServletResponse response) {

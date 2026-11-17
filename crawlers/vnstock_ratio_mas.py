@@ -1,41 +1,3 @@
-"""Chi so tai chinh theo quy tu nguon MAS (vnstock_data, goi tai tro).
-
-Vi sao can module nay khi da co file `ratio` tu VCI:
-
-1. File ratio cua VCI **thieu quy 2021-Q2 o 21/22 ngan hang** (chi NVB co).
-   Do la loi phia nguon, khong phai crawler: balance_sheet / income_statement /
-   cash_flow deu du 34/34 quy. Lo hong nay cat doi chuoi 34 quy, khien chuoi
-   lien tuc dai nhat moi ngan hang dat duoc chi con 20 quy.
-2. MAS phu 99,9% tren 748 o (VCI: 87,4%), co du 2021-Q2 o **22/22 ngan hang**,
-   va co lich su lui ve 2012-Q1.
-3. MAS co 5 chi tieu VCI khong co: EPS, BVPS, beta, ty suat co tuc, va
-   **RT_BANK_YIEA** (loi suat tai san sinh lai) -- cai cuoi cung dang phai SUY RA
-   trong crawlers/lending_yield.py tu NIM + COF.
-
-CANH BAO CO SO TINH -- doc truoc khi dung:
-
-    MAS ghi theo TUNG QUY, VCI ghi TRUOT 12 THANG (TTM).
-
-Tren 4.578 o cung ton tai o ca hai nguon chi 0,3% trung khop. Ty le
-|VCI| / |MAS| co trung vi 3,84-4,04 o NIM, COF, ROE, ROA -- dung bang bon quy.
-MAS con de COF va CIR mang **dau duong** trong khi VCI de dau am.
-
-Cach dung dung: cong 4 quy MAS de dung lai cot TTM. Da kiem nguoc tren 654 o,
-sai so tuyet doi trung vi: NIM 0,00015 (0,44%), ROA 0,00027, ROE 0,00303,
-COF 0,00096. Rieng o 2021-Q2, cach nay tai tao duoc TTM cho 22/22 ngan hang.
-
-KHONG dan thang gia tri MAS vao cot TTM cu.
-
-MAS **khong co** NPL, LDR, bao phu no xau va CAR -- bon thu do lay tu:
-  - NPL / bao phu: crawlers/vnstock_note.py (thuyet minh BCTC, phu 98,5%)
-  - LDR: tinh tai cho tu balance sheet (da co, phu 100%)
-  - CAR: data/credit/bank_car_halfyear.csv (nhap tay + doi chieu)
-
-Chay:
-    python -m crawlers.vnstock_ratio_mas              # fetch + build
-    python -m crawlers.vnstock_ratio_mas --build-only # bo qua fetch, dung file raw
-    python -m crawlers.vnstock_ratio_mas --validate
-"""
 from __future__ import annotations
 
 import glob
@@ -76,6 +38,12 @@ POINT_METRICS = {
     "RT_VALUE_DIVIDEND_YIELD": "dividend_yield",
 }
 ALL_METRICS = {**FLOW_METRICS, **RATIO_METRICS, **POINT_METRICS}
+# Ba chi tieu nay khong the bang 0 ve mat dinh nghia (ngan hang nao cung co thu lai, tra
+# lai va chi phi), nen 0 cua MAS la ky hieu THIEU: 99 o YIEA, 57 o COF, 7 o CIR tu 2016,
+# day o 2017-Q1..2018-Q3, 2021-Q2/Q3, 2022-Q1. Doi chieu WiData 31/10/2026: cong 4 quy
+# coi 0 la so that thi TTM thap di trung vi 3,18 diem, lech 32/32 o so duoc.
+# NIM, ROE, ROA CO Y KHONG nam trong day: ngan hang lo (NVB) co the ra 0 that.
+ZERO_MEANS_MISSING = ("earning_asset_yield", "cof", "cir")
 
 QUARTER_END = {"1": "03-31", "2": "06-30", "3": "09-30", "4": "12-31"}
 
@@ -92,7 +60,6 @@ def _quarter_key(period):
 
 
 def fetch(tickers=None, sleep=0.4):
-    """Keo ratio quarter tu MAS ve data/vnstock_financial/raw_mas/."""
     import vnstock_data as vd
 
     tickers = tickers or TICKERS
@@ -152,6 +119,10 @@ def build(write=True):
     # MAS de COF va CIR dau duong, VCI de dau am. Chuan hoa ve duong o day.
     for col in ("cof", "cir"):
         wide[col] = wide[col].abs()
+
+    # rolling(4, min_periods=4) tu ra NaN khi co mot quy thieu trong cua so.
+    for col in ZERO_MEANS_MISSING:
+        wide[col] = wide[col].where(wide[col] != 0)
 
     wide["qkey"] = wide["period"].map(_quarter_key)
     wide = wide.sort_values(["ticker", "qkey"])
@@ -224,7 +195,6 @@ def build(write=True):
 
 
 def validate():
-    """Doi chieu TTM tai tao tu MAS voi cot TTM cua VCI."""
     mas = pd.read_csv(TTM_PATH, encoding="utf-8-sig")
     vci = pd.read_csv(
         "data/vnstock_financial/financial_long.csv", low_memory=False
@@ -256,7 +226,7 @@ def validate():
             ),
         }
 
-    full = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:34]
+    full = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:35]
     window = mas[mas["period"].isin(full)]
     have = window.groupby("period")["ticker"].nunique()
     out["coverage"] = {
@@ -269,7 +239,6 @@ def validate():
 
 
 def _compare_yield():
-    """RT_BANK_YIEA cua MAS vs loi suat dang SUY RA trong lending_yield.py."""
     path = "data/interest_rates/bank_earning_asset_yield_quarterly.csv"
     if not os.path.exists(path):
         return {"note": "chua co file suy ra de doi chieu"}

@@ -1,45 +1,3 @@
-"""Thuyet minh bao cao tai chinh theo quy (vnstock_data, nguon VCI).
-
-Day la nguon SO CAP cho chat luong tai san va co cau huy dong. Bang can doi (ke ca
-ban day du 84 dong tai tu 14/09/2026) khong phan nhom no -- nen khong tinh duoc NPL
-tai cho. Thuyet minh thi co du 5 nhom no o **34/34 quy**, ke ca quy 2021-Q2 ma file
-`ratio` cua VCI de trong o 21/22 ngan hang.
-
-Bon chuoi dung duoc tu day, deu du 22/22 ngan hang o 2021-Q2:
-
-  npl_percent          (nhom 3+4+5)/tong du no      phu 98,5%
-  casa_percent         tien gui KKH/tong tien gui   phu 98,5%  <- chua tung co trong du an
-  short_term_share     cho vay ngan han/tong du no  phu 98,4%
-  vnd_deposit_share    tien gui VND/tong tien gui   phu 69,8%
-
-CASA dang chu y nhat: tuong quan voi chi phi von tai 2026-Q2 la **-0,862**.
-Ngan hang giu duoc nhieu tien gui khong ky han thi huy dong re.
-
-`deposit_interest_expense_vnd` phu tron 748 o, cho duong thu BA doc lap de do
-chi phi huy dong -- ben canh RT_BANK_COF cua VCI (72%) va cua MAS (99,9%).
-
-Doi chieu NPL voi cot npl_percent hien co trong bank_credit_quarterly.csv:
-649 o cung ton tai, lech **trung vi 0,0000 diem**, 93,7% khop trong 0,05 diem.
-Cung mot thuoc do, lay tu du lieu so cap, phu tot hon 88 o.
-
-Tu 14/09/2026 fetch() luu DAY DU ca 210 chi tieu thuyet minh vao raw_note/ (truoc
-day chi luu 16 id trong KEEP). build() van chi dung KEEP de tinh cac ty le o tren,
-nen bank_asset_quality_quarterly.csv khong doi. Toan bo 210 chi tieu duoc gop them
-thanh data/vnstock_financial/note_long.csv de dung cho cac bang thuyet minh khac
-(cho vay theo nganh/doi tuong, chung khoan dau tu, thu nhap lai chi tiet, chi phi
-hoat dong...). Do phu rat khong deu: 85/210 id co so o >= 50% cua 748 o, 15 id rong
-hoan toan (vi tri dia ly, tai san sinh lai...). Loc theo `id`, khong theo `name`.
-
-O VCI ghi sai da doi chieu voi BCTC goc nam trong CORRECTIONS (tien gui VND cua STB
-2026-Q2, BAB 2022-Q1, PGB 2022-Q3; cho vay ca nhan MSB 2022-Q4). build() va
-crawlers.build_features sua tren bang tinh toan; raw_note/ va note_long.csv van la ban sao
-nguyen trang cua nguon.
-
-Chay:
-    python -m crawlers.vnstock_note
-    python -m crawlers.vnstock_note --build-only
-    python -m crawlers.vnstock_note --validate
-"""
 from __future__ import annotations
 
 import glob
@@ -150,11 +108,6 @@ CORRECTIONS = {
 
 
 def _apply_corrections(raw):
-    """Sua cac o trong CORRECTIONS tren bang tho. Tra ve (bang, log).
-
-    Chi xet cac o co `id` nam trong bang dua vao: build() da loc KEEP, build_features loc theo
-    NOTE_IDS, nen o cua id khac khong bi bao "khong con o nay".
-    """
     raw = raw.copy()
     raw["value"] = pd.to_numeric(raw["value"], errors="coerce")
     applied, skipped = [], []
@@ -198,6 +151,9 @@ def fetch(tickers=None, sleep=0.3):
                 source="VCI", symbol=ticker, period="quarter", get_all=True
             )
             df = finance.note(period="quarter", lang="vi", dropna=False)
+            # Goi mien phi tra ma tho nob1.. (xem vci_raw.py): build() khong doc duoc, khong ghi de file cu.
+            if not df["id"].astype(str).str.startswith("NT_").any():
+                raise ValueError("thuyet minh mang ma tho, giu file cu")
             df.to_csv(
                 f"{RAW_DIR}/{ticker}_note_quarter.csv",
                 index=False, encoding="utf-8-sig", lineterminator="\r\n",
@@ -226,7 +182,6 @@ def _load_raw():
 
 
 def build_long(raw=None, write=True):
-    """Gop toan bo chi tieu thuyet minh cua 22 NH thanh mot bang long."""
     raw = _load_raw() if raw is None else raw
     cols = ["ticker", "period", "id", "name", "order", "level", "unit", "value"]
     out = raw[[c for c in cols if c in raw.columns]].copy()
@@ -324,7 +279,7 @@ def build(write=True):
             f"{out['npl_percent'].notna().sum()} o -> {OUT_PATH}"
         )
 
-    full = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:34]
+    full = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:35]
     window = out[out["period"].isin(full)]
     return {
         "rows": len(out),

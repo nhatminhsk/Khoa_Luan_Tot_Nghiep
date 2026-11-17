@@ -1,0 +1,56 @@
+# Chỉ PostgreSQL, để backend chạy trên máy (mvnw spring-boot:run) dùng CSDL thật thay vì H2 — không phải cài
+# PostgreSQL vào Windows. Giới hạn 256 MB RAM, nửa CPU; chỉ mở cổng trên 127.0.0.1.
+#
+#   docker compose -f docker-compose.db.yml up -d
+#   backend: SPRING_PROFILES_ACTIVE=postgres, APP_DB_PASSWORD trùng giá trị trong webapp/.env
+#   dừng:    docker compose -f docker-compose.db.yml down      (thêm -v để xóa luôn dữ liệu)
+
+name: bankadvisor-dev
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bankadvisor
+      POSTGRES_USER: bankadvisor
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD:?Đặt APP_DB_PASSWORD trong webapp/.env}
+      TZ: Asia/Ho_Chi_Minh
+    command:
+      - postgres
+      - -c
+      - shared_buffers=48MB
+      - -c
+      - effective_cache_size=128MB
+      - -c
+      - work_mem=2MB
+      - -c
+      - maintenance_work_mem=16MB
+      - -c
+      - max_connections=20
+      - -c
+      - max_worker_processes=2
+      - -c
+      - max_parallel_workers=0
+      - -c
+      - max_parallel_workers_per_gather=0
+      - -c
+      - autovacuum_max_workers=2
+      - -c
+      - jit=off
+    ports:
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bankadvisor -d bankadvisor"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 256M }
+    shm_size: 64m
+
+volumes:
+  pgdata-dev: {}

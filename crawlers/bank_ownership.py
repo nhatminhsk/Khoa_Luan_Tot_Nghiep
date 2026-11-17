@@ -1,31 +1,3 @@
-"""Co cau so huu 22 ngan hang niem yet -- tu vnstock_data (nguon VCI).
-
-Chieu du lieu ma toan bo kho truoc day KHONG co. Voi mot he thong ho tro chon
-noi GUI TIEN, ty le so huu nha nuoc xap xi muc bao tro ngam -- kho bien minh
-neu bo xot. Do duoc ngay 09/09/2026: **du 22/22 ma**.
-
-Nhom Nha nuoc chi phoi tach han thanh mot cum rieng, khong co ma nao nam giua:
-
-    BID 76,7%  ·  VCB 74,8%  ·  CTG 64,5%  ·  MBB 43,2%
-    <<< khoang trong: khong ma nao nam giua 0,09% va 43,2% >>>
-    OCB 8,6%  ·  LPB 6,5%  ·  MSB 6,4%  ·  EIB 4,2%  ·  13 ma con lai ~0%
-
-Room ngoai cung dang chu y rieng: BVB, VIB va LPB bi chan o **5%** trong khi
-phan lon duoc 30% -- rang buoc nay anh huong toi dong von ngoai va thanh khoan.
-
-GIOI HAN -- day la ANH CHUP, khong phai chuoi thoi gian. Nguon chi tra ve trang
-thai hien tai. Chay dinh ky de tich luy lich su; khoa chong trung la (ngay, ma).
-Cot `update_date` trong bang co dong la moc nguon tu dong dau, khong phai moc
-crawl -- co dong cua VCB co dong ghi 2020, co dong ghi 2026.
-
-Sinh ra hai file:
-    data/ownership/bank_ownership.csv     -- 1 dong/ngan hang/lan chay
-    data/ownership/bank_shareholders.csv  -- 1 dong/co dong/lan chay
-
-Chay:
-    python -m crawlers.bank_ownership
-    python -m crawlers.bank_ownership --validate
-"""
 from __future__ import annotations
 
 import os

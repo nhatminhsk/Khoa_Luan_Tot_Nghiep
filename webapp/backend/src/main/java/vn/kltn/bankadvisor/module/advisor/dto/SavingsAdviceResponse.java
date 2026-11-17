@@ -27,7 +27,6 @@ public record SavingsAdviceResponse(
      * @param rateOrder          thứ tự theo lãi suất (ngân hàng cùng mức lãi có cùng thứ tự)
      * @param ratePercent        lãi áp cho đúng số tiền gửi (bậc theo số tiền nếu ngân hàng có, không thì bậc thấp nhất)
      * @param changeFromPrevious thay đổi của lãi bậc thấp nhất so với ngày liền trước
-     * @param appScore           điểm ứng dụng (Google Play, không có thì App Store)
      * @param tierLabel          tên bậc số tiền đã áp (ví dụ "Từ 500 triệu"); null khi dùng bậc thấp nhất
      */
     public record Offer(
@@ -38,7 +37,6 @@ public record SavingsAdviceResponse(
             BigDecimal changeFromPrevious,
             long interest,
             long maturityAmount,
-            Double appScore,
             String tierLabel
     ) {
     }

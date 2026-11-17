@@ -34,7 +34,7 @@ import { DATASET_LABEL } from "@/utils/labels";
 const PIPELINE: { title: string; body: string; done: boolean }[] = [
   {
     title: "Thu thập dữ liệu",
-    body: "Hằng ngày (15:30): lãi suất huy động từ hai nguồn có đối chiếu chéo, lãi suất cho vay, giá cổ phiếu. Hằng quý: BCTC và thuyết minh. Hằng tháng: CPI, lãi suất điều hành, tăng trưởng tín dụng, cơ cấu sở hữu, review ứng dụng, chương trình tín dụng chính sách.",
+    body: "Hằng ngày (15:30): lãi suất huy động từ hai nguồn có đối chiếu chéo, lãi suất cho vay, giá cổ phiếu. Hằng quý: BCTC và thuyết minh. Hằng tháng: CPI, lãi suất điều hành, tăng trưởng tín dụng, cơ cấu sở hữu, chương trình tín dụng chính sách.",
     done: true,
   },
   {
@@ -44,27 +44,27 @@ const PIPELINE: { title: string; body: string; done: boolean }[] = [
   },
   {
     title: "Bảng ngân hàng – quý",
-    body: "Gộp mọi nguồn thành một bảng 22 ngân hàng × 34 quý; không điền khuyết ở tầng này.",
+    body: "Gộp mọi nguồn thành một bảng 22 ngân hàng × 35 quý (2018-Q1 → 2026-Q3; phân tích dùng từ 2019-Q1); không điền khuyết ở tầng này.",
     done: true,
   },
   {
     title: "Đặc trưng và chọn lọc",
-    body: "120 đặc trưng ứng viên → 88 giữ (28 biến lõi cho dự báo), lọc theo chất lượng dữ liệu và độ ổn định.",
+    body: "120 đặc trưng ứng viên → 88 giữ, lọc theo chất lượng dữ liệu và độ ổn định.",
     done: true,
   },
   {
     title: "Khám phá dữ liệu (EDA)",
-    body: "Phân rã phương sai giữa/trong ngân hàng, độ trễ theo lãi suất điều hành, mùa vụ trong năm, quan hệ lãi suất – độ an toàn – điểm ứng dụng.",
+    body: "Phân rã phương sai giữa/trong ngân hàng, độ trễ theo lãi suất điều hành, mùa vụ trong năm, quan hệ lãi suất – độ an toàn.",
     done: true,
   },
   {
-    title: "Mô hình",
-    body: "Dự báo 6 chỉ tiêu 1–4 quý; phân tích review theo 8 khía cạnh (NLP); xếp hạng riêng cho gửi tiết kiệm và vay, có khoảng hạng. Đang hoàn thiện.",
-    done: false,
+    title: "Mô hình gợi ý",
+    body: "Xếp hạng riêng cho gửi tiết kiệm (lãi suất và độ an toàn theo 7 trụ CAMELS, từng kỳ hạn × kênh) và vay (giá vay, phù hợp với khách hàng cá nhân, sức cho vay) bằng 4 phương pháp đa tiêu chí SAW, TOPSIS, VIKOR, PROMETHEE II; Monte Carlo rút 10.000 bộ trọng số quanh mặc định. Phần tiền gửi vượt hạn mức bảo hiểm tiền gửi 350 triệu càng lớn thì trọng số an toàn càng nặng. Dùng số công bố mới nhất, không dùng số dự báo.",
+    done: true,
   },
   {
     title: "Đánh giá",
-    body: "So sánh với cách dự báo đơn giản (naive, naive có mùa vụ, drift) bằng kiểm định walk-forward; kiểm tra độ nhạy của xếp hạng.",
+    body: "Độ nhạy theo trọng số (tần suất đứng đầu, khoảng hạng), theo cách điền ô thiếu và mức đồng thuận của 4 phương pháp. Các thử nghiệm học máy (dự báo chỉ tiêu, phân cụm, học xếp hạng) chỉ làm đối chứng, không đưa lên web vì không vượt các mốc đơn giản. Đối chiếu với ý kiến chuyên gia đang thu.",
     done: false,
   },
   {
@@ -80,7 +80,6 @@ const LIMITS = [
   "Không tư vấn đầu tư cổ phiếu: giá cổ phiếu chỉ là dữ liệu đầu vào.",
   "Chỉ gồm 22 ngân hàng niêm yết; không gồm Agribank, Ngân hàng Chính sách xã hội và khách hàng doanh nghiệp.",
   "Lãi suất cho vay là mức bình quân toàn danh mục ngân hàng công bố, không phải lãi suất một khoản vay cụ thể.",
-  "Điểm ứng dụng tính trên review có nội dung, lệch về hai cực (1 và 5 sao); không đại diện cho mọi người dùng.",
   "Lãi suất niêm yết cao không đồng nghĩa ngân hàng kém an toàn (với 22 ngân hàng tại một thời điểm, chưa đủ bằng chứng thống kê); vì vậy lãi suất và độ an toàn là hai tiêu chí riêng.",
 ];
 

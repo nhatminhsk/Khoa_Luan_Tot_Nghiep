@@ -1,44 +1,3 @@
-"""Du no cho vay khach hang theo nganh nghe kinh doanh -- 22 NH, cuoi nam 2018-2025.
-
-Nguon: bang "Phan tich du no cho vay theo nganh" trong thuyet minh BCTC hop nhat
-kiem toan (mau B05/TCTD-HN). vnstock KHONG dung duoc cho bang nay: cac dong nganh
-cua VCI cong lai vuot tong 10-93% (mot khoan bi xep vao hai nhom trung nhau) va rong
-o phan lon NH truoc 2024.
-
-Cach lam (14/09/2026): tai 81 file BCTC tu static2.vietstock.vn, OCR (Windows OCR) de
-dinh vi trang, doc bang tren anh va chep vao data/credit/loans_by_industry_manual/*.txt
-theo dang `key|kind|label|grp|v0|v1`:
-    key    TICKER_NAMBCTC
-    kind   I = dong nganh, S = tong phu (khong cong), T = tong bang
-    label  ten dong dung nhu BCTC ghi
-    grp    ma nhom: A..U theo VSIC 2018, hoac nhom gop/dac thu (xem GROUP_NAME)
-    v0     cot "So cuoi nam" (nam BCTC), v1 cot "So dau nam" (nam truoc); dau cham ngan cach
-Kiem: tong cac dong I = dong T o CA HAI cot (81/81 bang khop tuyet doi) va dong T
-so voi tong du no theo nhom no cua API (note_long.csv).
-
-Nhap them (33 NH-nam con thieu, BCTC khong co tren Vietstock): mo
-data/credit/loans_by_industry_manual/fill_template.xlsx, huong dan o sheet huong_dan.
-Chi bang co "Trạng thái" = "đã nhập" duoc nap; nhap sai (tong lech, thieu link/trang,
-ma nhom la, trung bang da co) thi script dung va liet ke loi.
-
-Ket qua:
-    data/credit/loans_by_industry_annual.csv        1 ban/NH-nam (uu tien BCTC cung nam)
-    data/credit/loans_by_industry_all_versions.csv  ca hai cot cua moi BCTC (de xem so trinh bay lai)
-    data/credit/loans_by_industry_group_wide.csv    ty trong % theo ma nhom, dang rong
-
-BAY KHI DUNG:
-  - Moi NH phan nganh mot kieu. ACB, VCB co dong "Cac nganh khac" chiem 60-65%; BID tu
-    2022 chi con 7 nhom; VIB 2018-2021 chi 5 nhom; MSB va VPB (2022+) dung danh muc rieng
-    "mot so nganh kinh te"; EIB 2025 la bang "theo muc dich su dung von".
-  - TCB tach "Cho vay ca nhan" khong phan nganh; TCB 2023+, MBB, VPB, TPB 2025 co dong
-    cho vay ky quy/ung truoc (MARGIN); MBB co dong chi nhanh nuoc ngoai (FOREIGN_BRANCH).
-  - So sanh giua NH chi on o nhom A (nong nghiep), F, L va nhom lon; cac nhom nho phu thuoc
-    cach phan loai cua tung NH.
-
-Chay:
-    python -m crawlers.loans_by_industry
-    python -m crawlers.loans_by_industry --validate
-"""
 from __future__ import annotations
 
 import glob
@@ -128,7 +87,6 @@ def _cell_num(v) -> float:
 
 
 def load_fill(path: Path | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Bang 'da nhap' trong fill_template.xlsx -> (dong dang batch, nguon dang sources.csv)."""
     path = path or FILL
     if not path.exists():
         return pd.DataFrame(), pd.DataFrame()

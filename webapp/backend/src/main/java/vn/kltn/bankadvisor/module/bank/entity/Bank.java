@@ -22,9 +22,6 @@ public class Bank {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "app_name")
-    private String appName;
-
     protected Bank() {
     }
 
@@ -38,9 +35,5 @@ public class Bank {
 
     public String getFullName() {
         return fullName;
-    }
-
-    public String getAppName() {
-        return appName;
     }
 }

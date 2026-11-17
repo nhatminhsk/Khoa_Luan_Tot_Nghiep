@@ -30,7 +30,15 @@ data/powerbi/
 data/vnstock_financial/
 data/_archive/
 data/loan_rates/terms_survey/
+data/expert_panel/
 
 # Hình xuất từ script/notebook (chạy lại là có)
 figures/
 figures_doc/
+
+# PDF BCTC tai ve de OCR (tai lai duoc bang crawlers.ocr_bctc)
+data/bctc_pdf/
+
+# Triển khai Docker: bản sao lưu CSDL và khóa riêng TLS không đưa lên git
+webapp/backups/
+webapp/deploy/certs/

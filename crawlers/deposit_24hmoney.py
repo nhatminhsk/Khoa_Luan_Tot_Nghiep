@@ -1,18 +1,3 @@
-"""Nguon doi chung thu hai cho deposit_daily.csv -- 24hmoney.vn.
-
-Khac voi deposit_crosscheck.py (doc van xuoi CafeF, chi lay duoc o 12 thang),
-trang nay co BANG HTML that: 38 ngan hang x 7 ky han x 2 kenh, kem moc
-"Cap nhat luc: HH:MM:SS DD/MM/YYYY". Vi vay lay duoc gan het bang.
-
-Hai diem no hon han nguon chinh:
-  - Du 22/22 ticker (nguon chinh thieu HDB, SSB, BVB, NVB, PGB).
-  - Tach san 2 kenh cho MOI ngan hang (nguon chinh de trong kenh online
-    o 6 ngan hang, trong do co Sacombank).
-
-Doc ky: 3 nguon (day, CafeF, laisuattietkiem) LECH NHAU toi 2,1 diem o cung
-mot o. Module nay khong phai "su that" -- no la nguon thu ba de do chieu.
-Xem --compare va muc gioi han trong README.
-"""
 from __future__ import annotations
 
 import csv
@@ -113,7 +98,6 @@ def safe_get(url: str) -> str:
 
 
 def _table_for(soup, label: str):
-    """Bang nam ngay sau nhan kenh. Tim theo NHAN, khong theo chi so bang."""
     node = soup.find(string=lambda s: s and label in s)
     if node is None:
         return None, None
@@ -134,7 +118,6 @@ def _table_for(soup, label: str):
 
 
 def parse(html: str) -> tuple:
-    """Tra ve ([(bank, term, channel, rate)], moc_cap_nhat_cua_nguon)."""
     soup = BeautifulSoup(html, "lxml")
     rows, stamps = [], []
     for channel, label in CHANNEL_LABELS:
@@ -174,7 +157,6 @@ def parse(html: str) -> tuple:
 
 
 def validate(rows: list) -> list:
-    """Kiem dinh noi bo: khoang hop le, va online thuong >= quay."""
     problems = []
     bad = [r for r in rows if not (0.1 <= r[3] <= 15.0)]
     if bad:
@@ -194,13 +176,11 @@ def validate(rows: list) -> list:
 
 
 def _effective_date(stamp: str, fallback: str) -> str:
-    """'13:30:03 03/09/2026' -> '2026-09-03'. Doc khong duoc thi dung fallback."""
     m = re.search(r"(\d{2})/(\d{2})/(\d{4})", stamp or "")
     return "%s-%s-%s" % (m.group(3), m.group(2), m.group(1)) if m else fallback
 
 
 def _key(row):
-    """Khoa chong trung: bang (effective_date) + NH + ky han + kenh."""
     return (row[1], row[2], row[5], row[6])
 
 
@@ -254,12 +234,6 @@ def run() -> dict:
 
 
 def remap() -> dict:
-    """Ap lai BANKS len toan bo file da co, khong can tai lai tu mang.
-
-    Can den khi bo sung alias -- lich su Wayback dung ten khac hien tai
-    ("LienVietPostBank", "MB", "Bắc Á"...), va khoa chong trung khong chua
-    bank_name nen backfill chay lai se KHONG cap nhat cac cot do.
-    """
     header, rows = read_master()
     if not rows:
         return {"rows": 0, "changed": 0, "unmapped": []}
@@ -280,15 +254,6 @@ CDX = ("http://web.archive.org/cdx/search/cdx?url=24hmoney.vn/lai-suat-gui-ngan-
 
 
 def backfill(pause: float = 1.2) -> dict:
-    """Lich su tu Wayback Machine (co snapshot tu 2023-01).
-
-    Day la nguon lich su DUY NHAT tim duoc cho lai suat niem yet theo ngan hang.
-    README gioi han 2 da kiem va laisuattietkiem.vn khong co snapshot nao --
-    nhung khong ai kiem trang nay, va no co.
-
-    Dong duoc dat theo effective_date nen nhieu snapshot cung mot bang gop lai
-    thanh mot: so "bang phan biet" moi la do dai chuoi that, khong phai so snapshot.
-    """
     OUT.mkdir(parents=True, exist_ok=True)
     retrieved_at = datetime.now(timezone.utc).isoformat()
 
@@ -341,7 +306,6 @@ def backfill(pause: float = 1.2) -> dict:
 
 
 def compare(term: int = 12, channel: str = "online"):
-    """Doi chieu 3 nguon o cung mot o. Tra ve DataFrame."""
     import pandas as pd
     h = pd.read_csv(MASTER)
     h = h[(h.term_months == term) & (h.channel == channel) & h.bank_name.notna()]

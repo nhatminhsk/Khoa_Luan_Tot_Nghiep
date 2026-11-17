@@ -1,33 +1,3 @@
-"""Du no nong-lam-thuy san nhap tay tu BCTC kiem toan -> chuoi nam day du.
-
-Nguon so lieu vnstock (`Finance(source="VCI").note()`, dong
-NT_BS_AGRICULTURE_AND_FORESTRY) chi co 97/176 o cuoi nam 2018-2025 cho 22 ngan
-hang. Phan con thieu duoc doc tay tu bang "Phan tich du no cho vay theo nganh"
-trong thuyet minh BCTC hop nhat kiem toan va ghi vao:
-
-    data/policy_credit/agri_loans_fill_template.csv   <- NHAP TAY O DAY
-    data/policy_credit/agri_loans_annual.csv          <- file cho mo hinh (script nay ghi)
-
-Cach nhap mot dong trong file mau:
-    status                             ghi dung chuoi "đã nhập" (co dau); hoac "BCTC không tách dòng"
-                                       neu bang nganh khong co dong nong nghiep -- de trong so, KHONG ghi 0
-    agri_forestry_fishery_loans_mn_vnd so dong nong-lam-thuy san, TRIEU dong, bo dau cham
-    total_loans_by_industry_mn_vnd     dong tong cuoi bang nganh, TRIEU dong
-    industry_label_in_fs               ten dong dung nhu BCTC ghi
-    read_from_fs_year, column          BCTC nam nao, cot "Số cuối năm" hay "Số đầu năm"
-    pdf_page, fs_url                   trang PDF (so trang cua trinh doc, khong phai so in) va link
-
-Da kiem 14/09/2026: 46 o doc tu 25 BCTC khop OCR va khop cot % in san trong BCTC
-(xem data/policy_credit/README.md).
-
-O "chưa có file" duoc tu dien tu data/credit/loans_by_industry_annual.csv neu bang nganh
-cua NH-nam do da co dung mot dong nhom A (nhap bang nganh o
-data/credit/loans_by_industry_manual/fill_template.xlsx, chay crawlers.loans_by_industry truoc).
-
-Chay:
-    python -m crawlers.agri_loans_manual              # ap file mau vao chuoi nam
-    python -m crawlers.agri_loans_manual --validate
-"""
 from __future__ import annotations
 
 from pathlib import Path
@@ -80,8 +50,6 @@ def _check_template(tpl: pd.DataFrame) -> list[str]:
 
 
 def _fill_from_industry(tpl: pd.DataFrame, ann: pd.DataFrame) -> tuple[pd.DataFrame, list[str], list[str]]:
-    """O 'chua co file' -> lay dong nhom A cua bang nganh; tra ve (tpl, o da dien, bang nganh khong co dong A).
-    Bo qua o da co so trong agri_loans_annual.csv (nguoi dung dien thang vao file nam)."""
     if not INDUSTRY.exists():
         return tpl, [], []
     ind = pd.read_csv(INDUSTRY, encoding="utf-8-sig")

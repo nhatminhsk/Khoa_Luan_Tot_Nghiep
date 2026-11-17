@@ -54,7 +54,6 @@ export function RecentChangesCard() {
       title="Biến động gần đây"
       subtitle="Ngân hàng vừa đổi lãi suất niêm yết"
       info="Mỗi thay đổi so với lần có số liệu liền trước của cùng ngân hàng, kỳ hạn và kênh. Ngày không có số liệu không tạo ra thay đổi giả."
-      sx={{ height: "100%" }}
     >
       {query.isError ? (
         <ErrorState error={query.error} onRetry={() => query.refetch()} />

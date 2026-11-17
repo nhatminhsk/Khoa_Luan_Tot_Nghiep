@@ -36,6 +36,17 @@ public class AppUser {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private UserStatus status = UserStatus.ACTIVE;
+
+    /** Phiên bản phiên: JWT mang số khác số này thì bị từ chối (xem SessionAuthenticationConverter). */
+    @Column(name = "token_version", nullable = false)
+    private int tokenVersion;
+
+    @Column(name = "last_login_at")
+    private Instant lastLoginAt;
+
     @Column(name = "notify_rate_change", nullable = false)
     private boolean notifyRateChange = true;
 
@@ -79,6 +90,44 @@ public class AppUser {
         user.role = role;
         user.createdAt = now;
         return user;
+    }
+
+    public boolean isActive() {
+        return status == UserStatus.ACTIVE;
+    }
+
+    /** Khóa tài khoản: không đăng nhập được, mọi phiên đang mở bị thu hồi. */
+    public void lock() {
+        status = UserStatus.LOCKED;
+        revokeSessions();
+    }
+
+    /** Mở khóa. Phiên cũ không sống lại: người dùng phải đăng nhập lại. */
+    public void unlock() {
+        status = UserStatus.ACTIVE;
+    }
+
+    /** Đổi vai trò và thu hồi phiên cũ (JWT cũ mang quyền cũ). */
+    public void changeRole(Role newRole) {
+        if (role != newRole) {
+            role = newRole;
+            revokeSessions();
+        }
+    }
+
+    /** Đặt mật khẩu mới (đã băm) và thu hồi mọi phiên cũ. */
+    public void changePassword(String newPasswordHash) {
+        passwordHash = newPasswordHash;
+        revokeSessions();
+    }
+
+    /** Vô hiệu mọi JWT đã cấp cho tài khoản này ("đăng xuất mọi thiết bị"). */
+    public void revokeSessions() {
+        tokenVersion++;
+    }
+
+    public void recordLogin(Instant now) {
+        lastLoginAt = now;
     }
 
     public void updateNotificationSettings(boolean rateChange, boolean newRanking, NotifyChannel channel) {
@@ -167,6 +216,18 @@ public class AppUser {
 
     public Role getRole() {
         return role;
+    }
+
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public int getTokenVersion() {
+        return tokenVersion;
+    }
+
+    public Instant getLastLoginAt() {
+        return lastLoginAt;
     }
 
     public boolean isNotifyRateChange() {

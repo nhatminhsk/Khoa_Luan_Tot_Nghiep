@@ -1,16 +1,3 @@
-"""Kiem ke toan bo file CSV trong data/ -> vai tro va quyet dinh giu/bo cho tung file.
-
-Buoc dau cua chuoi lam sach -> xu ly -> dac trung: truoc khi tao bien phai biet file
-nao la NGUON GOC, file nao la TRUNG GIAN dung lai duoc, file nao TRUNG hoac LUU TRU.
-Doc toan bo file de dem dong/cot, do khoa (ma NH, cot thoi gian), khoang thoi gian;
-vai tro va quyet dinh lay tu bang RULES ben duoi (khop theo duong dan, quy tac dau
-tien khop thang).
-
-Ket qua: data/model/data_inventory.csv
-
-Chay:
-    python -m crawlers.inventory
-"""
 from __future__ import annotations
 
 import glob
@@ -34,9 +21,13 @@ RULES = [
     (r"^data/_archive/", "Lưu trữ", DROP_ARCHIVE, "Bản cũ trước khi tải BCTC đầy đủ; 44 file BCTC cũ rỗng"),
     (r"^data/powerbi/", "Dẫn xuất cho Power BI", DROP_DUP, "Dựng lại từ các thư mục khác; fact_app_review trùng app_reviews/"),
     (r"^data/vnstock_financial/raw(_mas|_note)?/", "Bản thô theo mã", DROP_DUP, "Đã gộp nguyên vẹn vào *_long.csv (cùng số dòng)"),
+    (r"^data/vnstock_financial/raw_vci/", "Bản thô VCI theo mã", INTERMEDIATE, "Thêm quý mới vào raw/, raw_note/ qua crawlers.vci_raw"),
+    (r"^data/vnstock_financial/vci_(id_map|sua_lich_su)\.csv$", "Bảng phụ của crawlers.vci_raw", INTERMEDIATE, "Đổi mã thô sang mã cũ; ô quá khứ VCI đã sửa"),
     (r"^data/interest_rates/deposit_raw/", "Bản thô theo ngày", DROP_DUP, "Đã gộp vào deposit_daily.csv"),
     (r"agri_loans_annual_nhap_tay\.csv$", "Bản sao người dùng", DROP_DUP, "Đã gộp 16 ô vào agri_loans_fill_template.csv ngày 15/09/2026"),
-    (r"^data/model/(features_quarterly|feature_spec|feature_catalog|features_selected|features_ranking_latest|data_inventory)\.csv$", "Kết quả", OUTPUT, "Sinh bởi crawlers.inventory / build_features / select_features"),
+    (r"^data/model/(features_quarterly|feature_spec|feature_catalog|features_selected|features_clean|features_ranking_latest|data_inventory)\.csv$", "Kết quả", OUTPUT, "Sinh bởi crawlers.inventory / build_features / select_features"),
+    (r"^data/model/(features_selected_(daily|monthly)|feature_spec_hf)\.csv$", "Kết quả", OUTPUT, "Sinh bởi crawlers.select_features_hf (chạy hằng ngày)"),
+    (r"^data/model/ranking_(daily|monthly|quarterly|spec)\.csv$", "Kết quả", OUTPUT, "Sinh bởi crawlers.ranking_panels (chạy hằng ngày)"),
     (r"^data/model/experiments/", "Kết quả thử nghiệm", OUTPUT, "Sinh bởi experiments/*.py"),
     (r"^data/model/eda/", "Kết quả EDA", OUTPUT, "Sinh bởi experiments/eda.py"),
     (r"^data/model/bank_panel_quarterly\.csv$", "Panel sạch NH-quý", USE_MODEL, "Đầu vào chính của build_features (đã qua cổng validate)"),
@@ -56,6 +47,7 @@ RULES = [
     (r"^data/interest_rates/deposit_24hmoney_daily\.csv$", "Nguồn lịch sử lãi suất huy động", USE_RANK, "38 ngày từ 2023 → phủ 14/34 quý; dùng cho xếp hạng gửi tiết kiệm"),
     (r"^data/interest_rates/deposit_daily\.csv$", "Nguồn hàng ngày", USE_RANK, "Lãi suất hiện tại cho giao diện và thông báo"),
     (r"^data/interest_rates/deposit_crosscheck_daily\.csv$", "Nguồn đối chứng", REFERENCE, "Kiểm chéo lãi suất huy động"),
+    (r"^data/interest_rates/deposit_techcombank_daily\.csv$", "Nguồn đối chứng", REFERENCE, "Kiểm chéo lãi suất huy động, từ 03/11/2026; chưa đưa lên web"),
     (r"^data/interest_rates/bank_lending_rates_monthly\.csv$", "Nguồn báo chí tháng", USE_RANK, "Chỉ 2025-01 → 2026-07; dùng cho xếp hạng vay"),
     (r"^data/loan_rates/", "Mức toàn ngành (NHNN)", USE_RANK, "Chỉ từ 2024; khung tham chiếu lãi suất trên giao diện"),
     (r"^data/macro/world_bank_annual\.csv$", "Nguồn năm, trễ", REFERENCE, "Hết 2023–2024; kiểm chéo COF/NPL hệ thống"),
@@ -85,6 +77,9 @@ CONTENT = [
     (r"^data/powerbi/", "Bảng dữ kiện (fact) cho Power BI, dựng từ các thư mục khác"),
     (r"^data/vnstock_financial/raw_mas/", "Chỉ số MAS của một NH theo quý, trước khi gộp"),
     (r"^data/vnstock_financial/raw_note/", "Thuyết minh BCTC của một NH theo quý, trước khi gộp"),
+    (r"^data/vnstock_financial/raw_vci/", "Dữ liệu thô VCI của một NH (mã bsa/bsb/isb/cfb/nob), giữ nguyên trường và số của API"),
+    (r"^data/vnstock_financial/vci_id_map\.csv$", "Bảng đổi mã thô VCI sang mã cũ, ghép bằng giá trị trên 22 NH × 34 quý, kèm độ khớp"),
+    (r"^data/vnstock_financial/vci_sua_lich_su\.csv$", "Ô quá khứ VCI đã sửa so với bản lưu trong raw/, raw_note/ (chưa áp dụng)"),
     (r"^data/vnstock_financial/raw/", "Một loại BCTC (CĐKT/KQKD/LCTT/chỉ số) của một NH, trước khi gộp"),
     (r"^data/interest_rates/deposit_raw/", "Bảng lãi suất tiết kiệm thô của một ngày: NH × kênh × kỳ hạn 1–36 tháng"),
     (r"agri_loans_annual_nhap_tay\.csv$", "Bản Save As của agri_loans_annual.csv có 16 ô người dùng nhập (đã gộp)"),
@@ -108,20 +103,28 @@ CONTENT = [
     (r"^data/model/eda/app_links\.csv$", "Tương quan điểm app với chỉ số tài chính: giữa NH và trong NH, KTC 95%"),
     (r"^data/model/eda/policy_agri\.csv$", "Tỷ trọng dư nợ nông nghiệp 2025 theo việc tham gia gói nông nghiệp"),
     (r"^data/model/eda/policy_yagi\.csv$", "% chi nhánh ở tỉnh bị bão Yagi và thay đổi NPL 2024-Q2 → 2025-Q2"),
-    (r"^data/model/features_quarterly\.csv$", "120 đặc trưng ứng viên × 748 NH-quý, đã làm sạch, chưa điền khuyết"),
-    (r"^data/model/features_selected\.csv$", "88 đặc trưng được Giữ × 748 NH-quý — đầu vào mô hình dự báo"),
-    (r"^data/model/features_ranking_latest\.csv$", "22 NH × số gần nhất trong 4 quý cuối của 87 đặc trưng — đầu vào xếp hạng"),
+    (r"^data/model/features_quarterly\.csv$", "124 đặc trưng ứng viên × 770 NH-quý, đã làm sạch, chưa điền khuyết"),
+    (r"^data/model/features_selected\.csv$", "21 đặc trưng có tác dụng (mục tiêu, đầu vào dự báo, tiêu chí xếp hạng, hồ sơ NH) × 770 NH-quý"),
+    (r"^data/model/features_selected_daily\.csv$", "Bản theo ngày: lãi tiết kiệm 12 tháng, lợi suất / biến động cổ phiếu, VN-Index, lãi điều hành × 22 NH từ 2018"),
+    (r"^data/model/features_selected_monthly\.csv$", "Bản theo tháng: như bản ngày + lãi cho vay bình quân, CPI, chỉ số giá USD × 22 NH từ 2018-01"),
+    (r"^data/model/feature_spec_hf\.csv$", "Mỗi biến bản ngày/tháng: công thức, nguồn, độ phủ, Giữ/Loại + lý do, quyết định ở file quý"),
+    (r"^data/model/features_clean\.csv$", "90 đặc trưng qua tầng chất lượng × 770 NH-quý — EDA và thí nghiệm đo trên tập này"),
+    (r"^data/model/features_ranking_latest\.csv$", "22 NH × 25 tiêu chí xếp hạng / hồ sơ NH: BCTC gần nhất trong 4 quý; lãi gửi ngày mới nhất (mọi kỳ hạn × 2 kênh), lãi vay tháng mới nhất (cột *_asof); không còn điểm app (bỏ 14/10/2026); dựng lại hằng ngày"),
+    (r"^data/model/ranking_daily\.csv$", "Xếp hạng theo NGÀY: lãi tiết kiệm mọi kỳ hạn × online/tại quầy, bậc số tiền thấp nhất × 22 NH, chỉ ngày có crawl (2023 →)"),
+    (r"^data/model/ranking_monthly\.csv$", "Xếp hạng theo THÁNG: lãi cho vay bình quân (NH tự công bố, rồi VietnamNet) × 22 NH từ 2024-03"),
+    (r"^data/model/ranking_quarterly\.csv$", "Xếp hạng theo QUÝ: 16 tiêu chí BCTC (an toàn CAMELS cho gửi; lợi suất cho vay, tỷ trọng cho vay cá nhân cho vay) × 770 NH-quý"),
+    (r"^data/model/ranking_spec\.csv$", "Mỗi cột tiêu chí xếp hạng: tần suất, file, gửi/vay, nhóm trọng số, trụ CAMELS, chiều (+1/−1), nguồn, độ phủ"),
     (r"^data/model/feature_catalog\.csv$", "Mỗi đặc trưng: nhóm, công thức, độ phủ, ICC, cờ, quyết định Giữ/Loại và lý do"),
     (r"^data/model/feature_spec\.csv$", "Mỗi đặc trưng: nhóm CAMELS, nguồn, công thức, đơn vị, cách quy về quý"),
     (r"^data/model/data_inventory\.csv$", "Bảng này: mỗi file CSV, nội dung, vai trò, quyết định giữ/bỏ"),
-    (r"^data/model/bank_panel_quarterly\.csv$", "22 NH × 34 quý: dư nợ, tiền gửi, tổng tài sản, NPL, nợ nhóm 2, CASA, cơ cấu kỳ hạn, NIM, COF, "
+    (r"^data/model/bank_panel_quarterly\.csv$", "22 NH × 35 quý: dư nợ, tiền gửi, tổng tài sản, NPL, nợ nhóm 2, CASA, cơ cấu kỳ hạn, NIM, COF, "
                                                   "lợi suất TSSL, ROE, ROA, CIR, P/E, P/B, EPS, BVPS, beta, cổ tức, CAR; cột *_src ghi nguồn"),
     (r"^data/vnstock_financial/financial_long\.csv$", "BCTC quý và năm dạng dài (NH, loại báo cáo, kỳ, chỉ tiêu, giá trị): 80 chỉ tiêu CĐKT, "
                                                         "25 KQKD, 49 LCTT, 47 chỉ số; đơn vị đồng, chỉ số lưu thập phân"),
     (r"^data/vnstock_financial/note_long\.csv$", "Thuyết minh BCTC quý dạng dài, 205 chỉ tiêu: tiền gửi theo loại/tiền tệ/khách hàng, dư nợ theo "
                                                    "nhóm nợ/kỳ hạn/ngành, chứng khoán đầu tư, thu–chi lãi, chi lương, CAR"),
     (r"^data/vnstock_financial/ratio_mas_long\.csv$", "12 chỉ số MAS theo NH-quý dạng dài từ 2012: NIM, COF, YIEA, ROE, ROA, CIR, P/E, P/B, EPS, BVPS, beta, cổ tức"),
-    (r"^data/vnstock_financial/ratio_mas_ttm\.csv$", "Chỉ số MAS đã cộng 4 quý (TTM) dạng rộng theo NH-quý, 2012-Q1 → 2026-Q2"),
+    (r"^data/vnstock_financial/ratio_mas_ttm\.csv$", "Chỉ số MAS đã cộng 4 quý (TTM) dạng rộng theo NH-quý, 2012-Q1 → 2026-Q3"),
     (r"^data/vnstock_financial/availability", "Nhật ký tải BCTC: mã, loại báo cáo, kỳ yêu cầu, trạng thái, số dòng"),
     (r"^data/credit/bank_credit_quarterly\.csv$", "NH-quý từ BCTC: dư nợ, tiền gửi, tổng tài sản, tăng trưởng dư nợ, LDR, dự phòng, NPL, NIM"),
     (r"^data/credit/bank_asset_quality_quarterly\.csv$", "NH-quý từ thuyết minh: NPL, nợ nhóm 2, CASA, cơ cấu kỳ hạn cho vay, tiền gửi VNĐ, chi phí trả lãi tiền gửi"),
@@ -137,6 +140,7 @@ CONTENT = [
     (r"^data/interest_rates/deposit_24hmoney_daily\.csv$", "Lãi suất tiết kiệm niêm yết: NH × kỳ hạn 1–36 tháng × kênh (quầy/online), 38 ngày quan sát từ 2023"),
     (r"^data/interest_rates/deposit_daily\.csv$", "Lãi suất tiết kiệm niêm yết hàng ngày: NH × kỳ hạn × kênh, kèm mức hôm trước, từ 21/08/2026"),
     (r"^data/interest_rates/deposit_crosscheck_daily\.csv$", "Lãi suất online từ nguồn thứ hai (CafeF) để đối chiếu, có kiểm checksum"),
+    (r"^data/interest_rates/deposit_techcombank_daily\.csv$", "Lãi suất tiết kiệm từ bảng tổng hợp trên blog Techcombank: 34 NH × 7 kỳ hạn × 2 kênh, để đối chiếu"),
     (r"^data/interest_rates/bank_lending_rates_monthly\.csv$", "Lãi suất cho vay và huy động bình quân từng NH công bố theo tháng (báo chí), 2025-01 → 2026-07"),
     (r"^data/loan_rates/", "Khung lãi suất huy động theo kỳ hạn và cho vay bình quân toàn ngành NHNN công bố, theo tháng từ 2024"),
     (r"^data/macro/cpi\.csv$", "CPI so cùng kỳ và so tháng trước, theo tháng từ 2018-01 (NSO), kèm link"),

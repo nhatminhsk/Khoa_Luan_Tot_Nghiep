@@ -1,34 +1,3 @@
-"""Chi so app ngan hang tren Apple App Store (store VN).
-
-Bo sung cho crawlers/app_reviews.py -- hien chi co Google Play. iOS quan trong
-hon ve so luong hon nhieu nguoi tuong: **9/20 ngan hang co nhieu luot danh gia
-tren iOS hon tren Play** (MBB 2,08 trieu so voi 1,05 trieu; TCB 940 nghin so voi
-611 nghin; VPB 340 nghin so voi 184 nghin).
-
-GIOI HAN -- doc truoc khi dinh dung lam chuoi thoi gian:
-
-    Chi lay duoc DIEM TONG HOP, khong lay duoc tung review.
-
-RSS `itunes.apple.com/*/rss/customerreviews/` da bi Apple bo (tra HTTP 200 voi 0
-entry o moi bien the URL da thu), va trang apps.apple.com chi nhung 8-10 review
-co dinh tu 2020-2021. Vay module nay chay duoc hang ngay de tich luy snapshot,
-nhung khong lui duoc lich su nhu ben Google Play.
-
-CANH BAO SO SANH: diem iOS va diem Google Play **chi tuong quan 0,445**
-(Spearman 0,451) tren 20 ma so duoc -- thap hon nhieu muc 0,881 giua diem store
-va diem tu review co noi dung. Chenh trai tu -0,87 (PGB) toi +1,54 (NAB: iOS
-4,31 so voi Play 2,76). Nghia la tieu chi "hai long nguoi dung" co BA cach do
-cho ba thu hang khac nhau. Phai chot mot cach va neu ro trong phan phuong phap.
-
-APP_ID chot cung, khong tim theo ten moi lan chay: tim theo ten tra ve nham app
-o nhung ngan hang co nhieu app ban le. Vi du Sacombank co ca "SACOMBANK PAY"
-(25.467 luot) lan "SACOMBANK mBanking" (5.825 luot) -- phai lay mBanking de khop
-voi app dang theo doi ben Play, du no it luot hon.
-
-Chay:
-    python -m crawlers.app_store_ios
-    python -m crawlers.app_store_ios --validate
-"""
 from __future__ import annotations
 
 import os

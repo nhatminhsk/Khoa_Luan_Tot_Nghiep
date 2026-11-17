@@ -152,8 +152,6 @@ def parse_figures(content_html: str, month: str,
 
 def fetch_posts(session: requests.Session | None = None, pause: float = 0.3,
                 per_page: int = 100, max_pages: int | None = None) -> list[dict]:
-    """Bai thong cao CPI tren nso.gov.vn, moi nhat truoc. `max_pages` gioi han so trang (buoc hang ngay
-    chi can trang dau); None = doc het (backfill)."""
     s = session or requests.Session()
     s.headers.update(HEADERS)
     out, page = {}, 1
@@ -242,8 +240,6 @@ def backfill(since: str = "2018-01", write: bool = True,
 
 
 def run(per_page: int = 10) -> str:
-    """Buoc hang ngay trong run_daily_crawl: chi doc vai bai moi nhat (CPI thang truoc duoc dang khoang
-    ngay 3-6 thang sau), them thang moi vao cpi.csv. Khong ghi de so da co: lech thi bao xung dot nhu backfill."""
     result = backfill(posts=fetch_posts(per_page=per_page, max_pages=1))
     latest = result.dropna(subset=["cpi_yoy_percent"]).iloc[-1]
     return f"cpi.csv toi {latest['month']} (so cung ky {latest['cpi_yoy_percent']}%)"

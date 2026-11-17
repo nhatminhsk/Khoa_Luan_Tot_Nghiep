@@ -1,81 +1,3 @@
-"""Khe ho dinh lai lai suat (repricing gap) theo tung ngan hang -- NHAP TAY tu PDF.
-
-Day la bien dai dien cho chu S (Sensitivity to market risk) cua CAMELS. Khong
-nguon API nao co so nay: trong Finance.note() cua VCI, hai dong "Tai san sinh
-lai" va "Cong no phai tra lai" rong 0/748 o. So chi co trong thuyet minh "Rui ro
-lai suat" cua BCTC kiem toan (nam) va soat xet (ban nien), o dong cuoi bang:
-
-    "Muc chenh nhay cam voi lai suat noi bang"
-
-Moi o tren dong do = tong tai san - tong no phai tra CUA COT KY HAN DO.
-
-DON VI KY LA QUY ('2026-Q1' = chot 31/03/2026), cung khoa voi panel. Bang nay
-chac chan co o BCTC nam (Q4) va thuong co o BCTC ban nien (Q2). BCTC quy: ACB CO
-in bang trong thuyet minh chon loc quy I/2026 (mau B05a/TCTD-HN); cac NH khac chua
-kiem. NH nao khong in bang trong ky do thi
-de trong o so va dat nguon=khong_cong_bo: check() tach rieng nhom nay, khong bao
-"con thieu" mai. File cu ghi '2025-H2' van doc duoc -- _read() doi H1->Q2, H2->Q4.
-
-LAY COT NAO
-  - 6 cot ky han: duoi 1 thang, 1-3T, 3-6T, 6-12T, 1-5 nam, tren 5 nam.
-  - Cot "Qua han" va "Khong nhay cam lai suat" KHONG dinh lai lai suat nen khong
-    vao khe ho. Van nen nhap de doi chieu tong, xem check().
-  - O "Tong cong" = tong tai san - tong no phai tra, xap xi von chu so huu. KHONG
-    phai khe ho lai suat, chi dung de doi chieu.
-  - BAY DA GAP: mot so NH (ACB) in them hai dong ngay duoi -- "Cac cam ket ngoai
-    bang ..." va "Muc chenh nhay cam voi lai suat NOI, NGOAI BANG". KHONG lay dong
-    noi ngoai bang: TCB chi in noi bang, nen phai lay noi bang moi so ngang duoc
-    giua cac NH. Lay nham thi doi chieu 1 van khop (dong do tu can) nhung doi chieu
-    2 lech dung bang tong cam ket ngoai bang (ACB 2026-Q1: +43.037).
-
-MAU SO LA TONG TAI SAN CUA CHINH BANG NAY, khong lay tu bang can doi. Bang
-thuyet minh ghi "(*) Khong bao gom cac khoan du phong" nen tong tai san cao hon
-bang can doi (TCB 31/12/2025: 1.203.452 ty vs 1.192.344 ty). Tu so va mau so
-phai cung mot co so.
-
-CHI SO TINH RA -- ratios()
-  gap_12t_percent          khe ho TICH LUY den 12 thang / tong tai san.
-                           > 0: tai san dinh lai nhanh hon no, lai suat tang thi
-                           thu nhap lai thuan tang; < 0 thi nguoc lai.
-  gap_12t_abs_percent      tri tuyet doi. Dung lam tieu chi CHI PHI trong TOPSIS vi
-                           ca hai chieu deu la rui ro: am lon thiet khi lai suat
-                           tang, duong lon thiet khi lai suat giam.
-  gap_max_abs_12t_percent  |tich luy| lon nhat tai cac moc 1/3/6/12 thang. DE XUAT
-                           RIENG cua du an, khong phai thuoc do chuan: bat duoc cho
-                           lech ma so 12 thang che mat. TCB 31/12/2025: 12 thang chi
-                           +1,69%, nhung tich luy 1 thang +7,38% va 6 thang -3,51%
-                           -> chi so nay = 7,38.
-  delta_nii_1pp            thu nhap lai thuan doi bao nhieu/nam khi lai suat tang
-                           1 diem % = gap 12 thang x 1%. Xap xi bac mot, gia dinh
-                           moi ky han dich cung muc. Cung don vi voi bang.
-
-FILE LA BANG CONG VIEC, KHONG CHI LA KET QUA. Khung day du 22 NH x moi ky; o chua
-co so thi de TRONG chu khong bo dong. Giu so nhap tay theo tung O, cung tinh than
-car.py va loan_rates.py:
-    - o file cu co gia tri          -> giu nguyen, code KHONG BAO GIO ghi de
-    - o file cu trong, DISCLOSED co -> dien vao
-    - ca hai co so va LECH nhau     -> bao conflict, van giu file cu
-Muon bo mot so trong DISCLOSED thi sua DISCLOSED, xoa o trong CSV khong du vi lan
-chay sau code se dien lai.
-
-NHAP SO: dan thang dang in trong PDF cung duoc -- "88.862.676", "(99.974.325)"
-(ngoac = so am), "-" (= 0). Nhap nguyen so trong bang, thuong la trieu dong. File
-luu bang dau ";" (Excel tieng Viet) hay "," deu doc duoc; write() chuan hoa lai ve
-so nguyen va dau ",".
-
-HAI PHEP DOI CHIEU BAT LOI GO -- check()
-  1. tong 8 cot khe ho (ke ca qua han, khong nhay cam) == o tong cong
-  2. tong tai san - tong no phai tra == o tong cong
-Bang TCB 31/12/2025 khop tuyet doi ca hai. Bang in so da lam tron nen cho lech toi
-TOL don vi.
-
-Chay (tu thu muc goc D:\\KLTN):
-    python -m crawlers.repricing_gap                     # dung khung + ghi CSV + kiem
-    python -m crawlers.repricing_gap --check             # chi kiem, thoat ma 1 neu co loi
-    python -m crawlers.repricing_gap --ratios            # bang ty le, moi ky
-    python -m crawlers.repricing_gap --ratios 2025-Q4    # mot ky
-    python -m crawlers.repricing_gap --them-ky 2024-Q4   # them 22 dong cho mot ky
-"""
 from __future__ import annotations
 
 import re
@@ -144,16 +66,6 @@ _DASHES = {"-", "\u2013", "\u2014"}
 
 
 def _to_number(x):
-    """Doc mot o so theo dang in trong PDF hoac dang Excel/pandas ghi ra.
-
-    "88.862.676" -> 88862676 · "(99.974.325)" -> -99974325 · "-" -> 0 · "" -> NA
-    "-99974325" -> -99974325 · "1203451967.0" -> 1203451967
-
-    Bang thuyet minh chi co SO NGUYEN, nen "." va "," o day la dau phan nhom hang
-    nghin. Ngoai le duy nhat: duoi thap phan KHONG dung 3 chu so ("4360.0") -- dang
-    do pandas/Excel ghi ra, doc nhu so thuc. Phan thap phan khac 0 thi bao loi
-    thay vi doan.
-    """
     if x is None or x is pd.NA or (isinstance(x, float) and np.isnan(x)):
         return pd.NA
     if isinstance(x, (int, np.integer)):
@@ -183,7 +95,6 @@ def _to_number(x):
 
 
 def _read(path: Path | None = None) -> pd.DataFrame:
-    """Doc file cong viec, chap nhan dau ";" hoac "," va so dang PDF."""
     path = path or MASTER
     with open(path, encoding="utf-8-sig") as f:
         header = f.readline()
@@ -228,7 +139,6 @@ def tickers() -> list[str]:
 
 
 def norm_period(p: str) -> str:
-    """'2026-Q1' giu nguyen; '2025-H2' -> '2025-Q4' (dang cu cua file, va cho de go)."""
     s = str(p).strip().upper()
     m = re.fullmatch(r"(\d{4})-(Q[1-4]|H[12])", s)
     if not m:
@@ -242,7 +152,6 @@ def period_end(period: str) -> str:
 
 
 def full_grid(periods: list[str]) -> pd.DataFrame:
-    """Khung 22 NH x moi ky, o so de TRONG (khac voi 0: trong = chua nhap)."""
     rows = []
     for t in tickers():
         for p in periods:
@@ -260,7 +169,6 @@ def _blank(v) -> bool:
 
 
 def build(extra_periods: tuple[str, ...] = ()) -> tuple[pd.DataFrame, list, int]:
-    """Khung day du, dien DISCLOSED, roi phu file cu len theo tung o."""
     extra = {norm_period(p) for p in extra_periods}
     today = datetime.now().date().isoformat()
     for p in sorted(extra | set(PERIODS)):
@@ -330,11 +238,6 @@ def write(extra_periods: tuple[str, ...] = ()) -> pd.DataFrame:
 # Kiem dinh va chi so
 # ---------------------------------------------------------------------------
 def _doi_chieu(r: pd.Series) -> tuple[str, list[str], list[str]]:
-    """Hai phep doi chieu cho mot bang: (trang thai, loi, canh bao).
-
-    trang thai: 'khop' = ca hai phep deu chay va khop · 'lech' = co phep lech ·
-    'chua_du' = thieu o de chay mot trong hai phep (so co the van dung).
-    """
     errors, warns, ran = [], [], 0
     if all(pd.notna(r[c]) for c in ALL_GAPS + ["gap_tong_cong"]):
         ran += 1
@@ -358,7 +261,6 @@ def _doi_chieu(r: pd.Series) -> tuple[str, list[str], list[str]]:
 
 
 def check(df: pd.DataFrame | None = None) -> bool:
-    """Doi chieu tung bang da nhap. Tra False neu co LOI (khong tinh canh bao)."""
     if df is None:
         df = _read()
     errors, warns = [], []
@@ -403,11 +305,6 @@ def check(df: pd.DataFrame | None = None) -> bool:
 
 
 def ratios(period: str | None = None, df: pd.DataFrame | None = None) -> pd.DataFrame:
-    """Ty le khe ho cho moi bang du so. O thieu KHONG coi la 0 -- bang do bi bo.
-
-    Cot doi_chieu mang ket qua _doi_chieu() theo tung dong: bang 'lech' van duoc
-    tinh de nguoi dung thay so, nhung KHONG duoc dua vao xep hang.
-    """
     if df is None:
         df = _read()
     if period:

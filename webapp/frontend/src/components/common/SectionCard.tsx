@@ -43,7 +43,7 @@ export function SectionCard({ title, subtitle, info, action, children, flush, id
                       component="span"
                       tabIndex={0}
                       aria-label={info}
-                      sx={{ display: "inline-flex", color: "text.disabled", cursor: "help", "&:hover": { color: "text.secondary" } }}
+                      sx={{ display: "inline-flex", color: "text.secondary", cursor: "help", "&:hover": { color: "text.primary" } }}
                     >
                       <IconInfoCircle size={16} stroke={1.8} aria-hidden />
                     </Box>

@@ -81,7 +81,6 @@ def safe_get(label: str, url: str) -> str:
 
 
 def discover(year: int, months: list[int]) -> dict:
-    """{'YYYY-MM-DD': url} cho loat bai hang ngay, lay tu sitemap CafeF."""
     idx = safe_get("sitemap", SITEMAP)
     want = set(months)
     urls = {}
@@ -110,7 +109,6 @@ def article_text(html: str) -> str:
 
 
 def _terms_after(text: str, pos: int):
-    """Ky han ghi ngay sau con so, vi du '6,8%/nam cho ky han 12 va 18 thang'."""
     m = TERM_RE.match(text[pos:pos + 60])
     if not m:
         return None
@@ -118,11 +116,6 @@ def _terms_after(text: str, pos: int):
 
 
 def _terms_before(text: str, pos: int):
-    """Ky han ghi TRUOC con so: 'ky han 13 thang len 8,7%/nam'.
-
-    Chi dung khi khong co ky han di sau -- neu co thi cai di sau moi dung,
-    vi du '6,6%/nam cho ky han 6 va 9 thang; va 6,8%/nam cho ky han 12 va 18 thang'.
-    """
     ms = list(TERM_BEFORE_RE.finditer(text[max(0, pos - 30):pos]))
     if not ms:
         return None
@@ -130,11 +123,6 @@ def _terms_before(text: str, pos: int):
 
 
 def _banks_before(seg: str) -> list:
-    """Nhom ngan hang lien tiep o cuoi doan: 'A, B, C va D' -> ca 4.
-
-    Chi noi tiep khi giua hai ten chi co dau phay hoac 'va'. Nho vay
-    'Dung ngay sau ACB la Sacombank' chi tra ve Sacombank, khong keo theo ACB.
-    """
     ms = list(BANK_RE.finditer(seg))
     if not ms:
         return []
@@ -145,7 +133,6 @@ def _banks_before(seg: str) -> list:
 
 
 def parse(text: str):
-    """Tra ve ({ten_cafef: lai_suat_12_thang}, checksum bai tu neu)."""
     rates = [(m.start(), m.end(), _num(m.group(1))) for m in RATE_RE.finditer(text)]
     out, prev_end, last_names = {}, 0, []
     for i, (start, end, value) in enumerate(rates):
@@ -188,7 +175,6 @@ def parse(text: str):
 
 
 def validate(parsed: dict, claims: dict) -> list:
-    """Doi chieu ket qua trich voi chinh cac con so tong hop bai tu neu."""
     problems = []
     if "n_at_least" in claims:
         want, threshold = claims["n_at_least"]
@@ -273,7 +259,6 @@ def run(year: int = None, months: list = None) -> dict:
 
 
 def compare(date: str = None) -> dict:
-    """So lai suat 12 thang online cua 2 nguon; bao ngan hang lech nhieu."""
     import pandas as pd
     cross = pd.read_csv(MASTER)
     ours = pd.read_csv(DEPOSIT)

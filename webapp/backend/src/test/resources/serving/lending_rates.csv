@@ -1,3 +1,5 @@
 month,ticker,lending_avg_percent,deposit_avg_percent,segment,basis,source,source_url
 2026-06,ACB,6.8,4.4,INDIVIDUAL,NEW_LOANS,BANK,https://example.test/a
 2026-07,VCB,6.2,,UNSPECIFIED,,VIETNAMNET,https://example.test/b
+2026-04,VCB,10.77,,INDIV_MID_LONG,NEW_LOANS,BANK,https://example.test/c
+2026-05,VCB,9.63,,CONSUMER_SHORT,,BANK,https://example.test/d

@@ -33,6 +33,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Ảnh Docker build với NEXT_OUTPUT=standalone: chỉ chép file cần chạy (.next/standalone/server.js), không cần
+  // node_modules đầy đủ. Chạy trên máy (npm run dev / next start) vẫn như cũ.
+  output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
   // Trình duyệt gọi /api/... trên cùng origin với trang; Next.js chuyển tiếp sang backend.
   // Nhờ vậy cookie phiên (httpOnly, SameSite=Lax) hoạt động mà không cần mở CORS.
   async rewrites() {

@@ -1,0 +1,30 @@
+ticker,period,part,file,page,unit,g1,g2,g3,g4,g5,extra,demand,term,savings,special,margin,other,total,lech_nguon,note
+HDB,2012-Q4,no,HDB_2012Q4.pdf,20,1,19415923530441,1234341032354,354754391421,116906219467,25899700000,,,,,,,,21147824873683,,nhan lech nua dong so voi cot so nen OCR ghep nham nhan; tong = dong tong in = du no gop CDKT
+LPB,2015-Q3,no,LPB_2015Q3.pdf,25,1000000,53672996,453825,62431,37993,384506,,,,,,,,54609751,2000,bao cao cong sai: 5 nhom = 54.611.751 nhung dong tong in 54.609.751 (= CDKT); cot 31/12/2014 cong dung; NPL lech toi da 0.004 diem
+TCB,2017-Q3,tien_gui,TCB_2017Q3.pdf,41,1000000,,,,,,,33121150,130520850,,,2592843,,166322843,88000,bao cao cong sai: cac dong cot 30/09/2017 cong 166.234.843 nhung dong tong in 166.322.843 (= CDKT); cot 31/12/2016 cong dung; CASA 19.91-19.97 tuy khoan lech
+VPB,2012-Q3,tien_gui,VPB_2012Q3.pdf,12,1000000,,,,,,,3209998,44102412,,9017,184331,76,47505834,,dong 9.017 mat nhan (khong thuoc KKH: hai dong con KKH cong dung 3.209.998); tong = dong tong = CDKT
+MSB,2016-Q3,tien_gui,MSB_2016Q3.pdf,38-39,1000000,,,,,,,10102251,8454325,39310829,89401,225478,,58182284,,KKH = muc a) nhu VCI (tiet kiem KKH 455.538 nam trong c) tiet kiem); tong = CDKT
+MSB,2017-Q3,tien_gui,MSB_2017Q3.pdf,36-37,1000000,,,,,,,10860574,13413993,36780038,86918,327866,,61469389,,KKH = muc a) nhu VCI; tong = dong Cong = CDKT
+MSB,2015-Q2,tien_gui,MSB_2015Q2.pdf,37,1000000,,,,,,,11883512,15145240,31937683,133332,232077,,59331844,,KKH = muc a) nhu VCI; tong = dong Cong = CDKT
+MSB,2017-Q1,tien_gui,MSB_2017Q1.pdf,40-41,1000000,,,,,,,10275732,9550584,37519516,133608,239617,,57719057,,KKH = muc a) nhu VCI; tong = dong Cong = CDKT
+MSB,2017-Q1,no,MSB_2017Q1.pdf,31,1000000,30719868,1628901,140467,24700,749051,,,,,,,,33262987,,tong = dong Cong = du no gop CDKT
+TCB,2015-Q1,tien_gui,TCB_2015Q1.pdf,42,1000000,,,,,,,19839772,105025649,,,2021030,,126886451,,nhan lech nua dong (OCR ghep nham); KKH 17.629.916+2.209.856; tong = CDKT
+VPB,2017-Q1,no,VPB_2017Q1.pdf,24,1000000,136668133,10160896,3013467,1192592,1119717,,,,,,,,152154805,,nhan lech mot dong (OCR ghep nham); 5 nhom theo thu tu in; tong = dong tong = du no gop CDKT
+NVB,2014-Q3,no,NVB_2014Q3.pdf,13,1,15375809577721,664488558345,239521719054,58968537395,534810264670,,,,,,,,16873598657185,,OCR mat chu so o nhom 1-2; tong = dong tong = du no gop CDKT
+PGB,2013-Q1,no,PGB_2013Q1.pdf,12,1,11490101476739,1705126717121,230480408195,860576896690,241059640446,,,,,,,,14527345139191,,OCR dinh hai cot o nhom 1; tong = dong tong = du no gop CDKT
+TCB,2013-Q1,no,TCB_2013Q1.pdf,22-23,10000,6114774059,488117719,66726663,33353226,140650083,,,,,,,,6843621750,,trieu dong 2 chu so le (don vi 10.000 dong); nhom 1 o cuoi trang 22; tong = dong tong = CDKT
+LPB,2017-Q3,tien_gui,LPB_2017Q3.pdf,32,1000000,,,,,,,38419568,83756361,,40557,227512,,122443998,,ban quet mo; KKH va CKH khop dong con; tong = dong tong = CDKT
+NVB,2012-Q1,no,NVB_2012Q1.pdf,10,1,12674561242521,670322396213,144458023132,167052221428,172868651960,,,,,,,,13829262535254,,tieu de cot "Cuoi ky | Dau ky" khong co ngay; tong = dong tong = du no gop CDKT
+NVB,2012-Q1,tien_gui,NVB_2012Q1.pdf,11-12,1,,,,,,,292849317037,18382431334301,,137620726,52774038756,,18728192310820,,bang tran sang trang 12; tong = dong tong = CDKT
+PGB,2015-Q4,tien_gui,PGB_2015Q4.pdf,38,1000000,,,,,,,4032654,12631283,,9847,191146,,16864930,,moi muc khop dong con; tong = dong tong (VNDirect khong co o nay)
+TPB,2012-Q4,no,TPB_2012Q4.pdf,31,1,5610740066767,249498827298,31954945539,104370037828,86466125461,,,,,,,,6083030002893,,BCTC nam kiem toan 2012; tong = dong tong = Harvard 6.083.030 trieu
+TPB,2012-Q4,tien_gui,TPB_2012Q4.pdf,44,1,,,,,,,1358672437826,7896864681248,,1036058,14387284979,,9269925440111,,KKH gom 4 dong (ca tiet kiem KKH); tong = dong tong = Harvard 9.269.925 trieu
+PGB,2014-Q3,no,PGB_2014Q3.pdf,19,1,11838407785960,1722941443804,34137591325,117882463648,276612742961,,,,,,,,13989982027698,,trang quet xoay 90 do -> OCR khong doc duoc; tong = dong tong
+PGB,2014-Q3,tien_gui,PGB_2014Q3.pdf,26,1,,,,,,,1197784893097,13128298950466,,21318771371,113283094057,,14460685708991,,trang quet xoay 90 do; KKH va CKH khop dong con; tong = dong tong
+BID,2017-Q1,no,BID_Baocaotaichinh_Q1_2017_Congtyme.pdf,18,1000000,702532749,27922794,6689932,1377841,6772454,,,,,,,,745295770,,BCTC hop nhat Q1/2017 khong co bang phan loai no -> dung ban rieng (lech du no hop nhat -1.9%)
+MBB,2012-Q1,no,MBB_Baocaotaichinh_Q1_2012_Congtyme.PDF,21,1,57370327006810,2329861877142,283866697788,296507564849,557693245030,,,,,,,,60838256391619,,OCR doc nhom 4 thanh 507.564.849; ban hop nhat chi co bang du phong ngay 29/02 -> dung ban rieng (lech -1.2%)
+NAB,2014-Q3,no,NamABank_Baocaotaichinh_Q3_2014_Hopnhat.pdf,10,1,14850719132254,111313711533,25787017153,28380579191,251054183883,,,,,,,,15267254624014,,dong "hop dong mua va cam ket ban lai" = 0; tong = dong Cong
+VIB,2016-Q1,no,VIB_2016Q1.pdf,29,1000000,47286431,518181,64611,168863,765460,,,,,,,,48803546,,ban hop nhat; tong = dong tong
+LPB,2016-Q2,tien_gui,LPB_2016Q2.pdf,28,1000000,,,,,,,42662677,67952283,,762,190719,,110806441,,KKH va CKH khop dong con; tong = dong tong
+EIB,2014-Q3,tien_gui,EIB_Baocaotaichinh_Q3_2014_Hopnhat.pdf,21,1000000,,,,,,,10158437,78592268,,30296,788017,,89569019,,cong 89.569.018 (lam tron 1); dong tong = CDKT
+MSB,2016-Q4,tien_gui,MSB_Baocaotaichinh_Q1_2017_Hopnhat.pdf,40-41,1000000,,,,,,,10117402,8444342,38677534,114105,233423,,57586806,,cot so sanh 31/12/2016 trong BCTC hop nhat Q1/2017 (BCTC Q4/2016 hop nhat chi 7 trang); KKH = muc a) nhu VCI

@@ -7,8 +7,10 @@ import {
   IconHomeDollar,
   IconLayoutDashboard,
   IconPigMoney,
+  IconUsers,
   type Icon,
 } from "@tabler/icons-react";
+import type { Permission } from "@/types/api";
 
 /**
  * Cấu hình menu điều hướng. Sidebar dựng hoàn toàn từ danh sách này:
@@ -21,7 +23,8 @@ export interface NavItem {
   /** "exact": chỉ sáng khi đúng đường dẫn (dùng cho "/"); mặc định sáng cả trang con. */
   match?: "exact" | "prefix";
   requiresAuth?: boolean;
-  adminOnly?: boolean;
+  /** Chỉ hiện khi tài khoản có quyền này (menu quản trị). */
+  permission?: Permission;
 }
 
 export interface NavGroup {
@@ -62,7 +65,8 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Hệ thống",
     items: [
       { href: "/methodology", label: "Phương pháp và dữ liệu", icon: IconBook2 },
-      { href: "/admin", label: "Quản trị dữ liệu", icon: IconDatabaseCog, adminOnly: true },
+      { href: "/admin", label: "Quản trị dữ liệu", icon: IconDatabaseCog, match: "exact", permission: "DATA_MANAGE" },
+      { href: "/admin/users", label: "Quản lý người dùng", icon: IconUsers, permission: "USER_MANAGE" },
     ],
   },
 ];

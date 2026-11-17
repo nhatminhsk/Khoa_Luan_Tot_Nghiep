@@ -14,8 +14,10 @@ import { useChartPalette } from "@/theme/chart-palette";
 import type { Channel } from "@/types/api";
 import { formatDelta, formatPercent } from "@/utils/format";
 import { CHANNEL_LABEL } from "@/utils/labels";
+import { rateDayText } from "@/utils/today";
 
 const TERM = "12";
+/** Số dòng mặc định; Tổng quan truyền ít hơn vì thẻ xếp chồng với thẻ Vay. */
 const TOP = 6;
 
 // Giống thẻ KPI (StatTile swapKey): danh sách hiện dần khi đổi kênh để người xem thấy số vừa đổi.
@@ -25,12 +27,13 @@ const swapIn = keyframes`
 `;
 
 /**
- * Danh sách thanh: các ngân hàng trả lãi 12 tháng cao nhất hôm nay cho một kênh.
- * Thanh bắt đầu từ 0 (độ dài đúng tỉ lệ lãi suất), số in ở đầu thanh; ngân hàng cùng mức thì cùng hạng.
+ * Danh sách các ngân hàng trả lãi 12 tháng cao nhất hôm nay cho một kênh; ngân hàng cùng mức thì cùng hạng.
+ * Mỗi dòng ghi chênh lệch so với trung vị mọi ngân hàng có số. (Trước đây là thanh từ 0: 6,9% và 7,4% dài gần bằng nhau,
+ * thanh không cho thêm thông tin; cắt gốc thanh thì lại phóng đại chênh lệch.)
  *
  * @param channel kênh đang hiện; trang Tổng quan truyền kênh của thẻ KPI để hai khối tự chuyển cùng nhau
  */
-export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
+export function TopRatesCard({ channel = "ONLINE", limit = TOP }: { channel?: Channel; limit?: number }) {
   const palette = useChartPalette();
   // Tải sẵn cả hai kênh: lúc tự chuyển kênh danh sách đổi ngay, không hiện khung chờ.
   const online = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
@@ -42,13 +45,14 @@ export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
     .map((row) => ({ ticker: row.ticker, shortName: row.shortName, cell: row.cells[TERM] }))
     .filter((r): r is typeof r & { cell: NonNullable<typeof r.cell> } => Boolean(r.cell))
     .sort((a, b) => b.cell.rate - a.cell.rate);
-  const top = ranked.slice(0, TOP);
-  const scaleMax = top[0]?.cell.rate ?? 1;
+  const top = ranked.slice(0, limit);
+  // Trung vị của mọi ngân hàng có số ở kỳ hạn/kênh này (không phải của riêng sáu dòng top).
+  const mid = ranked.length > 0 ? median(ranked.map((r) => r.cell.rate)) : null;
 
   return (
     <SectionCard
-      title="Top lãi 12 tháng hôm nay"
-      subtitle={`Kênh ${channelText}`}
+      title={`Top lãi 12 tháng ${rateDayText(table.data?.rateDate)}`}
+      subtitle={mid === null ? CHANNEL_LABEL[channel] : `${CHANNEL_LABEL[channel]} · trung vị ${ranked.length} NH ${formatPercent(mid)}`}
       action={
         <Button
           component={Link}
@@ -60,7 +64,6 @@ export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
           Tất cả
         </Button>
       }
-      sx={{ height: "100%" }}
     >
       {table.isError ? (
         <ErrorState error={table.error} onRetry={() => table.refetch()} />
@@ -96,40 +99,34 @@ export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
                 </Typography>
                 <BankAvatar ticker={row.ticker} size={30} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 0.5 }}>
-                    <MuiLink
-                      component={Link}
-                      href={`/banks/${row.ticker}`}
-                      underline="hover"
-                      color="text.primary"
-                      variant="body2"
-                      sx={{ fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                    >
-                      {row.shortName}
-                    </MuiLink>
-                    <Tooltip
-                      title={
-                        change === null || change === 0
-                          ? "Không đổi so với ngày có số liệu liền trước"
-                          : `${formatDelta(change)} điểm % so với ngày có số liệu liền trước`
-                      }
-                    >
-                      <Typography variant="body2" sx={{ fontWeight: 700, fontVariantNumeric: "tabular-nums", ml: 1 }}>
-                        {formatPercent(row.cell.rate)}
-                      </Typography>
-                    </Tooltip>
-                  </Stack>
-                  <Box sx={{ height: 8, borderRadius: 4, bgcolor: "action.hover", overflow: "hidden" }} aria-hidden>
-                    <Box
-                      sx={{
-                        height: "100%",
-                        width: `${(row.cell.rate / scaleMax) * 100}%`,
-                        borderRadius: 4,
-                        bgcolor: palette.series[0],
-                      }}
-                    />
-                  </Box>
+                  <MuiLink
+                    component={Link}
+                    href={`/banks/${row.ticker}`}
+                    underline="hover"
+                    color="text.primary"
+                    variant="body2"
+                    sx={{ display: "block", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                  >
+                    {row.shortName}
+                  </MuiLink>
+                  {/* Trung tính (không tô xanh): lãi cao hơn trung vị là thông tin so sánh, chưa phải đánh giá ngân hàng. */}
+                  {mid !== null && (
+                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", fontVariantNumeric: "tabular-nums" }}>
+                      {Math.abs(row.cell.rate - mid) < 1e-9 ? "Bằng trung vị" : `${formatDelta(row.cell.rate - mid)} điểm % so với trung vị`}
+                    </Typography>
+                  )}
                 </Box>
+                <Tooltip
+                  title={
+                    change === null || change === 0
+                      ? "Không đổi so với ngày có số liệu liền trước"
+                      : `${formatDelta(change)} điểm % so với ngày có số liệu liền trước`
+                  }
+                >
+                  <Typography sx={{ fontWeight: 700, fontSize: "1rem", fontVariantNumeric: "tabular-nums", color: palette.series[0] }}>
+                    {formatPercent(row.cell.rate)}
+                  </Typography>
+                </Tooltip>
               </Stack>
             );
           })}
@@ -137,4 +134,10 @@ export function TopRatesCard({ channel = "ONLINE" }: { channel?: Channel }) {
       )}
     </SectionCard>
   );
+}
+
+function median(values: number[]): number {
+  const s = [...values].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }

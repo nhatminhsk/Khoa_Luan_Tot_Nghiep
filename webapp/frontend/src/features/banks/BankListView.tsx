@@ -24,18 +24,17 @@ import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States
 import { useBanks } from "@/hooks/use-banks";
 import { queryKeys } from "@/lib/query/keys";
 import { marketRepository } from "@/repositories/market.repository";
-import { formatNumber, formatPercent, formatQuarter } from "@/utils/format";
+import { formatPercent, formatQuarter } from "@/utils/format";
 import { formatIndicator } from "@/utils/indicator";
 
 /** Cột chỉ tiêu hiển thị trong bảng (mã trong indicators.csv). */
 const COLUMNS = ["car", "npl", "casa", "nim", "roe", "total_assets"] as const;
-type SortKey = "ticker" | "rate12" | "app" | (typeof COLUMNS)[number];
+type SortKey = "ticker" | "rate12" | (typeof COLUMNS)[number];
 
 export function BankListView() {
   const { banks, isLoading: banksLoading } = useBanks();
   const snapshot = useQuery({ queryKey: queryKeys.indicatorSnapshot, queryFn: marketRepository.indicatorSnapshot });
   const rates = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
-  const apps = useQuery({ queryKey: queryKeys.appScores, queryFn: marketRepository.appScores });
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState<{ key: SortKey; desc: boolean }>({ key: "ticker", desc: false });
 
@@ -47,7 +46,6 @@ export function BankListView() {
   const rows = useMemo(() => {
     const valuesByTicker = new Map((snapshot.data?.rows ?? []).map((row) => [row.ticker, row.values]));
     const rateByTicker = new Map((rates.data?.rows ?? []).map((row) => [row.ticker, row.cells["12"]?.rate ?? null]));
-    const appByTicker = new Map((apps.data ?? []).map((a) => [a.ticker, a.googlePlayScore ?? a.appStoreScore]));
     const q = filter.trim().toLowerCase();
     const list = banks
       .filter((b) => !q || [b.ticker, b.shortName, b.fullName].some((v) => v.toLowerCase().includes(q)))
@@ -55,12 +53,10 @@ export function BankListView() {
         bank,
         values: valuesByTicker.get(bank.ticker) ?? {},
         rate12: rateByTicker.get(bank.ticker) ?? null,
-        app: appByTicker.get(bank.ticker) ?? null,
       }));
     const value = (row: (typeof list)[number]): number | string | null => {
       if (sort.key === "ticker") return row.bank.ticker;
       if (sort.key === "rate12") return row.rate12;
-      if (sort.key === "app") return row.app;
       return row.values[sort.key]?.value ?? null;
     };
     return list.sort((a, b) => {
@@ -71,7 +67,7 @@ export function BankListView() {
       const cmp = typeof va === "string" ? va.localeCompare(vb as string) : va - (vb as number);
       return sort.desc ? -cmp : cmp;
     });
-  }, [banks, snapshot.data, rates.data, apps.data, filter, sort]);
+  }, [banks, snapshot.data, rates.data, filter, sort]);
 
   const sortBy = (key: SortKey) =>
     setSort((current) => (current.key === key ? { key, desc: !current.desc } : { key, desc: key !== "ticker" }));
@@ -163,11 +159,10 @@ export function BankListView() {
                       </Fragment>
                     );
                   })}
-                  {header("app", "Điểm app", "Điểm trên Google Play (không có thì App Store)")}
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(({ bank, values, rate12, app }) => (
+                {rows.map(({ bank, values, rate12 }) => (
                   <TableRow key={bank.ticker} hover>
                     <TableCell>
                       <BankLabel ticker={bank.ticker} shortName={bank.shortName} />
@@ -190,7 +185,6 @@ export function BankListView() {
                         </TableCell>
                       );
                     })}
-                    <TableCell align="right">{formatNumber(app, 1)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

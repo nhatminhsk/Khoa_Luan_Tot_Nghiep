@@ -1,50 +1,3 @@
-"""Chi so gia do la My, chi so gia vang va lam phat co ban -- tu NSO.
-
-Ba chuoi nay nam TRONG CHINH bai cong bo ma crawlers/cpi_nso.py da tai ve moi
-thang de boc CPI. Do 600 bai lay duoc qua API: chi so gia do la My xuat hien o
-394 bai, chi so gia vang 392 bai, lam phat co ban 315 bai -- cung mot cau truc
-cau va cung bo neo "so voi thang truoc / so voi cung ky nam truoc" ma parser CPI
-da xu ly duoc. **Chi phi mang de them ba chuoi nay bang khong.**
-
-Vi sao dang lam voi de tai nay: voi mot he thong tu van GUI TIET KIEM, vang va
-do la khong phai chi bao vi mo chung chung -- chung la **hai kenh canh tranh
-truc tiep** voi tien gui ngan hang. Lam phat co ban thi la bien kiem soat chuan
-trong moi mo hinh lai suat.
-
-KHONG sua cpi_nso.py. Parser CPI o do co subject guard rieng (CPI_SUBJECT) va co
-NOT_HEADLINE_CPI de **loai tru** dung ba chi tieu nay ra khoi ket qua CPI --
-dong vao se de vo mot parser dang dat 103/103 thang. Module nay dung lai
-fetch_posts / parse_month / _anchors cua no, chi them buoc cat doan theo chu ngu.
-
-DO PHU THUC TE (do ngay 09/09/2026, tren 103 thang 2018-01..2026-08):
-
-    usd_index_mom       97/103      usd_index_yoy       94/103
-    gold_index_mom      90/103      gold_index_yoy      59/103
-    core_inflation_mom  73/103      core_inflation_yoy  41/103
-
-Chi so USD gan nhu day. Hai cot yeu KHONG phai loi parser ma la nguon doi cach
-viet: tu 2021 tro di ban cong bo phan lon chi con neu **lam phat co ban binh
-quan N thang** ("lạm phát cơ bản bình quân 8 tháng năm 2026 tăng 4,24%") chu
-khong con neu MoM/YoY tung thang, va chi so gia vang cung bo dan ve YoY
-(2022 con 0 thang, 2023 con 1). NOT_MONTHLY co y loai cac con so binh quan do --
-tron chung vao se lam hong chuoi. Neu can lam phat co ban day du sau 2020 thi
-phai lay tu nguon khac, dung nhap nhem voi so binh quan.
-
-Thieu dung 1 thang so voi cpi.csv: 2025-06.
-
-Cach cat doan: tim vi tri chu ngu ("Chi so gia do la My"...), lay cua so 260 ky
-tu tu do, va cat som neu gap chu ngu khac -- de con so cua vang khong bi doc
-nham thanh con so cua do la khi hai cau nam sat nhau.
-
-Chay:
-    python -m crawlers.price_index_nso            # doc het bai, dung lai ca file (ghi de hang)
-    python -m crawlers.price_index_nso --run      # buoc hang ngay: chi them thang moi / bu o trong
-    python -m crawlers.price_index_nso --validate
-
-Tu 07/10/2026 run() nam trong run_daily_crawl.py: truoc do module chi chay tay nen file dung o
-thang 8 khi NSO da dang thang 9 (03/10). Lam phat co ban THANG chi co trong file PDF dinh kem bai
-(ban HTML chi neu binh quan N thang), nen cot core_inflation_* van trong o cac thang gan day.
-"""
 from __future__ import annotations
 
 import os
@@ -110,12 +63,6 @@ def _log(msg):
 
 
 def _segments(text):
-    """Cat van ban thanh {ten_chi_tieu: doan van} theo chu ngu.
-
-    Bo qua cac lan xuat hien noi ve thi truong quoc te -- xem chu thich o
-    INTERNATIONAL. Trong so cac lan con lai, giu lan DAU TIEN: lan sau thuong la
-    phan binh quan nhieu thang.
-    """
     marks = []
     for key, pattern in SUBJECTS.items():
         for m in re.finditer(pattern, text):
@@ -228,8 +175,6 @@ def build(since="2018-01", write=True, posts=None):
 
 
 def run(per_page=10):
-    """Buoc hang ngay trong run_daily_crawl: chi doc vai bai moi nhat, them thang moi va bu o trong.
-    KHONG ghi de so da co (build() ghi de ca hang) -- lech thi bao xung dot nhu cpi_nso.backfill."""
     incoming = build_frame(cpi_nso.fetch_posts(per_page=per_page, max_pages=1)).set_index("month")
     existing = pd.read_csv(OUT_PATH, encoding="utf-8-sig", dtype={"month": str}).set_index("month")
     value_cols = [c for c in COLUMNS if c.endswith("_percent")]

@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import vn.kltn.bankadvisor.common.api.ApiResponse;
 import vn.kltn.bankadvisor.module.user.dto.LoginRequest;
+import vn.kltn.bankadvisor.module.user.dto.PasswordDtos.PasswordResetConfirmRequest;
+import vn.kltn.bankadvisor.module.user.dto.PasswordDtos.PasswordResetRequest;
 import vn.kltn.bankadvisor.module.user.dto.RegisterRequest;
 import vn.kltn.bankadvisor.module.user.dto.UserResponse;
 import vn.kltn.bankadvisor.module.user.service.AuthService;
+import vn.kltn.bankadvisor.module.user.service.PasswordResetService;
 import vn.kltn.bankadvisor.security.AuthUser;
 import vn.kltn.bankadvisor.security.CurrentUser;
 import vn.kltn.bankadvisor.security.SessionCookieService;
@@ -27,10 +30,13 @@ import vn.kltn.bankadvisor.security.SessionCookieService;
 public class AuthController {
 
     private final AuthService authService;
+    private final PasswordResetService passwordResetService;
     private final SessionCookieService cookies;
 
-    public AuthController(AuthService authService, SessionCookieService cookies) {
+    public AuthController(AuthService authService, PasswordResetService passwordResetService,
+                          SessionCookieService cookies) {
         this.authService = authService;
+        this.passwordResetService = passwordResetService;
         this.cookies = cookies;
     }
 
@@ -53,6 +59,21 @@ public class AuthController {
     @PostMapping("/logout")
     public ApiResponse<Void> logout(HttpServletResponse response) {
         cookies.clear(response);
+        return ApiResponse.ok(null);
+    }
+
+    /** Quên mật khẩu: gửi link đặt lại tới email nếu email có tài khoản. Luôn trả cùng một kết quả. */
+    @PostMapping("/password-reset")
+    public ApiResponse<Void> requestPasswordReset(@Valid @RequestBody PasswordResetRequest request) {
+        passwordResetService.request(request.email());
+        return ApiResponse.ok(null);
+    }
+
+    /** Đặt mật khẩu mới bằng token trong link email. Không tự đăng nhập: người dùng đăng nhập lại bằng mật khẩu mới. */
+    @PostMapping("/password-reset/confirm")
+    public ApiResponse<Void> confirmPasswordReset(@Valid @RequestBody PasswordResetConfirmRequest request,
+                                                  HttpServletRequest httpRequest) {
+        passwordResetService.confirm(request, httpRequest.getRemoteAddr());
         return ApiResponse.ok(null);
     }
 

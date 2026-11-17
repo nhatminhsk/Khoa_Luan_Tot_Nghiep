@@ -29,7 +29,8 @@ public record LoanAdviceResponse(
     /**
      * @param month        tháng của số lãi suất ngân hàng này (các ngân hàng công bố không đều)
      * @param monthsBehind số tháng cũ hơn {@code latestMonth}
-     * @param segment      nhóm khách hàng của con số (INDIVIDUAL, ALL, UNSPECIFIED), xem {@code LendingRateResponse}
+     * @param segment      nhóm khách hàng của con số (INDIVIDUAL, ALL, INDIV_MID_LONG, CONSUMER_SHORT, UNSPECIFIED),
+     *                     xem {@code LendingRateResponse}
      * @param programCodes chương trình liên quan mà ngân hàng này tham gia
      */
     public record Offer(

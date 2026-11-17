@@ -1,0 +1,78 @@
+{
+  "muc_tieu": [
+    "npl_percent",
+    "casa_percent",
+    "ldr_computed_percent"
+  ],
+  "tam": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "du_lieu": "data/model/bank_panel_long_quarterly.csv",
+  "TRAIN_FROM": "2019-Q1",
+  "VALID_FROM": "2021-Q1",
+  "VALID_FROM_DOI": "2019-Q1",
+  "VALID_LABEL_TO": "2022-Q4",
+  "TEST_FROM": "2023-Q1",
+  "co_so": [
+    "naive",
+    "drift",
+    "seasonal"
+  ],
+  "rf": {
+    "n_estimators": 300,
+    "min_samples_leaf": 10,
+    "max_features": 0.33,
+    "random_state": 20261013,
+    "n_jobs": 1
+  },
+  "rf_cua_so": {
+    "rf_2019": [
+      "2019-Q1",
+      1.0
+    ],
+    "rf_2013": [
+      "2013-Q1",
+      1.0
+    ],
+    "rf_2013w": [
+      "2013-Q1",
+      0.5
+    ]
+  },
+  "ridge_alpha": 10.0,
+  "lgbm": {
+    "n_estimators": 300,
+    "learning_rate": 0.03,
+    "num_leaves": 15,
+    "min_child_samples": 20,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "colsample_bytree": 0.7,
+    "reg_lambda": 1.0,
+    "random_state": 20260918,
+    "verbose": -1
+  },
+  "bootstrap": {
+    "B": 2000,
+    "seed": 20260918,
+    "don_vi": "ngan_hang"
+  },
+  "muc_khoang": 0.9,
+  "hat_giong_rf": [
+    20261013,
+    1,
+    2,
+    3,
+    4
+  ],
+  "nguong_canh_bao_npl": 0.2,
+  "chay_luc": "2026-11-10 14:52:51",
+  "commit": "14ebadff2fcebfc9f0de24b6f14a9024931e6d03",
+  "sha256_du_lieu": "4b1b9208299709c1ad007b07706b45b3bbc8559b73c41eb96177365e8a4ef86e",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "lightgbm": "4.7.0"
+}

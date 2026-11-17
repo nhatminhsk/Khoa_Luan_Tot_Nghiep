@@ -1,0 +1,263 @@
+{
+ "do_phu": {
+  "npl": 378,
+  "casa": 382,
+  "ldr": 428,
+  "tren": 528,
+  "theo_nh": {
+   "ACB": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "BAB": {
+    "npl": 11,
+    "casa": 11,
+    "ldr": 8
+   },
+   "BID": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "BVB": {
+    "npl": 3,
+    "casa": 3,
+    "ldr": 4
+   },
+   "CTG": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "EIB": {
+    "npl": 23,
+    "casa": 24,
+    "ldr": 24
+   },
+   "HDB": {
+    "npl": 16,
+    "casa": 16,
+    "ldr": 16
+   },
+   "LPB": {
+    "npl": 7,
+    "casa": 8,
+    "ldr": 20
+   },
+   "MBB": {
+    "npl": 23,
+    "casa": 24,
+    "ldr": 24
+   },
+   "MSB": {
+    "npl": 8,
+    "casa": 8,
+    "ldr": 12
+   },
+   "NAB": {
+    "npl": 12,
+    "casa": 12,
+    "ldr": 24
+   },
+   "NVB": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "OCB": {
+    "npl": 6,
+    "casa": 6,
+    "ldr": 16
+   },
+   "PGB": {
+    "npl": 21,
+    "casa": 21,
+    "ldr": 21
+   },
+   "SHB": {
+    "npl": 22,
+    "casa": 22,
+    "ldr": 23
+   },
+   "SSB": {
+    "npl": 9,
+    "casa": 8,
+    "ldr": 10
+   },
+   "STB": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "TCB": {
+    "npl": 23,
+    "casa": 23,
+    "ldr": 23
+   },
+   "TPB": {
+    "npl": 6,
+    "casa": 6,
+    "ldr": 12
+   },
+   "VCB": {
+    "npl": 24,
+    "casa": 24,
+    "ldr": 24
+   },
+   "VIB": {
+    "npl": 22,
+    "casa": 23,
+    "ldr": 23
+   },
+   "VPB": {
+    "npl": 22,
+    "casa": 23,
+    "ldr": 24
+   }
+  }
+ },
+ "ranh_gioi_2017Q4_2018Q1": {
+  "npl_percent": {
+   "n": 19,
+   "trung_vi_abs_doi": 0.136,
+   "panel_trung_vi_abs_doi_q1": 0.164
+  },
+  "casa_percent": {
+   "n": 19,
+   "trung_vi_abs_doi": 1.113,
+   "panel_trung_vi_abs_doi_q1": 1.436
+  }
+ },
+ "harvard_npl_q4": {
+  "n": 99,
+  "lech_lt_0.01": 67,
+  "lech_lt_0.1": 82,
+  "lech_lt_0.5": 93,
+  "lech_lon": [
+   {
+    "ticker": "HDB",
+    "period": "2017-Q4",
+    "npl_percent": 1.515,
+    "npl_h": 15.812
+   },
+   {
+    "ticker": "PGB",
+    "period": "2017-Q4",
+    "npl_percent": 2.557,
+    "npl_h": 3.339
+   },
+   {
+    "ticker": "SHB",
+    "period": "2013-Q4",
+    "npl_percent": 4.131,
+    "npl_h": 5.094
+   },
+   {
+    "ticker": "STB",
+    "period": "2015-Q4",
+    "npl_percent": 1.872,
+    "npl_h": 5.797
+   },
+   {
+    "ticker": "STB",
+    "period": "2016-Q4",
+    "npl_percent": 5.352,
+    "npl_h": 6.912
+   },
+   {
+    "ticker": "VIB",
+    "period": "2012-Q4",
+    "npl_percent": 2.754,
+    "npl_h": 1.694
+   }
+  ]
+ },
+ "buoc_nhay": [
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "EIB",
+   "period": "2016-Q2",
+   "truoc": 2.789,
+   "sau": 5.303
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "NVB",
+   "period": "2013-Q3",
+   "truoc": 6.108,
+   "sau": 8.779
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "NVB",
+   "period": "2013-Q4",
+   "truoc": 8.779,
+   "sau": 6.067
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "NVB",
+   "period": "2014-Q4",
+   "truoc": 4.939,
+   "sau": 2.525
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "PGB",
+   "period": "2012-Q4",
+   "truoc": 2.967,
+   "sau": 8.437
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "PGB",
+   "period": "2013-Q4",
+   "truoc": 9.496,
+   "sau": 2.98
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "SHB",
+   "period": "2012-Q3",
+   "truoc": 2.788,
+   "sau": 13.226
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "SHB",
+   "period": "2012-Q4",
+   "truoc": 13.226,
+   "sau": 8.529
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "SHB",
+   "period": "2013-Q4",
+   "truoc": 7.749,
+   "sau": 4.131
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "STB",
+   "period": "2016-Q4",
+   "truoc": 2.386,
+   "sau": 5.352
+  },
+  {
+   "chi_tieu": "npl_percent",
+   "ticker": "TCB",
+   "period": "2013-Q4",
+   "truoc": 5.928,
+   "sau": 3.652
+  },
+  {
+   "chi_tieu": "casa_percent",
+   "ticker": "PGB",
+   "period": "2014-Q4",
+   "truoc": 8.283,
+   "sau": 21.878
+  }
+ ],
+ "khop_ky_truoc": 0
+}

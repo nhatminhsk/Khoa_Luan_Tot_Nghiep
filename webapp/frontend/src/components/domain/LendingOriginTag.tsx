@@ -8,6 +8,10 @@ export function lendingOriginLabel(origin: LendingRateOrigin): string {
   if (origin.source === "VIETNAMNET") return "Báo tổng hợp";
   if (origin.segment === "INDIVIDUAL") return "Cá nhân";
   if (origin.segment === "ALL") return "Số chung";
+  // Hai nhãn nhóm hẹp giữ ≤ độ rộng "Báo tổng hợp" (87px) để bảng trang Vay không cuộn ngang ở 1280px;
+  // tooltip ghi đủ "cá nhân", "ngắn hạn".
+  if (origin.segment === "INDIV_MID_LONG") return "Trung dài hạn";
+  if (origin.segment === "CONSUMER_SHORT") return "Vay tiêu dùng";
   return "Chưa rõ";
 }
 
@@ -23,6 +27,14 @@ export function describeLendingOrigin(origin: LendingRateOrigin): string {
   } else if (origin.segment === "ALL") {
     parts.push(
       "Lãi cho vay bình quân chung (cá nhân và doanh nghiệp), ngân hàng công bố trên web; ngân hàng không công bố riêng số khách hàng cá nhân.",
+    );
+  } else if (origin.segment === "INDIV_MID_LONG") {
+    parts.push(
+      "Lãi cho vay bình quân khách hàng cá nhân, chỉ các khoản trung và dài hạn. Ngân hàng công bố tách ngắn hạn và trung dài hạn, không có số chung; hệ thống lấy số trung dài hạn vì gần với khoản vay nhiều năm hơn. Không so ngang được với số cá nhân hay số chung của ngân hàng khác.",
+    );
+  } else if (origin.segment === "CONSUMER_SHORT") {
+    parts.push(
+      "Lãi cho vay bình quân ngắn hạn phục vụ đời sống, tiêu dùng — nhóm duy nhất ngân hàng công bố. Không phản ánh vay trung dài hạn (như vay mua nhà) và không so ngang được với số cá nhân hay số chung của ngân hàng khác.",
     );
   }
   if (origin.basis === "NEW_LOANS") parts.push("Tính trên các khoản vay mới giải ngân trong kỳ.");

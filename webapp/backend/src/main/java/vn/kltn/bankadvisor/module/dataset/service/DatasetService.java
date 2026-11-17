@@ -34,7 +34,7 @@ public class DatasetService {
 
     /** Thứ tự hiển thị: dữ liệu người dùng quan tâm hằng ngày lên trước. Tập lạ xếp cuối. */
     private static final List<String> DISPLAY_ORDER = List.of(
-            "deposit_rates", "lending_rates", "bank_quarterly", "app_store", "app_reviews_monthly", "programs");
+            "deposit_rates", "lending_rates", "bank_quarterly", "programs");
 
     public List<DatasetsResponse.Source> sources() {
         return infoRepository.findAll().stream()

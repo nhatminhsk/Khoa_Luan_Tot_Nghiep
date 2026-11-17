@@ -1,33 +1,3 @@
-"""Chi so thi truong (VN-Index, VN30) -- nhan to thi truong cho mo hinh.
-
-Kho da co gia OHLCV cua 22 ngan hang nhung chua co gi de tach phan bien dong
-CHUNG cua thi truong ra khoi phan rieng cua tung ngan hang. Khong co no thi moi
-so sanh loi suat co phieu giua cac ngan hang deu lan voi xu the chung.
-
-Do duoc ngay 09/09/2026, ca hai deu lui duoc ve 2015:
-    VNINDEX  2.915 phien  2015-01-05 -> 2026-09-09   (trung khop cua so gia co phieu)
-    VN30     2.915 phien  2015-01-05 -> 2026-09-09
-
-Hai chuoi khac nhau o ca 2.915 phien (VNINDEX dong 1.827,12 vs VN30 1.967,64 tai
-09/09/2026) -- kiem lai vi hai file co cung so dong nen de nhin nham la trung.
-Do dai phu thuoc tham so `start`: hoi voi start=2018 thi VN30 chi tra 2.166
-phien, de tuong nham la chuoi bat dau tu 2018.
-
-Do phu: **0 phien nao co trong du lieu gia ngan hang ma thieu o chi so**.
-
-Dung chung quy uoc voi crawlers/price.py: moi lan chay **lam moi cua so 7 ngay
-gan nhat** chu khong chi noi them. Ly do da ghi trong price.py -- dong cua phien
-moi nhat thuong duoc chup giua phien, va VCI con dieu chinh nhe khoi luong vai
-ngay sau.
-
-`Listing().all_indices()` liet ke 29 chi so neu can them (VNMID, VNSML, VN100,
-VNALL, cac chi so nganh...). O day chi lay hai cai can cho mo hinh.
-
-Chay:
-    python -m crawlers.market_index
-    python -m crawlers.market_index --backfill     # keo lai tu 2015
-    python -m crawlers.market_index --validate
-"""
 from __future__ import annotations
 
 import time

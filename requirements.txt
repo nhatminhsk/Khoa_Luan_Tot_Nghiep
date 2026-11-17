@@ -29,6 +29,12 @@ google-play-scraper>=1.2.7
 # Thu nghiem mo hinh (experiments/imputation_benchmark.py); GAIN/VAE can them tensorflow
 scikit-learn>=1.5
 lightgbm>=4.5
+# Tinh chinh tham so: Random Search, Hyperband, Bayes TPE (experiments/hyperparam_search.py)
+optuna>=4.5
 
 # Chay cac notebook .ipynb (crawl_*.ipynb, bieu_do.ipynb) trong VS Code / Jupyter
 ipykernel>=7.3.0
+
+# OCR thuyet minh BCTC quy ban quet truoc 2018 (crawlers/ocr_bctc.py): render PDF + nhan dang chu, chay CPU
+pymupdf>=1.24
+rapidocr-onnxruntime>=1.4

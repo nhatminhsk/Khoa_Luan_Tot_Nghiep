@@ -38,13 +38,15 @@ public record AppProperties(
 
     /**
      * @param secret       khóa ký HS256, tối thiểu 32 byte
-     * @param ttl          thời hạn phiên đăng nhập
+     * @param ttl          thời hạn phiên đăng nhập của người dùng thường
+     * @param adminTtl     thời hạn phiên của quản trị viên (ngắn hơn: quyền cao hơn, token lộ thì cửa sổ lạm dụng hẹp hơn)
      * @param cookieName   tên cookie chứa token
      * @param cookieSecure bật khi chạy HTTPS
      */
     public record Jwt(
             String secret,
             @DefaultValue("7d") Duration ttl,
+            @DefaultValue("8h") Duration adminTtl,
             @DefaultValue("ba_session") String cookieName,
             @DefaultValue("false") boolean cookieSecure
     ) {
@@ -67,7 +69,8 @@ public record AppProperties(
      * @param maxAttempts     số lần thử gửi một email trước khi đánh dấu lỗi
      * @param verificationTtl hạn của link xác minh email
      * @param verificationCodeTtl hạn của mã xác minh 6 số gửi kèm link (ngắn hơn link vì mã dễ đoán hơn token)
-     * @param resendCooldown  thời gian tối thiểu giữa hai lần gửi link xác minh
+     * @param resendCooldown  thời gian tối thiểu giữa hai lần gửi link xác minh (và giữa hai lần gửi thư đặt lại mật khẩu)
+     * @param passwordResetTtl hạn của link đặt lại mật khẩu
      */
     public record Mail(
             @DefaultValue("OFF") MailMode mode,
@@ -79,7 +82,8 @@ public record AppProperties(
             @DefaultValue("3") int maxAttempts,
             @DefaultValue("24h") Duration verificationTtl,
             @DefaultValue("15m") Duration verificationCodeTtl,
-            @DefaultValue("60s") Duration resendCooldown
+            @DefaultValue("60s") Duration resendCooldown,
+            @DefaultValue("30m") Duration passwordResetTtl
     ) {
 
         /** Link tới một trang của giao diện web, ví dụ {@code link("/watchlist")}. */

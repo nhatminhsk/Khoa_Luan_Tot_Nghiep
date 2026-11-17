@@ -1,21 +1,79 @@
 from __future__ import annotations
 
+import os
+import sys
+from datetime import date
+
 import numpy as np
 import pandas as pd
 
 FEATURES = "data/model/features_quarterly.csv"
 SPEC = "data/model/feature_spec.csv"
 CATALOG = "data/model/feature_catalog.csv"
-SELECTED = "data/model/features_selected.csv"
-RANKING = "data/model/features_ranking_latest.csv"
+SELECTED = "data/model/features_selected.csv"  # bien co tac dung (tang 3) -- dau vao du an
+CLEAN = "data/model/features_clean.csv"  # moi bien qua tang 1 (sach); EDA va thi nghiem doc file nay de do TRUOC khi chon
+RANKING = "data/model/features_ranking_latest.csv"  # dau vao xep hang: BCTC quy gan nhat + lai suat / diem app moi nhat
 KEYS = ["period", "period_end", "ticker"]
 
 KEEP, KEEP_RANK, DROP = "Giữ", "Giữ cho xếp hạng", "Loại"
 MIN_COVERAGE, MIN_BANKS, MODE_MAX, RHO_MAX, OUTLIER_FLAG = 70.0, 20, 95.0, 0.90, 2.0
 RECENT_QUARTERS = 4
-# Tang 2 (lien he du bao): |rho| toan mau >= REL_MIN va cung dau, |rho| >= REL_HALF o ca hai nua
+# Khong xet trung o R4: loi suat cho vay la tieu chi xep hang vay, loi suat TSSL chi hien tren ho so NH nen khong cong trung
+# vao cung mot phep xep hang. Rho toan panel len tu 0,76 toi 0,91 ngay 02/11/2026 khi bo so 0 gia cua MAS.
+R4_EXEMPT = {"loan_yield_ttm_pct", "earning_asset_yield_ttm_percent"}
+# Tang 2 (chi MO TA, khong dung de chon): Spearman giua bien quy t (tru trung binh QUA KHU cua NH) va thay doi
+# muc tieu t -> t+1. Truoc 13/10/2026 tru trung binh ca mau (lo tuong lai) va dung tang nay dat nhan "Loi du bao"
+# cho 28 bien; thi nghiem walk-forward (tang 3) khong xac nhan nhan do.
 REL_MIN, REL_HALF, SPLIT_AFTER = 0.15, 0.10, "2022-Q2"
-CORE, DESCRIBE = "Lõi dự báo", "Mô tả / xếp hạng"
+
+# Tang 3 (13/10/2026): TAC DUNG. Tang 1 chi noi bien SACH; bien chi con duoc Giu khi co it nhat mot vai tro duoi day,
+# do bang `experiments.feature_effect` (so lieu: data/model/experiments/feature_effect_*.csv).
+#   Mục tiêu dự báo  6 chi tieu du bao.
+#   Đầu vào dự báo   Mo hinh du bao = base co cau truc + Random Forest hoc phan du tren bo loi: lich su cua chinh chi
+#                    tieu, so rieng tung quy (quy roi khoi TTM), lai tai cap von tre, quy trong nam. Them tung nhom
+#                    CAMELS vao bo loi: tot len co y nghia 13 lan, te di 30 lan / 216 phep thu; chon nhom LONG tren
+#                    2021-22 khong nhom nao thang bo loi tren 2023+ (0/18 o); dua ca 90 bien sach vao lam COF 4 quy
+#                    te hon base 16,8%. Bien catalog duy nhat co tac dung la lai tai cap von: bo ra thi te di o 9/18 o
+#                    (COF 2 quy 13,4%, 4 quy 16,5%). Tang truong tin dung he thong thi khong: bo ra te di 2 o (deu la
+#                    o mo hinh thua base), tot len 3 o -> loai (algorithm_benchmark doc features_clean.csv nen
+#                    van tai lap duoc ket qua 18/09).
+#   Xếp hạng gửi     tieu chi an toan, moi tru CAMELS mot-hai bien chuan + loi ich (lai 12 thang) + trai nghiem (diem app).
+#   Xếp hạng vay     gia vay (lai cho vay NH tu cong bo, loi suat cho vay tu BCTC) + muc tap trung cho vay ca nhan.
+#   Hồ sơ NH         chi tieu hien tren ho so NH cua web (serving/export.py INDICATORS).
+# Tieu chi xep hang con phai qua do o cat ngang 22 NH (feature_effect_ranking.csv): thu hang NH ben sau 4 quy
+# (Spearman >= RANK_PERSIST; lai suat va diem app duoc web cap nhat lien tuc nen chi xet sau 1 quy) va khong trung
+# voi tieu chi khac (|Spearman cat ngang| < RHO_MAX). Khong bien an toan nao bao truoc duoc thay doi NPL / ROA 4 quy
+# toi (|t| < 2 o 76/78 bien) nen khong chon tieu chi theo kha nang bao truoc.
+TARGET, FC_INPUT, RANK_DEP, RANK_LOAN, PROFILE = "Mục tiêu dự báo", "Đầu vào dự báo", "Xếp hạng gửi", "Xếp hạng vay", "Hồ sơ NH"
+RANK_PERSIST = 0.5
+ROLES = {
+    "nim_ttm_percent": [TARGET, PROFILE], "cof_ttm_percent": [TARGET, PROFILE], "roe_ttm_percent": [TARGET, PROFILE],
+    "npl_percent": [TARGET, RANK_DEP, PROFILE], "casa_percent": [TARGET, RANK_DEP, PROFILE],
+    "ldr_computed_percent": [TARGET, RANK_DEP, RANK_LOAN, PROFILE],
+    "refinancing_rate_pct": [FC_INPUT],
+    # C
+    "car_asof_percent": [RANK_DEP, PROFILE], "equity_to_assets_pct": [RANK_DEP],
+    # A -- lai du thu: ung vien them 13/10, gan nhu khong trung NPL (rho cat ngang 0,10) hay no nhom 2 (-0,04)
+    "loans_g2_percent": [RANK_DEP, PROFILE], "credit_cost_ttm_pct": [RANK_DEP], "accrued_interest_to_assets_pct": [RANK_DEP],
+    # M, E, L, S
+    "cir_ttm_pct": [RANK_DEP, PROFILE], "roa_ttm_percent": [RANK_DEP, PROFILE], "liquid_assets_pct": [RANK_DEP],
+    "corp_bond_to_assets_pct": [RANK_DEP],
+    # quy mo, so huu nha nuoc: kenh "qua lon de do" ma nguoi gui dua vao
+    "log_total_assets": [RANK_DEP], "state_own_percent": [RANK_DEP],
+    # loi ich, trai nghiem
+    "dep12_online_pct": [RANK_DEP], "dep12_counter_pct": [RANK_DEP],
+    # app_mean_score: bo khoi xep hang 14/10/2026 (ly do o NO_EFFECT_NOTE)
+    # vay
+    "lending_avg_pct": [RANK_LOAN], "loan_yield_ttm_pct": [RANK_LOAN, PROFILE], "retail_loan_share_pct": [RANK_LOAN, PROFILE],
+    # chi hien tren ho so
+    "earning_asset_yield_ttm_percent": [PROFILE], "loans_yoy_percent": [PROFILE],
+}
+REFRESHED = {"dep12_online_pct", "dep12_counter_pct", "lending_avg_pct"}
+# features_ranking_latest lay so MOI NHAT cho REFRESHED (xem _fresh), khong lay trung binh quy
+FRESH_DAYS, LENDING_MAX_MONTHS, APP_MIN_MONTHS, APP_MAX_MONTHS = 7, 12, 3, 12
+EFFECT_FORECAST = "data/model/experiments/feature_effect_forecast.csv"
+EFFECT_RANKING = "data/model/experiments/feature_effect_ranking.csv"
+EFFECT_NESTED = "data/model/experiments/feature_effect_nested.csv"
 
 TARGETS = ["nim_ttm_percent", "cof_ttm_percent", "npl_percent", "casa_percent", "ldr_computed_percent", "roe_ttm_percent"]
 LEAK = {
@@ -106,13 +164,16 @@ def _relevance(f: pd.DataFrame, cat: pd.DataFrame) -> pd.DataFrame:
         for feat in cat.loc[cat.decision == KEEP, "feature"]:
             if kind[feat] == "tĩnh theo NH":
                 continue
-            x = f[feat] - f.groupby("ticker")[feat].transform("mean") if kind[feat] == "theo NH-quý" else f[feat]
+            # tru trung binh QUA KHU cua NH (den quy t-1), khong dung trung binh ca mau vi lo tuong lai
+            past = f.groupby("ticker")[feat].transform(lambda s: s.expanding().mean().shift(1))
+            x = f[feat] - past if kind[feat] == "theo NH-quý" else f[feat]
             d = pd.DataFrame({"x": x, "y": y, "h": first_half}).dropna()
             if len(d) < 200 or d.x.nunique() < 3:
                 continue
-            rho = d.x.rank().corr(d.y.rank())
-            r1 = d[d.h].x.rank().corr(d[d.h].y.rank())
-            r2 = d[~d.h].x.rank().corr(d[~d.h].y.rank())
+            with np.errstate(invalid="ignore", divide="ignore"):  # mot nua mau co the hang so
+                rho = d.x.rank().corr(d.y.rank())
+                r1 = d[d.h].x.rank().corr(d[d.h].y.rank())
+                r2 = d[~d.h].x.rank().corr(d[~d.h].y.rank())
             ok = abs(rho) >= REL_MIN and min(abs(r1), abs(r2)) >= REL_HALF and np.sign(r1) == np.sign(r2) == np.sign(rho)
             col[feat] = (round(rho, 3), ok)
         out[t] = col
@@ -121,6 +182,106 @@ def _relevance(f: pd.DataFrame, cat: pd.DataFrame) -> pd.DataFrame:
         rel[f"rho_next_{t}"] = rel.feature.map(lambda x: col.get(x, (np.nan, False))[0])
     rel["relevant_for"] = rel.feature.map(lambda x: ", ".join(t for t, col in out.items() if col.get(x, (0, False))[1]))
     return rel
+
+
+def _vn(x: float, d: int = 2) -> str:
+    return f"{x:.{d}f}".replace(".", ",")
+
+
+def _effect_evidence():
+    grp, rank = {}, pd.DataFrame()
+    if os.path.exists(EFFECT_FORECAST):
+        s = pd.read_csv(EFFECT_FORECAST, encoding="utf-8-sig")
+        nst = pd.read_csv(EFFECT_NESTED, encoding="utf-8-sig") if os.path.exists(EFFECT_NESTED) else pd.DataFrame()
+        for cfg, d in s[s.config.str.startswith("core+")].groupby("config"):
+            g = cfg[len("core+"):]
+            chosen = nst[nst.groups.fillna("").str.split("+").map(lambda x: g in x)] if len(nst) else nst
+            won = int((chosen.chosen_vs_core_lo > 0).sum()) if len(chosen) else 0
+            grp[g] = (int((d.lo_vs_ref > 0).sum()), int((d.hi_vs_ref < 0).sum()), len(d), len(chosen), won)
+    if os.path.exists(EFFECT_RANKING):
+        rank = pd.read_csv(EFFECT_RANKING, encoding="utf-8-sig").set_index("feature")
+    if not grp or rank.empty:
+        print(f"CANH BAO: thieu {EFFECT_FORECAST} hoac {EFFECT_RANKING} -> ly do tang 3 khong co so do; "
+              "chay python -m experiments.feature_effect", file=sys.stderr)
+    return grp, rank
+
+
+# Ghi chu rieng cho vai bien bi loai o tang 3 ma so do chung chua noi het
+NO_EFFECT_NOTE = {
+    "app_mean_score": "bỏ khỏi xếp hạng 14/10/2026 (người dùng chốt): điểm app đo ứng dụng chứ không đo NH; NH nhỏ ít "
+                      "review (PGB 31 review / 3 tháng, 4,71 sao, kéo PGB lên đầu gần mọi kỳ hạn); có đợt review bất "
+                      "thường (BID 09/2026: 1.547 review, 4,54 sao). Monte Carlo gửi 12 tháng online: bỏ app thì 4 thuật "
+                      "toán cùng top 1 từ 15% lên 41% số vòng",
+    "system_credit_growth_asof_pct": "bỏ khỏi bộ lõi dự báo: tốt lên 3/18 ô, chỉ tệ đi ở 2 ô mà mô hình vốn thua base",
+    "dep12_online_spread_pp": "cắt ngang trùng hẳn dep12_online_pct (cùng quý trừ cùng một trung bình)",
+    "app_pct_1star": "cắt ngang trùng app_mean_score",
+    "vamc_bonds_to_assets_pct": "ứng viên 13/10: VAMC gần hết, 2026-Q2 chỉ 5/22 NH còn số > 0",
+    "retail_deposit_share_pct": "ứng viên 13/10: phủ 50% và trùng cắt ngang phí BHTG / tiền gửi (phí chỉ tính trên tiền gửi cá nhân)",
+    "log_branches": "đếm từ OpenStreetMap, chỉ phủ ~39% điểm giao dịch NH tự công bố (TPB)",
+    "n_provinces_present": "đếm từ OpenStreetMap, phủ thiếu",
+    "atm_per_branch": "đếm từ OpenStreetMap, phủ thiếu",
+}
+# Ly do xep hang rieng theo nhom khi bien khong dao hang, khong trung ma van khong la tieu chi
+GROUP_RANK_NOTE = {
+    "T": "chỉ số cho nhà đầu tư cổ phiếu, không phải tiêu chí người gửi/vay",
+    "P": "tham gia chương trình đã hiện riêng trên web (programs.csv); làm biến thì gần như tĩnh",
+    "S": "trụ S đã có trái phiếu doanh nghiệp / tổng tài sản (rủi ro người gửi lo nhất sau 2022)",
+}
+
+
+def _no_effect_reason(r, grp, rank) -> str:
+    parts = [NO_EFFECT_NOTE[r.feature]] if r.feature in NO_EFFECT_NOTE else []
+    g = r.group[0]
+    if g in grp and r.feature != "system_credit_growth_asof_pct":
+        plus, minus, n, picked, won = grp[g]
+        parts.append(f"dự báo: thêm nhóm {g} vào bộ lõi tốt lên {plus}/{n} ô, tệ đi {minus}/{n} ô (nhìn tập kiểm tra); "
+                     f"chọn lồng chọn {g} ở {picked} ô, thắng bộ lõi {won} ô")
+    elif g not in grp and r.kind != "chung mọi NH":
+        parts.append("dự báo: không thử (phủ ít, chỉ từ 2023)")
+    if r.kind == "chung mọi NH":
+        parts.append("xếp hạng: biến vĩ mô chung, không phân biệt NH")
+    elif r.feature in rank.index:
+        x = rank.loc[r.feature]
+        if r.kind == "tĩnh theo NH":
+            parts.append("xếp hạng: ảnh chụp một ngày, không phải tiêu chí gửi/vay")
+        elif pd.notna(x.persist_4q) and x.persist_4q < RANK_PERSIST:
+            parts.append(f"xếp hạng: thứ hạng NH sau 4 quý chỉ còn ρ = {_vn(x.persist_4q)}")
+        elif pd.notna(x.xs_partner_rho) and abs(x.xs_partner_rho) >= 0.75:
+            parts.append(f"xếp hạng: cắt ngang gần trùng {x.xs_partner} (ρ = {_vn(x.xs_partner_rho)})")
+        else:
+            parts.append("xếp hạng: " + GROUP_RANK_NOTE.get(g, "không phải tiêu chí gửi/vay, trụ CAMELS đã có biến chuẩn hơn"))
+    return "Không tác dụng — " + "; ".join(parts)
+
+
+def _apply_effect(cat: pd.DataFrame) -> pd.DataFrame:
+    grp, rank = _effect_evidence()
+    roles = {k: list(v) for k, v in ROLES.items()}
+    notes = {}
+    for feat, rs in roles.items():
+        if feat not in rank.index or not ({RANK_DEP, RANK_LOAN} & set(rs)):
+            continue
+        x = rank.loc[feat]
+        p, k = (x.persist_1q, "1 quý") if feat in REFRESHED else (x.persist_4q, "4 quý")
+        partner_is_crit = x.xs_partner in roles and bool({RANK_DEP, RANK_LOAN} & set(roles[x.xs_partner]))
+        if x.kind != "tĩnh theo NH" and pd.notna(p) and p < RANK_PERSIST:
+            notes[feat] = f"bỏ vai trò xếp hạng: thứ hạng NH sau {k} chỉ còn ρ = {_vn(p)}"
+        elif partner_is_crit and abs(x.xs_partner_rho) >= RHO_MAX:
+            notes[feat] = f"bỏ vai trò xếp hạng: cắt ngang trùng {x.xs_partner} (ρ = {_vn(x.xs_partner_rho)})"
+        else:
+            notes[feat] = (f"thứ hạng NH bền ρ = {_vn(p)} sau {k}" if x.kind != "tĩnh theo NH" else "ảnh chụp tĩnh") + \
+                          (f"; gần nhất cắt ngang {x.xs_partner} ρ = {_vn(x.xs_partner_rho)}" if pd.notna(x.xs_partner_rho) else "")
+            continue
+        roles[feat] = [r for r in rs if r not in (RANK_DEP, RANK_LOAN)]
+    cat["role"] = cat.feature.map(lambda x: "; ".join(roles.get(x, [])))
+    alive = cat.decision.isin([KEEP, KEEP_RANK])
+    for i in cat.index[alive]:
+        r = cat.loc[i]
+        if r.role:
+            note = notes.get(r.feature, "")
+            cat.loc[i, "reason"] = f"{r.reason} · Vai trò: {r.role}" + (f" ({note})" if note else "")
+        else:
+            cat.loc[i, ["decision", "reason"]] = [DROP, _no_effect_reason(r, grp, rank)]
+    return cat
 
 
 def select() -> pd.DataFrame:
@@ -155,6 +316,8 @@ def select() -> pd.DataFrame:
     for feat in cand.feature:
         hit = None
         for k in kept:
+            if {feat, k} == R4_EXEMPT:
+                continue
             rho = _spearman(f, feat, k, kind[feat], kind[k])
             if not np.isnan(rho) and abs(rho) >= RHO_MAX:
                 hit = (k, rho)
@@ -186,10 +349,12 @@ def select() -> pd.DataFrame:
 
     cat["flags"] = cat.apply(flags, axis=1)
     cat = cat.merge(_relevance(f, cat), on="feature", how="left")
-    cat["use"] = np.where(cat.decision != KEEP, "", np.where(cat.relevant_for.fillna("") != "", CORE, DESCRIBE))
+    cat["quality"] = cat.decision  # quyet dinh tang 1 (sach / khong sach); experiments.feature_effect do tren tap nay
+    cat = _apply_effect(cat)
+    cat["use"] = np.where(cat.decision == DROP, "", cat.role)
     order = {KEEP: 0, KEEP_RANK: 1, DROP: 2}
     cat = cat.sort_values(["decision", "use", "group", "feature"], key=lambda s: s.map(order) if s.name == "decision" else s)
-    cols = ["feature", "group", "kind", "decision", "use", "reason", "flags", "relevant_for"] + [f"rho_next_{t}" for t in TARGETS] + [
+    cols = ["feature", "group", "kind", "decision", "use", "reason", "quality", "flags", "relevant_for"] + [f"rho_next_{t}" for t in TARGETS] + [
             "redundant_with", "rho", "coverage_pct", "n_banks", "banks_last4q", "first_period", "last_period", "mode_share_pct",
             "icc", "outlier_share_pct", "median", "p01", "p99", "unit", "formula", "source", "processing"]
     cat = cat[cols]
@@ -197,36 +362,101 @@ def select() -> pd.DataFrame:
 
     keep = cat.loc[cat.decision == KEEP, "feature"].tolist()
     f[KEYS + keep].to_csv(SELECTED, index=False, encoding="utf-8-sig")
+    clean = cat.loc[cat.quality == KEEP, "feature"].tolist()
+    f[KEYS + clean].to_csv(CLEAN, index=False, encoding="utf-8-sig")
 
+    write_ranking(cat, f)
+    return cat
+
+
+def _fresh() -> pd.DataFrame:
+    from crawlers import deposit_tiers
+    from crawlers.build_features import APP, MIN_REVIEWS, app_spike_months
+    from serving.export import export_lending_rates
+
+    d = deposit_tiers.read()
+    d = d[d.ticker.notna() & d.channel.isin(["online", "quay"])].copy()
+    d["date"] = pd.to_datetime(d.date)
+    d = d[d.date >= d.date.max() - pd.Timedelta(days=FRESH_DAYS)]
+    last_day = d.groupby("ticker").date.max()
+    d = d[d.date == d.ticker.map(last_day)]
+    # Moi ky han, ca hai kenh: xep hang theo ky han + kenh nguoi gui chon (web: 1/3/6/9/12/13/18/24/36 thang).
+    # Ten cot dep{T}_{online|counter}_pct; dep12_* trung ten bien trong catalog. Ky han nguon khong co (9, 13 thang
+    # tu 2026) thi khong co cot.
+    rates = d.pivot_table(index="ticker", columns=["term_months", "channel"], values="rate_percent", aggfunc="last")
+    out = pd.DataFrame(index=rates.index)
+    for term, ch in sorted(rates.columns):
+        out[f"dep{term}_{'online' if ch == 'online' else 'counter'}_pct"] = rates[(term, ch)]
+    out["dep_asof"] = last_day.dt.strftime("%Y-%m-%d")
+
+    this_month = pd.Period(date.today(), "M")
+    lend = export_lending_rates(narrow=False)  # xep hang: chua so nhom hep (SHB, SSB) voi so chung
+    lend = lend[lend.month >= (this_month - LENDING_MAX_MONTHS).strftime("%Y-%m")].sort_values("month")
+    last = lend.groupby("ticker").last()
+    out["lending_avg_pct"], out["lending_asof"] = last.lending_avg_percent, last.month
+
+    app = pd.read_csv(APP, encoding="utf-8-sig", usecols=["month", "ticker", "n_reviews", "mean_score"])
+    app = app[app.month < this_month.strftime("%Y-%m")]  # thang chua het -> bo
+    spike = app_spike_months(app)  # tren ca lich su de co nen
+    recent_from = (this_month - APP_MAX_MONTHS).strftime("%Y-%m")
+    out["app_mean_score"] = np.nan
+    out["app_asof"] = out["app_excluded"] = pd.Series(pd.NA, index=out.index, dtype="string")
+    for t, g in app[spike & (app.month >= recent_from)].groupby("ticker"):
+        out.loc[t, "app_excluded"] = ",".join(sorted(g.month))
+    app = app[~spike & (app.n_reviews > 0)]
+    for t, g in app.sort_values("month", ascending=False).groupby("ticker"):
+        g = g.head(APP_MAX_MONTHS)
+        n = g.n_reviews.cumsum()
+        enough = (n >= MIN_REVIEWS) & (np.arange(len(g)) >= APP_MIN_MONTHS - 1)
+        if enough.any():
+            g = g.iloc[: int(np.argmax(enough.to_numpy())) + 1]
+            out.loc[t, "app_mean_score"] = (g.mean_score * g.n_reviews).sum() / g.n_reviews.sum()
+            out.loc[t, "app_asof"] = f"{g.month.iloc[-1]}..{g.month.iloc[0]}"
+    return out
+
+
+def write_ranking(cat: pd.DataFrame | None = None, f: pd.DataFrame | None = None) -> dict:
+    cat = pd.read_csv(CATALOG, encoding="utf-8-sig") if cat is None else cat
+    f = pd.read_csv(FEATURES, encoding="utf-8-sig") if f is None else f
     rank_cols = cat.loc[cat.decision.isin([KEEP, KEEP_RANK]) & (cat.kind != "chung mọi NH"), "feature"].tolist()
     periods = sorted(f.period.unique())[-RECENT_QUARTERS:]
     recent = f[f.period.isin(periods)].sort_values("period")
     latest = recent.groupby("ticker")[rank_cols].agg("last")  # gia tri khac rong gan nhat
     asof = recent.groupby("ticker")["period"].max()
+    fresh = _fresh().reindex(latest.index)
+    for c in sorted(REFRESHED & set(rank_cols)):
+        latest[c] = fresh[c]
+    # lai cac ky han / kenh khac 12 thang: khong phai bien catalog, dung khi xep hang theo ky han nguoi gui chon
+    terms = sorted((c for c in fresh.columns if c.startswith("dep") and c.endswith("_pct") and c not in latest.columns),
+                   key=lambda c: (int(c[3:].split("_")[0]), c))
+    latest = latest.join(fresh[terms])
     latest.insert(0, "window", f"{periods[0]}..{periods[-1]}")
     latest.insert(1, "latest_period", asof)
+    asof_cols = ["dep_asof", "lending_asof"] + (["app_asof", "app_excluded"] if "app_mean_score" in rank_cols else [])
+    for i, c in enumerate(asof_cols):
+        latest.insert(2 + i, c, fresh[c])
     latest.reset_index().to_csv(RANKING, index=False, encoding="utf-8-sig")
-    return cat
+    return {"path": RANKING, "banks": len(latest), "dep_asof": fresh.dep_asof.max(),
+            "missing": {c: latest.index[latest[c].isna()].tolist() for c in rank_cols if latest[c].isna().any()}}
 
 
 def summary(cat: pd.DataFrame) -> dict:
     by = cat.groupby("decision").feature.apply(list).to_dict()
-    core = cat[cat.use == CORE]
+    alive = cat[cat.decision != DROP]
     return {
         "features": len(cat),
         "counts": cat.decision.value_counts().to_dict(),
-        "use_counts": cat.loc[cat.decision == KEEP, "use"].value_counts().to_dict(),
-        "core_by_target": {t: core.loc[core.relevant_for.str.contains(t), "feature"].tolist() for t in TARGETS},
-        "kept_by_group": cat[cat.decision == KEEP].groupby("group").feature.apply(list).to_dict(),
+        "clean_tier1": int(cat.quality.isin([KEEP, KEEP_RANK]).sum()),
+        "dropped_no_effect": int(cat.reason.str.startswith("Không tác dụng").sum()),
+        "by_role": {r: alive.loc[alive.use.str.contains(r), "feature"].tolist() for r in (TARGET, FC_INPUT, RANK_DEP, RANK_LOAN, PROFILE)},
         "keep_for_ranking": by.get(KEEP_RANK, []),
         "dropped": cat.loc[cat.decision == DROP, ["feature", "reason"]].values.tolist(),
-        "paths": [CATALOG, SELECTED, RANKING],
+        "paths": [CATALOG, SELECTED, CLEAN, RANKING],
     }
 
 
 if __name__ == "__main__":
     import json
-    import sys
 
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     print(json.dumps(summary(select()), indent=2, ensure_ascii=False, default=str))

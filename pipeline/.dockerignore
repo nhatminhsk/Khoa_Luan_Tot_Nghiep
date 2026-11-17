@@ -1,0 +1,4 @@
+# Ảnh chỉ cần hai file này; mã và dữ liệu gắn vào container lúc chạy.
+*
+!requirements-daily.txt
+!chromium-headless

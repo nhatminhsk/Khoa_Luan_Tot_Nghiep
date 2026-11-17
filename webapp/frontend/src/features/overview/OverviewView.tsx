@@ -1,14 +1,14 @@
 "use client";
 
-import { Box, Chip, Grid, IconButton, Stack, Tab, Tabs, ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
+import { Box, Chip, Grid, IconButton, Stack, Tab, Tabs, ToggleButton, ToggleButtonGroup, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import {
   IconArrowsUpDown,
-  IconChartLine,
+  IconHomeDollar,
+  IconPigMoney,
   IconPlayerPauseFilled,
   IconPlayerPlayFilled,
   IconScale,
-  IconTrendingDown,
-  IconTrophy,
+  IconShieldCheck,
 } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
@@ -16,11 +16,12 @@ import { RangeBandChart } from "@/components/charts/RangeBandChart";
 import { Disclaimer } from "@/components/common/Disclaimer";
 import { PageHeader } from "@/components/common/PageHeader";
 import { PeriodToggle } from "@/components/common/PeriodToggle";
-import { StatTile, type StatDelta } from "@/components/common/StatTile";
-import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States";
+import { PillarCard } from "@/components/common/PillarCard";
+import { EmptyState, ErrorState, LoadingBlock, PendingResult } from "@/components/common/States";
 import { SectionCard } from "@/components/common/SectionCard";
-import { RankingSection } from "@/components/domain/RankingSection";
-import { BestByTermCard } from "@/features/overview/BestByTermCard";
+import { PENDING_BOTH, RankingSection } from "@/components/domain/RankingSection";
+import { HealthMatrixCard } from "@/features/overview/HealthMatrixCard";
+import { LendingRatesCard } from "@/features/overview/LendingRatesCard";
 import { RateHeatmapCard } from "@/features/overview/RateHeatmapCard";
 import { RateMoversCard } from "@/features/overview/RateMoversCard";
 import { RateSafetyScatterCard } from "@/features/overview/RateSafetyScatterCard";
@@ -30,10 +31,11 @@ import { WatchlistWidget } from "@/features/overview/WatchlistWidget";
 import { useInflation } from "@/hooks/use-inflation";
 import { queryKeys } from "@/lib/query/keys";
 import { marketRepository } from "@/repositories/market.repository";
-import type { Channel, InflationPoint, MarketSummary, Purpose, RateTrendPoint } from "@/types/api";
-import { formatDate, formatMonth, formatNumber, formatPercent } from "@/utils/format";
+import type { Channel, IndicatorComparison, InflationPoint, LendingRate, MarketSummary, Purpose, RateTrendPoint } from "@/types/api";
+import { formatDate, formatMonth, formatPercent, formatQuarter } from "@/utils/format";
 import { CHANNEL_LABEL } from "@/utils/labels";
 import { DAILY_PRESETS, type DailyPreset, dailyPresetStart, indexesInDailyPreset, pick } from "@/utils/period-presets";
+import { isComparableLending, latestMonthOf } from "@/utils/lending";
 import { inflationByDate, realRate } from "@/utils/real-rate";
 
 const TREND_TERMS = [6, 12, 24] as const;
@@ -42,6 +44,11 @@ const SPARK_PRESET: DailyPreset = "3M";
 const KPI_CHANNELS: Channel[] = ["ONLINE", "COUNTER"];
 /** Thẻ KPI tự chuyển giữa hai kênh sau mỗi khoảng này (đủ để đọc con số; rê chuột để dừng xem sparkline). */
 const KPI_ROTATE_MS = 5000;
+/** Cặp thẻ ở cột phải: xếp chồng khi đứng cạnh thẻ lớn (lg+) hoặc trên điện thoại; iPad ngang (md) đặt cạnh nhau cho đỡ thưa. */
+const PAIR_DIRECTION = { xs: "column", md: "row", lg: "column" } as const;
+const PAIR_SX = { "& > *": { flex: 1, minWidth: 0 } } as const;
+/** Mã bất kỳ để gọi endpoint so sánh chỉ lấy chuỗi trung vị ngành (endpoint cần ít nhất một ngân hàng). */
+const MEDIAN_PROBE = "VCB";
 
 export function OverviewView() {
   const overview = useQuery({ queryKey: queryKeys.overview, queryFn: marketRepository.overview });
@@ -60,7 +67,7 @@ export function OverviewView() {
       <PageHeader
         eyebrow={data?.rateDate ? `Lãi suất niêm yết ngày ${formatDate(data.rateDate)} · thẻ số: kỳ hạn 12 tháng, ${channelText}` : "Tổng quan"}
         title="Tổng quan thị trường"
-        description="Lãi suất tiết kiệm của 22 ngân hàng hôm nay, diễn biến theo thời gian và xếp hạng quý mới nhất."
+        description="Theo dõi lãi gửi, lãi vay bình quân ngân hàng công bố và chỉ tiêu tài chính của 22 ngân hàng."
         actions={
           <Stack direction="row" spacing={1} sx={{ alignItems: "center", flexWrap: "wrap", rowGap: 1 }}>
             {hasCounter && <KpiChannelControl kpi={kpi} />}
@@ -76,61 +83,73 @@ export function OverviewView() {
         }
       />
 
+      {/* Bố cục (lg+, 12 cột): dải 4 thẻ trụ → diễn biến lãi gửi | Top gửi + lãi vay → ma trận chỉ tiêu tài chính | tăng/giảm +
+          biến động → bản đồ lãi gửi → lãi gửi × chỉ tiêu | theo dõi + xếp hạng. Thẻ phụ cao theo nội dung (không kéo giãn lấp chỗ).
+          Điện thoại: thẻ trụ → Top gửi → lãi vay → biểu đồ → ma trận (order). */}
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Box onMouseEnter={() => kpi.setPaused(true)} onMouseLeave={() => kpi.setPaused(false)}>
-            <KpiRow market={market} channel={kpi.channel} hasCounter={hasCounter} />
+          <Box {...kpi.pauseHandlers}>
+            <PillarRow market={market} channel={kpi.channel} hasCounter={hasCounter} />
           </Box>
         </Grid>
 
-        <Grid size={{ xs: 12, lg: 8 }}>
+        <Grid size={{ xs: 12, lg: 8 }} sx={{ order: { xs: 2, lg: 1 } }}>
           <MarketTrendCard />
         </Grid>
-        <Grid size={{ xs: 12, lg: 4 }}>
-          {/* Cùng kênh với thẻ KPI (tự chuyển, ghim, tạm dừng khi rê chuột). */}
-          <Box sx={{ height: "100%" }} onMouseEnter={() => kpi.setPaused(true)} onMouseLeave={() => kpi.setPaused(false)}>
-            <TopRatesCard channel={kpi.channel} />
-          </Box>
+        <Grid size={{ xs: 12, lg: 4 }} sx={{ order: { xs: 1, lg: 2 } }}>
+          <Stack direction={PAIR_DIRECTION} spacing={2} sx={PAIR_SX}>
+            {/* Cùng kênh với thẻ trụ Gửi tiết kiệm (tự chuyển, ghim, tạm dừng khi rê chuột hoặc focus). */}
+            <Box {...kpi.pauseHandlers}>
+              <TopRatesCard channel={kpi.channel} limit={3} />
+            </Box>
+            <LendingRatesCard />
+          </Stack>
         </Grid>
 
-        <Grid size={{ xs: 12, lg: 8 }}>
-          <RateMoversCard />
+        <Grid size={{ xs: 12, lg: 8 }} sx={{ order: 3 }}>
+          <HealthMatrixCard />
         </Grid>
-        <Grid size={{ xs: 12, lg: 4 }}>
-          <RecentChangesCard />
+        <Grid size={{ xs: 12, lg: 4 }} sx={{ order: 4 }}>
+          <Stack direction={PAIR_DIRECTION} spacing={2} sx={PAIR_SX}>
+            <RateMoversCard compact />
+            <RecentChangesCard />
+          </Stack>
         </Grid>
 
-        <Grid size={12}>
+        <Grid size={12} sx={{ order: 5 }}>
           <RateHeatmapCard />
         </Grid>
 
-        <Grid size={{ xs: 12, lg: 8 }}>
+        <Grid size={{ xs: 12, lg: 8 }} sx={{ order: 6 }}>
           <RateSafetyScatterCard />
         </Grid>
-        <Grid size={{ xs: 12, lg: 4 }}>
-          <WatchlistWidget />
-        </Grid>
-
-        <Grid size={{ xs: 12, lg: 8 }}>
-          <BestByTermCard items={data?.bestRates} />
-        </Grid>
-        <Grid size={{ xs: 12, lg: 4 }}>
-          <SectionCard title="Xếp hạng quý mới nhất" subtitle="Năm ngân hàng đứng đầu theo từng mục đích" sx={{ height: "100%" }}>
-            <Tabs
-              value={rankingTab}
-              onChange={(_, value: Purpose) => setRankingTab(value)}
-              sx={{ mb: 2, borderBottom: 1, borderColor: "divider" }}
-            >
-              <Tab value="SAVINGS" label="Gửi tiết kiệm" />
-              <Tab value="LOAN" label="Vay" />
-            </Tabs>
-            <RankingSection
-              purpose={rankingTab}
-              block={rankingTab === "SAVINGS" ? data?.savingsRanking : data?.loanRanking}
-              isLoading={overview.isLoading}
-              compact
-            />
-          </SectionCard>
+        <Grid size={{ xs: 12, lg: 4 }} sx={{ order: 7 }}>
+          <Stack direction={PAIR_DIRECTION} spacing={2} sx={PAIR_SX}>
+            <WatchlistWidget />
+            <SectionCard title="Xếp hạng tổng hợp" subtitle="Năm ngân hàng đứng đầu: gửi 12 tháng trực tuyến (trọng số mặc định) và vay">
+              {/* Cả hai chưa có kết quả: một thông báo chung, không để hai tab hiện cùng một nội dung chờ. */}
+              {data?.savingsRanking.status === "NOT_AVAILABLE" && data.loanRanking.status === "NOT_AVAILABLE" ? (
+                <PendingResult title="Chưa có kết quả xếp hạng" description={PENDING_BOTH} compact />
+              ) : (
+                <>
+                  <Tabs
+                    value={rankingTab}
+                    onChange={(_, value: Purpose) => setRankingTab(value)}
+                    sx={{ mb: 2, borderBottom: 1, borderColor: "divider" }}
+                  >
+                    <Tab value="SAVINGS" label="Gửi tiết kiệm" />
+                    <Tab value="LOAN" label="Vay" />
+                  </Tabs>
+                  <RankingSection
+                    purpose={rankingTab}
+                    block={rankingTab === "SAVINGS" ? data?.savingsRanking : data?.loanRanking}
+                    isLoading={overview.isLoading}
+                    compact
+                  />
+                </>
+              )}
+            </SectionCard>
+          </Stack>
         </Grid>
       </Grid>
 
@@ -163,7 +182,15 @@ function useRotatingChannel(enabled: boolean) {
   return {
     channel,
     pinned,
-    setPaused,
+    /** Rê chuột hoặc focus bàn phím vào khối thì tạm dừng; rời khỏi (focus ra ngoài khối) thì chạy tiếp. */
+    pauseHandlers: {
+      onMouseEnter: () => setPaused(true),
+      onMouseLeave: () => setPaused(false),
+      onFocus: () => setPaused(true),
+      onBlur: (e: React.FocusEvent<HTMLElement>) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setPaused(false);
+      },
+    },
     choose: (c: Channel) => {
       setSelected(c);
       setPinned(true);
@@ -177,6 +204,9 @@ function KpiChannelControl({ kpi }: { kpi: RotatingChannel }) {
   const autoLabel = kpi.pinned ? "Tự chuyển giữa trực tuyến và tại quầy" : "Dừng tự chuyển kênh";
   return (
     <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
+      <Typography variant="caption" color="text.secondary" sx={{ mr: 0.5, fontWeight: 600 }}>
+        Kênh gửi
+      </Typography>
       {/* Không dùng onChange của nhóm: bấm lại nút đang chọn cho giá trị null, trong khi ở đây nó nghĩa là "giữ kênh này". */}
       <ToggleButtonGroup exclusive size="small" value={kpi.channel} aria-label="Kênh gửi của thẻ số và top lãi">
         {KPI_CHANNELS.map((c) => (
@@ -195,11 +225,12 @@ function KpiChannelControl({ kpi }: { kpi: RotatingChannel }) {
 }
 
 /**
- * Bốn thẻ KPI cho kỳ hạn tham chiếu (12 tháng) của một kênh: cao nhất, trung vị, thấp nhất, lãi suất thực.
- * Số hôm nay lấy từ /overview; sparkline và mức thay đổi 1 tháng lấy từ chuỗi diễn biến cùng kỳ hạn và kênh.
- * Chuỗi của cả hai kênh được tải sẵn để lúc chuyển kênh sparkline không trống.
+ * Dải KPI theo bốn trụ: Gửi tiết kiệm (kỳ hạn tham chiếu 12 tháng, kênh tự chuyển), Vay (lãi cho vay bình quân khách hàng cá
+ * nhân do ngân hàng công bố), Sức khỏe (trung vị ngành quý mới nhất) và Vĩ mô (lạm phát, lãi thực).
+ * Lãi gửi hôm nay lấy từ /overview; sparkline và mức thay đổi 1 tháng lấy từ chuỗi diễn biến cùng kỳ hạn và kênh (tải sẵn cả hai
+ * kênh để lúc chuyển kênh sparkline không trống). Thẻ giữ nguyên khi đổi kênh, chỉ phần số hiện dần (swapKey).
  */
-function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undefined; channel: Channel; hasCounter: boolean }) {
+function PillarRow({ market, channel, hasCounter }: { market: MarketSummary | undefined; channel: Channel; hasCounter: boolean }) {
   const term = market?.referenceTermMonths ?? 12;
   const online = useQuery({ queryKey: queryKeys.rateTrend(term, "ONLINE"), queryFn: () => marketRepository.rateTrend(term, "ONLINE") });
   const counter = useQuery({
@@ -210,6 +241,16 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
   const trend = channel === "COUNTER" ? counter : online;
   const inflation = useInflation();
   const cpi = inflation.data?.latest ?? null;
+  const lending = useQuery({ queryKey: queryKeys.lendingRates, queryFn: marketRepository.lendingRates });
+  // Trung vị ngành theo quý: endpoint so sánh luôn trả kèm chuỗi trung vị mọi ngân hàng, mã ngân hàng truyền vào không ảnh hưởng.
+  const npl = useQuery({
+    queryKey: queryKeys.indicatorComparison("npl", [MEDIAN_PROBE]),
+    queryFn: () => marketRepository.indicatorComparison("npl", [MEDIAN_PROBE]),
+  });
+  const car = useQuery({
+    queryKey: queryKeys.indicatorComparison("car", [MEDIAN_PROBE]),
+    queryFn: () => marketRepository.indicatorComparison("car", [MEDIAN_PROBE]),
+  });
 
   const spark = useMemo(() => buildSpark(trend.data ?? [], inflation.data?.series ?? []), [trend.data, inflation.data]);
 
@@ -217,8 +258,8 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
     return (
       <Grid container spacing={{ xs: 1.5, sm: 2 }}>
         {[0, 1, 2, 3].map((i) => (
-          <Grid key={i} size={{ xs: 6, lg: 3 }}>
-            <LoadingBlock height={178} />
+          <Grid key={i} size={{ xs: 12, sm: 6, lg: 3 }}>
+            <LoadingBlock height={168} />
           </Grid>
         ))}
       </Grid>
@@ -226,70 +267,176 @@ function KpiRow({ market, channel, hasCounter }: { market: MarketSummary | undef
   }
 
   const fmtDate = (d: Date) => formatDate(d.toISOString().slice(0, 10));
-  const sparkOf = (values: (number | null)[]) => {
-    const kept = spark.dates.flatMap((d, i) => (values[i] === null ? [] : [{ d, v: values[i] as number }]));
-    return { dates: kept.map((k) => k.d), values: kept.map((k) => k.v), format: (v: number) => formatPercent(v), formatDate: fmtDate };
-  };
-  const monthDelta = (values: (number | null)[], today: number | null): StatDelta => ({
+  const monthDelta = (values: (number | null)[], today: number | null) => ({
     value: today === null || spark.baseIndex === null || values[spark.baseIndex] === null ? null : today - (values[spark.baseIndex] as number),
-    label: spark.baseDate ? `so với ${formatDate(spark.baseDate)}` : "",
-    unit: " điểm",
+    unit: " điểm %",
+    title: spark.baseDate ? `So với ${formatDate(spark.baseDate)}` : undefined,
   });
+  const median = spark.dates.flatMap((d, i) => (spark.median[i] === null ? [] : [{ d, v: spark.median[i] as number }]));
   const real = realRate(market.median, cpi?.yoyPercent);
   const channelText = CHANNEL_LABEL[channel].toLowerCase();
 
+  // Vay: chỉ số khách hàng cá nhân do chính ngân hàng công bố (cùng loại, so ngang được); mỗi ngân hàng tháng mới nhất.
+  const lendingLatest = latestMonthOf(lending.data ?? []);
+  const individual = (lending.data ?? []).filter((r) => isComparableLending(r, lendingLatest));
+  const cheapest = individual.reduce<LendingRate | null>((m, r) => (m === null || r.lendingAvgPercent < m.lendingAvgPercent ? r : m), null);
+  const lendingMedian = medianOf(individual.map((r) => r.lendingAvgPercent));
+
+  const nplH = industryMedian(npl.data);
+  const carH = industryMedian(car.data);
+  const cpiSeries = [...(inflation.data?.series ?? [])].sort((a, b) => a.month.localeCompare(b.month)).slice(-12);
+  const cpiPrev = cpiSeries.length > 1 ? cpiSeries[cpiSeries.length - 2].yoyPercent : null;
+
   return (
-    // Thẻ giữ nguyên khi đổi kênh (dựng lại cả thẻ làm sparkline trống một nhịp → nháy); chỉ phần chữ hiện dần theo swapKey.
     <Grid container spacing={{ xs: 1.5, sm: 2 }}>
-      <Grid size={{ xs: 6, lg: 3 }}>
-        <StatTile
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+        <PillarCard
+          tone="deposit"
+          icon={<IconPigMoney size={16} />}
+          title="Gửi tiết kiệm"
+          scope={`Kỳ hạn ${term} tháng · ${channelText}${spark.baseDate ? ` · thay đổi so với ${formatDate(spark.baseDate)}` : ""}`}
           swapKey={channel}
-          icon={<IconTrophy size={18} aria-hidden />}
-          tone="primary"
-          label={`Cao nhất · ${term} tháng · ${channelText}`}
-          value={formatPercent(market.highest?.rate)}
-          hint={market.highest ? (market.highest.tiedCount > 0 ? `${market.highest.shortName} +${market.highest.tiedCount}` : market.highest.shortName) : undefined}
-          delta={monthDelta(spark.max, market.highest?.rate ?? null)}
-          trend={sparkOf(spark.max)}
+          href={`/savings?term=${term}&channel=${channel}`}
+          metrics={[
+            {
+              label: "Cao nhất",
+              value: formatPercent(market.highest?.rate),
+              delta: monthDelta(spark.max, market.highest?.rate ?? null),
+              hint: market.highest
+                ? market.highest.tiedCount > 0
+                  ? `${market.highest.shortName} +${market.highest.tiedCount}`
+                  : market.highest.shortName
+                : undefined,
+            },
+            {
+              label: `Trung vị ${market.banksQuoted} NH`,
+              value: formatPercent(market.median),
+              delta: monthDelta(spark.median, market.median),
+              hint: `Thấp nhất ${formatPercent(market.lowest)}`,
+            },
+          ]}
+          trend={{
+            values: median.map((m) => m.v),
+            dates: median.map((m) => m.d),
+            format: (v) => formatPercent(v),
+            formatDate: fmtDate,
+            curve: "stepAfter",
+            label: `Trung vị lãi ${term} tháng ${channelText} 3 tháng gần nhất`,
+          }}
         />
       </Grid>
-      <Grid size={{ xs: 6, lg: 3 }}>
-        <StatTile
-          swapKey={channel}
-          icon={<IconChartLine size={18} aria-hidden />}
-          tone="info"
-          label={`Trung vị · ${market.banksQuoted} ngân hàng · ${channelText}`}
-          value={formatPercent(market.median)}
-          delta={monthDelta(spark.median, market.median)}
-          trend={sparkOf(spark.median)}
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+        <PillarCard
+          tone="loan"
+          icon={<IconHomeDollar size={16} />}
+          title="Vay"
+          scope="Lãi cho vay bình quân KH cá nhân, NH tự công bố"
+          href="/loans"
+          metrics={[
+            {
+              label: "Bình quân thấp nhất",
+              value: lending.isLoading ? "…" : formatPercent(cheapest?.lendingAvgPercent),
+              hint: cheapest ? `${cheapest.shortName} · ${formatMonth(cheapest.month)}` : lending.isError ? "Không tải được" : undefined,
+            },
+            {
+              label: individual.length ? `Trung vị ${individual.length} NH` : "Trung vị",
+              value: lending.isLoading ? "…" : formatPercent(lendingMedian),
+              hint: "Khác tháng, cơ sở tính",
+            },
+          ]}
         />
       </Grid>
-      <Grid size={{ xs: 6, lg: 3 }}>
-        <StatTile
-          swapKey={channel}
-          icon={<IconTrendingDown size={18} aria-hidden />}
-          tone="secondary"
-          label={`Thấp nhất · ${term} tháng · ${channelText}`}
-          value={formatPercent(market.lowest)}
-          hint={`Kém mức cao nhất ${formatNumber(market.highest && market.lowest !== null ? market.highest.rate - market.lowest : null)} điểm`}
-          delta={monthDelta(spark.min, market.lowest)}
-          trend={sparkOf(spark.min)}
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+        <PillarCard
+          tone="health"
+          icon={<IconShieldCheck size={16} />}
+          title="Chỉ tiêu tài chính"
+          scope={nplH.last ? `Trung vị các NH có dữ liệu · ${formatQuarter(nplH.last.p)}` : "Trung vị các NH có dữ liệu"}
+          href="/banks"
+          metrics={[
+            {
+              label: "Nợ xấu",
+              value: npl.isLoading ? "…" : npl.isError ? "Lỗi tải" : formatPercent(nplH.last?.v),
+              delta: { value: nplH.yoy, unit: " điểm %", direction: "down-good", title: "So với cùng quý năm trước" },
+              hint: nplH.last ? `so ${formatQuarter(shiftYear(nplH.last.p))}` : undefined,
+            },
+            {
+              label: "Hệ số an toàn vốn",
+              value: car.isLoading ? "…" : car.isError ? "Lỗi tải" : formatPercent(carH.last?.v),
+              delta: { value: carH.yoy, unit: " điểm %", direction: "up-good", title: "So với cùng quý năm trước" },
+              // CAR nhiều ngân hàng công bố bán niên: quý mới nhất của CAR có thể khác của nợ xấu.
+              hint: carH.last
+                ? carH.last.p !== nplH.last?.p
+                  ? `${formatQuarter(carH.last.p)} · so ${formatQuarter(shiftYear(carH.last.p))}`
+                  : `so ${formatQuarter(shiftYear(carH.last.p))}`
+                : undefined,
+            },
+          ]}
+          trend={{
+            values: nplH.series.slice(-12).map((s) => s.v),
+            labels: nplH.series.slice(-12).map((s) => formatQuarter(s.p)),
+            format: (v) => `Nợ xấu ${formatPercent(v)}`,
+            label: "Trung vị nợ xấu các ngân hàng 12 quý gần nhất",
+          }}
         />
       </Grid>
-      <Grid size={{ xs: 6, lg: 3 }}>
-        <StatTile
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+        <PillarCard
+          tone="macro"
+          icon={<IconScale size={16} />}
+          title="Vĩ mô"
+          scope={cpi ? `CPI so cùng kỳ · ${formatMonth(cpi.month)}` : "CPI so cùng kỳ"}
           swapKey={channel}
-          icon={<IconScale size={18} aria-hidden />}
-          tone="success"
-          label={`Lãi suất thực · trung vị ${channelText}`}
-          value={real === null ? "—" : `${real > 0 ? "+" : ""}${formatPercent(real)}`}
-          hint={cpi ? `Lạm phát ${formatMonth(cpi.month)}: ${formatPercent(cpi.yoyPercent)}` : "Chưa có số lạm phát"}
-          delta={monthDelta(spark.real, real)}
-          trend={sparkOf(spark.real)}
+          href="/methodology"
+          linkLabel="Nguồn"
+          metrics={[
+            {
+              label: "Lạm phát",
+              value: inflation.isLoading ? "…" : formatPercent(cpi?.yoyPercent),
+              delta: {
+                value: cpi && cpiPrev !== null ? cpi.yoyPercent - cpiPrev : null,
+                unit: " điểm %",
+                direction: "neutral",
+                title: "So với tháng trước",
+              },
+              hint: "CPI, TCTK",
+            },
+            {
+              label: "Lãi thực tham chiếu",
+              value: real === null ? "—" : `${real > 0 ? "+" : ""}${formatPercent(real)}`,
+              hint: `Trung vị ${term}T ${channelText} trừ CPI`,
+            },
+          ]}
+          trend={{
+            values: cpiSeries.map((p) => p.yoyPercent),
+            labels: cpiSeries.map((p) => formatMonth(p.month)),
+            format: (v) => `Lạm phát ${formatPercent(v)}`,
+            label: "Lạm phát so cùng kỳ 12 tháng gần nhất",
+          }}
         />
       </Grid>
     </Grid>
   );
+}
+
+/** Chuỗi trung vị ngành theo quý từ endpoint so sánh, quý mới nhất và mức thay đổi so với cùng quý năm trước. */
+function industryMedian(data: IndicatorComparison | undefined) {
+  const series = (data?.periods ?? []).flatMap((p, i) => (data!.median[i] === null ? [] : [{ p, v: data!.median[i] as number }]));
+  const last = series.length > 0 ? series[series.length - 1] : undefined;
+  const yearAgo = last ? series.find((s) => s.p === shiftYear(last.p)) : undefined;
+  return { series, last, yoy: last && yearAgo ? last.v - yearAgo.v : null };
+}
+
+/** "2026-Q2" → "2025-Q2". */
+function shiftYear(period: string): string {
+  return period.replace(/^(\d{4})/, (y) => String(Number(y) - 1));
+}
+
+function medianOf(values: number[]): number | null {
+  if (values.length === 0) return null;
+  const s = [...values].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
 /**
@@ -330,6 +477,9 @@ function MarketTrendCard() {
   const [term, setTerm] = useState<number>(12);
   const [channel, setChannel] = useState<Channel>("ONLINE");
   const [period, setPeriod] = useState<DailyPreset>("1Y");
+  // Từ lg thẻ đứng cạnh cột Top gửi + lãi vay (cao hơn): biểu đồ cao thêm để lấp thẻ thay vì để trống phần dưới.
+  const wide = useMediaQuery(useTheme().breakpoints.up("lg"));
+  const chartHeight = wide ? 420 : 300;
   const inflation = useInflation();
   const trend = useQuery({
     queryKey: queryKeys.rateTrend(term, channel),
@@ -369,13 +519,13 @@ function MarketTrendCard() {
       {trend.isError ? (
         <ErrorState error={trend.error} onRetry={() => trend.refetch()} />
       ) : !trend.data ? (
-        <LoadingBlock height={300} />
+        <LoadingBlock height={chartHeight} />
       ) : view.points.length === 0 ? (
         <EmptyState title="Chưa có số liệu cho kỳ hạn này" />
       ) : (
         <Box sx={{ opacity: trend.isPlaceholderData ? 0.5 : 1, transition: "opacity 150ms" }}>
           <RangeBandChart
-            height={300}
+            height={chartHeight}
             dates={view.points.map((p) => new Date(p.date))}
             min={view.points.map((p) => p.min)}
             median={view.points.map((p) => p.median)}

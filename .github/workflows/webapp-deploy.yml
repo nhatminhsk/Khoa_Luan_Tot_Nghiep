@@ -1,0 +1,64 @@
+# CD: đưa bản mới nhất của nhánh main lên VPS qua SSH. Chỉ chạy khi bấm tay (Actions → webapp-deploy → Run workflow).
+# Cần 3 secret của repo: VPS_HOST (IP hoặc tên máy), VPS_USER (tài khoản đã cài theo deploy/vps/cai-dat-vps.sh),
+# VPS_SSH_KEY (khóa riêng SSH của tài khoản đó). VPS phải đã cài sẵn bằng deploy/vps/cai-dat-vps.sh.
+# Migration CSDL do Flyway chạy khi api khởi động; quay lại bản cũ không tự đảo migration (xem tài liệu thiết kế 4.6).
+name: webapp-deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      https:
+        description: "Bật HTTPS (ghép docker-compose.https.yml)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: webapp-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment: production
+    steps:
+      - name: Kiểm đã có secret
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          for name in VPS_HOST VPS_USER VPS_SSH_KEY; do
+            if [ -z "$(printenv "$name")" ]; then echo "Thiếu secret $name"; exit 1; fi
+          done
+      - name: Cập nhật và khởi động lại trên VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          COMPOSE_FILES: ${{ inputs.https && '-f docker-compose.yml -f docker-compose.https.yml' || '-f docker-compose.yml' }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_deploy "$VPS_USER@$VPS_HOST" "COMPOSE_FILES='$COMPOSE_FILES' sh -s" <<'REMOTE'
+          set -eu
+          cd /opt/bankadvisor
+          git fetch --quiet origin main
+          git reset --hard --quiet origin/main
+          cd webapp
+          docker compose $COMPOSE_FILES up -d --build --remove-orphans
+          # Đợi api khỏe rồi mới báo xong (tối đa ~3 phút).
+          for i in $(seq 1 36); do
+            if [ "$(docker inspect -f '{{.State.Health.Status}}' bankadvisor-api-1 2>/dev/null)" = "healthy" ]; then
+              docker compose $COMPOSE_FILES ps
+              exit 0
+            fi
+            sleep 5
+          done
+          docker compose $COMPOSE_FILES logs --tail 80 api
+          exit 1
+          REMOTE

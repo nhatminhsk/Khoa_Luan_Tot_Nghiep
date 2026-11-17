@@ -1,19 +1,3 @@
-"""Xuất các bảng phục vụ cho web app vào data/serving/.
-
-Đây là hợp đồng dữ liệu giữa pipeline Python và backend Java (webapp/backend):
-  - Pipeline ghi CSV UTF-8 (không BOM), dấu thập phân là dấu chấm, ngày dạng ISO.
-  - Backend nạp các file này vào cơ sở dữ liệu của nó (DataImportService), mỗi file thay
-    toàn bộ bảng tương ứng. File không có thì bảng giữ nguyên.
-  - Mọi số đều đi qua lớp đã làm sạch của pipeline (deposit_tiers.read, bank_panel_quarterly),
-    backend không tự sửa số.
-
-Ba file kết quả thuật toán (rankings.csv, forecasts.csv, app_aspects.csv) CHƯA được sinh ở
-đây; schema của chúng ghi trong data/serving/README.md. Khi mô hình chốt, bước huấn luyện
-ghi thẳng ba file đó vào data/serving/ và giao diện tự hiện kết quả.
-
-Chạy (từ thư mục gốc D:/KLTN):
-    python -m serving.export
-"""
 from __future__ import annotations
 
 import sys
@@ -28,16 +12,13 @@ PANEL = Path("data/model/bank_panel_quarterly.csv")
 FEATURES = Path("data/model/features_quarterly.csv")  # chi tieu khong co trong panel (build_features tinh)
 LENDING = Path("data/interest_rates/bank_lending_rates_monthly.csv")
 LENDING_OFFICIAL = Path("data/interest_rates/lending_rates_official.csv")
-PLAY_CATALOG = Path("data/app_reviews/app_catalog.csv")
-IOS_CATALOG = Path("data/app_reviews/app_catalog_ios.csv")
-REVIEWS_MONTHLY = Path("data/app_reviews/app_reviews_monthly.csv")
 PROGRAM_PARTICIPATION = Path("data/policy_credit/program_participation.csv")
 PROGRAM_RATES = Path("data/policy_credit/program_rates.csv")
 CPI = Path("data/macro/cpi.csv")
 OWNERSHIP = Path("data/ownership/bank_ownership.csv")
 
 FIRST_PERIOD = "2019-Q1"  # mốc dữ liệu của đề tài (89% ô thiếu nằm ở năm 2018)
-FIRST_MONTH = "2019-01"
+FIRST_MONTH = "2019-01"  # lạm phát
 
 # ticker -> (tên thường gọi, tên đầy đủ)
 BANKS = {
@@ -131,20 +112,7 @@ def _write(frame: pd.DataFrame, name: str) -> int:
 
 
 def export_banks() -> pd.DataFrame:
-    # Catalog ghi nối theo ngày crawl: mỗi mã có nhiều dòng, chỉ lấy tên app ở lần chụp mới nhất
-    # (không lọc thì play.get(t) trả về cả một Series và chuỗi repr của nó bị ghi vào CSV).
-    play = pd.read_csv(PLAY_CATALOG)
-    play = play[play["app_role"] == "retail"].sort_values("date").drop_duplicates("ticker", keep="last")
-    play = play.set_index("ticker")["app_name"]
-    ios = pd.read_csv(IOS_CATALOG).sort_values("date").drop_duplicates("ticker", keep="last")
-    ios = ios.set_index("ticker")["app_name"]
-    rows = [{
-        "ticker": t,
-        "short_name": BANKS[t][0],
-        "full_name": BANKS[t][1],
-        "app_name": play.get(t, ios.get(t)),
-    } for t in TICKERS]
-    return pd.DataFrame(rows)
+    return pd.DataFrame([{"ticker": t, "short_name": BANKS[t][0], "full_name": BANKS[t][1]} for t in TICKERS])
 
 
 def export_indicators() -> pd.DataFrame:
@@ -182,27 +150,13 @@ def export_deposit_rates() -> pd.DataFrame:
 
 
 def export_deposit_rate_tiers() -> pd.DataFrame:
-    """Bac lai suat theo so tien gui (bieu chinh thuc) cho ngay moi nhat cua deposit_rates.
-
-    deposit_rates giu bac thap nhat de so sanh 22 NH cung mot bac; trang gui tiet kiem doc them file nay
-    de tinh dung lai theo so tien nguoi dung nhap. Chi co o nao lai trong deposit_rates bang bac thap
-    nhat cua bieu (xem deposit_tiers.amount_tiers).
-    """
     tiers = deposit_tiers.amount_tiers()
     tiers = tiers[tiers["ticker"].isin(TICKERS)].copy()
     tiers["channel"] = tiers["channel"].map({"online": "ONLINE", "quay": "COUNTER"})
     return tiers.sort_values(["ticker", "channel", "term_months", "min_amount_vnd"])
 
 
-def export_lending_rates() -> pd.DataFrame:
-    """Lãi cho vay bình quân theo tháng, mỗi ngân hàng × tháng một số.
-
-    Ưu tiên số ngân hàng tự công bố trên web (Chỉ thị 01/CT-NHNN): khách hàng cá nhân trước, rồi số chung.
-    Không có thì dùng số VietnamNet tổng hợp; báo không ghi nhóm khách hàng (thường là số chung, riêng TCB là
-    số cá nhân) nên ghi UNSPECIFIED. Các nhóm hẹp hơn (vay tiêu dùng ngắn hạn, ngắn/trung dài hạn...) không dùng
-    vì không so được với ngân hàng khác. Lãi huy động bình quân = lãi vay − chênh lệch của cùng nhóm; đây là số
-    chung của cả ngân hàng (TCB: nhóm cá nhân và doanh nghiệp cho cùng một số ở 20/20 tháng).
-    """
+def export_lending_rates(narrow: bool = True) -> pd.DataFrame:
     off = pd.read_csv(LENDING_OFFICIAL)
     off = off[off["ticker"].isin(TICKERS)]
     keys = ["period", "ticker", "segment"]
@@ -210,47 +164,31 @@ def export_lending_rates() -> pd.DataFrame:
         off[off["measure"] == "spread"][keys + ["value_percent"]].rename(columns={"value_percent": "spread"}),
         on=keys, how="left")
     deposit = (pair["value_percent"] - pair["spread"]).groupby([pair["period"], pair["ticker"]]).first()
-    own = pair[pair["segment"].isin(["individual", "all"])].copy()
+    # segment trong file gốc → (mã trên web, thứ tự ưu tiên); nhóm hẹp chỉ nhận ở ngân hàng ghi kèm
+    segments = {"individual": ("INDIVIDUAL", 0), "all": ("ALL", 1),
+                "individual_medium_long_term": ("INDIV_MID_LONG", 2), "consumer_short_term": ("CONSUMER_SHORT", 3)}
+    narrow_banks = {"individual_medium_long_term": {"SSB"}, "consumer_short_term": {"SHB"}} if narrow else {}
+    keep = [seg in ("individual", "all") or tk in narrow_banks.get(seg, ())
+            for tk, seg in zip(pair["ticker"], pair["segment"])]
+    own = pair[keep].copy()
     own["deposit_avg_percent"] = [deposit.get((p, t)) for p, t in zip(own["period"], own["ticker"])]
     own = own.assign(
         month=own["period"],
         lending_avg_percent=own["value_percent"],
-        segment=own["segment"].map({"individual": "INDIVIDUAL", "all": "ALL"}),
+        segment=own["segment"].map(lambda s: segments[s][0]),
         basis=own["basis"].map({"new_loans": "NEW_LOANS", "all_loans": "OUTSTANDING"}),
         source="BANK",
-        priority=own["segment"].map({"individual": 0, "all": 1}),
+        priority=own["segment"].map(lambda s: segments[s][1]),
     )
     press = pd.read_csv(LENDING)
     press = press[press["ticker"].isin(TICKERS)].dropna(subset=["lending_avg_percent"])
     press = press.drop_duplicates(["month", "ticker"], keep="last").assign(
-        segment="UNSPECIFIED", basis=None, source="VIETNAMNET", priority=2)
+        segment="UNSPECIFIED", basis=None, source="VIETNAMNET", priority=4)
     cols = ["month", "ticker", "lending_avg_percent", "deposit_avg_percent", "segment", "basis", "source", "source_url"]
     lend = pd.concat([own[cols + ["priority"]], press[cols + ["priority"]]])
     lend = lend.sort_values("priority", kind="stable").drop_duplicates(["month", "ticker"], keep="first")
     lend["deposit_avg_percent"] = lend["deposit_avg_percent"].round(4)
     return lend[cols].sort_values(["month", "ticker"])
-
-
-def export_app_store() -> pd.DataFrame:
-    play = pd.read_csv(PLAY_CATALOG)
-    play = play[(play["app_role"] == "retail") & play["ticker"].isin(TICKERS)]
-    ios = pd.read_csv(IOS_CATALOG)
-    ios = ios[ios["ticker"].isin(TICKERS)]
-    # Hai catalog được ghi nối theo ngày crawl; web chỉ giữ ảnh chụp mới nhất của mỗi mã × kho.
-    play = play.sort_values("date").drop_duplicates("ticker", keep="last")
-    ios = ios.sort_values("date").drop_duplicates("ticker", keep="last")
-    frames = [
-        play.assign(store="GOOGLE_PLAY")[["ticker", "store", "date", "app_name", "score", "ratings"]],
-        ios.assign(store="APP_STORE")[["ticker", "store", "date", "app_name", "score", "ratings"]],
-    ]
-    return pd.concat(frames).rename(columns={"date": "snapshot_date"}).sort_values(["ticker", "store"])
-
-
-def export_app_reviews_monthly() -> pd.DataFrame:
-    monthly = pd.read_csv(REVIEWS_MONTHLY)
-    monthly = monthly[(monthly["app_role"] == "retail") & monthly["ticker"].isin(TICKERS)
-                      & (monthly["month"] >= FIRST_MONTH)]
-    return monthly[["ticker", "month", "n_reviews", "mean_score", "pct_1star", "pct_5star", "usable"]]
 
 
 def export_programs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -267,7 +205,6 @@ def export_programs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 
 def export_macro_cpi() -> pd.DataFrame:
-    """Lạm phát theo tháng (CPI so với cùng kỳ năm trước), để web tính lãi suất thực = lãi niêm yết − lạm phát."""
     cpi = pd.read_csv(CPI)
     cpi = cpi[cpi["month"] >= FIRST_MONTH].dropna(subset=["cpi_yoy_percent"])
     cpi = cpi.drop_duplicates("month", keep="last")
@@ -275,7 +212,6 @@ def export_macro_cpi() -> pd.DataFrame:
 
 
 def export_bank_ownership() -> pd.DataFrame:
-    """Tỷ lệ sở hữu nhà nước / nước ngoài, lấy ảnh chụp mới nhất của từng ngân hàng."""
     own = pd.read_csv(OWNERSHIP)
     own = own[own["ticker"].isin(TICKERS)].sort_values("date").drop_duplicates("ticker", keep="last")
     own = own.rename(columns={"date": "as_of_date"})
@@ -284,22 +220,24 @@ def export_bank_ownership() -> pd.DataFrame:
 
 
 def export_datasets(parts: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Ngày cập nhật và độ phủ của từng nguồn cho trang Tổng quan và Phương pháp."""
     deposit = parts["deposit_rates"]
     latest = deposit[deposit["rate_date"] == deposit["rate_date"].max()]
+    # ngan hang co it nhat mot o doc tu dong tu bieu NH hom do (hoac giu tu vai ngay truoc khi crawl loi)
+    auto_banks = latest.loc[latest["source"].astype(str).str.fullmatch(r"bieu NH( \d{4}-\d\d-\d\d)?"), "ticker"].nunique()
     quarterly = parts["bank_quarterly"]
     lending = parts["lending_rates"]
     latest_lending = lending[lending["month"] == lending["month"].max()]
     tiers = parts["deposit_rate_tiers"]
-    app = parts["app_store"]
-    reviews = parts["app_reviews_monthly"]
     participation = parts["program_participation"]
     cpi = parts["macro_cpi"]
     ownership = parts["bank_ownership"]
     rows = [
-        ("deposit_rates", "Lãi suất tiết kiệm niêm yết", "24hmoney (đối chiếu CafeF, web ngân hàng)",
+        ("deposit_rates", "Lãi suất tiết kiệm niêm yết",
+         "Biểu lãi suất trên web từng ngân hàng (từ 07/11/2026; trước đó 24hmoney)",
          "DAILY", deposit["rate_date"].max(), len(deposit),
-         f"{latest['ticker'].nunique()}/22 ngân hàng có số ngày gần nhất"),
+         f"{latest['ticker'].nunique()}/22 ngân hàng có số ngày gần nhất; "
+         f"{auto_banks} đọc tự động từ biểu của ngân hàng; ô ngân hàng không công bố (online BIDV, VietinBank, MB, "
+         f"Bắc Á, SeABank) lấy bảng tổng hợp Techcombank"),
         ("deposit_rate_tiers", "Bậc lãi suất theo số tiền gửi", "Biểu lãi suất chính thức của ngân hàng (nhập tay)",
          "IRREGULAR", tiers["valid_from"].max() if len(tiers) else None, len(tiers),
          f"{tiers['ticker'].nunique()}/22 ngân hàng có bậc theo số tiền ({', '.join(sorted(tiers['ticker'].unique()))}); "
@@ -313,13 +251,6 @@ def export_datasets(parts: dict[str, pd.DataFrame]) -> pd.DataFrame:
         ("bank_quarterly", "Chỉ tiêu tài chính theo quý", "BCTC và thuyết minh (vnstock: VCI, MAS)",
          "QUARTERLY", quarterly["period"].max(), len(quarterly),
          f"{quarterly['ticker'].nunique()}/22 ngân hàng, từ {FIRST_PERIOD}"),
-        ("app_store", "Điểm ứng dụng trên kho ứng dụng", "Google Play, App Store",
-         "SNAPSHOT", app["snapshot_date"].max(), len(app),
-         f"Google Play {app[app['store'] == 'GOOGLE_PLAY']['ticker'].nunique()}/22, "
-         f"App Store {app[app['store'] == 'APP_STORE']['ticker'].nunique()}/22"),
-        ("app_reviews_monthly", "Đánh giá ứng dụng theo tháng", "Google Play (532.007 review)",
-         "MONTHLY", reviews["month"].max(), len(reviews),
-         f"{reviews['ticker'].nunique()}/22 ngân hàng, từ {FIRST_MONTH}"),
         ("programs", "Chương trình tín dụng chính sách", "Văn bản NHNN, báo chí (nhập tay)",
          "IRREGULAR", participation["list_as_of"].max(), len(participation),
          "Chỉ có việc tham gia; giải ngân theo ngân hàng không được công bố"),
@@ -343,8 +274,6 @@ def main() -> None:
         "deposit_rates": export_deposit_rates(),
         "deposit_rate_tiers": export_deposit_rate_tiers(),
         "lending_rates": export_lending_rates(),
-        "app_store": export_app_store(),
-        "app_reviews_monthly": export_app_reviews_monthly(),
         "macro_cpi": export_macro_cpi(),
         "bank_ownership": export_bank_ownership(),
     }

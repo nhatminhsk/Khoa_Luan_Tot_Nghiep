@@ -4,7 +4,7 @@ import { formatIndicator } from "./indicator";
 
 /**
  * Tóm tắt mô tả một ngân hàng từ chỉ tiêu theo quý: câu tóm tắt và điểm mạnh/điểm yếu theo thứ hạng từng chỉ tiêu.
- * Chỉ là mô tả số liệu (như thẻ chỉ tiêu), không phải điểm tổng hợp — xếp hạng tổng hợp do mô hình đảm nhận.
+ * Chỉ là mô tả số liệu (như thẻ chỉ tiêu), không phải điểm tổng hợp — xếp hạng tổng hợp ở trang Gửi tiết kiệm / Vay.
  */
 
 /** Tên ngắn dùng trong câu văn. */

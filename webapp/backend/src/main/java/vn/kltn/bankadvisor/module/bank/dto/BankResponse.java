@@ -6,7 +6,7 @@ import vn.kltn.bankadvisor.module.bank.entity.BankOwnership;
 import java.time.LocalDate;
 
 /** @param ownership cơ cấu sở hữu; null khi chưa có dữ liệu */
-public record BankResponse(String ticker, String shortName, String fullName, String appName, Ownership ownership) {
+public record BankResponse(String ticker, String shortName, String fullName, Ownership ownership) {
 
     /**
      * @param statePercent       tỷ lệ sở hữu nhà nước (%)
@@ -23,7 +23,6 @@ public record BankResponse(String ticker, String shortName, String fullName, Str
     }
 
     public static BankResponse from(Bank bank, BankOwnership ownership) {
-        return new BankResponse(bank.getTicker(), bank.getShortName(), bank.getFullName(), bank.getAppName(),
-                Ownership.from(ownership));
+        return new BankResponse(bank.getTicker(), bank.getShortName(), bank.getFullName(), Ownership.from(ownership));
     }
 }

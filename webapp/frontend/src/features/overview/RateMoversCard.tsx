@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Link as MuiLink, Stack, Tooltip, Typography, type SxProps, type Theme } from "@mui/material";
+import { Box, Button, Link as MuiLink, Stack, Tooltip, Typography, type SxProps, type Theme } from "@mui/material";
 import { IconArrowDownRight, IconArrowUpRight, IconMinus } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -17,6 +17,8 @@ import { CHANNEL_LABEL } from "@/utils/labels";
 import { CHANGE_WINDOWS } from "./RecentChangesCard";
 
 const TERMS = ["6", "12", "24"] as const;
+/** Mặc định chỉ hiện chừng này ngân hàng tăng mạnh nhất và chừng này giảm mạnh nhất; số đếm vẫn tính cả danh sách. */
+const COLLAPSED_EACH = 3;
 
 interface Mover {
   ticker: string;
@@ -33,10 +35,11 @@ interface Mover {
  * Ngân hàng tăng/giảm lãi nhiều nhất trong 30/90 ngày ở một kỳ hạn: thanh phân kỳ quanh mốc 0
  * (tăng sang phải, giảm sang trái), số có dấu ở đầu thanh. Mức thay đổi ròng = tổng các lần đổi trong khoảng.
  */
-export function RateMoversCard() {
+export function RateMoversCard({ compact = false }: { compact?: boolean }) {
   const [days, setDays] = useState("30");
   const [term, setTerm] = useState<(typeof TERMS)[number]>("12");
   const [channel, setChannel] = useState<Channel>("ONLINE");
+  const [expanded, setExpanded] = useState(false);
   const changes = useQuery({
     queryKey: queryKeys.rateChanges(Number(days)),
     queryFn: () => marketRepository.rateChanges(Number(days)),
@@ -74,14 +77,18 @@ export function RateMoversCard() {
   const quoting = (table.data?.rows ?? []).filter((r) => r.cells[term]).length;
   const ups = movers.filter((m) => m.change > 0).length;
   const downs = movers.length - ups;
+  // Thang thanh tính trên cả danh sách, nên mở rộng hay thu gọn thì độ dài thanh không đổi.
   const maxAbs = Math.max(...movers.map((m) => Math.abs(m.change)), 0.01);
+  // movers sắp giảm dần: tăng mạnh nhất ở đầu, giảm mạnh nhất ở cuối.
+  const visible = expanded
+    ? movers
+    : [...movers.filter((m) => m.change > 0).slice(0, COLLAPSED_EACH), ...movers.filter((m) => m.change < 0).slice(-COLLAPSED_EACH)];
 
   return (
     <SectionCard
       title="Tăng/giảm lãi nhiều nhất"
       subtitle={`Kỳ hạn ${term} tháng · ${CHANNEL_LABEL[channel].toLowerCase()} · ${days} ngày gần nhất`}
       info="Mức thay đổi ròng trong khoảng thời gian = lãi hiện tại trừ lãi trước lần đổi đầu tiên trong khoảng. Rê chuột lên thanh để xem mức cũ, mức mới và số lần đổi."
-      sx={{ height: "100%" }}
     >
       <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: "wrap", rowGap: 1 }}>
         <PeriodToggle
@@ -121,11 +128,18 @@ export function RateMoversCard() {
               description={`Trong ${days} ngày tính tới ${formatDate(changes.data.latestDate)}. Thử khoảng 90 ngày hoặc kỳ hạn khác.`}
             />
           ) : (
-            <Stack spacing={1} role="list" aria-label="Mức thay đổi lãi suất theo ngân hàng">
-              {movers.map((m) => (
-                <MoverRow key={m.ticker} mover={m} maxAbs={maxAbs} />
-              ))}
-            </Stack>
+            <>
+              <Stack spacing={1} role="list" aria-label="Mức thay đổi lãi suất theo ngân hàng">
+                {visible.map((m) => (
+                  <MoverRow key={m.ticker} mover={m} maxAbs={maxAbs} compact={compact} />
+                ))}
+              </Stack>
+              {movers.length > visible.length || expanded ? (
+                <Button size="small" onClick={() => setExpanded((v) => !v)} aria-expanded={expanded} sx={{ mt: 1, ml: -1 }}>
+                  {expanded ? "Thu gọn" : `Xem tất cả ${movers.length} ngân hàng`}
+                </Button>
+              ) : null}
+            </>
           )}
         </Box>
       )}
@@ -145,7 +159,7 @@ function Count({ icon, color, label }: { icon: React.ReactNode; color: string; l
 }
 
 /** Một hàng: tên ngân hàng | nửa trái (giảm) · mốc 0 · nửa phải (tăng). Số in ngoài đầu thanh. */
-function MoverRow({ mover, maxAbs }: { mover: Mover; maxAbs: number }) {
+function MoverRow({ mover, maxAbs, compact }: { mover: Mover; maxAbs: number; compact: boolean }) {
   const up = mover.change > 0;
   const pct = (Math.abs(mover.change) / maxAbs) * 100;
   const label = `${formatDelta(mover.change)} điểm`;
@@ -155,8 +169,15 @@ function MoverRow({ mover, maxAbs }: { mover: Mover; maxAbs: number }) {
 
   return (
     <Tooltip title={tip} placement="top">
-      <Stack role="listitem" direction="row" spacing={1.5} sx={{ alignItems: "center", minHeight: 30 }} aria-label={`${tip}, ${label}`}>
-        <Stack direction="row" spacing={1} sx={{ alignItems: "center", width: { xs: 110, sm: 150 }, flexShrink: 0, minWidth: 0 }}>
+      {/* Điện thoại: tên ngân hàng một dòng riêng phía trên thanh (cạnh nhau thì tên bị cắt và thanh còn rất ngắn). */}
+      <Stack
+        role="listitem"
+        direction={compact ? "column" : { xs: "column", sm: "row" }}
+        spacing={compact ? 0.25 : { xs: 0.25, sm: 1.5 }}
+        sx={{ alignItems: compact ? "stretch" : { xs: "stretch", sm: "center" }, minHeight: 30 }}
+        aria-label={`${tip}, ${label}`}
+      >
+        <Stack direction="row" spacing={1} sx={{ alignItems: "center", width: compact ? "auto" : { xs: "auto", sm: 150 }, flexShrink: 0, minWidth: 0 }}>
           <BankAvatar ticker={mover.ticker} size={26} />
           <MuiLink
             component={Link}
@@ -170,7 +191,7 @@ function MoverRow({ mover, maxAbs }: { mover: Mover; maxAbs: number }) {
             {mover.shortName}
           </MuiLink>
         </Stack>
-        <Box sx={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1px 1fr", alignItems: "center", minWidth: 0 }}>
+        <Box sx={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1px 1fr", alignItems: "center", minWidth: 0, minHeight: 26 }}>
           {/* Mỗi nửa là một "đường ray" chừa 52px cho số; thanh dài theo tỉ lệ trên ray, số đặt ngay đầu thanh. */}
           <Box sx={{ position: "relative", height: 16, ml: "52px" }}>
             {!up && (

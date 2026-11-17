@@ -36,7 +36,10 @@ public class LendingRate {
     @Column(name = "source_url")
     private String sourceUrl;
 
-    /** INDIVIDUAL (khách hàng cá nhân), ALL (số chung) hoặc UNSPECIFIED (báo không ghi nhóm). */
+    /**
+     * INDIVIDUAL (khách hàng cá nhân), ALL (số chung), INDIV_MID_LONG (cá nhân trung dài hạn), CONSUMER_SHORT (vay
+     * tiêu dùng ngắn hạn) hoặc UNSPECIFIED (báo không ghi nhóm). Cột VARCHAR(16) (V7).
+     */
     @Column(name = "segment")
     private String segment;
 

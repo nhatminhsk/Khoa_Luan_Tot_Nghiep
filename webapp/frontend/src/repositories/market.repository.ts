@@ -1,6 +1,5 @@
 import { apiClient } from "@/lib/http/api-client";
 import type {
-  AppScoreSummary,
   BestRateItem,
   Channel,
   Datasets,
@@ -35,7 +34,6 @@ export const marketRepository = {
   indicatorComparison: (code: string, tickers: string[]) =>
     apiClient.get<IndicatorComparison>(`/indicators/${encodeURIComponent(code)}/comparison`, { tickers }),
 
-  appScores: () => apiClient.get<AppScoreSummary[]>("/app-scores"),
   programs: () => apiClient.get<Program[]>("/programs"),
   ranking: (purpose: Purpose, limit = 0) => apiClient.get<RankingBlock>("/rankings", { purpose, limit }),
   datasets: () => apiClient.get<Datasets>("/datasets"),

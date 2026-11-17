@@ -3,14 +3,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Button, Link as MuiLink, Stack, Typography } from "@mui/material";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { EmailTypoHint } from "@/components/form/EmailTypoHint";
 import { RHFTextField } from "@/components/form/RHFFields";
-import { useNotify } from "@/components/providers/NotifierProvider";
 import { useAuth } from "@/hooks/use-auth";
 import { ApiError, errorMessage } from "@/lib/http/api-error";
+import { newPasswordSchema } from "./password-rules";
+import { reloadTo } from "./reload-after-auth";
 import { safeNext } from "./safe-next";
 
 // Cùng quy tắc với RegisterRequest bên backend; backend vẫn kiểm tra lại.
@@ -18,21 +20,20 @@ const schema = z
   .object({
     displayName: z.string().trim().min(1, "Nhập tên hiển thị").max(80, "Tên tối đa 80 ký tự"),
     email: z.string().trim().min(1, "Nhập email").email("Email không hợp lệ").max(160),
-    password: z
-      .string()
-      .min(8, "Mật khẩu dài 8–72 ký tự")
-      .max(72, "Mật khẩu dài 8–72 ký tự")
-      .regex(/^(?=.*\p{L})(?=.*\d).+$/u, "Mật khẩu cần có cả chữ và số"),
+    password: newPasswordSchema,
     confirmPassword: z.string(),
   })
   .refine((v) => v.password === v.confirmPassword, { path: ["confirmPassword"], message: "Mật khẩu nhập lại không khớp" });
 type RegisterValues = z.infer<typeof schema>;
 
 export function RegisterForm() {
-  const router = useRouter();
   const next = safeNext(useSearchParams().get("next"));
-  const { register } = useAuth();
-  const notify = useNotify();
+  const { register, isAuthenticated } = useAuth();
+
+  // Đã đăng nhập thì không đăng ký thêm tài khoản từ phiên này: tải lại tới trang đích (xem reload-after-auth.ts).
+  useEffect(() => {
+    if (isAuthenticated && !register.isSuccess) reloadTo(next);
+  }, [isAuthenticated, register.isSuccess, next]);
   const methods = useForm<RegisterValues>({
     resolver: zodResolver(schema),
     defaultValues: { displayName: "", email: "", password: "", confirmPassword: "" },
@@ -44,10 +45,7 @@ export function RegisterForm() {
     register.mutate(
       { displayName, email, password },
       {
-        onSuccess: () => {
-          notify("Đã tạo tài khoản");
-          router.replace(next);
-        },
+        onSuccess: () => reloadTo(next, "Đã tạo tài khoản"),
         onError: (error) => {
           // Lỗi theo từng trường từ backend hiện ngay dưới ô tương ứng.
           if (error instanceof ApiError) {

@@ -9,7 +9,7 @@ import { formatQuarter } from "@/utils/format";
 
 /**
  * Tóm tắt nhanh đầu hồ sơ: câu mô tả tự sinh từ số liệu và điểm mạnh/điểm yếu theo thứ hạng từng chỉ tiêu.
- * Không phải điểm tổng hợp: xếp hạng tổng hợp chờ mô hình.
+ * Không phải điểm tổng hợp: xếp hạng tổng hợp ở trang Gửi tiết kiệm / Vay.
  */
 export function BankSummaryCard({ data }: { data: BankIndicators }) {
   const summary = summarizeBank(data);

@@ -1,0 +1,9 @@
+as_of_period,purpose,term_months,channel,amount_vnd,ticker,rank,rank_low,rank_high,score,group_label,top_positive,top_negative,method_version,p_top1,p_top3,rates_as_of,uninsured_share,safety_weight
+2026-Q3,SAVINGS,12,ONLINE,,ACB,1,1,2,,,Lãi suất kỳ hạn này,CAR,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.8,1.0,2026-09-27,,0.375
+2026-Q3,SAVINGS,12,ONLINE,,VCB,2,1,2,,,Quy mô tài sản,Lãi suất kỳ hạn này,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.2,1.0,2026-09-27,,0.375
+2026-Q3,SAVINGS,12,ONLINE,100000000,ACB,1,1,1,,,Lãi suất kỳ hạn này,,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),1.0,1.0,2026-09-27,0.0,0.0
+2026-Q3,SAVINGS,12,ONLINE,100000000,VCB,2,2,2,,,,Lãi suất kỳ hạn này,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.0,1.0,2026-09-27,0.0,0.0
+2026-Q3,SAVINGS,12,ONLINE,1000000000,VCB,1,1,2,,,Quy mô tài sản,,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.6,1.0,2026-09-27,0.6698,0.2867
+2026-Q3,SAVINGS,12,ONLINE,1000000000,ACB,2,1,2,,,Lãi suất kỳ hạn này,CAR,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.4,1.0,2026-09-27,0.6698,0.2867
+2026-Q3,LOAN,,,,VCB,1,1,2,,,Lãi cho vay bình quân,,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.75,1.0,2026-09,,
+2026-Q3,LOAN,,,,ACB,2,1,2,,,,Lãi cho vay bình quân,MCDM×MC (SAW TOPSIS VIKOR PROMETHEE II),0.25,1.0,2026-09,,

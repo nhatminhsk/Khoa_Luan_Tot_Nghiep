@@ -12,6 +12,24 @@ import { alpha, createTheme } from "@mui/material/styles";
 const DARK_BORDER = "rgba(148, 163, 184, 0.14)";
 const LIGHT_BORDER = "#e3e8ef";
 
+// Màu nhấn của bốn trụ dashboard: Gửi tiết kiệm (xanh dương, cùng sắc với biểu đồ lãi gửi), Vay (cam), Sức khỏe ngân hàng (tím),
+// Vĩ mô (xanh ngọc). Chỉ để nhận ra nhóm (vạch đầu thẻ, ô icon, tiêu đề nhóm); tăng/giảm, tốt/xấu vẫn là xanh lá/đỏ kèm mũi tên.
+// Cam của Vay khác vàng của cảnh báo (warning). Chữ màu trụ đạt ≥ 4.5:1 trên nền thẻ của từng chế độ.
+declare module "@mui/material/styles" {
+  interface Palette {
+    deposit: Palette["primary"];
+    loan: Palette["primary"];
+    health: Palette["primary"];
+    macro: Palette["primary"];
+  }
+  interface PaletteOptions {
+    deposit?: PaletteOptions["primary"];
+    loan?: PaletteOptions["primary"];
+    health?: PaletteOptions["primary"];
+    macro?: PaletteOptions["primary"];
+  }
+}
+
 export const theme = createTheme({
   cssVariables: { colorSchemeSelector: "class" },
   colorSchemes: {
@@ -26,6 +44,10 @@ export const theme = createTheme({
         background: { default: "#f1f4f9", paper: "#ffffff" },
         text: { primary: "#0f172a", secondary: "#475569", disabled: "#94a3b8" },
         divider: LIGHT_BORDER,
+        deposit: { main: "#1d4ed8" },
+        loan: { main: "#c2410c" },
+        health: { main: "#6d28d9" },
+        macro: { main: "#0f766e" },
       },
     },
     dark: {
@@ -39,6 +61,10 @@ export const theme = createTheme({
         background: { default: "#080c15", paper: "#101623" },
         text: { primary: "#f1f5f9", secondary: "#a9b4c6", disabled: "#64748b" },
         divider: DARK_BORDER,
+        deposit: { main: "#60a5fa" },
+        loan: { main: "#fb923c" },
+        health: { main: "#a78bfa" },
+        macro: { main: "#2dd4bf" },
       },
     },
   },

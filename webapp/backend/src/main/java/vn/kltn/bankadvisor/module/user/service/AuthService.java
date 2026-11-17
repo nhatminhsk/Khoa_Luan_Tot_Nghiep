@@ -7,6 +7,7 @@ import vn.kltn.bankadvisor.common.exception.AppException;
 import vn.kltn.bankadvisor.common.exception.ErrorCode;
 import vn.kltn.bankadvisor.module.user.dto.ChangeEmailRequest;
 import vn.kltn.bankadvisor.module.user.dto.LoginRequest;
+import vn.kltn.bankadvisor.module.user.dto.PasswordDtos.ChangePasswordRequest;
 import vn.kltn.bankadvisor.module.user.dto.RegisterRequest;
 import vn.kltn.bankadvisor.module.user.entity.AppUser;
 import vn.kltn.bankadvisor.module.user.entity.Role;
@@ -39,7 +40,7 @@ public class AuthService {
     }
 
     /** Người dùng và token phiên vừa phát. */
-    public record Session(AppUser user, String token) {
+    public record Session(AppUser user, JwtTokenService.IssuedToken token) {
     }
 
     @Transactional
@@ -53,8 +54,11 @@ public class AuthService {
         return new Session(user, issue(user));
     }
 
-    /** @param clientIp IP người dùng (đã qua ForwardedHeaderFilter), để giới hạn số lần đăng nhập sai */
-    @Transactional(readOnly = true)
+    /**
+     * @param clientIp IP người dùng (đã qua ForwardedHeaderFilter), để giới hạn số lần đăng nhập sai.
+     * Tài khoản bị khóa chỉ được báo sau khi mật khẩu đúng (không cho dò tài khoản nào bị khóa).
+     */
+    @Transactional
     public Session login(LoginRequest request, String clientIp) {
         String email = normalizeEmail(request.email());
         loginThrottle.checkAllowed(email, clientIp);
@@ -66,7 +70,17 @@ public class AuthService {
             throw new AppException(ErrorCode.INVALID_CREDENTIALS);
         }
         loginThrottle.recordSuccess(email, clientIp);
+        if (!user.get().isActive()) {
+            throw new AppException(ErrorCode.ACCOUNT_LOCKED);
+        }
+        user.get().recordLogin(clock.instant());
         return new Session(user.get(), issue(user.get()));
+    }
+
+    /** "Đăng xuất mọi thiết bị": mọi JWT đã cấp cho tài khoản này hết hiệu lực ở request kế tiếp. */
+    @Transactional
+    public void revokeAllSessions(long userId) {
+        require(userId).revokeSessions();
     }
 
     /**
@@ -92,6 +106,25 @@ public class AuthService {
         return new Session(user, issue(user));
     }
 
+    /**
+     * Đổi mật khẩu, cần mật khẩu hiện tại (nhập sai tính vào giới hạn đăng nhập sai). Mọi phiên cũ bị thu hồi; trình duyệt
+     * đang dùng nhận phiên mới nên không bị đăng xuất.
+     */
+    @Transactional
+    public Session changePassword(long userId, ChangePasswordRequest request, String clientIp) {
+        AppUser user = find(userId).orElseThrow(() -> new AppException(ErrorCode.UNAUTHORIZED));
+        loginThrottle.checkAllowed(user.getEmail(), clientIp);
+        if (!passwordEncoder.matches(request.currentPassword(), user.getPasswordHash())) {
+            loginThrottle.recordFailure(user.getEmail(), clientIp);
+            throw new AppException(ErrorCode.WRONG_PASSWORD);
+        }
+        if (passwordEncoder.matches(request.newPassword(), user.getPasswordHash())) {
+            throw new AppException(ErrorCode.BAD_REQUEST, "Mật khẩu mới phải khác mật khẩu hiện tại");
+        }
+        user.changePassword(passwordEncoder.encode(request.newPassword()));
+        return new Session(user, issue(user));
+    }
+
     @Transactional(readOnly = true)
     public AppUser require(long userId) {
         return find(userId).orElseThrow(() -> new AppException(ErrorCode.UNAUTHORIZED));
@@ -102,8 +135,8 @@ public class AuthService {
         return userRepository.findById(userId);
     }
 
-    private String issue(AppUser user) {
-        return tokenService.issue(user.getId(), user.getEmail(), user.getDisplayName(), user.getRole().name());
+    private JwtTokenService.IssuedToken issue(AppUser user) {
+        return tokenService.issue(user);
     }
 
     public static String normalizeEmail(String email) {

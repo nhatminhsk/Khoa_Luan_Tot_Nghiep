@@ -1,23 +1,23 @@
-ticker,short_name,full_name,app_name
-ACB,ACB,Ngân hàng TMCP Á Châu,ACB ONE
-BAB,BAC A BANK,Ngân hàng TMCP Bắc Á,BAC A BANK Mobile Banking
-BID,BIDV,Ngân hàng TMCP Đầu tư và Phát triển Việt Nam,BIDV SmartBanking
-BVB,BVBank,Ngân hàng TMCP Bản Việt,digimi
-CTG,VietinBank,Ngân hàng TMCP Công Thương Việt Nam,VietinBank iPay
-EIB,Eximbank,Ngân hàng TMCP Xuất Nhập khẩu Việt Nam,Eximbank EDigi
-HDB,HDBank,Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh,HDBank
-LPB,LPBank,Ngân hàng TMCP Lộc Phát Việt Nam,LPBank
-MBB,MB,Ngân hàng TMCP Quân đội,MB Bank
-MSB,MSB,Ngân hàng TMCP Hàng Hải Việt Nam,MSB mBank (Ca nhan)
-NAB,Nam A Bank,Ngân hàng TMCP Nam Á,Nam A Bank Open Banking
-NVB,NCB,Ngân hàng TMCP Quốc Dân,NCB iziMobile
-OCB,OCB,Ngân hàng TMCP Phương Đông,OCB OMNI
-PGB,PGBank,Ngân hàng TMCP Thịnh vượng và Phát triển,PGBank
-SHB,SHB,Ngân hàng TMCP Sài Gòn – Hà Nội,SHB SAHA
-SSB,SeABank,Ngân hàng TMCP Đông Nam Á,SeAMobile
-STB,Sacombank,Ngân hàng TMCP Sài Gòn Thương Tín,SACOMBANK mBanking
-TCB,Techcombank,Ngân hàng TMCP Kỹ Thương Việt Nam,Techcombank Mobile
-TPB,TPBank,Ngân hàng TMCP Tiên Phong,TPBank Mobile
-VCB,Vietcombank,Ngân hàng TMCP Ngoại thương Việt Nam,VCB Digibank
-VIB,VIB,Ngân hàng TMCP Quốc tế Việt Nam,MyVIB
-VPB,VPBank,Ngân hàng TMCP Việt Nam Thịnh Vượng,VPBank NEO
+ticker,short_name,full_name
+ACB,ACB,Ngân hàng TMCP Á Châu
+BAB,BAC A BANK,Ngân hàng TMCP Bắc Á
+BID,BIDV,Ngân hàng TMCP Đầu tư và Phát triển Việt Nam
+BVB,BVBank,Ngân hàng TMCP Bản Việt
+CTG,VietinBank,Ngân hàng TMCP Công Thương Việt Nam
+EIB,Eximbank,Ngân hàng TMCP Xuất Nhập khẩu Việt Nam
+HDB,HDBank,Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh
+LPB,LPBank,Ngân hàng TMCP Lộc Phát Việt Nam
+MBB,MB,Ngân hàng TMCP Quân đội
+MSB,MSB,Ngân hàng TMCP Hàng Hải Việt Nam
+NAB,Nam A Bank,Ngân hàng TMCP Nam Á
+NVB,NCB,Ngân hàng TMCP Quốc Dân
+OCB,OCB,Ngân hàng TMCP Phương Đông
+PGB,PGBank,Ngân hàng TMCP Thịnh vượng và Phát triển
+SHB,SHB,Ngân hàng TMCP Sài Gòn – Hà Nội
+SSB,SeABank,Ngân hàng TMCP Đông Nam Á
+STB,Sacombank,Ngân hàng TMCP Sài Gòn Thương Tín
+TCB,Techcombank,Ngân hàng TMCP Kỹ Thương Việt Nam
+TPB,TPBank,Ngân hàng TMCP Tiên Phong
+VCB,Vietcombank,Ngân hàng TMCP Ngoại thương Việt Nam
+VIB,VIB,Ngân hàng TMCP Quốc tế Việt Nam
+VPB,VPBank,Ngân hàng TMCP Việt Nam Thịnh Vượng

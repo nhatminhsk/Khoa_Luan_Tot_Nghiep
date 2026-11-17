@@ -52,7 +52,12 @@ export function BankLabel({ ticker, shortName, link = true, secondary }: BankLab
         ) : (
           name
         )}
-        <Typography variant="caption" color="text.secondary" sx={{ display: "block", lineHeight: 1.3 }}>
+        {/* Dòng mã chỉ hiện trên điện thoại (khi logo chữ đã ẩn); từ sm logo chữ đã ghi mã. Dòng phụ truyền riêng thì luôn hiện. */}
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{ display: secondary ? "block" : { xs: "block", sm: "none" }, lineHeight: 1.3 }}
+        >
           {secondary ?? ticker}
         </Typography>
       </Box>

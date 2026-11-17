@@ -28,8 +28,9 @@ TPB_URL = "https://tpb.vn/tim-diem-giao-dich"
 TPB_SOURCE = "tpb.vn"
 
 HARVARD = Path("data/external/vn_banking_system_2002_2021_data.csv")
-HARVARD_CODE_TO_TICKER = {
-    "BIDV": "BID", "MB": "MBB", "LVB": "LPB", "SEAB": "SSB", "NCB": "NVB",
+HARVARD_CODE_TO_TICKER = {  # "BVB" cua Harvard la Bao Viet Bank; Ban Viet la "VCPB"
+    "BIDV": "BID", "MB": "MBB", "LVB": "LPB", "SEAB": "SSB", "NCB": "NVB", "VCPB": "BVB",
+    "BVB": "BAOVIETBANK", "OB": "OCEANBANK",
 }
 
 SECONDS_BETWEEN_QUERIES = 2.0

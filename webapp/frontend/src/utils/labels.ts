@@ -1,5 +1,4 @@
 import type {
-  AppStore,
   CamelsGroup,
   Channel,
   DatasetFrequency,
@@ -61,27 +60,8 @@ export const PROGRAM_CATEGORY_LABEL: Record<ProgramCategory, string> = {
   OTHER: "Khác",
 };
 
-export const STORE_LABEL: Record<AppStore, string> = {
-  GOOGLE_PLAY: "Google Play",
-  APP_STORE: "App Store",
-};
-
-/** Tám khía cạnh của mô hình NLP review (xem data/serving/README.md). */
-export const ASPECT_LABEL: Record<string, string> = {
-  TRANSACTION_ERROR: "Lỗi giao dịch",
-  LOGIN_OTP: "Đăng nhập, OTP",
-  UPDATE_UI: "Cập nhật và giao diện",
-  SPEED: "Tốc độ",
-  CUSTOMER_CARE: "Chăm sóc khách hàng",
-  CARD_ATM: "Thẻ, ATM",
-  FEE: "Phí",
-  SAVINGS: "Tiền gửi, tiết kiệm",
-};
-
 export const DATASET_LABEL: Record<string, string> = {
   rankings: "Xếp hạng ngân hàng",
-  forecasts: "Dự báo chỉ tiêu 1–4 quý",
-  app_aspects: "Điểm review theo khía cạnh",
 };
 
 /** Các kỳ hạn gửi tiết kiệm phổ biến hiển thị trên giao diện. */

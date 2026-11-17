@@ -37,6 +37,8 @@ dividend_payout_ttm_pct,C Vốn,financial_long.csv,Cổ tức tiền mặt đã 
 credit_cost_ttm_pct,A Chất lượng tài sản,financial_long.csv,Chi phí dự phòng tín dụng TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 recovery_ttm_pct,A Chất lượng tài sản,financial_long.csv,Thu hồi nợ đã xử lý TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 npl_group5_share_pct,A Chất lượng tài sản,note_long.csv,Nợ nhóm 5 / nợ xấu (nhóm 3–5),%,quý: số dư cuối kỳ,theo NH-quý
+accrued_interest_to_assets_pct,A Chất lượng tài sản,financial_long.csv,Lãi và phí phải thu (lãi dự thu) / tổng tài sản,%,quý: số dư cuối kỳ,theo NH-quý
+vamc_bonds_to_assets_pct,A Chất lượng tài sản,financial_long + note_long,Trái phiếu đặc biệt VAMC (gộp) / tổng tài sản,%,quý: số dư cuối kỳ; 0 là thật (NH không còn bán nợ cho VAMC),theo NH-quý
 cir_ttm_pct,M Quản trị,financial_long.csv,(TNHĐ − LN trước dự phòng) TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 opex_to_assets_ttm_pct,M Quản trị,financial_long.csv,Chi phí hoạt động TTM / tổng tài sản bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 staff_cost_share_pct,M Quản trị,financial_long + note_long,"Chi lương, phụ cấp TTM / chi phí hoạt động TTM",%,quý: TTM / bình quân 5 mốc,theo NH-quý
@@ -48,6 +50,7 @@ noii_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Thu nhập n
 fee_share_ttm_pct,E Thu nhập & chi phí vốn,financial_long.csv,Lãi thuần dịch vụ TTM / TNHĐ TTM,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 loan_yield_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Thu lãi cho vay TTM / dư nợ bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 retail_loan_share_pct,P Chính sách & cơ cấu tín dụng,note_long.csv + loans_by_industry_annual,Cho vay cá nhân / dư nợ phân theo nhóm khách hàng,%,"quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; quý 4 thiếu lấy dòng 'Cá nhân' của bảng ngành BCTC kiểm toán (MSB, NVB, TCB)",theo NH-quý
+retail_deposit_share_pct,L Thanh khoản,note_long.csv,Tiền gửi cá nhân / tiền gửi phân theo nhóm khách hàng,%,quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; dòng cá nhân ≤ 0 hoặc < 1% tổng → NaN,theo NH-quý
 deposit_rate_paid_ttm_pct,E Thu nhập & chi phí vốn,financial_long + note_long,Trả lãi tiền gửi TTM / tiền gửi bình quân,%,quý: TTM / bình quân 5 mốc,theo NH-quý
 npat_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
 toi_yoy_sym_pct,E Thu nhập & chi phí vốn,financial_long.csv,Tăng trưởng đối xứng TNHĐ TTM so cùng kỳ: 200(a−b)/(|a|+|b|),%,"quý: TTM, đối xứng [−200, 200]",theo NH-quý
@@ -100,9 +103,9 @@ log_branches,G Quy mô & tăng trưởng,branch_by_province,ln(1 + số chi nhá
 atm_per_branch,G Quy mô & tăng trưởng,branch_by_province,Số ATM / số chi nhánh,lần,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
 n_provinces_present,G Quy mô & tăng trưởng,branch_by_province,Số tỉnh (34 tỉnh mới) có chi nhánh,số,ảnh chụp OSM → lặp mọi quý,tĩnh theo NH
 app_reviews_log,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),ln(1 + số review trong quý),ln,tháng → tổng quý,theo NH-quý
-app_mean_score,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),Điểm sao trung bình có trọng số số review,sao,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
-app_pct_1star,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review 1 sao,%,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
-app_reply_rate_pct,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review được NH phản hồi,%,tháng → trung bình trọng số; quý < 30 review → NaN,theo NH-quý
+app_mean_score,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),Điểm sao trung bình có trọng số số review,sao,"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < 30 review → NaN",theo NH-quý
+app_pct_1star,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review 1 sao,%,"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < 30 review → NaN",theo NH-quý
+app_reply_rate_pct,K Khách hàng số,app_reviews_monthly (app bán lẻ Play Store),% review được NH phản hồi,%,"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < 30 review → NaN",theo NH-quý
 dep12_online_pct,R Lãi suất niêm yết,deposit_24hmoney_daily,"Lãi suất tiết kiệm 12 tháng online, trung bình các ngày quan sát",%,ngày → trung bình quý,theo NH-quý
 dep12_counter_pct,R Lãi suất niêm yết,deposit_24hmoney_daily,Lãi suất tiết kiệm 12 tháng tại quầy,%,ngày → trung bình quý,theo NH-quý
 dep12_online_spread_pp,R Lãi suất niêm yết,deposit_24hmoney_daily,Lãi suất 12 tháng online − trung bình 22 NH cùng quý,điểm %,ngày → trung bình quý,theo NH-quý

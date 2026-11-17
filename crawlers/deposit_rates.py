@@ -25,7 +25,9 @@ TERM_MAP = {
     "1 tháng": 1, "3 tháng": 3, "6 tháng": 6, "9 tháng": 9,
     "12 tháng": 12, "18 tháng": 18, "24 tháng": 24, "36 tháng": 36,
 }
-CHANNEL_MAP = {"Tại quầy": "quay", "Trực tuyến": "online"}
+CHANNEL_MAP = {"Tại quầy": "quay", "Trực tuyến": "online", "Online": "online"}
+# Tu 04/11/2026 trang doi bo cuc: cot "Kenh" thanh "Hinh thuc", them cot STT, nhan "Truc tuyen" thanh "Online".
+CHANNEL_COLUMNS = ("Kênh", "Hình thức")
 
 BANK_TO_TICKER = {
     "BIDV": "BID", "Vietcombank": "VCB", "Vietinbank": "CTG", "ACB": "ACB",
@@ -89,7 +91,10 @@ def parse_rate_cell(cell: str):
 def normalize(raw_df: pd.DataFrame, run_date: str, retrieved_at: str) -> pd.DataFrame:
     df = raw_df.copy()
     df["Ngân hàng"] = df["Ngân hàng"].str.replace(r"\s*Nguồn\s*$", "", regex=True).str.strip()
-    df["Kênh"] = df["Kênh"].map(CHANNEL_MAP).fillna(df["Kênh"])
+    column = next((c for c in CHANNEL_COLUMNS if c in df.columns), None)
+    if column is None:
+        raise KeyError(f"khong thay cot kenh ({' / '.join(CHANNEL_COLUMNS)}) trong {list(df.columns)}")
+    df["Kênh"] = df[column].map(CHANNEL_MAP).fillna(df[column])
 
     rows = []
     for _, row in df.iterrows():

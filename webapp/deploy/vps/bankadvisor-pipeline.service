@@ -1,0 +1,16 @@
+[Unit]
+Description=BankAdvisor: pipeline dữ liệu hằng ngày (crawl, đối chiếu, xuất data/serving)
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=deploy
+WorkingDirectory=/opt/bankadvisor/webapp
+# Cả lượt crawl tối đa 1 giờ; quá thì dừng để lượt hôm sau không chồng lên.
+TimeoutStartSec=3600
+ExecStart=/usr/bin/docker compose --profile job run --rm pipeline
+# API tự nạp data/serving lúc 16:00 và khi khởi động. Lượt crawl có hôm xong sau 16:00, nên khởi động lại api để nạp
+# ngay (web ngắt khoảng 20 giây; dấu "-" để lỗi ở bước này không làm hỏng trạng thái của lượt crawl).
+ExecStartPost=-/usr/bin/docker compose restart api

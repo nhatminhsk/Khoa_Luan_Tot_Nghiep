@@ -8,10 +8,14 @@ import vn.kltn.bankadvisor.common.api.ApiResponse;
 import vn.kltn.bankadvisor.common.exception.AppException;
 import vn.kltn.bankadvisor.common.exception.ErrorCode;
 import vn.kltn.bankadvisor.common.mail.EmailGateway;
+import vn.kltn.bankadvisor.module.audit.entity.AdminAction;
+import vn.kltn.bankadvisor.module.audit.service.AdminAuditService;
 import vn.kltn.bankadvisor.module.watchlist.dto.WatchlistDtos.DispatchResponse;
 import vn.kltn.bankadvisor.module.watchlist.dto.WatchlistDtos.EmailQueueSummary;
 import vn.kltn.bankadvisor.module.watchlist.service.AdminEmailService;
 import vn.kltn.bankadvisor.module.watchlist.service.NotificationEmailDispatcher;
+import vn.kltn.bankadvisor.security.AuthUser;
+import vn.kltn.bankadvisor.security.CurrentUser;
 
 /** Theo dõi hàng đợi email thông báo. Chỉ vai trò ADMIN gọi được (xem SecurityConfig). */
 @RestController
@@ -21,12 +25,14 @@ public class AdminEmailController {
     private final AdminEmailService adminEmailService;
     private final NotificationEmailDispatcher dispatcher;
     private final EmailGateway emailGateway;
+    private final AdminAuditService audit;
 
     public AdminEmailController(AdminEmailService adminEmailService, NotificationEmailDispatcher dispatcher,
-                                EmailGateway emailGateway) {
+                                EmailGateway emailGateway, AdminAuditService audit) {
         this.adminEmailService = adminEmailService;
         this.dispatcher = dispatcher;
         this.emailGateway = emailGateway;
+        this.audit = audit;
     }
 
     @GetMapping
@@ -36,11 +42,13 @@ public class AdminEmailController {
 
     /** Gửi ngay các email đã tới lượt, không chờ lịch quét. */
     @PostMapping("/dispatch")
-    public ApiResponse<DispatchResponse> dispatchNow() {
+    public ApiResponse<DispatchResponse> dispatchNow(@CurrentUser AuthUser user) {
         if (!emailGateway.isEnabled()) {
             throw new AppException(ErrorCode.EMAIL_DISABLED);
         }
         NotificationEmailDispatcher.DispatchResult result = dispatcher.dispatchPending();
+        audit.record(user, AdminAction.EMAIL_DISPATCH, null, null, "gửi " + result.emailsSent()
+                + ", lỗi " + result.emailsFailed() + ", bỏ qua " + result.notificationsSkipped());
         return ApiResponse.ok(new DispatchResponse(result.emailsSent(), result.emailsFailed(), result.notificationsSkipped()));
     }
 }

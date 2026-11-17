@@ -1,0 +1,11 @@
+[Unit]
+Description=BankAdvisor: chạy pipeline dữ liệu lúc 15:30 hằng ngày (sau giờ đóng cửa sàn 15:00)
+
+[Timer]
+OnCalendar=*-*-* 15:30:00 Asia/Ho_Chi_Minh
+# Máy tắt đúng giờ thì chạy bù khi bật lại.
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

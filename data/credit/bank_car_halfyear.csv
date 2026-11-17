@@ -3,22 +3,22 @@ ACB,2019-H1,2019-06-30,2019-Q2,False,10.26,,,TT41,hop_nhat,vnstock,cao,,Truong R
 ACB,2019-H2,2019-12-31,2019-Q4,False,10.91,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 ACB,2020-H1,2020-06-30,2020-Q2,False,11.23,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 ACB,2020-H2,2020-12-31,2020-Q4,False,11.06,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-ACB,2021-H1,2021-06-30,2021-Q2,False,11.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2021-H1,2021-06-30,2021-Q2,False,10.41,10.35,10.06,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2021.pdf,"PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 6 (so in 4), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 41,414,529 / 397,752,971 = 10.41%. Sua 31/10/2026: o nhap tay cu 11.1 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 ACB,2021-H2,2021-12-31,2021-Q4,False,11.23,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 ACB,2022-H1,2022-06-30,2022-Q2,False,11.98,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-ACB,2022-H2,2022-12-31,2022-Q4,False,12.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2022-H2,2022-12-31,2022-Q4,False,12.8,12.23,12.69,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2022.pdf,"PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 58,518,779 / 457,025,561 = 12.80%. Sua 31/10/2026: o nhap tay cu 12.5 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 ACB,2023-H1,2023-06-30,2023-Q2,False,12.76,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-ACB,2023-H2,2023-12-31,2023-Q4,False,12.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2023-H2,2023-12-31,2023-Q4,False,12.48,12.11,12.94,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2023/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2023.pdf,"PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 68,029,134 / 545,025,927 = 12.48%. Sua 31/10/2026: o nhap tay cu 12.1 gan so rieng le 12.11.",2026-10-30T17:27:56.726887+00:00
 ACB,2024-H1,2024-06-30,2024-Q2,False,11.79,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-ACB,2024-H2,2024-12-31,2024-Q4,False,12.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-ACB,2025-H1,2025-06-30,2025-Q2,False,12.12,,,TT41,hop_nhat,nhap_tay,,,Nhap tay tu bao cao NH. Ghi de o vnstock cu (10.97) - lech 1.15 diem. Nhan nguon=vnstock va note 'khop tuyet doi' cua ban cu da go vi khong con dung.,2026-09-07T09:19:08.830666+00:00
-ACB,2025-H2,2025-12-31,2025-Q4,False,12.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-ACB,2026-H1,2026-06-30,2026-Q2,False,11.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+ACB,2024-H2,2024-12-31,2024-Q4,False,11.82,11.71,12.29,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2024/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2024.pdf,"PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 79,861,960 / 675,593,330 = 11.82%. Sua 31/10/2026: o nhap tay cu 12.08 khong co trong bang.",2026-10-31T01:04:45.728937+00:00
+ACB,2025-H1,2025-06-30,2025-Q2,False,10.97,10.41,11.57,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2025.pdf,"PDF SCAN, doc tu anh 30/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc), bia ghi TT41 va TT22/2023. Kiem so hoc: 82,309,651 / 750,047,678 = 10.97%. Sua 30/10/2026: o nhap tay cu 12.12 khong co trong bang CAR, tra lai so 10.97 khop vnstock.",2026-10-30T16:53:50.718904+00:00
+ACB,2025-H2,2025-12-31,2025-Q4,False,12.45,11.04,12.07,TT14,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2025.pdf,"PDF SCAN, doc tu anh 30/10/2026. Bang 1 trang 4 (so in 1), Bang 5 trang 7 (so in 4), cot 'Hop nhat | Rieng le', bia ghi TT 14/2025/TT-NHNN. Von tu co 95,055,152 / tong TSCRR 762,908,859 = 12.46%, ngan hang in 12.45, giu so in. Sua 30/10/2026: o cu 12.3 la so UOC TINH o BCTN 2025 trang 41 (chu thich *).",2026-10-30T16:53:50.718904+00:00
+ACB,2026-H1,2026-06-30,2026-Q2,False,11.87,10.5,11.53,TT14,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 1 trang 4 (so in 1), Bang 5 trang 7 (so in 4), cot 'Hop nhat | Rieng le', theo TT 14/2025/TT-NHNN. Ngan hang chi in MOT SO LE va cat bot: CAR 11,8 | 10,5, von cap 1 11,5 | 10,0. So trong file TINH TU BANG: 100,347,094 / 845,674,174 = 11.87%, rieng le 86,774,234 / 826,234,583 = 10.50%, von cap 1 97,488,765 / 845,674,174 = 11.53%. Giu 11.87 thay vi so in 11.8 theo quyet dinh cua nguoi dung 31/10/2026, vi so in lam mat thong tin o khoang cach voi SHB 11.81.",2026-10-30T17:27:56.726887+00:00
 BAB,2019-H1,2019-06-30,2019-Q2,False,11.15,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BAB,2019-H2,2019-12-31,2019-Q4,False,10.22,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BAB,2020-H1,2020-06-30,2020-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 BAB,2020-H2,2020-12-31,2020-Q4,False,8.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-BAB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2021-H1,2021-06-30,2021-Q2,False,9.12,9.03,8.19,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HNX/2021/BCTLATV/VN/QUY%202/BAB_BaocaoTyleAnToanVon_6T_2021.pdf,"Bang 2 trang 6 (doc tu anh: lop chu lech cot), nhan cot 'Rieng le | Hop nhat': CAR 9.03 | 9.12, von cap 1 8.17 | 8.19.",2026-10-22T17:34:17.086537+00:00
 BAB,2021-H2,2021-12-31,2021-Q4,False,9.24,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BAB,2022-H1,2022-06-30,2022-Q2,False,8.92,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 BAB,2022-H2,2022-12-31,2022-Q4,False,8.95,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
@@ -27,16 +27,16 @@ BAB,2023-H2,2023-12-31,2023-Q4,False,8.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:1
 BAB,2024-H1,2024-06-30,2024-Q2,False,10.0,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 BAB,2024-H2,2024-12-31,2024-Q4,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BAB,2025-H1,2025-06-30,2025-Q2,False,10.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-BAB,2025-H2,2025-12-31,2025-Q4,False,10.02,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BAB,2025-H2,2025-12-31,2025-Q4,False,10.1,10.02,7.43,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HNX/2025/BCTLATV/VN/NAM/BAB_BaocaoTyleAnToanVon_2025.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 2 trang 6 (so in 3), cot 'Rieng le | Hop nhat'. Kiem so hoc: 18,091,189 / 179,114,139 = 10.10%. Sua 31/10/2026: o nhap tay cu 10.02 la so RIENG LE ghi nham cot hop nhat.",2026-10-30T17:27:56.726887+00:00
 BAB,2026-H1,2026-06-30,2026-Q2,False,8.95,8.88,7.06,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HNX/2026/BCTLATV/VN/QUY%202/BAB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN, khong co lop text - doc Bang 2 trang 6 bang cach render thanh anh. Giam 1.07 diem so voi 10.02 (2025-H2); ban cong bo khong in ky so sanh.",2026-10-07T03:38:34.880190+00:00
 BID,2019-H1,2019-06-30,2019-Q2,False,9.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-BID,2019-H2,2019-12-31,2019-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2019-H2,2019-12-31,2019-Q4,False,8.74,8.52,6.13,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2019/BCTLATV/VN/NAM/BID_BaocaoTyleAnToanVon_2019.pdf,"Lop chu chat luong thap, doc 31/10/2026. Bang 2 trang 6, cot 'So lieu rieng le | So lieu hop nhat': CAR 8.52 | 8.74, von cap 1 6.21 | 6.13. Sua 31/10/2026: o nhap tay cu 9.18 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 BID,2020-H1,2020-06-30,2020-Q2,False,8.97,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 BID,2020-H2,2020-12-31,2020-Q4,False,8.61,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BID,2021-H1,2021-06-30,2021-Q2,False,8.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BID,2021-H2,2021-12-31,2021-Q4,False,8.97,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BID,2022-H1,2022-06-30,2022-Q2,False,8.88,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-BID,2022-H2,2022-12-31,2022-Q4,False,8.92,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BID,2022-H2,2022-12-31,2022-Q4,False,9.34,8.92,6,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/BID_BaocaoTyleAnToanVon_2022.pdf,"Bang 2 trang 7, cot 'So lieu rieng le | So lieu hop nhat'. Sua 31/10/2026: o nhap tay cu 8.92 la so RIENG LE ghi nham cot hop nhat.",2026-10-30T17:27:56.726887+00:00
 BID,2023-H1,2023-06-30,2023-Q2,False,9.34,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 BID,2023-H2,2023-12-31,2023-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BID,2024-H1,2024-06-30,2024-Q2,False,9.48,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -48,7 +48,7 @@ BVB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666
 BVB,2019-H2,2019-12-31,2019-Q4,False,8.54,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BVB,2020-H1,2020-06-30,2020-Q2,False,8.43,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BVB,2020-H2,2020-12-31,2020-Q4,False,9.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-BVB,2021-H1,2021-06-30,2021-Q2,False,9.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+BVB,2021-H1,2021-06-30,2021-Q2,False,9.7,9.58,8.06,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/UPCOM/2021/BCTLATV/VN/QUY%202/BVB_BaocaoTyleAnToanVon_6T_2021.pdf,"Bieu 2 trang 2, cot 'Rieng le | Hop nhat'. Kiem so hoc: 5,619,626 / 57,961,369 = 9.70%. Sua 31/10/2026: o nhap tay cu 9.27 chep trung ky 2020-H2.",2026-10-30T17:27:56.726887+00:00
 BVB,2021-H2,2021-12-31,2021-Q4,False,10.86,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 BVB,2022-H1,2022-06-30,2022-Q2,False,11.2,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 BVB,2022-H2,2022-12-31,2022-Q4,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
@@ -63,21 +63,21 @@ CTG,2019-H1,2019-06-30,2019-Q2,False,8.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:1
 CTG,2019-H2,2019-12-31,2019-Q4,False,9.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 CTG,2020-H1,2020-06-30,2020-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 CTG,2020-H2,2020-12-31,2020-Q4,False,9.93,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-CTG,2021-H1,2021-06-30,2021-Q2,False,9.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2021-H1,2021-06-30,2021-Q2,False,8.52,8.33,6.86,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/CTG_BaocaoTyleAnToanVon_6T_2021.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4 (so in 2), nhan cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 9.33 khong co trong bang, lech dung 1.00 so voi so rieng le 8.33.",2026-10-30T17:27:56.726887+00:00
 CTG,2021-H2,2021-12-31,2021-Q4,False,9.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 CTG,2022-H1,2022-06-30,2022-Q2,False,8.96,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-CTG,2022-H2,2022-12-31,2022-Q4,False,9.45,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2022-H2,2022-12-31,2022-Q4,False,8.98,8.9,6.58,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/CTG_BaocaoTyleAnToanVon_2022.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4 (so in 2), nhan cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 9.45 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 CTG,2023-H1,2023-06-30,2023-Q2,False,8.94,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-CTG,2023-H2,2023-12-31,2023-Q4,False,9.13,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2023-H2,2023-12-31,2023-Q4,False,9.31,9.28,6.79,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2023/BCTLATV/VN/NAM/CTG_BaocaoTyleAnToanVon_2023.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4, nhan cot 'Rieng le | Hop nhat'. Kiem so hoc: 169,574,027 / 1,820,896,248 = 9.31%. Sua 31/10/2026: o nhap tay cu 9.13 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 CTG,2024-H1,2024-06-30,2024-Q2,False,9.54,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 CTG,2024-H2,2024-12-31,2024-Q4,False,9.54,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 CTG,2025-H1,2025-06-30,2025-Q2,False,10.29,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 CTG,2025-H2,2025-12-31,2025-Q4,False,9.89,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-CTG,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+CTG,2026-H1,2026-06-30,2026-Q2,False,10.1,10.13,7.68,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/CTG_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN (doc bang OCR 22/10/2026). Bang 3 trang 4, nhan cot 'Rieng le | Hop nhat'. Kiem so hoc: von tu co hop nhat 257,862,304 / (von cap 1 195,940,870 / 7.68%) = 10.11%. Ban cong bo ghi tuan thu TT41.",2026-10-22T11:32:41.922241+00:00
 EIB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 EIB,2019-H2,2019-12-31,2019-Q4,False,13.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 EIB,2020-H1,2020-06-30,2020-Q2,False,11.78,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-EIB,2020-H2,2020-12-31,2020-Q4,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+EIB,2020-H2,2020-12-31,2020-Q4,False,11.81,,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2021/BCTN/VN/EIB_Baocaothuongnien_2021.pdf,"Bao cao thuong nien 2021, bang 'Mot so chi tieu tai chinh co ban' trang 19: 'Ty le an toan von (CAR) hop nhat' 2018 15.05 | 2019 13.81 | 2020 11.81 | 2021 12.29. Hai nam 2019, 2021 khop o da co -> lay 2020.",2026-10-22T17:41:56.094064+00:00
 EIB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 EIB,2021-H2,2021-12-31,2021-Q4,False,12.29,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 EIB,2022-H1,2022-06-30,2022-Q2,False,12.97,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -96,19 +96,19 @@ HDB,2020-H2,2020-12-31,2020-Q4,False,12.1,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:
 HDB,2021-H1,2021-06-30,2021-Q2,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 HDB,2021-H2,2021-12-31,2021-Q4,False,14.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 HDB,2022-H1,2022-06-30,2022-Q2,False,14.89,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-HDB,2022-H2,2022-12-31,2022-Q4,False,14.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2022-H2,2022-12-31,2022-Q4,False,13.42,12.8,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/HDB_BaocaoTyleAnToanVon_2022.pdf,"Lop chu loi font, doc tu anh 31/10/2026. Bang muc 3b trang 5, cot 31/12/2021 | 31/12/2022, moi ky Rieng le | Hop nhat. Kiem so hoc: 46,665,537 / 347,752,806 = 13.42%. Sua 31/10/2026: o nhap tay cu 14.3 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 HDB,2023-H1,2023-06-30,2023-Q2,False,12.3,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 HDB,2023-H2,2023-12-31,2023-Q4,False,12.57,12.21,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://cdn.hdbank.com.vn/hdbank-file/investor/editor/bM0oFeFPUJyfnjkNnAjK20240904113105/HDBankCongbothongtinCARTT4130062024dau_1725437683266.pdf,Ky so sanh in kem trong cung bao cao scan.,2026-09-07T09:19:08.830666+00:00
 HDB,2024-H1,2024-06-30,2024-Q2,False,13.94,13.4,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://cdn.hdbank.com.vn/hdbank-file/investor/editor/bM0oFeFPUJyfnjkNnAjK20240904113105/HDBankCongbothongtinCARTT4130062024dau_1725437683266.pdf,"PDF SCAN, khong co lop text - doc bang cach render trang 5 thanh anh. Bang co nhan cot day du (31/12/2023 | 30/06/2024, moi ky x Rieng le | Hop nhat). Khop tuyet doi voi vnstock 2024-Q2 = 13.94.",2026-09-07T09:19:08.830666+00:00
 HDB,2024-H2,2024-12-31,2024-Q4,False,14.03,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-HDB,2025-H1,2025-06-30,2025-Q2,False,12.02,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+HDB,2025-H1,2025-06-30,2025-Q2,False,13.02,12.53,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/HDB_BaocaoTyleAnToanVon_6T_2025.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang muc 3b trang 6 (so in 5/10), cot 31/12/2024 | 30/06/2025, moi ky Rieng le | Hop nhat. Kiem so hoc: 95,443,771 / 733,282,178 = 13.02%. Sua 31/10/2026: o cu 12.02 cua vnstock lech dung 1.00.",2026-10-30T17:27:56.726887+00:00
 HDB,2025-H2,2025-12-31,2025-Q4,False,16.7,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-HDB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+HDB,2026-H1,2026-06-30,2026-Q2,False,14.27,12.8,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/HDB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN (OCR 22/10/2026). Bang muc 3b trang 5, nhan cot 31/12/2025 | 30/06/2026, moi ky Rieng le | Hop nhat. Kiem so hoc: 124,719,294 / 874,231,315 = 14.27%. Ky so sanh 31/12/2025 hop nhat 16.72 khop o 2025-H2 da nhap tay (16.7). Ap dung TT41 + TT22/2023.",2026-10-22T11:32:41.922241+00:00
 LPB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 LPB,2019-H2,2019-12-31,2019-Q4,False,8.35,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 LPB,2020-H1,2020-06-30,2020-Q2,False,8.59,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 LPB,2020-H2,2020-12-31,2020-Q4,False,10.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-LPB,2021-H1,2021-06-30,2021-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+LPB,2021-H1,2021-06-30,2021-Q2,False,10.41,10.41,8.41,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/LPB_BaocaoTyleAnToanVon_6T_2021.pdf,"Bang muc III, cot Rieng le | Hop nhat bang nhau: CAR 10.41%, CAR cap 1 8.41%. (File EIB cung ten 6T_2021 tren Vietstock thuc la ban 31/12/2021: 12.29 hop nhat, khop o 2021-H2 da co.)",2026-10-22T17:34:17.086537+00:00
 LPB,2021-H2,2021-12-31,2021-Q4,False,11.26,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 LPB,2022-H1,2022-06-30,2022-Q2,False,12.31,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 LPB,2022-H2,2022-12-31,2022-Q4,False,12.36,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
@@ -116,7 +116,7 @@ LPB,2023-H1,2023-06-30,2023-Q2,False,11.16,,,TT41,hop_nhat,vnstock,cao,,Truong R
 LPB,2023-H2,2023-12-31,2023-Q4,False,12.24,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 LPB,2024-H1,2024-06-30,2024-Q2,False,12.21,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 LPB,2024-H2,2024-12-31,2024-4,False,13.33,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-LPB,2025-H1,2025-06-30,2025-Q2,False,9.5,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
+LPB,2025-H1,2025-06-30,2025-Q2,False,11.8,11.8,9.5,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/LPB_BaocaoTyleAnToanVon_6T_2025.pdf,"Bang 2 trang 6, cot 'Rieng le | Hop nhat' bang nhau: CAR 11,80, CAR tier 1 9,50. Sua 31/10/2026: o cu 9.5 cua vnstock la CAR CAP 1 ghi nham cot CAR.",2026-10-30T17:27:56.726887+00:00
 LPB,2025-H2,2025-12-31,2025-Q4,False,11.87,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 LPB,2026-H1,2026-06-30,2026-Q2,False,11.23,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 MBB,2019-H1,2019-06-30,2019-Q2,False,9.58,9.23,8.17,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://mbbank.com.vn/resources/files/NhaDauTu/thong-bao/1.2020/mbb.cbtt-bao-cao-cong-bo-thong-tin-ty-le-an-toan-von-30.6.2019.pdf,"Bieu 2, thu tu cot 'RL|HN' doc tu NHAN COT chu khong tu vi tri - MBB DAO thu tu cot tu ban 31/12/2020. Xem MBB_HALFYEAR.",2026-09-07T09:19:08.830666+00:00
@@ -151,8 +151,8 @@ MSB,2025-H2,2025-12-31,2025-Q4,False,12.49,,,,hop_nhat,nhap_tay,,,,2026-09-07T09
 MSB,2026-H1,2026-06-30,2026-Q2,False,12.27,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NAB,2019-H1,2019-06-30,2019-Q2,False,9.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NAB,2019-H2,2019-12-31,2019-Q4,False,8.62,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-NAB,2020-H1,2020-06-30,2020-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
-NAB,2020-H2,2020-12-31,2020-Q4,False,9.57,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2020-H1,2020-06-30,2020-Q2,False,8.99,8.86,5.68,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/QUY%202/NAB_BaocaoTyleAnToanVon_6T_2020.pdf,"PDF SCAN (OCR 23/10/2026). Bang trang 5, cot Rieng le | Hop nhat. Kiem so hoc: 8,093,860 / (87,788,218 + 12.5 x (95,931 + 85,007)) = 8.99%.",2026-10-22T17:34:17.086537+00:00
+NAB,2020-H2,2020-12-31,2020-Q4,False,9.28,9.2,6.1,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/NAM/NAB_BaocaoTyleAnToanVon_2020.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang trang 5, cot 'Rieng le | Hop nhat'. Kiem so hoc: 10,042,254 / 108,163,246 = 9.28%. Sua 31/10/2026: o nhap tay cu 9.57 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 NAB,2021-H1,2021-06-30,2021-Q2,False,9.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NAB,2021-H2,2021-12-31,2021-Q4,False,9.46,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NAB,2022-H1,2022-06-30,2022-Q2,False,10.12,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -163,7 +163,7 @@ NAB,2024-H1,2024-06-30,2024-Q2,False,11.51,,,TT41,hop_nhat,vnstock,cao,,Truong R
 NAB,2024-H2,2024-12-31,2024-Q4,False,12.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NAB,2025-H1,2025-06-30,2025-Q2,False,10.96,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 NAB,2025-H2,2025-12-31,2025-Q4,False,11.18,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-NAB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+NAB,2026-H1,2026-06-30,2026-Q2,False,10.94,10.86,7.04,TT14,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/NAB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN (OCR 22/10/2026). Bang trang 4, nhan cot 'Rieng le | Hop nhat'. TINH THEO TT 14/2025/TT-NHNN (khong phai TT41) -> gay chuoi. Lay C3 = A/B = 39,643,586 / 362,303,427 = 10.94% cho cung dinh nghia voi cac ky truoc; dong C 'Ty le an toan von = C3 + C4' in 11.57% la da cong bo dem bao toan von CCB 0.625%.",2026-10-22T11:32:41.922241+00:00
 NVB,2019-H1,2019-06-30,2019-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 NVB,2019-H2,2019-12-31,2019-Q4,False,9.67,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 NVB,2020-H1,2020-06-30,2020-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
@@ -179,20 +179,20 @@ NVB,2024-H2,2024-12-31,2024-Q4,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.8306
 NVB,2025-H1,2025-06-30,2025-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 NVB,2025-H2,2025-12-31,2025-Q4,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 NVB,2026-H1,2026-06-30,2026-Q2,False,NA,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
-OCB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2019-H1,2019-06-30,2019-Q2,False,11.14,11.11,10.72,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2019/BCTLATV/VN/QUY%202/OCB_BaocaoTyleAnToanVon_6T_2019.pdf,"PDF SCAN (OCR 23/10/2026). Muc 3.3 trang 3 'Tai thoi diem 30/06/2019': CAR 11.11%, CAR hop nhat (CARconso) 11.14%; ty le von cap 1 rieng le = hop nhat 10.72%.",2026-10-22T17:34:17.086537+00:00
 OCB,2019-H2,2019-12-31,2019-Q4,False,11.19,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 OCB,2020-H1,2020-06-30,2020-Q2,False,14.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-OCB,2020-H2,2020-12-31,2020-Q4,False,12.85,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2020-H2,2020-12-31,2020-Q4,False,12.73,12.71,12.36,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2020.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang muc 3.3 trang 4 (so in 3/9), cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 12.85 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 OCB,2021-H1,2021-06-30,2021-Q2,False,12.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 OCB,2021-H2,2021-12-31,2021-Q4,False,12.34,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 OCB,2022-H1,2022-06-30,2022-Q2,False,12.49,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-OCB,2022-H2,2022-12-31,2022-Q4,False,12.9,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2022-H2,2022-12-31,2022-Q4,False,12.84,12.82,12.48,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2022.pdf,"PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 11-12, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.82% rieng le, 12.84% hop nhat. Sua 31/10/2026: o nhap tay cu 12.9 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 OCB,2023-H1,2023-06-30,2023-Q2,False,13.33,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 OCB,2023-H2,2023-12-31,2023-Q4,False,13.3,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 OCB,2024-H1,2024-06-30,2024-Q2,False,13.72,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 OCB,2024-H2,2024-12-31,2024-Q4,False,12.46,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-OCB,2025-H1,2025-06-30,2025-Q2,False,12.43,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-OCB,2025-H2,2025-12-31,2025-Q4,False,12.09,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+OCB,2025-H1,2025-06-30,2025-Q2,False,12.48,12.43,12.06,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/OCB_BaocaoTyleAnToanVon_6T_2025.pdf,"Bang 3 trang 10-11, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.43% rieng le, 12.48% hop nhat. Sua 31/10/2026: o nhap tay cu 12.43 la so RIENG LE ghi nham cot hop nhat.",2026-10-31T01:04:45.728937+00:00
+OCB,2025-H2,2025-12-31,2025-Q4,False,12.32,12.27,11.89,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2025.pdf,"Bang 3 trang 10-11, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.27% rieng le, 12.32% hop nhat. Sua 31/10/2026: o nhap tay cu 12.09 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 OCB,2026-H1,2026-06-30,2026-Q2,False,13.07,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 PGB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 PGB,2019-H2,2019-12-31,2019-Q4,False,14.8,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
@@ -208,7 +208,7 @@ PGB,2024-H1,2024-06-30,2024-Q2,False,11.83,,,TT41,hop_nhat,vnstock,cao,,Truong R
 PGB,2024-H2,2024-12-31,2024-Q4,False,10.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 PGB,2025-H1,2025-06-30,2025-Q2,False,10.68,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 PGB,2025-H2,2025-12-31,2025-Q4,False,10.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-PGB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+PGB,2026-H1,2026-06-30,2026-Q2,False,12.51,,12.08,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/UPCOM/2026/BCTLATV/VN/QUY%202/PGB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN (OCR 22/10/2026). Bang 02 trang 4, MOT cot 30/06/2026 (PGBank khong co cong ty con hop nhat): CAR 12.51%, ty le von cap 1 12.08%, tong TSCRR 67,469.65 ty. Quy dinh noi bo tuan thu TT41. Tang 1.91 diem so voi 10.60 (2025-H2).",2026-10-22T11:32:41.922241+00:00
 SHB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 SHB,2019-H2,2019-12-31,2019-Q4,False,12.01,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SHB,2020-H1,2020-06-30,2020-Q2,False,10.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -223,13 +223,13 @@ SHB,2024-H1,2024-06-30,2024-Q2,False,12.61,,,TT41,hop_nhat,vnstock,cao,,Truong R
 SHB,2024-H2,2024-12-31,2024-Q4,False,11.86,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SHB,2025-H1,2025-06-30,2025-Q2,False,12.46,12.06,9.37,TT41,hop_nhat,ngan_hang_cong_bo,tb,https://www.shb.com.vn/wp-content/uploads/2025/10/CONG-BO-TY-LE-AN-TOAN-VON-30-06-2025.pdf,Gan cot rieng_le/hop_nhat SUY TU THU TU COT trong bang (nhan cot va gia tri nam o hai khoi text roi nhau). vnstock chi co den 2024-Q2 = 12.61 nen chua doi chieu duoc. Kiem lai bang cach render trang 5 thanh anh truoc khi trich luan van.,2026-09-07T09:19:08.830666+00:00
 SHB,2025-H2,2025-12-31,2025-Q4,False,12.62,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-SHB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
+SHB,2026-H1,2026-06-30,2026-Q2,False,11.81,11.53,9.0,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/SHB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF co lop chu. Muc 2b trang 2, cot Rieng le | Hop nhat. Kiem so hoc ca hai cot: hop nhat 98,451,108 / 833,733,768 = 11.81%, rieng le 94,201,658 / 817,364,792 = 11.53% -> gan cot da chac (khac 2025-Q2 'tb').",2026-10-22T11:32:41.922241+00:00
 SSB,2019-H1,2019-06-30,2019-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 SSB,2019-H2,2019-12-31,2019-Q4,False,11.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SSB,2020-H1,2020-06-30,2020-Q2,False,12.11,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SSB,2020-H2,2020-12-31,2020-Q4,False,11.5,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SSB,2021-H1,2021-06-30,2021-Q2,False,10.91,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-SSB,2021-H2,2021-12-31,2021-Q4,False,13.27,,,TT41,hop_nhat,nhap_tay,,,Nhap tay. vnstock KHONG co ban ghi SSB 2021 (nguon nay chi co SSB 2022-Q2 -> 2025-Q2) nen nhan nguon=vnstock cu la sai. Luu y: 13.27 trung khop gia tri SSB 2025-H1 - kiem lai ban goc phong truong hop sao chep nham dong.,2026-09-07T09:19:08.830666+00:00
+SSB,2021-H2,2021-12-31,2021-Q4,False,11.68,,,TT41,hop_nhat,nhap_tay,tb,https://static2.vietstock.vn/data/HOSE/2021/BCTN/VN/SSB_Baocaothuongnien_2021.rar,"Nhap tay. BCTN 2021 trang 36: 'Tai thoi diem 31/12/2021, ty le CAR hop nhat cua SeABank la 11,68%', trang 5 cung ghi 11,68. Doc qua Co so du lieu thong tin cua Wi (https://mcp.widata.vn/nguon/AfmbyQHY8QIkyvAeD3gA66ZH), CHUA mo file .rar. Sua 30/10/2026: o cu 13.27 trung SSB 2025-H1, nghi chep nham dong.",2026-10-30T16:53:50.718904+00:00
 SSB,2022-H1,2022-06-30,2022-Q2,False,13.49,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 SSB,2022-H2,2022-12-31,2022-Q4,False,14.66,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 SSB,2023-H1,2023-06-30,2023-Q2,False,14.55,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -273,7 +273,7 @@ TPB,2019-H1,2019-06-30,2019-Q2,False,9.09,,,TT41,hop_nhat,vnstock,cao,,Truong RT
 TPB,2019-H2,2019-12-31,2019-Q4,False,10.69,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 TPB,2020-H1,2020-06-30,2020-Q2,False,11.24,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 TPB,2020-H2,2020-12-31,2020-Q4,False,12.95,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-TPB,2021-H1,2021-06-30,2021-Q2,False,13.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2021-H1,2021-06-30,2021-Q2,False,12.85,12.85,10.39,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/TPB_BaocaoTyleAnToanVon_6T_2021.pdf,"Bang 2 trang 4, dong ty le an toan von rieng le va hop nhat cung 12.85 (TPBank chua co cong ty con). Kiem so hoc: 25,088,647 / 195,187,688 = 12.85%. Sua 31/10/2026: o nhap tay cu 13.39 chep trung ky 2021-H2.",2026-10-30T17:27:56.726887+00:00
 TPB,2021-H2,2021-12-31,2021-Q4,False,13.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 TPB,2022-H1,2022-06-30,2022-Q2,False,12.44,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 TPB,2022-H2,2022-12-31,2022-Q4,False,12.6,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
@@ -282,7 +282,7 @@ TPB,2023-H2,2023-12-31,2023-Q4,False,12.39,,,,hop_nhat,nhap_tay,,,,2026-09-07T09
 TPB,2024-H1,2024-06-30,2024-Q2,False,13.17,13.14,,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://tpb.vn/wps/wcm/connect/fc169b8a-2b23-4d8c-b676-7a3fd0ec12c3/BC+CBTT+CAR_TT41_T6.2024.pdf?MOD=AJPERES&CONVERT_TO=url&CACHEID=ROOTWORKSPACE-fc169b8a-2b23-4d8c-b676-7a3fd0ec12c3-paKBrns,"Khop tuyet doi voi vnstock 2024-Q2 = 13.17, va con so nay xac nhan THU TU COT la rieng le truoc, hop nhat sau (13.14 | 13.17) - co so de suy cot cho SHB/BID.",2026-09-07T09:19:08.830666+00:00
 TPB,2024-H2,2024-12-31,2024-Q4,False,13.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 TPB,2025-H1,2025-06-30,2025-Q2,False,13.72,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
-TPB,2025-H2,2025-12-31,2025-Q4,False,12.81,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+TPB,2025-H2,2025-12-31,2025-Q4,False,14.35,12.81,10.66,TT14,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/TPB_BaocaoTyleAnToanVon_2025.pdf,"Bang 2 trang 4, nhan cot 'Rieng le | Hop nhat', theo TT 14/2025/TT-NHNN (bia in nham 14/2016). Kiem so hoc: 56,342,341 / 392,591,993 = 14.35%, rieng le 49,065,552 / 382,983,819 = 12.81%. Sua 30/10/2026: o cu 12.81 la so RIENG LE ghi nham cot hop nhat. Tai lieu DHDCD 2026 ghi 14.33, lay bao cao CAR.",2026-10-30T16:53:50.718904+00:00
 TPB,2026-H1,2026-06-30,2026-Q2,False,,,,,hop_nhat,,,,,2026-09-07T09:19:08.830666+00:00
 VCB,2019-H1,2019-06-30,2019-Q2,False,9.47,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 VCB,2019-H2,2019-12-31,2019-Q4,False,9.34,,,,hop_nhat,nhap_tay,,,,2026-09-07T₀₉:₁₉:₀₈.₈₃₀₆₆₆+₀₀:₀₀
@@ -298,7 +298,7 @@ VCB,2024-H1,2024-06-30,2024-Q2,False,12.01,,,TT41,hop_nhat,vnstock,cao,,Truong R
 VCB,2024-H2,2024-12-31,2024-Q4,False,12.16,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 VCB,2025-H1,2025-06-30,2025-Q2,False,12.01,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 VCB,2025-H2,2025-12-31,2025-Q4,False,11.56,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
-VCB,2026-H1,2026-06-30,2026-Q2,False,11.14,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VCB,2026-H1,2026-06-30,2026-Q2,False,11.71,11.03,11.43,TT14,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/VCB_BaocaoTyleAnToanVon_6T_2026.pdf,"PDF SCAN, doc tu anh 30/10/2026. Bieu 1 trang 2, Bieu 2 trang 2-3, Bieu 4 trang 4, cot 'Rieng le | Hop nhat', theo TT 14/2025/TT-NHNN. Kiem so hoc: 252,649,555 / 2,158,120,481 = 11.71%. Sua 30/10/2026: o cu 11.14 khong khop cot nao cua ban cong bo.",2026-10-30T16:53:50.718904+00:00
 VIB,2019-H1,2019-06-30,2019-Q2,False,9.17,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 VIB,2019-H2,2019-12-31,2019-Q4,False,9.67,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 VIB,2020-H1,2020-06-30,2020-Q2,False,9.69,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
@@ -312,7 +312,7 @@ VIB,2023-H2,2023-12-31,2023-Q4,False,11.73,,,,hop_nhat,nhap_tay,,,,2026-09-07T09
 VIB,2024-H1,2024-06-30,2024-Q2,False,11.81,,,TT41,hop_nhat,vnstock,cao,,Truong RT_BANK_CAR. Doi chieu voi ban NH tu cong bo cho ket qua khop tuyet doi (5/5 o) -> day la ban HOP NHAT do NH cong bo.,2026-09-07T09:19:08.830666+00:00
 VIB,2024-H2,2024-12-31,2024-Q4,False,11.97,11.93,10.49,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vib.com.vn/wps/wcm/connect/a3ab69fb-bee6-4c51-9587-ee2d41f8dc1b/VIB+Pillar+3+Report.Final_VN+30.06.2026.pdf?MOD=AJPERES&CVID=pL4vXSN,Ky so sanh in kem trong cung bao cao. vnstock KHONG co o Q4 nao - day la vi du cho thay moi ban cong bo cho khong mot ma HAI ky.,2026-09-07T09:19:08.830666+00:00
 VIB,2025-H1,2025-06-30,2025-Q2,False,12.15,12.08,10.67,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://www.vib.com.vn/wps/wcm/connect/a3ab69fb-bee6-4c51-9587-ee2d41f8dc1b/VIB+Pillar+3+Report.Final_VN+30.06.2026.pdf?MOD=AJPERES&CVID=pL4vXSN,"TEN FILE GHI 30.06.2026 NHUNG NOI DUNG LA 30/06/2025 - da doc ky tu trong file, khong lay tu URL. Bang trang 6 (hop nhat) / trang 7 (rieng le), co nhan cot ro. VIB ghi trong chinh bao cao: 'dang tai 6 thang mot lan'.",2026-09-07T09:19:08.830666+00:00
-VIB,2025-H2,2025-12-31,2025-Q4,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
+VIB,2025-H2,2025-12-31,2025-Q4,False,11.36,11.28,9.67,TT41,hop_nhat,ngan_hang_cong_bo,cao,https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/VIB_BaocaoTyleAnToanVon_2025.pdf,"Bang trang 5 (hop nhat) va trang 6 (rieng le), nhan muc ro. Kiem so hoc: 55,139 / 485,277 = 11.36%. Day la so TT41, so TT14 cung ngay la 12.2. Sua 31/10/2026: o nhap tay cu 11.2 khong co trong bang.",2026-10-30T17:27:56.726887+00:00
 VIB,2026-H1,2026-06-30,2026-Q2,False,11.98,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 VPB,2019-H1,2019-06-30,2019-Q2,False,11.2,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00
 VPB,2019-H2,2019-12-31,2019-Q4,False,11.08,,,,hop_nhat,nhap_tay,,,,2026-09-07T09:19:08.830666+00:00

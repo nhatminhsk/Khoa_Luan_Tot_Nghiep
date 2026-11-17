@@ -25,15 +25,13 @@ public final class ServingDatasets {
 
     public static final String DEPOSIT_RATES = "deposit_rates";
     public static final String RANKINGS = "rankings";
-    public static final String FORECASTS = "forecasts";
-    public static final String APP_ASPECTS = "app_aspects";
 
-    /** Ba tập kết quả thuật toán — rỗng cho tới khi mô hình chốt. */
-    public static final List<String> ALGORITHM_OUTPUTS = List.of(RANKINGS, FORECASTS, APP_ASPECTS);
+    /** Kết quả thuật toán xếp hạng (serving/rankings.py). */
+    public static final List<String> ALGORITHM_OUTPUTS = List.of(RANKINGS);
 
     public static final List<TableSpec> ALL = List.of(
             new TableSpec("banks", "banks.csv", "bank", UPSERT, List.of("ticker"), null, List.of(
-                    req("ticker", TEXT), req("short_name", TEXT), req("full_name", TEXT), opt("app_name", TEXT))),
+                    req("ticker", TEXT), req("short_name", TEXT), req("full_name", TEXT))),
             new TableSpec("indicators", "indicators.csv", "indicator", UPSERT, List.of("code"), null, List.of(
                     req("code", TEXT), req("name", TEXT), req("camels_group", TEXT), req("unit", TEXT),
                     req("direction", TEXT), opt("description", TEXT), req("display_order", INT))),
@@ -55,13 +53,6 @@ public final class ServingDatasets {
                             req("lending_avg_percent", DECIMAL), opt("deposit_avg_percent", DECIMAL),
                             opt("segment", TEXT), opt("basis", TEXT), opt("source", TEXT),
                             opt("source_url", TEXT))),
-            new TableSpec("app_store", "app_store.csv", "app_store_snapshot", REPLACE, List.of(), null, List.of(
-                    req("ticker", TICKER), req("store", TEXT), req("snapshot_date", DATE), opt("app_name", TEXT),
-                    opt("score", DOUBLE), opt("ratings", LONG))),
-            new TableSpec("app_reviews_monthly", "app_reviews_monthly.csv", "app_review_monthly", REPLACE, List.of(),
-                    null, List.of(req("ticker", TICKER), req("month", "review_month", TEXT), req("n_reviews", INT),
-                    opt("mean_score", DOUBLE), opt("pct_1star", DOUBLE), opt("pct_5star", DOUBLE),
-                    req("usable", BOOL))),
             new TableSpec("program_participation", "program_participation.csv", "program_participation", REPLACE,
                     List.of(), null, List.of(req("program_code", PROGRAM), req("ticker", TICKER),
                     req("participates", BOOL), opt("list_as_of", DATE), opt("source_url", TEXT))),
@@ -81,18 +72,12 @@ public final class ServingDatasets {
                     opt("last_updated", TEXT), opt("row_count", INT), opt("coverage_note", TEXT))),
 
             new TableSpec(RANKINGS, "rankings.csv", "ranking_result", REPLACE, List.of(), "as_of_period", List.of(
-                    req("as_of_period", TEXT), req("purpose", TEXT), req("ticker", TICKER),
-                    req("rank", "rank_value", INT), opt("rank_low", INT), opt("rank_high", INT),
-                    opt("score", DOUBLE), opt("group_label", TEXT), opt("top_positive", TEXT),
-                    opt("top_negative", TEXT), opt("method_version", TEXT))),
-            new TableSpec(FORECASTS, "forecasts.csv", "forecast_point", REPLACE, List.of(), "origin_period", List.of(
-                    req("ticker", TICKER), req("indicator", "indicator_code", INDICATOR),
-                    req("origin_period", TEXT), req("target_period", TEXT), req("horizon", INT),
-                    req("value", "val", DOUBLE), opt("lower", "lower_bound", DOUBLE),
-                    opt("upper", "upper_bound", DOUBLE), opt("naive_value", DOUBLE), opt("method", TEXT))),
-            new TableSpec(APP_ASPECTS, "app_aspects.csv", "app_aspect_score", REPLACE, List.of(), "period", List.of(
-                    req("ticker", TICKER), req("period", TEXT), req("aspect", TEXT), req("score", DOUBLE),
-                    req("n_reviews", INT)))
+                    req("as_of_period", TEXT), req("purpose", TEXT), opt("term_months", INT), opt("channel", TEXT),
+                    opt("amount_vnd", LONG), req("ticker", TICKER), req("rank", "rank_value", INT),
+                    opt("rank_low", INT), opt("rank_high", INT), opt("score", DOUBLE), opt("group_label", TEXT),
+                    opt("top_positive", TEXT), opt("top_negative", TEXT), opt("method_version", TEXT),
+                    opt("p_top1", DOUBLE), opt("p_top3", DOUBLE), opt("rates_as_of", TEXT),
+                    opt("uninsured_share", DOUBLE), opt("safety_weight", DOUBLE)))
     );
 
     private ServingDatasets() {

@@ -45,7 +45,7 @@ export function IndicatorsPanel({ ticker }: { ticker: string }) {
                   : "Bảng nhiều kỳ: theo năm lấy số quý 4 (chỉ tiêu cộng 4 quý ở quý 4 là số cả năm), năm đang dở lấy quý mới nhất."
               } So sánh với nhóm ngân hàng cùng loại sẽ có khi mô hình phân nhóm hoàn tất. Chỉ tiêu cộng 4 quý (TTM) đã triệt tiêu mùa vụ; nợ xấu và CASA thường thấp ở quý 4 rồi tăng lại quý 1, nên so sánh cùng quý các năm.`}
             >
-              <Box component="span" tabIndex={0} aria-label="Cách đọc" sx={{ display: "inline-flex", color: "text.disabled", cursor: "help" }}>
+              <Box component="span" tabIndex={0} aria-label="Cách đọc" sx={{ display: "inline-flex", color: "text.secondary", cursor: "help" }}>
                 <IconInfoCircle size={16} stroke={1.8} aria-hidden />
               </Box>
             </Tooltip>
@@ -115,7 +115,7 @@ function IndicatorCard({ series, maxQuarters }: { series: IndicatorSeries; maxQu
 
   return (
     <Card sx={{ p: 2, height: "100%" }}>
-      <Typography variant="overline" color="text.disabled" component="div" sx={{ lineHeight: 1.6 }}>
+      <Typography variant="overline" color="text.secondary" component="div" sx={{ lineHeight: 1.6 }}>
         {CAMELS_LABEL[indicator.camelsGroup]}
       </Typography>
       <Stack direction="row" spacing={1} sx={{ justifyContent: "space-between", alignItems: "flex-start" }}>
@@ -149,6 +149,11 @@ function IndicatorCard({ series, maxQuarters }: { series: IndicatorSeries; maxQu
 
       {points.some((p) => p.value !== null) && (
         <Box sx={{ mt: 1, mx: -1 }}>
+          {isVnd && (
+            <Typography variant="caption" color="text.secondary" component="p" sx={{ px: 1 }}>
+              Đơn vị: nghìn tỷ đồng
+            </Typography>
+          )}
           <SeriesLineChart
             height={170}
             categories={points.map((p) => p.period)}
@@ -158,6 +163,7 @@ function IndicatorCard({ series, maxQuarters }: { series: IndicatorSeries; maxQu
               { id: "median", label: "Trung vị các NH", data: points.map((p) => scale(p.median)), kind: "reference" },
             ]}
             formatValue={(v) => (isVnd ? `${v.toLocaleString("vi-VN", { maximumFractionDigits: 1 })} nghìn tỷ` : formatAxis(v))}
+            formatAxis={formatAxis}
             ariaLabel={`${indicator.name} theo quý so với trung vị các ngân hàng có số`}
           />
         </Box>

@@ -1,0 +1,16 @@
+# Profile chạy thật: CSDL PostgreSQL 17 (bật bằng SPRING_PROFILES_ACTIVE=postgres hoặc prod).
+# Schema vẫn do Flyway tạo từ db/migration (cùng bộ migration với H2), Hibernate chỉ validate.
+
+spring:
+  datasource:
+    url: ${APP_DB_URL:jdbc:postgresql://localhost:5432/bankadvisor}
+    username: ${APP_DB_USERNAME:bankadvisor}
+    password: ${APP_DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: ${APP_DB_POOL_SIZE:10}
+      # Mặc định của HikariCP là 30 giây: khi CSDL ngừng, mỗi request treo 30 giây mới báo lỗi. Kiểm thử mất CSDL
+      # (DatabaseOutageTests, 10/11/2026) cho thấy 2–3 giây là đủ để báo lỗi nhanh mà vẫn tự phục hồi khi CSDL chạy lại.
+      connection-timeout: ${APP_DB_CONNECT_TIMEOUT_MS:3000}
+  h2:
+    console:
+      enabled: false

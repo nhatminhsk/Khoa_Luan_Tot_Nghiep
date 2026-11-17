@@ -1,0 +1,4 @@
+#!/bin/sh
+# lending_rates_official.py gọi trình duyệt bằng cờ của Edge trên Windows. Trong container, Chromium chạy không có
+# sandbox của nhân Linux (container đã cô lập, và sandbox cần quyền SYS_ADMIN), nên thêm --no-sandbox ở đây.
+exec /usr/bin/chromium --no-sandbox --disable-dev-shm-usage "$@"

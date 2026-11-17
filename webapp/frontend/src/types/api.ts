@@ -30,7 +30,6 @@ export interface Bank {
   ticker: string;
   shortName: string;
   fullName: string;
-  appName: string | null;
   /** Cơ cấu sở hữu (ảnh chụp mới nhất); null khi chưa có dữ liệu. */
   ownership: BankOwnership | null;
 }
@@ -191,8 +190,12 @@ export interface BankRates {
   history: { date: string; termMonths: number; channel: Channel; rate: number }[];
 }
 
-/** Nhóm khách hàng của con số lãi cho vay bình quân: UNSPECIFIED = báo tổng hợp không ghi nhóm. */
-export type LendingSegment = "INDIVIDUAL" | "ALL" | "UNSPECIFIED";
+/**
+ * Nhóm khách hàng của con số lãi cho vay bình quân: UNSPECIFIED = báo tổng hợp không ghi nhóm. Hai nhóm hẹp dùng
+ * khi ngân hàng chỉ công bố nhóm đó: INDIV_MID_LONG = cá nhân trung dài hạn (SSB), CONSUMER_SHORT = vay tiêu dùng
+ * ngắn hạn (SHB).
+ */
+export type LendingSegment = "INDIVIDUAL" | "ALL" | "INDIV_MID_LONG" | "CONSUMER_SHORT" | "UNSPECIFIED";
 /** Cách tính: trên khoản vay mới trong kỳ hay trên toàn bộ dư nợ (null = ngân hàng không ghi). */
 export type LendingBasis = "NEW_LOANS" | "OUTSTANDING";
 export type LendingSource = "BANK" | "VIETNAMNET";
@@ -213,7 +216,7 @@ export interface LendingRate extends LendingRateOrigin {
   depositAvgPercent: number | null;
 }
 
-// ===== Xếp hạng, dự báo (kết quả thuật toán) =====
+// ===== Xếp hạng (kết quả thuật toán) =====
 
 export type Purpose = "SAVINGS" | "LOAN";
 
@@ -227,7 +230,13 @@ export interface RankingItem {
   groupLabel: string | null;
   topPositive: string | null;
   topNegative: string | null;
+  /** Tần suất đứng đầu / lọt top 3 trong mô phỏng Monte Carlo (0–1), không phải xác suất. */
+  shareTop1: number | null;
+  shareTop3: number | null;
 }
+
+/** NOT_COMPUTED: pipeline chưa ghi kết quả; TERM_NOT_RANKED: kỳ hạn × kênh này không có bảng xếp hạng. */
+export type RankingUnavailableReason = "NOT_COMPUTED" | "TERM_NOT_RANKED";
 
 export interface RankingBlock {
   status: ResultStatus;
@@ -235,50 +244,17 @@ export interface RankingBlock {
   asOfPeriod: string | null;
   methodVersion: string | null;
   personalized: boolean;
+  /** Bảng gửi: kỳ hạn, kênh, mốc tiền đã chọn theo số tiền gửi (null = trọng số mặc định). */
+  termMonths: number | null;
+  channel: Channel | null;
+  amountVnd: number | null;
+  /** Ngày lãi gửi (YYYY-MM-DD) hoặc tháng lãi vay (YYYY-MM) của ảnh chụp đã xếp. */
+  ratesAsOf: string | null;
+  /** Phần tiền (gốc + lãi) không được bảo hiểm tiền gửi chi trả, và trọng số nhóm an toàn tại tâm (0–1). */
+  uninsuredShare: number | null;
+  safetyWeight: number | null;
+  reason: RankingUnavailableReason | null;
   items: RankingItem[];
-}
-
-export interface ForecastBlock {
-  status: ResultStatus;
-  originPeriod: string | null;
-  indicators: {
-    indicatorCode: string;
-    method: string | null;
-    points: {
-      targetPeriod: string;
-      horizon: number;
-      value: number;
-      lower: number | null;
-      upper: number | null;
-      naiveValue: number | null;
-    }[];
-  }[];
-}
-
-// ===== Ứng dụng ngân hàng =====
-
-export type AppStore = "GOOGLE_PLAY" | "APP_STORE";
-
-export interface AppExperience {
-  ticker: string;
-  stores: { store: AppStore; appName: string | null; score: number | null; ratings: number | null; snapshotDate: string }[];
-  monthly: {
-    month: string;
-    reviewCount: number;
-    meanScore: number | null;
-    oneStarShare: number | null;
-    fiveStarShare: number | null;
-    usable: boolean;
-  }[];
-  aspects: { status: ResultStatus; items: { period: string; aspect: string; score: number; reviewCount: number }[] };
-}
-
-export interface AppScoreSummary {
-  ticker: string;
-  googlePlayScore: number | null;
-  googlePlayRatings: number | null;
-  appStoreScore: number | null;
-  appStoreRatings: number | null;
 }
 
 // ===== Chương trình tín dụng chính sách =====
@@ -336,7 +312,6 @@ export interface SavingsOffer {
   changeFromPrevious: number | null;
   interest: number;
   maturityAmount: number;
-  appScore: number | null;
   /** Bậc số tiền đã áp (ví dụ "Từ 500 triệu"); null khi ngân hàng không chia bậc hoặc dưới mọi bậc. */
   tierLabel: string | null;
 }
@@ -470,12 +445,66 @@ export interface ImportSummary {
 
 export type Role = "USER" | "ADMIN";
 
+/**
+ * Quyền theo chức năng (khớp enum Permission ở backend). Vai trò USER có PERSONAL_DATA; ADMIN có tất cả.
+ * Giao diện dựng menu theo quyền; backend vẫn kiểm lại quyền ở mọi request.
+ */
+export type Permission = "PERSONAL_DATA" | "DATA_MANAGE" | "USER_MANAGE" | "EMAIL_MANAGE";
+
+export type UserStatus = "ACTIVE" | "LOCKED";
+
+/** Một dòng ở trang Quản lý người dùng (không có nhu cầu đã lưu hay dữ liệu cá nhân khác). */
+export interface AdminUser {
+  id: number;
+  email: string;
+  displayName: string;
+  role: Role;
+  status: UserStatus;
+  emailVerified: boolean;
+  lastLoginAt: string | null;
+  createdAt: string;
+}
+
+export interface AdminUserStats {
+  total: number;
+  active: number;
+  locked: number;
+  admins: number;
+  emailVerified: number;
+}
+
+export interface AdminUserPage {
+  stats: AdminUserStats;
+  users: PageResponse<AdminUser>;
+}
+
+export interface UpdateUserInput {
+  role?: Role;
+  status?: UserStatus;
+  /** Bắt buộc khi khóa. */
+  reason?: string;
+}
+
+export type AdminAction = "USER_LOCK" | "USER_UNLOCK" | "ROLE_CHANGE" | "SESSIONS_REVOKE" | "DATA_IMPORT" | "EMAIL_DISPATCH";
+
+/** Một dòng nhật ký thao tác quản trị (chỉ thêm, không sửa / xóa). */
+export interface AdminAuditEntry {
+  id: number;
+  createdAt: string;
+  actorEmail: string;
+  action: AdminAction;
+  targetId: number | null;
+  targetEmail: string | null;
+  detail: string | null;
+}
+
 export interface User {
   id: number;
   email: string;
   displayName: string;
   role: Role;
   emailVerified: boolean;
+  permissions: Permission[];
 }
 
 export interface EmailVerificationStatus {

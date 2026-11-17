@@ -1,74 +1,3 @@
-"""Ty le an toan von (CAR) theo tung ngan hang -- don vi ky la NUA NAM.
-
-DON VI KY: '2025-H1' (chot 30/06) va '2025-H2' (chot 31/12), KHONG phai quy.
-Day khong phai lua chon tuy tien ma theo dung nhip cong bo cua nguon: 21/22 ngan
-hang cong bo 6 thang/lan, VIB con ghi thang trong bao cao la "dang tai 6 thang mot
-lan". De schema theo quy thi hai o moi nam se rong vinh vien voi gan het bang, va
-o rong do dai dien cho MOT KY KHONG TON TAI chu khong phai du lieu bi thieu -- doc
-gia se hieu nham la crawler cao sot.
-
-Rieng VPBank cong bo theo quy (17 ban 2022-Q1 -> 2026-Q1). Cac o Q1/Q3 cua NH nay
-khong bi vut di: chung duoc dung lam KY THAY THE khi nua nam do thieu ky chot, va
-khi ay dong duoc danh dau dung_ky_thay_the=True kem as_of_date THAT. Xem to_half()
-va collapse_to_half(). Vi vay dung gia dinh moi dong H1 deu chot ngay 30/06 --
-LUON doc cot as_of_date khi tinh khoang cach thoi gian.
-
-Vi sao can module rieng, khong dung thang car_percent trong bank_credit_quarterly.csv:
-
-  1. vnstock CHI co o Q2, tuc chi H1. 88/88 quan sat chot ngay 30/06 -- khong phai
-     chuoi bi hut ma la nha cung cap chi lay mot ky moi nam. Ban H2 (chot 31/12) co
-     that va cac NH deu cong bo: vnstock dang bo mat mot nua so quan sat.
-
-  2. vnstock dung o 2025-H1 (14/22 NH). Ban do chinh ngan hang cong bo thi moi hon
-     -- VPBank da co 2026-H1.
-
-  3. Cross-check da lam: so trich tu ban Tru cot 3 do ngan hang tu cong bo KHOP
-     TUYET DOI voi vnstock o ca 5 o doi chieu duoc (HDB, TPB va VPB x3 ky). Nghia la car_percent cua vnstock chinh la ban HOP
-     NHAT do ngan hang cong bo, khong phai so uoc luong cua nha cung cap -- nen gop
-     hai nguon la hop le, khong lech co so.
-
-Ba cai bay da gap khi di lay, deu da xu ly trong module nay:
-
-  a. TEN FILE KHONG PHAI NGAY DU LIEU. File VIB dat ten "...30.06.2026.pdf" nhung
-     NOI DUNG la 30/06/2025. Cung loai bay date vs effective_date cua 24hmoney.
-     parse() luon doc ky bao cao TU TRONG FILE, khong lay tu URL.
-
-  b. ~40% ban cong bo la PDF SCAN, khong co lop text (ACB, STB, NAB, HDBank).
-     parse() tra ve scanned=True de goi y render anh doc tay, KHONG doan.
-
-  c. DUT GAY CO SO TT41 -> TT14. Thong tu 14/2025/TT-NHNN thay Thong tu 41/2016 tu
-     15/09/2025. VIB cong bo CAR theo TT14 tai 31/12/2025 la 12,2% -- CAO HON 1 diem
-     so voi chinh CAR theo TT41 cung ngay. Tu 2026 cac NH chuyen dan, nen chuoi CAR
-     se co HAI co so. Cot thong_tu la bat buoc; KHONG so CAR giua hai co so.
-
-Rieng le vs hop nhat: moi ban cong bo co HAI con so, chenh toi 1,3 diem (VPB 12,51
-vs 13,81). vnstock dung HOP NHAT nen module nay lay hop nhat lam cot chinh.
-
-FILE LA BANG CONG VIEC, KHONG CHI LA KET QUA CRAWL.
-Khung day du 22 NH x 15 ky (2019-H1 -> 2026-H1) = 330 dong; o chua tim ra so thi
-de TRONG chu khong bo dong. O trong noi ro "ky nay ton tai nhung chua co so",
-khac han voi khong co dong nao -- nguoi doc khong phai tu doan.
-
-Vi file co dong NHAP TAY nen write() KHONG BAO GIO GHI DE o da co so, dung
-nguyen tac cua loan_rates.py:
-    - o file cu co so, code khong co  -> giu nguyen file cu
-    - o file cu trong, code co so     -> dien vao
-    - ca hai co so va LECH nhau       -> BAO conflict, VAN GIU FILE CU
-Chay lai crawler bao nhieu lan cung khong mat cong nhap tay. Chi `--rebuild` moi
-dung lai tu dau tu code, va lenh do XOA moi o nhap tay.
-
-Khi dien tay, nen dat nguon="nhap_tay" va dien kem source_url + note de sau con
-truy lai duoc goc. Cot bat buoc: car_percent (hop nhat). Cac cot khac tuy chon.
-
-Chay:
-    python -m crawlers.car                 # dung + ghi CSV + validate (GIU o nhap tay)
-    python -m crawlers.car --rebuild       # dung lai tu code, XOA o nhap tay
-    python -m crawlers.car --validate      # doi chieu voi vnstock
-    python -m crawlers.car --coverage      # tinh trang 22 NH
-    python -m crawlers.car --as-of 2026-H1 # CAR dung duoc tai mot ky, kem tuoi du lieu
-    python -m crawlers.car --fetch VIB     # tai + trich lai tu ban goc
-    python -m crawlers.car --check-sources # kiem trich dan con song khong
-"""
 from __future__ import annotations
 
 import re
@@ -210,6 +139,204 @@ DISCLOSED: list[tuple] = [
         "https://static2.vietstock.vn/data/HNX/2026/BCTLATV/VN/QUY%202/BAB_BaocaoTyleAnToanVon_6T_2026.pdf",
         "PDF SCAN, khong co lop text - doc Bang 2 trang 6 bang cach render thanh anh. Giam 1.07 "
         "diem so voi 10.02 (2025-H2); ban cong bo khong in ky so sanh.",
+    ),
+    (
+        "CTG", "2026-Q2", 10.10, 10.13, 7.68, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/CTG_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN (doc bang OCR 22/10/2026). Bang 3 trang 4, nhan cot 'Rieng le | Hop nhat'. Kiem so hoc: "
+        "von tu co hop nhat 257,862,304 / (von cap 1 195,940,870 / 7.68%) = 10.11%. Ban cong bo ghi tuan thu TT41.",
+    ),
+    (
+        "HDB", "2026-Q2", 14.27, 12.80, None, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/HDB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN (OCR 22/10/2026). Bang muc 3b trang 5, nhan cot 31/12/2025 | 30/06/2026, moi ky Rieng le | "
+        "Hop nhat. Kiem so hoc: 124,719,294 / 874,231,315 = 14.27%. Ky so sanh 31/12/2025 hop nhat 16.72 "
+        "khop o 2025-H2 da nhap tay (16.7). Ap dung TT41 + TT22/2023.",
+    ),
+    (
+        "NAB", "2026-Q2", 10.94, 10.86, 7.04, "TT14", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/NAB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN (OCR 22/10/2026). Bang trang 4, nhan cot 'Rieng le | Hop nhat'. TINH THEO TT 14/2025/TT-NHNN "
+        "(khong phai TT41) -> gay chuoi. Lay C3 = A/B = 39,643,586 / 362,303,427 = 10.94% cho cung dinh nghia voi "
+        "cac ky truoc; dong C 'Ty le an toan von = C3 + C4' in 11.57% la da cong bo dem bao toan von CCB 0.625%.",
+    ),
+    (
+        "SHB", "2026-Q2", 11.81, 11.53, 9.00, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/SHB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF co lop chu. Muc 2b trang 2, cot Rieng le | Hop nhat. Kiem so hoc ca hai cot: hop nhat 98,451,108 / "
+        "833,733,768 = 11.81%, rieng le 94,201,658 / 817,364,792 = 11.53% -> gan cot da chac (khac 2025-Q2 'tb').",
+    ),
+    (
+        "PGB", "2026-Q2", 12.51, None, 12.08, "TT41", "cao",
+        "https://static2.vietstock.vn/data/UPCOM/2026/BCTLATV/VN/QUY%202/PGB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN (OCR 22/10/2026). Bang 02 trang 4, MOT cot 30/06/2026 (PGBank khong co cong ty con hop nhat): "
+        "CAR 12.51%, ty le von cap 1 12.08%, tong TSCRR 67,469.65 ty. Quy dinh noi bo tuan thu TT41. "
+        "Tang 1.91 diem so voi 10.60 (2025-H2).",
+    ),
+    # O con trong cua cac nam truoc, tim thay 23/10/2026 bang mau ten VIETSTOCK_CAR (truoc do chua do cho cac nam nay).
+    (
+        "OCB", "2019-Q2", 11.14, 11.11, 10.72, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2019/BCTLATV/VN/QUY%202/OCB_BaocaoTyleAnToanVon_6T_2019.pdf",
+        "PDF SCAN (OCR 23/10/2026). Muc 3.3 trang 3 'Tai thoi diem 30/06/2019': CAR 11.11%, CAR hop nhat "
+        "(CARconso) 11.14%; ty le von cap 1 rieng le = hop nhat 10.72%.",
+    ),
+    (
+        "NAB", "2020-Q2", 8.99, 8.86, 5.68, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/QUY%202/NAB_BaocaoTyleAnToanVon_6T_2020.pdf",
+        "PDF SCAN (OCR 23/10/2026). Bang trang 5, cot Rieng le | Hop nhat. Kiem so hoc: 8,093,860 / (87,788,218 + "
+        "12.5 x (95,931 + 85,007)) = 8.99%.",
+    ),
+    (
+        "BAB", "2021-Q2", 9.12, 9.03, 8.19, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HNX/2021/BCTLATV/VN/QUY%202/BAB_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "Bang 2 trang 6 (doc tu anh: lop chu lech cot), nhan cot 'Rieng le | Hop nhat': CAR 9.03 | 9.12, von cap 1 "
+        "8.17 | 8.19.",
+    ),
+    (
+        "LPB", "2021-Q2", 10.41, 10.41, 8.41, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/LPB_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "Bang muc III, cot Rieng le | Hop nhat bang nhau: CAR 10.41%, CAR cap 1 8.41%. (File EIB cung ten 6T_2021 "
+        "tren Vietstock thuc la ban 31/12/2021: 12.29 hop nhat, khop o 2021-H2 da co.)",
+    ),
+    (
+        "EIB", "2020-Q4", 11.81, None, None, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2021/BCTN/VN/EIB_Baocaothuongnien_2021.pdf",
+        "Bao cao thuong nien 2021, bang 'Mot so chi tieu tai chinh co ban' trang 19: 'Ty le an toan von (CAR) hop "
+        "nhat' 2018 15.05 | 2019 13.81 | 2020 11.81 | 2021 12.29. Hai nam 2019, 2021 khop o da co -> lay 2020.",
+    ),
+    # O SAI trong file, sua 30/10/2026 sau khi doi chieu WiData roi mo ban goc (reports/doi_chieu_car_widata.md). Ban nam
+    # nam o .../BCTLATV/VN/NAM/{MA}_BaocaoTyleAnToanVon_{nam}.pdf. write() khong ghi de o da co so nen file da duoc sua tay.
+    (
+        "TPB", "2025-Q4", 14.35, 12.81, 10.66, "TT14", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/TPB_BaocaoTyleAnToanVon_2025.pdf",
+        "Bang 2 trang 4, nhan cot 'Rieng le | Hop nhat', theo TT 14/2025/TT-NHNN (bia in nham 14/2016). Kiem so hoc: 56,342,341 / 392,591,993 = 14.35%, rieng le 49,065,552 / 382,983,819 = 12.81%. Sua 30/10/2026: o cu 12.81 la so RIENG LE ghi nham cot hop nhat. Tai lieu DHDCD 2026 ghi 14.33, lay bao cao CAR.",
+    ),
+    (
+        "VCB", "2026-Q2", 11.71, 11.03, 11.43, "TT14", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/VCB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN, doc tu anh 30/10/2026. Bieu 1 trang 2, Bieu 2 trang 2-3, Bieu 4 trang 4, cot 'Rieng le | Hop nhat', theo TT 14/2025/TT-NHNN. Kiem so hoc: 252,649,555 / 2,158,120,481 = 11.71%. Sua 30/10/2026: o cu 11.14 khong khop cot nao cua ban cong bo.",
+    ),
+    (
+        "ACB", "2025-Q2", 10.97, 10.41, 11.57, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2025.pdf",
+        "PDF SCAN, doc tu anh 30/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc), bia ghi TT41 va TT22/2023. Kiem so hoc: 82,309,651 / 750,047,678 = 10.97%. Sua 30/10/2026: o nhap tay cu 12.12 khong co trong bang CAR, tra lai so 10.97 khop vnstock.",
+    ),
+    (
+        "ACB", "2025-Q4", 12.45, 11.04, 12.07, "TT14", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2025.pdf",
+        "PDF SCAN, doc tu anh 30/10/2026. Bang 1 trang 4 (so in 1), Bang 5 trang 7 (so in 4), cot 'Hop nhat | Rieng le', bia ghi TT 14/2025/TT-NHNN. Von tu co 95,055,152 / tong TSCRR 762,908,859 = 12.46%, ngan hang in 12.45, giu so in. Sua 30/10/2026: o cu 12.3 la so UOC TINH o BCTN 2025 trang 41 (chu thich *).",
+    ),
+    # O SAI trong file, sua 31/10/2026 sau khi mo du ban goc cua 21 o lech voi WiData (reports/doi_chieu_car_widata.md).
+    # ACB 2026-Q2 la so TINH TU BANG, ngan hang chi in 11.8; VIB 2022-H1 giu 11.48 cua vnstock nen khong co o day.
+    (
+        "ACB", "2026-Q2", 11.87, 10.5, 11.53, "TT14", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2026/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2026.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 1 trang 4 (so in 1), Bang 5 trang 7 (so in 4), cot 'Hop nhat | Rieng le', theo TT 14/2025/TT-NHNN. Ngan hang chi in MOT SO LE va cat bot: CAR 11,8 | 10,5, von cap 1 11,5 | 10,0. So trong file TINH TU BANG: 100,347,094 / 845,674,174 = 11.87%, rieng le 86,774,234 / 826,234,583 = 10.50%, von cap 1 97,488,765 / 845,674,174 = 11.53%. Giu 11.87 thay vi so in 11.8 theo quyet dinh cua nguoi dung 31/10/2026, vi so in lam mat thong tin o khoang cach voi SHB 11.81.",
+    ),
+    (
+        "LPB", "2025-Q2", 11.8, 11.8, 9.5, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/LPB_BaocaoTyleAnToanVon_6T_2025.pdf",
+        "Bang 2 trang 6, cot 'Rieng le | Hop nhat' bang nhau: CAR 11,80, CAR tier 1 9,50. Sua 31/10/2026: o cu 9.5 cua vnstock la CAR CAP 1 ghi nham cot CAR.",
+    ),
+    (
+        "HDB", "2025-Q2", 13.02, 12.53, None, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/HDB_BaocaoTyleAnToanVon_6T_2025.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang muc 3b trang 6 (so in 5/10), cot 31/12/2024 | 30/06/2025, moi ky Rieng le | Hop nhat. Kiem so hoc: 95,443,771 / 733,282,178 = 13.02%. Sua 31/10/2026: o cu 12.02 cua vnstock lech dung 1.00.",
+    ),
+    (
+        "HDB", "2022-Q4", 13.42, 12.8, None, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/HDB_BaocaoTyleAnToanVon_2022.pdf",
+        "Lop chu loi font, doc tu anh 31/10/2026. Bang muc 3b trang 5, cot 31/12/2021 | 31/12/2022, moi ky Rieng le | Hop nhat. Kiem so hoc: 46,665,537 / 347,752,806 = 13.42%. Sua 31/10/2026: o nhap tay cu 14.3 khong co trong bang.",
+    ),
+    (
+        "CTG", "2021-Q2", 8.52, 8.33, 6.86, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/CTG_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4 (so in 2), nhan cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 9.33 khong co trong bang, lech dung 1.00 so voi so rieng le 8.33.",
+    ),
+    (
+        "ACB", "2021-Q2", 10.41, 10.35, 10.06, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/ACB_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 6 (so in 4), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 41,414,529 / 397,752,971 = 10.41%. Sua 31/10/2026: o nhap tay cu 11.1 khong co trong bang.",
+    ),
+    (
+        "TPB", "2021-Q2", 12.85, 12.85, 10.39, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2021/BCTLATV/VN/QUY%202/TPB_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "Bang 2 trang 4, dong ty le an toan von rieng le va hop nhat cung 12.85 (TPBank chua co cong ty con). Kiem so hoc: 25,088,647 / 195,187,688 = 12.85%. Sua 31/10/2026: o nhap tay cu 13.39 chep trung ky 2021-H2.",
+    ),
+    (
+        "CTG", "2022-Q4", 8.98, 8.9, 6.58, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/CTG_BaocaoTyleAnToanVon_2022.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4 (so in 2), nhan cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 9.45 khong co trong bang.",
+    ),
+    (
+        "BID", "2019-Q4", 8.74, 8.52, 6.13, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2019/BCTLATV/VN/NAM/BID_BaocaoTyleAnToanVon_2019.pdf",
+        "Lop chu chat luong thap, doc 31/10/2026. Bang 2 trang 6, cot 'So lieu rieng le | So lieu hop nhat': CAR 8.52 | 8.74, von cap 1 6.21 | 6.13. Sua 31/10/2026: o nhap tay cu 9.18 khong co trong bang.",
+    ),
+    (
+        "BVB", "2021-Q2", 9.7, 9.58, 8.06, "TT41", "cao",
+        "https://static2.vietstock.vn/data/UPCOM/2021/BCTLATV/VN/QUY%202/BVB_BaocaoTyleAnToanVon_6T_2021.pdf",
+        "Bieu 2 trang 2, cot 'Rieng le | Hop nhat'. Kiem so hoc: 5,619,626 / 57,961,369 = 9.70%. Sua 31/10/2026: o nhap tay cu 9.27 chep trung ky 2020-H2.",
+    ),
+    (
+        "BID", "2022-Q4", 9.34, 8.92, 6.0, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/BID_BaocaoTyleAnToanVon_2022.pdf",
+        "Bang 2 trang 7, cot 'So lieu rieng le | So lieu hop nhat'. Sua 31/10/2026: o nhap tay cu 8.92 la so RIENG LE ghi nham cot hop nhat.",
+    ),
+    (
+        "ACB", "2023-Q4", 12.48, 12.11, 12.94, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2023/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2023.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 68,029,134 / 545,025,927 = 12.48%. Sua 31/10/2026: o nhap tay cu 12.1 gan so rieng le 12.11.",
+    ),
+    (
+        "ACB", "2022-Q4", 12.8, 12.23, 12.69, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2022.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 58,518,779 / 457,025,561 = 12.80%. Sua 31/10/2026: o nhap tay cu 12.5 khong co trong bang.",
+    ),
+    (
+        "NAB", "2020-Q4", 9.28, 9.2, 6.1, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/NAM/NAB_BaocaoTyleAnToanVon_2020.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang trang 5, cot 'Rieng le | Hop nhat'. Kiem so hoc: 10,042,254 / 108,163,246 = 9.28%. Sua 31/10/2026: o nhap tay cu 9.57 khong co trong bang.",
+    ),
+    (
+        "OCB", "2025-Q4", 12.32, 12.27, 11.89, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2025.pdf",
+        "Bang 3 trang 10-11, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.27% rieng le, 12.32% hop nhat. Sua 31/10/2026: o nhap tay cu 12.09 khong co trong bang.",
+    ),
+    (
+        "CTG", "2023-Q4", 9.31, 9.28, 6.79, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2023/BCTLATV/VN/NAM/CTG_BaocaoTyleAnToanVon_2023.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 4, nhan cot 'Rieng le | Hop nhat'. Kiem so hoc: 169,574,027 / 1,820,896,248 = 9.31%. Sua 31/10/2026: o nhap tay cu 9.13 khong co trong bang.",
+    ),
+    (
+        "VIB", "2025-Q4", 11.36, 11.28, 9.67, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/NAM/VIB_BaocaoTyleAnToanVon_2025.pdf",
+        "Bang trang 5 (hop nhat) va trang 6 (rieng le), nhan muc ro. Kiem so hoc: 55,139 / 485,277 = 11.36%. Day la so TT41, so TT14 cung ngay la 12.2. Sua 31/10/2026: o nhap tay cu 11.2 khong co trong bang.",
+    ),
+    (
+        "OCB", "2020-Q4", 12.73, 12.71, 12.36, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2020/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2020.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang muc 3.3 trang 4 (so in 3/9), cot 'Rieng le | Hop nhat'. Sua 31/10/2026: o nhap tay cu 12.85 khong co trong bang.",
+    ),
+    (
+        "BAB", "2025-Q4", 10.1, 10.02, 7.43, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HNX/2025/BCTLATV/VN/NAM/BAB_BaocaoTyleAnToanVon_2025.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 2 trang 6 (so in 3), cot 'Rieng le | Hop nhat'. Kiem so hoc: 18,091,189 / 179,114,139 = 10.10%. Sua 31/10/2026: o nhap tay cu 10.02 la so RIENG LE ghi nham cot hop nhat.",
+    ),
+    (
+        "OCB", "2022-Q4", 12.84, 12.82, 12.48, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2022/BCTLATV/VN/NAM/OCB_BaocaoTyleAnToanVon_2022.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Bang 3 trang 11-12, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.82% rieng le, 12.84% hop nhat. Sua 31/10/2026: o nhap tay cu 12.9 khong co trong bang.",
+    ),
+    (
+        "ACB", "2024-Q4", 11.82, 11.71, 12.29, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2024/BCTLATV/VN/NAM/ACB_BaocaoTyleAnToanVon_2024.pdf",
+        "PDF SCAN, doc tu anh 31/10/2026. Muc 2.2.b trang 5 (so in 3/9), cot 'Hop nhat | Rieng le' (ACB in hop nhat truoc). Kiem so hoc: 79,861,960 / 675,593,330 = 11.82%. Sua 31/10/2026: o nhap tay cu 12.08 khong co trong bang.",
+    ),
+    (
+        "OCB", "2025-Q2", 12.48, 12.43, 12.06, "TT41", "cao",
+        "https://static2.vietstock.vn/data/HOSE/2025/BCTLATV/VN/QUY%202/OCB_BaocaoTyleAnToanVon_6T_2025.pdf",
+        "Bang 3 trang 10-11, muc RIENG LE va HOP NHAT tach rieng, van ban ghi 12.43% rieng le, 12.48% hop nhat. Sua 31/10/2026: o nhap tay cu 12.43 la so RIENG LE ghi nham cot hop nhat.",
     ),
 ]
 
@@ -427,7 +554,6 @@ _COOKIE_JS = re.compile(r'document\.cookie="([^"=]+)=([^"]+)"')
 
 
 def _get(url: str, timeout: int = 90):
-    """GET mot file, tu vuot phep thu cookie kieu JavaScript neu nguon dung."""
     import requests
 
     session = requests.Session()
@@ -443,13 +569,11 @@ def _get(url: str, timeout: int = 90):
 
 
 def period_end(period: str) -> str:
-    """Ngay chot cua mot ky quy (dung cho ban ghi nguon, truoc khi gop nua nam)."""
     year, quarter = period.split("-Q")
     return f"{year}-{QUARTER_END[int(quarter)]}"
 
 
 def to_half(period: str) -> tuple[str, int]:
-    """'2025-Q2' -> ('2025-H1', 0). rank 0 = ky chuan, 1 = ky thay the."""
     year, quarter = period.split("-Q")
     half, rank = QUARTER_TO_HALF[int(quarter)]
     return f"{year}-{half}", rank
@@ -461,13 +585,6 @@ def half_end(period: str) -> str:
 
 
 def collapse_to_half(df: pd.DataFrame) -> pd.DataFrame:
-    """Gop ban ghi theo quy thanh ky nua nam.
-
-    Trong mot nua nam, uu tien ky chot (Q2 cho H1, Q4 cho H2). Chi khi thieu ky do
-    moi lay Q1/Q3 lam thay the, va khi do danh dau dung_ky_thay_the=True kem
-    as_of_date THAT (31/03 hoac 30/09) -- khong gan nhan 30/06 cho mot con so chot
-    ngay 31/03. Day la cho de sinh sai lech am tham nhat khi doi don vi ky.
-    """
     out = df.copy()
     mapped = out["period"].map(to_half)
     out["ky_goc"] = out["period"]
@@ -488,12 +605,6 @@ _PCT = re.compile(r"(\d{1,2})[.,](\d{1,2})\s*%")
 
 
 def parse(content: bytes) -> dict:
-    """Trich ky bao cao + cac ung vien ty le tu PDF ban cong bo.
-
-    KHONG doan gia tri nao la CAR: tra ve cac o tim duoc kem so trang de nguoi
-    doc chot. Ly do giong lending_rates_bank.py -- module doc dung nhung gi
-    nguon in ra, cho gi khong chac thi bao chu khong tu sua.
-    """
     import fitz
 
     doc = fitz.open(stream=content, filetype="pdf")
@@ -545,7 +656,6 @@ def parse(content: bytes) -> dict:
 
 
 def fetch(ticker: str, url: str | None = None) -> dict:
-    """Tai ban cong bo cua mot NH va trich thu. Khong ghi file."""
     import requests
 
     url = url or PILLAR3.get(ticker, "")
@@ -574,7 +684,6 @@ def fetch(ticker: str, url: str | None = None) -> dict:
 # Dung bang
 # ---------------------------------------------------------------------------
 def from_vnstock() -> pd.DataFrame:
-    """88 o CAR co san trong bank_credit_quarterly.csv."""
     df = pd.read_csv(VNSTOCK, encoding="utf-8-sig")
     df = df[df["car_percent"].notna()][["ticker", "period", "car_percent"]].copy()
     # float chu khong phai pd.NA: giu cung dtype voi from_disclosed() nen concat
@@ -677,12 +786,6 @@ def tickers() -> list[str]:
 
 
 def full_grid() -> pd.DataFrame:
-    """Khung DAY DU 22 NH x moi ky nua nam, o chua co so thi de TRONG.
-
-    Muc dich: file la BANG CONG VIEC, khong chi la ket qua crawl. O trong noi ro
-    "ky nay ton tai nhung chua tim ra so", khac han voi viec khong co dong nao -
-    nguoi doc khong phai tu doan xem la thieu du lieu hay khong co ky do.
-    """
     rows = [{"ticker": t, "period": p, "as_of_date": half_end(p),
              "ky_goc": "", "dung_ky_thay_the": False,
              "car_percent": float("nan"), "car_rieng_le_percent": float("nan"),
@@ -693,12 +796,6 @@ def full_grid() -> pd.DataFrame:
 
 
 def build() -> pd.DataFrame:
-    """Khung day du, dien nhung o code da biet.
-
-    Thu tu quan trong: gop nguon TRUOC (ban NH tu cong bo thang vnstock o o quy
-    trung nhau), roi moi collapse_to_half(). Lam nguoc lai thi mot ban vnstock ky
-    Q2 co the dai dien cho ca nua nam va che mat ban goc cua chinh ngan hang.
-    """
     known = pd.concat([from_vnstock(), from_disclosed()], ignore_index=True)
     # nguon sau thang nguon truoc o o trung khoa QUY
     known = known.drop_duplicates(subset=["ticker", "period"], keep="last")
@@ -720,16 +817,6 @@ _VALUE_COLS = ["as_of_date", "ky_goc", "dung_ky_thay_the", "car_percent",
 
 
 def write(rebuild: bool = False) -> pd.DataFrame:
-    """Ghi file, GIU NGUYEN nhung o da co so trong file cu.
-
-    Cung nguyen tac voi loan_rates.py: module KHONG BAO GIO ghi de o da co so.
-    File nay co dong nhap tay, nen chay lai crawler ma ghi de thi mat cong nhap.
-    - o file cu co so, code khong co  -> giu nguyen file cu
-    - o file cu trong, code co so     -> dien vao
-    - ca hai cung co so va LECH nhau  -> BAO conflict, van giu file cu
-
-    rebuild=True bo qua file cu, dung lai tu dau tu code (chi dung khi co y).
-    """
     OUT.mkdir(parents=True, exist_ok=True)
     df = build()
     conflicts, replaced, kept = [], [], 0
@@ -877,7 +964,6 @@ def validate(df: pd.DataFrame | None = None) -> None:
 
 
 def coverage(df: pd.DataFrame | None = None, den_ky: str = "2026-H1") -> pd.DataFrame:
-    """Tinh trang tung NH: quan sat cuoi cung, do cu, con thieu gi."""
     if df is None:
         df = pd.read_csv(MASTER, encoding="utf-8-sig")
 
@@ -922,13 +1008,6 @@ def coverage(df: pd.DataFrame | None = None, den_ky: str = "2026-H1") -> pd.Data
 
 
 def as_of(period: str = "2026-H1", df: pd.DataFrame | None = None) -> pd.DataFrame:
-    """CAR dung duoc tai mot ky, forward-fill tu quan sat gan nhat.
-
-    Tra ve kem cot tuoi_quy va thong_tu de KHONG cho phep dung mu: mot NH mang so
-    cu 4 nam khong duoc xep hang ngang voi NH co so moi 2 quy, va mot NH da chuyen
-    sang TT14 khong so truc tiep duoc voi NH con o TT41. Xem muc do nhay trong
-    README truoc khi dua vao ma tran quyet dinh.
-    """
     if df is None:
         df = pd.read_csv(MASTER, encoding="utf-8-sig")
     y_den, h_den = int(period[:4]), int(period[-1])
@@ -942,7 +1021,6 @@ def as_of(period: str = "2026-H1", df: pd.DataFrame | None = None) -> pd.DataFra
 
 
 def check_sources(pause: float = 0.5) -> bool:
-    """Kiem cac trich dan trong DISCLOSED con song khong."""
     import time
 
     import requests

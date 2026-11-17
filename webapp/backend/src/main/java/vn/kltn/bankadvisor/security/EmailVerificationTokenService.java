@@ -49,7 +49,7 @@ public class EmailVerificationTokenService {
     private final Clock clock;
 
     public EmailVerificationTokenService(AppProperties properties, Clock clock) {
-        SecretKey key = deriveKey(JwtTokenService.secretKey(properties.jwt().secret()));
+        SecretKey key = deriveKey(JwtTokenService.secretKey(properties.jwt().secret()), KEY_LABEL);
         this.encoder = new NimbusJwtEncoder(new ImmutableSecret<>(key));
         this.decoder = NimbusJwtDecoder.withSecretKey(key).macAlgorithm(MacAlgorithm.HS256).build();
         OAuth2TokenValidator<Jwt> purpose = jwt -> PURPOSE.equals(jwt.getClaimAsString(CLAIM_PURPOSE))
@@ -92,14 +92,15 @@ public class EmailVerificationTokenService {
         }
     }
 
-    private static SecretKey deriveKey(SecretKey sessionKey) {
+    /** Khóa riêng cho một loại token, suy ra từ khóa phiên: HMAC(khóa phiên, nhãn). */
+    static SecretKey deriveKey(SecretKey sessionKey, String label) {
         try {
             Mac mac = Mac.getInstance("HmacSHA256");
             mac.init(sessionKey);
-            byte[] derived = mac.doFinal(KEY_LABEL.getBytes(StandardCharsets.UTF_8));
+            byte[] derived = mac.doFinal(label.getBytes(StandardCharsets.UTF_8));
             return new SecretKeySpec(derived, "HmacSHA256");
         } catch (GeneralSecurityException e) {
-            throw new IllegalStateException("Không tạo được khóa ký link xác minh email", e);
+            throw new IllegalStateException("Không tạo được khóa ký token " + label, e);
         }
     }
 }

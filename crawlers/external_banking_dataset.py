@@ -14,9 +14,15 @@ HEADERS = {
 }
 DATAVERSE_FILE_URL = "https://dataverse.harvard.edu/api/access/datafile/7677329"
 
+# Ma Harvard "BVB" la Bao Viet Bank, khong phai BVB (Ban Viet = "VCPB"); "OB" la OceanBank (kiem 14/10/2026 theo
+# sheet Banks List). Truoc day BVB cua Harvard bi ghep nham vao ma BVB cua de tai.
 DATASET_CODE_TO_TICKER = {
-    "BIDV": "BID", "MB": "MBB", "LVB": "LPB", "SEAB": "SSB", "NCB": "NVB",
+    "BIDV": "BID", "MB": "MBB", "LVB": "LPB", "SEAB": "SSB", "NCB": "NVB", "VCPB": "BVB",
+    "BVB": "BAOVIETBANK", "OB": "OCEANBANK",
 }
+# Nam cua HDB trong bo Harvard lech mot nam: dong "2012" (TTS 86.226.641 trieu) trung DUNG CDKT 31/12/2013 (sau sap
+# nhap DaiA), dong "2016" trung 31/12/2017; 8/9 nam khop tong tai san khi cong 1, 2/9 khi khong (VNDirect, 14/10/2026).
+YEAR_SHIFT = {"HDB": 1}
 
 
 def download(force: bool = False) -> Path:
@@ -34,6 +40,7 @@ def ingest() -> dict:
 
     data = pd.read_excel(path, sheet_name="Data")
     data["ticker"] = data["Bank Code"].map(DATASET_CODE_TO_TICKER).fillna(data["Bank Code"])
+    data["Year"] = data["Year"] + data["ticker"].map(YEAR_SHIFT).fillna(0).astype(int)
     data_csv = OUT / "vn_banking_system_2002_2021_data.csv"
     data.to_csv(data_csv, index=False, encoding="utf-8-sig")
 

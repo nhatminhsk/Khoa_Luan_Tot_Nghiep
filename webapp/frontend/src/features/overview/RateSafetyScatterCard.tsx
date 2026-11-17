@@ -40,14 +40,20 @@ export function RateSafetyScatterCard() {
   const snapshot = useQuery({ queryKey: queryKeys.indicatorSnapshot, queryFn: marketRepository.indicatorSnapshot });
   const rates = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
 
-  const points = useMemo<Point[]>(() => {
-    if (!snapshot.data || !rates.data) return [];
+  // Chỉ các ngân hàng có số ở quý tham chiếu (quý mới nhất của chỉ tiêu): trộn số quý cũ vào làm sai tương quan và trung vị.
+  const { points, period } = useMemo<{ points: Point[]; period: string | null }>(() => {
+    if (!snapshot.data || !rates.data) return { points: [], period: null };
     const rateOf = new Map(rates.data.rows.map((r) => [r.ticker, r.cells["12"]?.rate]));
-    return snapshot.data.rows.flatMap((row) => {
+    const ref = snapshot.data.rows.reduce<string | null>((p, r) => {
+      const c = r.values[code];
+      return c && (p === null || c.period > p) ? c.period : p;
+    }, null);
+    const kept = snapshot.data.rows.flatMap((row) => {
       const cell = row.values[code];
       const y = rateOf.get(row.ticker);
-      return cell && y !== undefined ? [{ ticker: row.ticker, shortName: row.shortName, x: cell.value, y, period: cell.period }] : [];
+      return cell && cell.period === ref && y !== undefined ? [{ ticker: row.ticker, shortName: row.shortName, x: cell.value, y, period: cell.period }] : [];
     });
+    return { points: kept, period: ref };
   }, [snapshot.data, rates.data, code]);
 
   const meta = SAFETY_AXES[code];
@@ -56,13 +62,13 @@ export function RateSafetyScatterCard() {
 
   return (
     <SectionCard
-      title="Lãi suất và độ an toàn"
+      title="Lãi gửi và chỉ tiêu tài chính"
       subtitle={
         rho === null
           ? "Lãi 12 tháng trực tuyến hôm nay so với chỉ tiêu an toàn"
-          : `Spearman ρ = ${formatDelta(rho)} · n = ${points.length} · ${Math.abs(rho) >= critical ? "có ý nghĩa thống kê ở mức 5%" : "chưa có ý nghĩa thống kê"}`
+          : `${meta.label} ${formatQuarter(period)}, ${points.length} NH · Spearman ρ = ${formatDelta(rho)} · ${Math.abs(rho) >= critical ? "có ý nghĩa thống kê ở mức 5%" : "chưa có ý nghĩa thống kê"}`
       }
-      info={`Mỗi chấm là một ngân hàng. Trục dọc: lãi 12 tháng trực tuyến hôm nay; trục ngang: ${meta.axis.toLowerCase()} gần nhất trong 4 quý. Hai đường xám là trung vị. Với ${points.length} ngân hàng, |ρ| phải từ ${formatNumber(critical)} trở lên mới có ý nghĩa thống kê ở mức 5%, nên lãi suất cao chưa đủ để kết luận ngân hàng kém an toàn hơn. Rê chuột lên chấm để xem tên ngân hàng.`}
+      info={`Mỗi chấm là một ngân hàng. Trục dọc: lãi 12 tháng trực tuyến hôm nay; trục ngang: ${meta.axis.toLowerCase()} của quý mới nhất (ngân hàng chưa có số quý này không vẽ). Hai đường xám là trung vị. Với ${points.length} ngân hàng, |ρ| phải từ ${formatNumber(critical)} trở lên mới có ý nghĩa thống kê ở mức 5%, nên lãi suất cao chưa đủ để kết luận ngân hàng kém an toàn hơn. Rê chuột lên chấm để xem tên ngân hàng.`}
       action={
         <PeriodToggle
           value={code}
@@ -71,7 +77,6 @@ export function RateSafetyScatterCard() {
           ariaLabel="Chỉ tiêu an toàn trên trục ngang"
         />
       }
-      sx={{ height: "100%" }}
     >
       {snapshot.isError || rates.isError ? (
         <ErrorState

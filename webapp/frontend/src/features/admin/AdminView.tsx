@@ -35,7 +35,8 @@ const OUTCOME_LABEL: Record<ImportSummary["outcomes"][number]["status"], { label
 };
 
 export function AdminView() {
-  const { isAdmin, isLoading } = useAuth();
+  const { can, isLoading } = useAuth();
+  const isAdmin = can("DATA_MANAGE");
   const queryClient = useQueryClient();
   const notify = useNotify();
   const runs = useQuery({ queryKey: queryKeys.importRuns, queryFn: adminRepository.importRuns, enabled: isAdmin });
@@ -43,6 +44,7 @@ export function AdminView() {
     mutationFn: (force: boolean) => adminRepository.runImport(force),
     onSuccess: (summary) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.importRuns });
+      queryClient.invalidateQueries({ queryKey: ["admin", "audit"] });
       // Dữ liệu dùng chung có thể đã đổi: làm mới mọi truy vấn công khai.
       queryClient.invalidateQueries({ predicate: (q) => q.queryKey[0] !== "auth" && q.queryKey[0] !== "admin" });
       const failed = summary.outcomes.filter((o) => o.status === "FAILED").length;
@@ -189,6 +191,7 @@ function EmailQueueCard() {
     mutationFn: adminRepository.dispatchEmails,
     onSuccess: (r) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.emailQueue });
+      queryClient.invalidateQueries({ queryKey: ["admin", "audit"] });
       notify(
         `Đã gửi ${r.emailsSent} email${r.emailsFailed ? `, lỗi ${r.emailsFailed}` : ""}${
           r.notificationsSkipped ? `, bỏ qua ${r.notificationsSkipped} thông báo` : ""

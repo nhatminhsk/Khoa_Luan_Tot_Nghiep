@@ -8,10 +8,10 @@ import { NAV_GROUPS, isActive } from "@/config/navigation";
 import { useAuth } from "@/hooks/use-auth";
 import { BrandMark } from "./BrandMark";
 
-/** Menu bên trái, dựng từ NAV_GROUPS. Mục cần đăng nhập hiện ổ khóa khi chưa đăng nhập; mục quản trị ẩn với người dùng thường. */
+/** Menu bên trái, dựng từ NAV_GROUPS. Mục cần đăng nhập hiện ổ khóa khi chưa đăng nhập; mục cần quyền ẩn khi không có quyền. */
 export function SideNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
-  const { isAuthenticated, isAdmin, isLoading } = useAuth();
+  const { isAuthenticated, can, isLoading } = useAuth();
 
   return (
     <Stack sx={{ height: "100%" }}>
@@ -20,7 +20,7 @@ export function SideNav({ onNavigate }: { onNavigate?: () => void }) {
       </Box>
       <Box component="nav" aria-label="Điều hướng chính" sx={{ flex: 1, overflowY: "auto", py: 0.5 }}>
         {NAV_GROUPS.map((group) => {
-          const items = group.items.filter((item) => !item.adminOnly || isAdmin);
+          const items = group.items.filter((item) => !item.permission || can(item.permission));
           if (items.length === 0) return null;
           return (
             <List
@@ -39,7 +39,7 @@ export function SideNav({ onNavigate }: { onNavigate?: () => void }) {
                     fontWeight: 600,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "text.disabled",
+                    color: "text.secondary",
                   }}
                 >
                   {group.title}

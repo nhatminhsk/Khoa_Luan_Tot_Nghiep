@@ -1,0 +1,16 @@
+# Thư viện cho run_daily_crawl.py khi chạy trong container (pipeline/Dockerfile). Chỉ gồm thứ các bước hằng ngày
+# import tới; requirements.txt ở gốc repo là bộ đầy đủ cho cả notebook và thí nghiệm.
+# Ghim đúng phiên bản của .venv đang chạy crawl hằng ngày trên máy Windows (29/10/2026): pandas 3 đổi hành vi
+# (copy-on-write, kiểu chuỗi mặc định) nên không để pip tự nâng.
+# Không có vnstock_data (gói riêng của nhà tài trợ vnstock, không có trên PyPI): hai bước price và market_index
+# báo lỗi trong container và được bỏ qua; các bước khác vẫn chạy (run_daily_crawl cô lập lỗi từng bước).
+pandas==2.3.3
+numpy==2.2.6
+requests==2.34.2
+urllib3==2.7.0
+beautifulsoup4==4.15.0
+lxml==6.1.2
+html5lib==1.1
+pdfplumber==0.11.10
+pymupdf==1.28.2
+websockets==17.0.1

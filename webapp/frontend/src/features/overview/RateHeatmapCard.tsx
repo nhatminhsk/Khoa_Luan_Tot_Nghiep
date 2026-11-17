@@ -13,6 +13,7 @@ import { useChartPalette } from "@/theme/chart-palette";
 import type { Channel, DepositRateTable } from "@/types/api";
 import { formatDelta, formatPercent, formatTerm } from "@/utils/format";
 import { CHANNEL_LABEL } from "@/utils/labels";
+import { rateDayText } from "@/utils/today";
 
 const INK_DARK = "#0b1120";
 const INK_LIGHT = "#ffffff";
@@ -29,7 +30,7 @@ export function RateHeatmapCard() {
 
   return (
     <SectionCard
-      title="Bản đồ lãi suất hôm nay"
+      title={`Bản đồ lãi suất ${rateDayText(table.data?.rateDate)}`}
       subtitle={`22 ngân hàng × kỳ hạn · ${CHANNEL_LABEL[channel].toLowerCase()}`}
       info="Mỗi hàng là một kỳ hạn, tô màu so với các ngân hàng khác trong cùng kỳ hạn đó: ô càng nổi là lãi càng cao. Số đậm là mức cao nhất của kỳ hạn. Cột sắp theo lãi 12 tháng giảm dần; ô “—” là ngân hàng không niêm yết kỳ hạn này."
       action={

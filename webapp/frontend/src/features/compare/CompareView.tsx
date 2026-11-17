@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Alert,
   Autocomplete,
   Box,
   Chip,
@@ -32,8 +33,15 @@ import type { Bank, Indicator } from "@/types/api";
 import { formatNumber, formatPercent, formatQuarter } from "@/utils/format";
 import { formatIndicator, isBetter } from "@/utils/indicator";
 import { CAMELS_LABEL, CAMELS_ORDER } from "@/utils/labels";
+import { rateDayText } from "@/utils/today";
 
 const MAX_BANKS = 4;
+/** Ví dụ bấm nhanh khi chưa chọn ngân hàng — chỉ để thử trang, không phải gợi ý nên chọn ngân hàng nào. */
+const EXAMPLES: string[][] = [
+  ["VCB", "BID", "CTG"],
+  ["VCB", "TCB"],
+  ["MBB", "ACB", "VPB"],
+];
 
 /**
  * Gán màu cố định cho từng ngân hàng: ngân hàng đã chọn giữ màu khi thêm/bớt ngân hàng khác
@@ -84,7 +92,6 @@ export function CompareView() {
   const catalog = useQuery({ queryKey: queryKeys.indicators, queryFn: marketRepository.indicators, staleTime: Infinity });
   const snapshot = useQuery({ queryKey: queryKeys.indicatorSnapshot, queryFn: marketRepository.indicatorSnapshot });
   const rates = useQuery({ queryKey: queryKeys.depositTable("ONLINE"), queryFn: () => marketRepository.depositTable("ONLINE") });
-  const apps = useQuery({ queryKey: queryKeys.appScores, queryFn: marketRepository.appScores });
   const comparison = useQuery({
     queryKey: queryKeys.indicatorComparison(indicatorCode, tickers),
     queryFn: () => marketRepository.indicatorComparison(indicatorCode, tickers),
@@ -159,11 +166,25 @@ export function CompareView() {
 
       {tickers.length === 0 ? (
         <SectionCard>
-          <EmptyState title="Chọn ngân hàng để so sánh" description="Gõ mã hoặc tên ngân hàng vào ô phía trên, chọn 2–4 ngân hàng." />
+          <EmptyState
+            title="Chọn ngân hàng để so sánh"
+            description="Gõ mã hoặc tên ngân hàng vào ô phía trên, chọn 2–4 ngân hàng. Hoặc thử một ví dụ:"
+            action={
+              <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: "wrap", justifyContent: "center", mt: 0.5 }}>
+                {EXAMPLES.map((group) => (
+                  <Chip key={group.join()} label={group.join(" · ")} variant="outlined" clickable onClick={() => update({ tickers: group })} />
+                ))}
+              </Stack>
+            }
+          />
         </SectionCard>
       ) : (
         <Stack spacing={2.5}>
-          <SectionCard title={indicator ? `${indicator.name} theo quý` : "Biểu đồ"} subtitle="Đường xám là trung vị các ngân hàng có số cùng quý.">
+          {tickers.length === 1 && (
+            <Alert severity="info">Chọn thêm ít nhất một ngân hàng để so sánh.</Alert>
+          )}
+          <SectionCard title={indicator ? `${indicator.name} theo quý` : "Biểu đồ"} subtitle={`Đường xám là trung vị các ngân hàng có số cùng quý.${indicator?.unit === "VND" ? " Đơn vị: nghìn tỷ đồng." : ""}`}
+          >
             {comparison.isError ? (
               <ErrorState error={comparison.error} onRetry={() => comparison.refetch()} />
             ) : !comparison.data ? (
@@ -194,6 +215,7 @@ export function CompareView() {
                   formatValue={(v) =>
                     comparison.data.indicator.unit === "VND" ? `${formatNumber(v, 1)} nghìn tỷ` : formatPercent(v)
                   }
+                  formatAxis={(v) => (comparison.data.indicator.unit === "VND" ? formatNumber(v, 0) : formatPercent(v))}
                   ariaLabel={`So sánh ${comparison.data.indicator.name} giữa ${selected.map((b) => b.shortName).join(", ")}`}
                 />
               </Box>
@@ -202,10 +224,17 @@ export function CompareView() {
 
           <SectionCard
             title="Bảng so sánh"
-            subtitle={`Số gần nhất trong 4 quý (mới nhất ${formatQuarter(snapshot.data?.latestPeriod)}). Dấu ✓ đánh dấu giá trị tốt nhất ở chỉ tiêu có chiều tốt/xấu rõ ràng.`}
+            subtitle={`Số gần nhất trong 4 quý (mới nhất ${formatQuarter(snapshot.data?.latestPeriod)}). Dấu ✓ đánh dấu giá trị tốt nhất ở chỉ tiêu có chiều tốt/xấu rõ ràng, chỉ khi các ngân hàng có số cùng kỳ.`}
             flush
           >
-            {!snapshot.data || !catalog.data ? (
+            {snapshot.isError || catalog.isError ? (
+              <Box sx={{ p: 2.5 }}>
+                <ErrorState
+                  error={snapshot.error ?? catalog.error}
+                  onRetry={() => (snapshot.isError ? snapshot.refetch() : catalog.refetch())}
+                />
+              </Box>
+            ) : !snapshot.data || !catalog.data ? (
               <Box sx={{ p: 2.5 }}>
                 <LoadingBlock height={400} />
               </Box>
@@ -218,7 +247,8 @@ export function CompareView() {
                 latestPeriod={snapshot.data.latestPeriod}
                 values={new Map(snapshot.data.rows.map((r) => [r.ticker, r.values]))}
                 rate12={new Map((rates.data?.rows ?? []).map((r) => [r.ticker, r.cells["12"]?.rate ?? null]))}
-                app={new Map((apps.data ?? []).map((a) => [a.ticker, a.googlePlayScore ?? a.appStoreScore]))}
+                rateFailed={rates.isError}
+                rateDate={rates.data?.rateDate ?? null}
               />
             )}
           </SectionCard>
@@ -240,15 +270,22 @@ interface CompareTableProps {
   latestPeriod: string | null;
   values: Map<string, Record<string, { value: number; period: string }>>;
   rate12: Map<string, number | null>;
-  app: Map<string, number | null>;
+  rateFailed: boolean;
+  rateDate: string | null;
 }
 
-function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, rate12, app }: CompareTableProps) {
-  const bestOf = (numbers: (number | null)[], direction: Indicator["direction"]): number | null => {
+function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, rate12, rateFailed, rateDate }: CompareTableProps) {
+  /**
+   * Giá trị tốt nhất để đánh ✓. `basis` là kỳ báo cáo của từng số: khác nhau thì không so ngang được,
+   * không đánh ✓ (số và kỳ vẫn hiện).
+   */
+  const bestOf = (numbers: (number | null)[], direction: Indicator["direction"], basis?: (string | null)[]): number | null => {
     const present = numbers.filter((n): n is number => n !== null);
     if (present.length < 2 || direction === "NEUTRAL") return null;
+    if (basis && new Set(basis.filter((b, i) => numbers[i] !== null)).size > 1) return null;
     return present.reduce((best, n) => (isBetter(n, best, direction) ? n : best));
   };
+  const failedText = "Không tải được";
 
   const valueCell = (key: string, text: string, isBest: boolean, caption?: string) => (
     <TableCell key={key} align="right" sx={{ fontWeight: isBest ? 700 : 400 }}>
@@ -269,9 +306,7 @@ function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, 
   );
 
   const rateNumbers = banks.map((b) => rate12.get(b.ticker) ?? null);
-  const appNumbers = banks.map((b) => app.get(b.ticker) ?? null);
   const bestRate = bestOf(rateNumbers, "HIGHER_BETTER");
-  const bestApp = bestOf(appNumbers, "HIGHER_BETTER");
 
   return (
     <TableContainer>
@@ -320,12 +355,10 @@ function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, 
             </TableCell>
           </TableRow>
           <TableRow hover>
-            <TableCell>Lãi 12 tháng trực tuyến hôm nay</TableCell>
-            {banks.map((b, i) => valueCell(b.ticker, formatPercent(rateNumbers[i]), rateNumbers[i] !== null && rateNumbers[i] === bestRate))}
-          </TableRow>
-          <TableRow hover>
-            <TableCell>Điểm ứng dụng</TableCell>
-            {banks.map((b, i) => valueCell(b.ticker, formatNumber(appNumbers[i], 2), appNumbers[i] !== null && appNumbers[i] === bestApp))}
+            <TableCell>Lãi 12 tháng trực tuyến {rateDayText(rateDate)}</TableCell>
+            {banks.map((b, i) =>
+              valueCell(b.ticker, rateFailed ? failedText : formatPercent(rateNumbers[i]), !rateFailed && rateNumbers[i] !== null && rateNumbers[i] === bestRate),
+            )}
           </TableRow>
           {CAMELS_ORDER.map((group) => {
             const rows = indicators.filter((ind) => ind.camelsGroup === group);
@@ -339,7 +372,11 @@ function CompareTable({ banks, slots, colors, indicators, latestPeriod, values, 
                 </TableRow>
                 {rows.map((ind) => {
                   const cells = banks.map((b) => values.get(b.ticker)?.[ind.code] ?? null);
-                  const best = bestOf(cells.map((c) => c?.value ?? null), ind.direction);
+                  const best = bestOf(
+                    cells.map((c) => c?.value ?? null),
+                    ind.direction,
+                    cells.map((c) => c?.period ?? null),
+                  );
                   return (
                     <TableRow key={ind.code} hover>
                       <TableCell>{ind.name}</TableCell>

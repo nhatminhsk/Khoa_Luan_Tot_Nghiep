@@ -1,0 +1,21 @@
+# Bộ chạy thử riêng cho kiểm thử trên cấu hình Docker (10/11/2026), không đụng bộ đang chạy thật:
+# tên dự án khác (CSDL mới), cổng khác, image API gắn nhãn riêng, dữ liệu serving là bản sao tạm (để thử tệp hỏng),
+# tắt gửi thư và dịch vụ sao lưu.
+#
+#   cd webapp
+#   set KT_SERVING=<thư mục bản sao data/serving>   (PowerShell: $env:KT_SERVING=...)
+#   HTTP_PORT=8188 HTTPS_PORT=8543 APP_MAIL_MODE=OFF docker compose -p bankadvisor-kt \
+#       -f docker-compose.yml -f docker-compose.https.yml -f kiem_thu/docker-compose.kiemthu.yml up -d --build api
+#   ... chạy kiem_thu_api.py https://localhost:8543, kiem_thu_giao_dien.mjs https://localhost:8543 ...
+#   docker compose -p bankadvisor-kt -f ... down -v      (xóa luôn CSDL thử)
+
+services:
+  api:
+    image: bankadvisor-api:kiemthu
+    environment:
+      APP_MAIL_MODE: "OFF"
+    volumes:
+      - ${KT_SERVING:?Đặt KT_SERVING là thư mục bản sao data/serving}:/data/serving:ro
+
+  backup:
+    profiles: ["khong-chay"]

@@ -1,7 +1,8 @@
 "use client";
 
 import { Alert, Snackbar, type AlertColor } from "@mui/material";
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { takeFlash } from "@/features/auth/reload-after-auth";
 
 interface Toast {
   id: number;
@@ -20,6 +21,17 @@ export function NotifierProvider({ children }: { children: ReactNode }) {
   const notify = useCallback<Notify>((message, severity = "success") => {
     setToast({ id: Date.now(), message, severity });
   }, []);
+
+  // Lời nhắn để lại trước khi tải lại cả trang (sau đăng nhập/đăng xuất, xem reload-after-auth.ts). Đọc trong effect vì
+  // sessionStorage chỉ có ở trình duyệt; hẹn sang lượt sau để không đặt state ngay trong thân effect, và chỉ xóa lời nhắn
+  // khi đã hiện (Strict Mode chạy effect hai lần, lần đầu bị hủy).
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const message = takeFlash();
+      if (message) notify(message);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [notify]);
 
   const close = () => setToast(null);
 

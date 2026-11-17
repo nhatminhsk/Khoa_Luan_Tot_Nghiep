@@ -1,35 +1,3 @@
-"""Bao cao tai chinh 22 ngan hang (vnstock_data, nguon VCI) -> raw/ -> financial_long.csv.
-
-Hai buoc tach rieng:
-  fetch()  goi mang, ghi {TICKER}_{statement}_{freq}.csv vao raw/ (nguon su that)
-  run()    chi doc lai raw/, gop thanh financial_long.csv (dan xuat, dung lai bat ky luc nao)
-
-Tu 14/09/2026 fetch() lay DAY DU bao cao voi get_all=True. Ban cu trong raw/ (tai
-20/08/2026, khong co code tai trong du an) chi co ban tom tat:
-
-  statement          ban cu   ban day du   id co so o >= 50% cua 748 o (22 NH x 34 quy)
-  balance_sheet        13         84          57
-  income_statement     11         26          21
-  cash_flow             3         51          31
-  ratio                13         60          (xem --validate)
-
-Moi id cu deu nam trong ban day du. Doi chieu 35.556 o cua ban cu (ca quarter,
-year va ratio): 31.501 o trung tuyet doi, 450 o lech <= 1e-5 (MBB ban cu lam tron),
-123 o nguon cap nhat lai -- P/E, P/B ky moi nhat (theo gia co phieu), HDB 2024 nam
-(phan loai lai thu phi/thu khac, tong khong doi; dong tien HDKD), HDB va SHB
-2026-Q2. Khong o nao tu co so thanh rong. Ban cu luu o
-data/_archive/vnstock_financial_2026-08-20_tomtat/. Code phia sau (credit.py,
-cost_of_funds.py, lending_yield.py) loc theo `id` nen khong bi anh huong.
-
-BAY: tham so lang="en" KHONG doi duoc ten sang tieng Anh voi ban day du -- cot
-`name` gio la tieng Viet ("TỔNG CỘNG TÀI SẢN" thay cho "Total Assets"). Moi phep
-chon chi tieu phai dung `id`, khong dung `name`.
-
-Chay:
-    python -m crawlers.vnstock_merge --fetch      # tai lai raw/ roi gop
-    python -m crawlers.vnstock_merge              # chi gop tu raw/ co san
-    python -m crawlers.vnstock_merge --validate
-"""
 from __future__ import annotations
 
 import re
@@ -68,7 +36,6 @@ def _parts(path: Path) -> tuple[str, str, str]:
 
 
 def fetch(tickers=None, raw_dir: Path = RAW, sleep: float = 0.5, retries: int = 3) -> dict:
-    """Tai day du 4 bao cao x {quarter, year} cho tung ma, ghi de file trong raw_dir."""
     import vnstock_data as vd
 
     tickers = tickers or TICKERS
@@ -95,6 +62,12 @@ def fetch(tickers=None, raw_dir: Path = RAW, sleep: float = 0.5, retries: int = 
                                     status="error", rows=0, periods_found="", file="", note=err))
                     continue
                 df = df[[c for c in keep if c in df.columns]]
+                # Goi mien phi tra ban cut (18/84 dong can doi, xem vci_raw.py): khong ghi de file day du.
+                if path.exists() and df["id"].nunique() < 0.9 * pd.read_csv(path, usecols=["id"])["id"].nunique():
+                    failed.append((ticker, statement, freq, f"ban cut {df['id'].nunique()} id, giu file cu"))
+                    log.append(dict(symbol=ticker, report=statement, requested_period=freq, status="error", rows=0,
+                                    periods_found="", file="", note="ban cut, giu file cu"))
+                    continue
                 df.to_csv(path, index=False, encoding="utf-8-sig")
                 log.append(dict(symbol=ticker, report=statement, requested_period=freq,
                                 status="ok", rows=len(df), items=int(df["id"].nunique()),

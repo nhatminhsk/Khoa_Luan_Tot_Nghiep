@@ -1,0 +1,82 @@
+# CI cho web app: chạy khi đẩy hoặc mở PR có đổi webapp/ hoặc pipeline/.
+#   backend  — 79 test (API trên H2 + cùng bộ đó trên PostgreSQL 17 nhúng, email, đơn vị)
+#   frontend — kiểm kiểu, lint, build production
+#   docker   — build cả 3 ảnh và kiểm cú pháp docker compose (không đẩy ảnh đi đâu)
+# CD (đưa lên VPS) nằm ở webapp-deploy.yml, chỉ chạy khi bấm tay.
+name: webapp-ci
+
+on:
+  push:
+    branches: [main]
+    paths: ["webapp/**", "pipeline/**", ".github/workflows/webapp-*.yml"]
+  pull_request:
+    paths: ["webapp/**", "pipeline/**", ".github/workflows/webapp-*.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: webapp-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: webapp/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+      - name: Test (H2 + PostgreSQL nhúng)
+        run: ./mvnw -B -q test
+      - name: Lưu báo cáo test khi lỗi
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: webapp/backend/target/surefire-reports
+
+  frontend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: webapp/frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: webapp/frontend/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npx tsc --noEmit
+      - run: npx eslint src
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+  docker:
+    runs-on: ubuntu-24.04
+    needs: [backend, frontend]
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+      - uses: actions/checkout@v4
+      - name: Kiểm cú pháp compose
+        run: |
+          cp .env.example .env
+          sed -i 's/^APP_DB_PASSWORD=$/APP_DB_PASSWORD=ci-khong-dung-that/; s/^APP_JWT_SECRET=$/APP_JWT_SECRET=ci-khoa-gia-dai-hon-ba-muoi-hai-ky-tu-de-kiem/' .env
+          docker compose config --quiet
+          docker compose -f docker-compose.yml -f docker-compose.https.yml --profile letsencrypt config --quiet
+          docker compose -f docker-compose.db.yml config --quiet
+      - name: Kiểm cú pháp script triển khai
+        run: find deploy -name '*.sh' -exec sh -n {} \;
+      - name: Build ảnh api, web, pipeline
+        run: docker compose --profile job build

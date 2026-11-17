@@ -22,7 +22,25 @@ function buildUrl(path: string, query?: Query): string {
   return `${API_BASE}${path}${qs ? `?${qs}` : ""}`;
 }
 
-async function request<T>(method: string, path: string, options: { query?: Query; body?: unknown } = {}): Promise<T> {
+const CSRF_COOKIE = "XSRF-TOKEN";
+
+/**
+ * Token chống CSRF: backend đặt cookie XSRF-TOKEN (JavaScript đọc được) ở mọi response; request đổi trạng thái gửi lại
+ * giá trị đó trong header X-XSRF-TOKEN. Trang ở site khác không đọc được cookie nên không giả được header.
+ */
+function csrfToken(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const cookie = document.cookie.split("; ").find((c) => c.startsWith(`${CSRF_COOKIE}=`));
+  return cookie ? decodeURIComponent(cookie.slice(CSRF_COOKIE.length + 1)) : undefined;
+}
+
+async function request<T>(
+  method: string,
+  path: string,
+  options: { query?: Query; body?: unknown } = {},
+  retried = false,
+): Promise<T> {
+  const token = method === "GET" ? undefined : csrfToken();
   let response: Response;
   try {
     response = await fetch(buildUrl(path, options.query), {
@@ -31,6 +49,7 @@ async function request<T>(method: string, path: string, options: { query?: Query
       headers: {
         Accept: "application/json",
         ...(options.body !== undefined ? { "Content-Type": "application/json" } : {}),
+        ...(token ? { "X-XSRF-TOKEN": token } : {}),
       },
       body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
     });
@@ -46,6 +65,10 @@ async function request<T>(method: string, path: string, options: { query?: Query
   }
 
   if (!response.ok || !envelope?.success) {
+    // Chưa có cookie XSRF-TOKEN (request đầu tiên) hoặc cookie đã cũ: response lỗi này vừa cấp token mới, gửi lại một lần.
+    if (!retried && method !== "GET" && envelope?.errorCode === "CSRF_TOKEN_INVALID") {
+      return request<T>(method, path, options, true);
+    }
     throw new ApiError(
       response.status,
       envelope?.errorCode ?? "UNKNOWN_ERROR",

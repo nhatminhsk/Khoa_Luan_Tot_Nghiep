@@ -5,7 +5,7 @@ import { Box, Button, Chip, Grid, Stack } from "@mui/material";
 import { IconSearch } from "@tabler/icons-react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import type { z } from "zod";
-import { RHFMoneyField, RHFSelect, RHFToggle } from "@/components/form/RHFFields";
+import { RHFMoneyField, RHFSelect, RHFToggle, UnappliedHint } from "@/components/form/RHFFields";
 import type { LoanAdviceRequest, LoanPurpose, RepaymentMethod } from "@/types/api";
 import { formatTerm, formatVndCompact } from "@/utils/format";
 import { LOAN_PURPOSE_LABEL, REPAYMENT_HINT, REPAYMENT_LABEL } from "@/utils/labels";
@@ -26,10 +26,10 @@ export function LoanForm({ initial, onSubmit, submitting }: LoanFormProps) {
 
   return (
     <FormProvider {...methods}>
-      {/* Cột hẹp bên trái (lg+): xếp dọc. Dưới lg form trải ngang (iPad): mục đích | số tiền, thời hạn | cách trả. */}
+      {/* Thanh lọc ngang: lg một hàng mục đích | số tiền | thời hạn | cách trả | xem kết quả (3/2/2/3/2); iPad hai hàng. */}
       <Box component="form" noValidate onSubmit={methods.handleSubmit((values) => onSubmit(values))}>
-        <Grid container spacing={2.5}>
-          <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
+        <Grid container spacing={2} sx={{ alignItems: "flex-start" }}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <RHFSelect<LoanFormValues, LoanPurpose>
               name="purpose"
               label="Mục đích vay"
@@ -37,7 +37,7 @@ export function LoanForm({ initial, onSubmit, submitting }: LoanFormProps) {
               helperText="Dùng để gợi ý chương trình tín dụng ưu đãi phù hợp."
             />
           </Grid>
-          <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
+          <Grid size={{ xs: 12, sm: 6, lg: 2 }}>
             <RHFMoneyField<LoanFormValues> name="amount" label="Số tiền vay" />
             <Stack direction="row" spacing={0.75} useFlexGap sx={{ mt: 1, flexWrap: "wrap" }}>
               {QUICK_AMOUNTS.map((value) => (
@@ -47,30 +47,32 @@ export function LoanForm({ initial, onSubmit, submitting }: LoanFormProps) {
                   size="small"
                   variant="outlined"
                   clickable
-                  onClick={() => methods.setValue("amount", value, { shouldValidate: true })}
+                  onClick={() => methods.setValue("amount", value, { shouldValidate: true, shouldDirty: true })}
                 />
               ))}
             </Stack>
           </Grid>
-          <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
+          <Grid size={{ xs: 12, sm: 4, lg: 2 }}>
             <RHFSelect<LoanFormValues, number>
               name="termMonths"
               label="Thời hạn vay"
               options={LOAN_TERMS.map((t) => ({ value: t, label: formatTerm(t) }))}
             />
           </Grid>
-          <Grid size={{ xs: 12, sm: 6, lg: 12 }}>
+          <Grid size={{ xs: 12, sm: 8, lg: 3 }}>
             <RHFToggle<LoanFormValues, RepaymentMethod>
               name="repayment"
+              inline
               label="Cách trả nợ"
               options={(Object.keys(REPAYMENT_LABEL) as RepaymentMethod[]).map((r) => ({ value: r, label: REPAYMENT_LABEL[r] }))}
               helperText={REPAYMENT_HINT[repayment]}
             />
           </Grid>
-          <Grid size={12}>
-            <Button type="submit" variant="contained" size="large" fullWidth startIcon={<IconSearch size={18} />} loading={submitting}>
+          <Grid size={{ xs: 12, lg: 2 }}>
+            <Button type="submit" variant="contained" size="large" fullWidth startIcon={<IconSearch size={18} />} loading={submitting} sx={{ minHeight: 56 }}>
               Xem kết quả
             </Button>
+            <UnappliedHint show={methods.formState.isDirty} />
           </Grid>
         </Grid>
       </Box>

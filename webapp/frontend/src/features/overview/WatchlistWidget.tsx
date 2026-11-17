@@ -33,7 +33,6 @@ export function WatchlistWidget() {
           </Button>
         ) : undefined
       }
-      sx={{ height: "100%" }}
     >
       {isLoading ? <LoadingBlock height={260} /> : isAuthenticated ? <WatchList /> : <SignInPrompt />}
     </SectionCard>

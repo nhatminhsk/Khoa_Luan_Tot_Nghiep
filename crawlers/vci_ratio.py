@@ -1,39 +1,3 @@
-"""Doc file ratio quy cua VCI (raw/*_ratio_quarter.csv) sau khi go loi "quy chep lai".
-
-Loi cua nguon (phat hien 15/09/2026, doi chieu voi thuyet minh va bao chi):
-
-  - Dong 2021-Q4 la BAN SAO NGUYEN cua 2021-Q3 o 19/22 NH (va PGB o 2022-Q1):
-    21-22 chi tieu tai chinh (NPL, bao phu, NIM, COF, LDR, ROE...) trung tung chu so
-    voi quy truoc. Quy binh thuong chi co 0-2 chi tieu trung. Cac chi tieu tinh
-    theo gia thi truong (P/E, P/B, von hoa) va CASA van dung quy.
-  - Dong ngay sau do (2022-Q1) lai mang SO THAT cua 2021-Q4: bao phu no xau VCI
-    2022-Q1 khop bao phu tinh tu thuyet minh 2021-Q4 den 0,01 diem o 15 NH. So that
-    cua 2022-Q1 mat han.
-  - BAB va BVB khong co dong 2021-Q4 (trong, khong phai chep) nhung dong 2022-Q1
-    cung mang so cua 2021-Q4 (NPL va bao phu khop thuyet minh 2021-Q4 tung chu so).
-    Tuc la lech mot quy o du 22/22 NH, chi khac cach VCI lap cho trong.
-  - Bang chung ngoai: VCB cong bo bao phu no xau cuoi 2021 la 424% (bao chi
-    10/01/2022); thuyet minh cho 424,36%; VCI ghi 242,85% o 2021-Q4 (so cua quy 3)
-    va 424,36% o 2022-Q1.
-
-Cach sua, tung NH:
-  1. Quy t la "chep lai" neu >= STALE_MIN_IDS chi tieu (khac 0, khac rong) trung
-     DUNG voi quy t-1 lien ke. Quy t "trong" (khong co dong) cung duoc xet o buoc 2;
-     neu khong co bang chung lech quy thi de nguyen (vd lo hong 2021-Q2).
-  2. Quy t+1 duoc coi la "so that cua t" neu no gan so tinh tu thuyet minh o t hon
-     o t+1 - ca NPL lan bao phu, va bao phu gan hon it nhat 2 lan (SHIFT_RATIO).
-     Dat -> chuyen cac chi tieu bi chep tu t+1 ve t, de trong o t+1.
-     Khong dat (SHB, PGB) -> chi de trong o t; o t+1 giu nguyen.
-  O de trong duoc cac tang sau lap bang nguon khac: NIM/COF lay MAS, bao phu tinh
-  tu thuyet minh (build_panel).
-
-Khong sua file raw/ va financial_long.csv: hai file do la ban sao nguyen trang cua
-nguon (vnstock_merge kiem tung o). Moi module doc ratio quy de tinh toan phai goi
-`read()` o day thay vi pd.read_csv.
-
-Chay:
-    python -m crawlers.vci_ratio       # liet ke cac o da sua, kem bang chung
-"""
 from __future__ import annotations
 
 import os
@@ -68,7 +32,6 @@ def _next_period(period: str) -> str:
 
 @lru_cache(maxsize=None)
 def _note_evidence(ticker: str) -> pd.DataFrame:
-    """NPL va bao phu tinh tu thuyet minh + bang can doi, dang thap phan nhu ratio."""
     note_path = RAW_NOTE / f"{ticker}_note_quarter.csv"
     bs_path = RAW / f"{ticker}_balance_sheet_quarter.csv"
     if not note_path.exists() or not bs_path.exists():
@@ -91,7 +54,6 @@ def _note_evidence(ticker: str) -> pd.DataFrame:
 
 
 def _shift_evidence(ticker, wide, t, t_next):
-    """So thuc te o t+1 gan quy nao hon. Tra ve (co chuyen khong, bang chung)."""
     note = _note_evidence(ticker)
     if t not in note.index or t_next not in note.index:
         return False, {"reason": "thieu thuyet minh de doi chieu"}
@@ -200,7 +162,6 @@ def _repair(ticker: str):
 
 
 def read(path) -> pd.DataFrame:
-    """Thay pd.read_csv cho raw/<TICKER>_ratio_quarter.csv. Cot `value` da la so."""
     ticker = os.path.basename(str(path)).split("_")[0]
     frame, _ = _repair(ticker)
     return frame.copy()

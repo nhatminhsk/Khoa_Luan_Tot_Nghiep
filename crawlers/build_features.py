@@ -1,35 +1,3 @@
-"""Lam sach + xu ly + tao dac trung: moi nguon -> mot bang NH-quy (22 NH x 34 quy).
-
-Dau vao la cac file ma `crawlers.inventory` danh dau "Dung cho mo hinh". Panel sach
-(`bank_panel_quarterly.csv`, da qua cong validate) la khung; cac nguon con lai duoc
-dua ve cung khoa (ticker, period) theo quy tac cua tung tan suat:
-
-    quy (BCTC, thuyet minh)   tong 4 quy gan nhat (TTM) cho dong chay, so du binh
-                              quan 5 moc cuoi quy cho mau so
-    nua nam (CAR)             as-of: H1 -> Q2, Q3; H2 -> Q4 va Q1 nam sau
-    nam (nganh, nong nghiep,  as-of: so nam Y gan cho Q4/Y va Q1-Q3/Y+1 -- khong dung
-         tang truong tin dung) so chua cong bo
-    thang (CPI, review app)   trung binh trong quy (review: trung binh co trong so)
-    ngay (gia, lai suat)      gia: loi suat va bien dong trong quy; lai suat: trung binh
-    su kien (lai suat dieu    gia tri co hieu luc tai ngay cuoi quy
-             hanh, chuong trinh)
-    anh chup (so huu, mang    bien tinh, lap lai cho moi quy (ghi ro trong catalog)
-              luoi chi nhanh)
-
-Quy tac lam sach ap dung o tang tao bien (so o bi dat NaN ghi vao crawl_log.txt):
-    mau so <= 0 hoac rong -> NaN        tang truong tren goc <= 0 -> NaN
-    inf -> NaN                          quy co < 20 phien giao dich -> NaN
-    quy co < 30 review -> diem app NaN  tong thuyet minh = 0 -> ty trong NaN
-    COF / loi suat TSSL = 0 -> NaN      thuyet minh chi luong, tra lai = 0 hoac am -> NaN
-    TPCP > tong CK dau tu -> NaN        tang truong loi nhuan: dang doi xung [-200, 200]
-KHONG dien khuyet va KHONG winsorize o day: hai viec do phai fit tren tap train.
-
-Moi dac trung khai bao trong META (nhom, nguon, cong thuc, don vi, xu ly) de
-`crawlers.select_features` dung lam catalog.
-
-Chay:
-    python -m crawlers.build_features
-"""
 from __future__ import annotations
 
 import glob
@@ -96,7 +64,6 @@ def _to_period(dates: pd.Series) -> pd.Series:
 
 
 def _div(num, den, name, scale=100.0):
-    """Chia an toan: mau <= 0 / rong / inf -> NaN, dem so o bi loai."""
     num, den = pd.Series(num, dtype="float64"), pd.Series(den, dtype="float64")
     bad = den.isna() | (den <= 0)
     out = (num / den.where(~bad)) * scale
@@ -113,11 +80,6 @@ def _growth(cur, base, name):
 
 
 def _growth_sym(cur, base):
-    """Tang truong doi xung 200*(a-b)/(|a|+|b|), gioi han [-200, 200].
-
-    Loi nhuan co the am hoac gan 0: tang truong thuong tren goc 0,001 ty cho ra
-    -8,4 trieu % (da gap o NVB). Dang doi xung giu dau va khong no.
-    """
     cur, base = pd.Series(cur, dtype="float64"), pd.Series(base, dtype="float64")
     den = cur.abs() + base.abs()
     return (200 * (cur - base) / den.where(den > 0)).replace([np.inf, -np.inf], np.nan)
@@ -183,6 +145,7 @@ FIN_IDS = {
     "PPOP": "IS_OPERATING_PROFIT_BEFORE_PROVISION_FOR_CREDIT_LOSSES", "PROV_EXP": "IS_PROVISION_FOR_CREDIT_LOSSES",
     "NPAT": "IS_NET_PROFIT_AFTER_TAX", "CFO": "CF_NET_CASH_FLOWS_FROM_OPERATING_ACTIVITIES",
     "RECOV": "CF_COLLECTIONS_FROM_BAD_DEBTS_WRITTEN_OFF", "DIV_PAID": "CF_DIVIDENDS_PAID",
+    "INT_RECV": "BS_INTEREST_AND_FEE_RECEIVABLES",
 }
 NOTE_IDS = {
     "DEP_TYPE": "NT_BS_DEPOSITS_BY_TYPE_OF_DEPOSITS", "N_SUB": "NT_BS_SUBSTANDARD", "N_DOUBT": "NT_BS_DOUBTFUL",
@@ -194,6 +157,8 @@ NOTE_IDS = {
     "LOAN_INT": "NT_IS_INTEREST_INCOME_FROM_LOANS_TO_CUSTOMERS", "SALARY": "NT_IS_SALARY_AND_ALLOWANCES",
     "DEP_INS": "NT_IS_INSURANCE_AND_DEPOSIT_INSURANCE_FEES",
     "LOANS_INDIV": "NT_BS_INDIVIDUALS", "LOANS_BY_CUST": "NT_BS_LOANS_AND_ADVANCES_BY_TYPES_OF_CUSTOMERS",
+    "DEP_INDIV": "NT_BS_DEPOSITS_BY_TYPE_OF_CUSTOMERS_INDIVIDUALS", "DEP_BY_CUST": "NT_BS_DEPOSITS_BY_TYPE_OF_CUSTOMERS",
+    "VAMC": "NT_BS_SPECIAL_BONDS_ISSUED_BY_VAMC",
 }
 FLOWS = {"NII", "FEE", "TOI", "PPOP", "PROV_EXP", "NPAT", "CFO", "RECOV", "DIV_PAID",
          "DEP_INT", "PAPER_INT", "LOAN_INT", "SALARY", "DEP_INS"}
@@ -215,12 +180,6 @@ def _wide(path, ids, freq_filter=True, corrections=False):
 
 
 def _indiv_share_audited() -> pd.DataFrame:
-    """Dong "Ca nhan" trong bang du no theo nganh cua BCTC kiem toan (so cuoi nam -> quy 4).
-
-    Chi MSB, NVB, TCB tach rieng dong nay (industry_group INDIV; dong "ho gia dinh" la khai niem
-    khac nen khong dung). O MSB va TCB no trung tung so voi ty trong ca nhan cua bang theo doi
-    tuong khach hang: 9/10 nam co ca hai bang, nam lech la MSB 2022 do VCI ghi sai.
-    """
     ind = _read(INDUSTRY_ROWS)
     ind = ind[ind.industry_group == "INDIV"]
     return pd.DataFrame({"ticker": ind.ticker, "period": ind.year.astype(str) + "-Q4",
@@ -228,7 +187,6 @@ def _indiv_share_audited() -> pd.DataFrame:
 
 
 def _retail_share(g: pd.DataFrame) -> pd.Series:
-    """Cho vay ca nhan / du no phan theo nhom khach hang; quy 4 thieu lay tu bang nganh kiem toan."""
     share = _div(g.LOANS_INDIV, g.LOANS_BY_CUST, "retail_loan_share_pct")
     audited = g[["ticker", "period"]].merge(_indiv_share_audited(), on=["ticker", "period"], how="left")["audited"]
     audited.index = g.index
@@ -245,13 +203,20 @@ def add_financial(g: pd.DataFrame) -> pd.DataFrame:
         g[c] = g[c].abs()
     # Thuyet minh ghi 0 khi NH khong tach dong (chi luong, tra lai tien gui, cho vay ca nhan...) va co vai
     # o am vo nghia -> NaN. Rieng tra lai giay to co gia: 0 la that (NH khong phat hanh).
-    for c in ("SALARY", "DEP_INS", "DEP_INT", "LOAN_INT", "LOANS_INDIV"):
+    for c in ("SALARY", "DEP_INS", "DEP_INT", "LOAN_INT", "LOANS_INDIV", "DEP_INDIV"):
         bad = g[c] <= 0
         CLEAN_LOG[f"{c.lower()}_nonpositive_as_missing"] = int(bad.sum())
         g.loc[bad, c] = np.nan
     bad = g.PAPER_INT < 0
     CLEAN_LOG["paper_int_negative_as_missing"] = int(bad.sum())
     g.loc[bad, "PAPER_INT"] = np.nan
+    # EIB 2024-Q4: VCI don tien gui ca nhan sang dong "khac" (ca nhan 0,1 ty / 167.448 ty) -> khong NHTM nao duoi 1%.
+    bad = g.DEP_INDIV < 0.01 * g.DEP_BY_CUST
+    CLEAN_LOG["dep_indiv_under_1pct_as_missing"] = int(bad.sum())
+    g.loc[bad, "DEP_INDIV"] = np.nan
+    bad = g.VAMC < 0  # SHB 2018-Q1 ghi am: trai phieu VAMC gop khong the am
+    CLEAN_LOG["vamc_negative_as_missing"] = int(bad.sum())
+    g.loc[bad, "VAMC"] = np.nan
     bad = g.INV_TOTAL <= 0
     CLEAN_LOG["inv_total_zero_as_missing"] = int(bad.sum())
     g.loc[bad, ["INV_TOTAL", "INV_GOV"]] = np.nan
@@ -278,6 +243,11 @@ def add_financial(g: pd.DataFrame) -> pd.DataFrame:
     put("credit_cost_ttm_pct", _div(ttm["PROV_EXP"], avg["LOANS"], "credit_cost_ttm_pct"), "A Chất lượng tài sản", F, "Chi phí dự phòng tín dụng TTM / dư nợ bình quân")
     put("recovery_ttm_pct", _div(ttm["RECOV"], avg["LOANS"], "recovery_ttm_pct"), "A Chất lượng tài sản", F, "Thu hồi nợ đã xử lý TTM / dư nợ bình quân")
     put("npl_group5_share_pct", _div(g.N_BAD, g.N_SUB + g.N_DOUBT + g.N_BAD, "npl_group5_share_pct"), "A Chất lượng tài sản", N, "Nợ nhóm 5 / nợ xấu (nhóm 3–5)", processing="quý: số dư cuối kỳ")
+    # Ung vien them ngay 13/10/2026 khi ra lai du lieu cu (experiments.feature_effect do tac dung).
+    put("accrued_interest_to_assets_pct", _div(g.INT_RECV, g.TA, "accrued_interest_to_assets_pct"), "A Chất lượng tài sản", F,
+        "Lãi và phí phải thu (lãi dự thu) / tổng tài sản", processing="quý: số dư cuối kỳ")
+    put("vamc_bonds_to_assets_pct", _div(g.VAMC, g.TA, "vamc_bonds_to_assets_pct"), "A Chất lượng tài sản", S,
+        "Trái phiếu đặc biệt VAMC (gộp) / tổng tài sản", processing="quý: số dư cuối kỳ; 0 là thật (NH không còn bán nợ cho VAMC)")
     put("cir_ttm_pct", _div(opex, ttm["TOI"], "cir_ttm_pct"), "M Quản trị", F, "(TNHĐ − LN trước dự phòng) TTM / TNHĐ TTM")
     put("opex_to_assets_ttm_pct", _div(opex, avg["TA"], "opex_to_assets_ttm_pct"), "M Quản trị", F, "Chi phí hoạt động TTM / tổng tài sản bình quân")
     put("staff_cost_share_pct", _div(ttm["SALARY"], opex, "staff_cost_share_pct"), "M Quản trị", S, "Chi lương, phụ cấp TTM / chi phí hoạt động TTM")
@@ -292,6 +262,9 @@ def add_financial(g: pd.DataFrame) -> pd.DataFrame:
         "Cho vay cá nhân / dư nợ phân theo nhóm khách hàng",
         processing="quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; "
                    "quý 4 thiếu lấy dòng 'Cá nhân' của bảng ngành BCTC kiểm toán (MSB, NVB, TCB)")
+    put("retail_deposit_share_pct", _div(g.DEP_INDIV, g.DEP_BY_CUST, "retail_deposit_share_pct"), "L Thanh khoản", N,
+        "Tiền gửi cá nhân / tiền gửi phân theo nhóm khách hàng",
+        processing="quý: số dư cuối kỳ; NH chỉ công bố nửa năm/năm thì quý giữa để trống; dòng cá nhân ≤ 0 hoặc < 1% tổng → NaN")
     put("deposit_rate_paid_ttm_pct", _div(ttm["DEP_INT"], avg["DEP"], "deposit_rate_paid_ttm_pct"), "E Thu nhập & chi phí vốn", S, "Trả lãi tiền gửi TTM / tiền gửi bình quân")
     put("npat_yoy_sym_pct", _growth_sym(ttm["NPAT"], by["NPAT"].transform(lambda s: s.rolling(4, min_periods=4).sum().shift(4))),
         "E Thu nhập & chi phí vốn", F, "Tăng trưởng đối xứng LNST TTM so cùng kỳ: 200(a−b)/(|a|+|b|)", processing="quý: TTM, đối xứng [−200, 200]")
@@ -332,7 +305,6 @@ def add_financial(g: pd.DataFrame) -> pd.DataFrame:
 
 # --------------------------------------------------------------------------- tan suat khac
 def _asof_annual(period: pd.Series) -> pd.Series:
-    """Nam cua so lieu duoc dung tai quy nay: Q4/Y dung nam Y, Q1-Q3/Y+1 cung dung nam Y."""
     y = period.str[:4].astype(int)
     return np.where(period.str[-1] == "4", y, y - 1)
 
@@ -423,25 +395,52 @@ def add_static(g):
     return g
 
 
+APP_SPIKE_RATIO, APP_SPIKE_STARS, APP_SPIKE_BASE = 3.0, 1.0, 6
+
+
+def app_spike_months(m: pd.DataFrame) -> pd.Series:
+    flag = pd.Series(False, index=m.index)
+    for _, g in m.sort_values(["ticker", "month"]).groupby("ticker"):
+        base = []  # (n, diem) cac thang khong gan co, co review
+        for i, r in g.iterrows():
+            prev = base[-APP_SPIKE_BASE:]
+            if len(prev) >= 3 and r.n_reviews >= MIN_REVIEWS:
+                n = np.array([p[0] for p in prev], float)
+                s = np.array([p[1] for p in prev], float)
+                if (r.n_reviews >= APP_SPIKE_RATIO * np.median(n)
+                        and abs(r.mean_score - (n * s).sum() / n.sum()) >= APP_SPIKE_STARS):
+                    flag[i] = True
+                    continue
+            if r.n_reviews > 0:
+                base.append((r.n_reviews, r.mean_score))
+    return flag
+
+
 def add_customer(g):
     m = _read(APP)
+    spike = app_spike_months(m)
+    CLEAN_LOG["app_spike_months_excluded_from_scores"] = int(spike.sum())
     m["period"] = _to_period(m.month + "-01")
-    m["w_score"] = m.mean_score * m.n_reviews
-    m["w_1star"] = m.pct_1star * m.n_reviews
-    m["w_reply"] = m.reply_rate * m.n_reviews
-    q = m.groupby(["ticker", "period"]).agg(n=("n_reviews", "sum"), s=("w_score", "sum"), o=("w_1star", "sum"), r=("w_reply", "sum")).reset_index()
-    thin = q.n < MIN_REVIEWS
+    # So review (app_reviews_log) giu ca thang co dot; diem, % 1 sao, ty le tra loi bo thang co dot
+    m.loc[spike, ["mean_score", "pct_1star", "reply_rate"]] = np.nan
+    m["n_scored"] = m.n_reviews.where(~spike, 0)
+    m["w_score"] = m.mean_score * m.n_scored
+    m["w_1star"] = m.pct_1star * m.n_scored
+    m["w_reply"] = m.reply_rate * m.n_scored
+    q = m.groupby(["ticker", "period"]).agg(n=("n_reviews", "sum"), ns=("n_scored", "sum"), s=("w_score", "sum"),
+                                            o=("w_1star", "sum"), r=("w_reply", "sum")).reset_index()
+    thin = q.ns < MIN_REVIEWS
     CLEAN_LOG["app_quarters_below_min_reviews"] = int(thin.sum())
     q["app_reviews_log"] = np.log1p(q.n)
-    q["app_mean_score"] = (q.s / q.n).where(~thin)
-    q["app_pct_1star"] = (q.o / q.n * 100).where(~thin)
-    q["app_reply_rate_pct"] = (q.r / q.n * 100).where(~thin)
+    q["app_mean_score"] = (q.s / q.ns).where(~thin)
+    q["app_pct_1star"] = (q.o / q.ns * 100).where(~thin)
+    q["app_reply_rate_pct"] = (q.r / q.ns * 100).where(~thin)
     g = g.merge(q[["ticker", "period", "app_reviews_log", "app_mean_score", "app_pct_1star", "app_reply_rate_pct"]], on=["ticker", "period"], how="left")
     src = "app_reviews_monthly (app bán lẻ Play Store)"
     _meta("app_reviews_log", "K Khách hàng số", src, "ln(1 + số review trong quý)", "ln", "tháng → tổng quý")
-    _meta("app_mean_score", "K Khách hàng số", src, "Điểm sao trung bình có trọng số số review", "sao", f"tháng → trung bình trọng số; quý < {MIN_REVIEWS} review → NaN")
-    _meta("app_pct_1star", "K Khách hàng số", src, "% review 1 sao", "%", f"tháng → trung bình trọng số; quý < {MIN_REVIEWS} review → NaN")
-    _meta("app_reply_rate_pct", "K Khách hàng số", src, "% review được NH phản hồi", "%", f"tháng → trung bình trọng số; quý < {MIN_REVIEWS} review → NaN")
+    _meta("app_mean_score", "K Khách hàng số", src, "Điểm sao trung bình có trọng số số review", "sao", f"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < {MIN_REVIEWS} review → NaN")
+    _meta("app_pct_1star", "K Khách hàng số", src, "% review 1 sao", "%", f"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < {MIN_REVIEWS} review → NaN")
+    _meta("app_reply_rate_pct", "K Khách hàng số", src, "% review được NH phản hồi", "%", f"tháng → trung bình trọng số, bỏ tháng có đợt review bất thường (app_spike_months); quý < {MIN_REVIEWS} review → NaN")
     return g
 
 
@@ -554,7 +553,7 @@ def build(write=True) -> dict:
         raise ValueError(f"cot chua khai bao META: {missing_meta}")
     g[feats] = g[feats].replace([np.inf, -np.inf], np.nan)
     out = g.sort_values(["period", "ticker"])[KEYS + feats].reset_index(drop=True)
-    if len(out) != 748 or out.duplicated(["ticker", "period"]).any():
+    if len(out) != 770 or out.duplicated(["ticker", "period"]).any():
         raise ValueError(f"khung sai: {len(out)} dong, trung khoa {int(out.duplicated(['ticker', 'period']).sum())}")
     num = out.select_dtypes("number").columns
     out[num] = out[num].round(6)

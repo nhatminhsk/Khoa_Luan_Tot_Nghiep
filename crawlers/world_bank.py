@@ -51,7 +51,6 @@ def _log(msg):
 
 
 def _get(url, attempts=3, timeout=45):
-    """API World Bank thinh thoang treo giua chung - thu lai truoc khi bo cuoc."""
     last = None
     for i in range(attempts):
         try:
@@ -67,7 +66,6 @@ def _get(url, attempts=3, timeout=45):
 
 
 def fetch(code):
-    """Tra ve {nam: gia tri} cho mot chi tieu. O rong bi bo, khong doi thanh 0."""
     url = (f"{API.format(code=code)}?format=json&per_page=200"
            f"&date={START_YEAR}:{END_YEAR}")
     payload = _get(url)
@@ -134,11 +132,6 @@ def _corr(left, right):
 
 
 def _crosscheck(panel, wb, panel_col, wb_col, label, expect_offset=None):
-    """So trung vi 22 NH tai quy 4 voi so toan he thong cua World Bank.
-
-    Khong ky vong hai ben bang nhau - chung do hai thu khac nhau. Cai dang xem
-    la CHIEU va DIEM NGOAT co khop khong, va do lech co on dinh khong.
-    """
     panel = panel[panel["period"].str.endswith("Q4")].copy()
     panel["year"] = panel["period"].str[:4].astype(int)
     rows = []

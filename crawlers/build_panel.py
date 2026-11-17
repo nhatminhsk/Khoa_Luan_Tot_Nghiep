@@ -1,36 +1,3 @@
-"""Gop tat ca nguon thanh MOT panel bank-quarter san sang cho mo hinh.
-
-Van de bao cao kiem ke chi ra: tren 748 o (22 NH x 34 quy 2018-Q1..2026-Q2),
-chuoi quy LIEN TUC dai nhat moi ngan hang dat duoc chi la **20 quy**, tat ca deu
-bat dau dung o 2021-Q3. Do khong phai gioi han cua du lieu ma la o 2021-Q2 bi
-thieu trong file `ratio` cua VCI, cat doi chuoi 34 quy.
-
-Module nay vaN lo hong do bang cach xep ba nguon theo thu tu uu tien, va ghi lai
-tung o lay tu dau vao cot `*_src`:
-
-  npl_percent      note (so cap)   -> credit VCI
-  npl_coverage_percent  credit VCI -> |du phong cho vay| / no nhom 3-5 (note)
-  casa_percent     note            (chua tung co trong du an)
-  cof_ttm_percent  VCI ratio       -> MAS (cong 4 quy)
-  nim_ttm_percent  VCI ratio       -> MAS (cong 4 quy)
-  earning_asset_yield_ttm_percent  MAS (nguon cong bo) -> lending_yield (suy ra)
-  roe/roa/cir/pe/pb/eps/bvps       MAS
-  car_percent      bank_car_halfyear, gan cho quy cuoi cua nua nam tuong ung
-
-Moi cot ty le deu kem mot cot `<ten>_src` nhan gia tri 'vci' | 'mas' | 'note' |
-'derived' | 'halfyear' de truy nguoc duoc trong khoa luan.
-
-Chay:
-    python -m crawlers.build_panel
-    python -m crawlers.build_panel --validate       # do phu va do dai chuoi
-    python -m crawlers.build_panel --no-check       # bo qua cong chat luong
-
-Sau khi ghi panel, module tu goi `crawlers.validate --scope panel` lam cong chat
-luong. `validate()` o day do DO PHU va DO DAI CHUOI; `crawlers.validate` do TINH
-DUNG DAN (mien gia tri, dang thuc noi bo, ty so tinh tren mau bang 0). Hai cai bo
-sung cho nhau, khong thay the nhau. Co ERROR thi ma thoat la 1 de moi script noi
-duoi (`build_panel && train`) dung lai thay vi hoc tren du lieu hong.
-"""
 from __future__ import annotations
 
 import os
@@ -48,8 +15,21 @@ MAS = "data/vnstock_financial/ratio_mas_ttm.csv"
 COF = "data/interest_rates/bank_cost_of_funds_quarterly.csv"
 YIELD = "data/interest_rates/bank_earning_asset_yield_quarterly.csv"
 CAR = "data/credit/bank_car_halfyear.csv"
+# Ty so quy VNDirect (crawlers.vndirect_ratios): chi lap o nguon chinh de trong. NPL / bao phu / ROA khop panel gan
+# nhu tuyet doi tren 736-738 o trung; ROE lech trung vi 0,09 diem (von binh quan tinh khac); NIM KHAC dinh nghia, khong dung.
+VND_RATIOS = "data/credit/bank_ratios_vndirect_quarterly.csv"
+# So lay tu bao cao thuong nien cua chinh NH (lam tron 1 chu so) cho o moi nguon quy deu trong. BVB nam 2018 chi
+# cong bo BCTC tom tat (khong thuyet minh nhom no), VNDirect cung trong o 2018-Q4.
+BCTN = {
+    ("BVB", "2018-Q4", "npl_percent"): (
+        2.1, "https://static2.vietstock.vn/data/OTC/2018/BCTN/VN/VietCapitalBank_Baocaothuongnien_2018.pdf"
+             " trang 11, 14: 'ty le no xau ... 2,1%/tong du no vao cuoi nam 2018'"),
+}
+# O VCI sai da doc bang mat trang BCTC goc (cot bang_chung ghi trang va phep tinh). Thang moi nguon. KHONG chep moi o lech
+# cua audit_npl_bctc vao day: quy 2 / quy 4 VCI dung BCTC soat xet / kiem toan nen lech BCTC quy la binh thuong.
+NPL_BCTC = "data/credit/npl_bctc_corrections.csv"
 
-QUARTERS = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:34]
+QUARTERS =[f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:35]
 QUARTER_END = {"1": "03-31", "2": "06-30", "3": "09-30", "4": "12-31"}
 
 # Cot dac trung dung de do "do day du" cho mo hinh chuoi.
@@ -70,7 +50,6 @@ def _read(path, **kw):
 
 
 def _coalesce(frame, primary, fallback, primary_tag, fallback_tag):
-    """Lay primary, thieu thi lay fallback; tra ve (gia tri, nguon)."""
     value = frame[primary].where(frame[primary].notna(), frame[fallback])
     source = np.where(
         frame[primary].notna(), primary_tag,
@@ -179,6 +158,41 @@ def build(write=True):
         panel, "yield_mas", "yield_derived", "mas", "derived")
     panel["casa_src"] = np.where(panel["casa_percent"].notna(), "note", None)
     panel["car_src"] = np.where(panel["car_percent"].notna(), "halfyear", None)
+    panel["roe_src"] = np.where(panel["roe_ttm_percent"].notna(), "mas", None)
+    panel["roa_src"] = np.where(panel["roa_ttm_percent"].notna(), "mas", None)
+
+    # Nguon cuoi: VNDirect, chi cho o con trong sau moi nguon tren.
+    if os.path.exists(VND_RATIOS):
+        vnd = _read(VND_RATIOS).set_index(["ticker", "period"])
+        key = pd.MultiIndex.from_frame(panel[["ticker", "period"]])
+        for col, src_col, vnd_col in (("npl_percent", "npl_src", "npl_percent"),
+                                      ("npl_coverage_percent", "npl_coverage_src", "npl_coverage_percent"),
+                                      ("roe_ttm_percent", "roe_src", "roae_percent"),
+                                      ("roa_ttm_percent", "roa_src", "roaa_percent")):
+            fill = pd.Series(vnd[vnd_col].reindex(key).to_numpy(), index=panel.index)
+            gap = panel[col].isna() & fill.notna()
+            panel.loc[gap, col] = fill[gap]
+            panel.loc[gap, src_col] = "vndirect"
+    for (ticker, period, col), (value, _source) in BCTN.items():
+        gap = (panel["ticker"] == ticker) & (panel["period"] == period) & panel[col].isna()
+        panel.loc[gap, col] = value
+        panel.loc[gap, col.replace("_percent", "_src")] = "bctn"
+
+    # Thieu file thi dung han, khong am tham chay tren so chua sua.
+    fix = _read(NPL_BCTC).set_index(["ticker", "period"])
+    key = pd.MultiIndex.from_frame(panel[["ticker", "period"]])
+    for col, src_col in (("npl_percent", "npl_src"), ("loans_g2_percent", None)):
+        fill = pd.Series(fix[col].reindex(key).to_numpy(), index=panel.index)
+        panel.loc[fill.notna(), col] = fill[fill.notna()]
+        if src_col:
+            panel.loc[fill.notna(), src_col] = "bctc"
+    # Bao phu cua VCI tinh tren NPL sai nen sai theo (BAB 2021-Q1 256,9 vs 136,05): tinh lai, khop WiData ca 3 o. loans_vnd
+    # la du no rong, NPL tinh tren du no goc; cach tinh nay khop VCI lech trung vi 0,001 diem tren 626 o.
+    fixed = panel["npl_src"] == "bctc"
+    provision = panel.loc[fixed, "loan_provision_vnd"].abs()
+    panel.loc[fixed, "npl_coverage_percent"] = 100 * provision / (
+        panel.loc[fixed, "npl_percent"] / 100 * (panel.loc[fixed, "loans_vnd"] + provision))
+    panel.loc[fixed, "npl_coverage_src"] = "bctc"
 
     panel["period_end"] = [f"{p[:4]}-{QUARTER_END[p[-1]]}" for p in panel["period"]]
     panel["built_at_utc"] = datetime.now(timezone.utc).isoformat()
@@ -224,7 +238,6 @@ def build(write=True):
 
 
 def _runs(panel, features):
-    """Do dai chuoi quy LIEN TUC day du `features`, theo tung ngan hang."""
     rows = []
     for ticker, group in panel.groupby("ticker"):
         group = group.set_index("period").reindex(QUARTERS)

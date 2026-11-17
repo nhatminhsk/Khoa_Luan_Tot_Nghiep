@@ -1,0 +1,6 @@
+# File chạy trong container Linux phải giữ LF kể cả khi clone trên Windows (core.autocrlf=true đổi sang CRLF
+# làm "sh" báo lỗi $'\r').
+*.sh                      text eol=lf
+*.template                text eol=lf
+Dockerfile                text eol=lf
+pipeline/chromium-headless text eol=lf

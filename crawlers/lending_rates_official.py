@@ -1,36 +1,3 @@
-"""Lai cho vay binh quan do chinh tung ngan hang cong bo tren website cua minh.
-
-Can cu: Chi thi 01/CT-NHNN (15/01/2024) yeu cau moi TCTD dang tren website: lai cho vay binh quan,
-chenh lech lai cho vay binh quan - huy dong binh quan, lai suat co so (neu co). Nguon nay de thay
-bang tong hop cua VietnamNet (crawlers/lending_rates_bank.py), vi bang do moi thang chi co 1-19 NH.
-
-Moi ngan hang cong bo mot kieu khac nhau, nen file giu nguyen chi tieu ngan hang ghi, KHONG quy doi:
-  segment: all | individual | business | short_term | medium_long_term | consumer_short_term
-           | individual_short_term | individual_medium_long_term
-  measure: avg_lending (lai cho vay binh quan) | spread (tru lai huy dong binh quan)
-           | spread_net (spread sau khi tru chi phi huy dong, su dung von)
-  basis:   new_loans (khoan vay moi giai ngan trong ky) | all_loans | unknown
-So sanh giua ngan hang chi hop le khi cung segment + measure (+ basis).
-
-period la ky ngan hang ghi (cung cach VietnamNet ghi thang). BIDV ghi "ky thang 05/2026 (du lieu tinh
-den 30/4/2026)" -> period 2026-05, as_of 30/4/2026. MB khong ghi ky -> period = thang thu thap, note ghi ro.
-HDBank cong bo theo "ap dung tu ngay" -> period = thang ap dung.
-
-Ngan hang chua doc duoc nam trong GAPS (kem ly do); voi cac ngan hang nay van dung VietnamNet.
-
-Trang dung bang JavaScript (VIB, SHB, MB, HDBank, PGBank, BVBank, NCB) duoc dung bang Edge headless
-(--dump-dom), khong can cai Playwright. OCB chi mo duoc khi bam menu nen dieu khien Edge qua DevTools
-(_render_click, dung thu vien websockets co san). Duong dan Edge doc tu bien EDGE_PATH neu co.
-
-Nguon chi co anh (Nam A, Sacombank, VCB 2024-01/2026, BVBank vai thang): so nhap tay vao
-lending_rates_official_manual.csv (cung cot, source_kind = image_manual, source_url = anh goc) va duoc
-gop vao file chinh moi lan chay. Crawler in "la ANH, chua nhap tay" khi ngan hang dang anh moi.
-
-Chay:
-  python -m crawlers.lending_rates_official             # thang moi nhat, bo qua NH da co so thang truoc
-  python -m crawlers.lending_rates_official --force     # doc lai tat ca
-  python -m crawlers.lending_rates_official --backfill  # them lich su: trang theo nam, mau ten file, Wayback
-"""
 from __future__ import annotations
 
 import io
@@ -73,12 +40,11 @@ DEC = r"(?<![\d.,])(\d{1,2}[.,] ?\d{1,3})(?![\d])"  # BIDV chen khoang trang: "6
 
 # Ngan hang chua tu dong doc duoc o phien ban nay, va ly do (kiem 08/10/2026).
 GAPS = {
-    # Ca 4 ngan hang deu co trong bang VietnamNet (nen co cong bo o dau do), nhung tim tren web ngan hang,
-    # tim kiem theo ten mien va chi muc Wayback deu khong ra trang. Van dung VietnamNet cho 4 ngan hang nay.
-    "CTG": "chua tim thay trang cong bo tren vietinbank.vn (chi co lai tham chieu); dung VietnamNet",
+    # Ca 2 ngan hang deu co trong bang VietnamNet (nen co cong bo o dau do), nhung tim tren web ngan hang,
+    # tim kiem theo ten mien va chi muc Wayback deu khong ra trang. Van dung VietnamNet cho 2 ngan hang nay.
+    # CTG va BAB tim ra trang ngay 27/10/2026 (deu la anh, xem _ctg, _bab).
     "VPB": "chua tim thay trang cong bo (chi thay bieu lai tham chieu); dung VietnamNet",
     "LPB": "chua tim thay trang cong bo (chi thay lai co so); dung VietnamNet",
-    "BAB": "chua tim thay trang cong bo tren baca-bank.vn; dung VietnamNet",
 }
 
 
@@ -108,10 +74,6 @@ def _render(url: str, budget_ms: int = 12000) -> str:
 
 
 def _render_click(url: str, click_js: str, wait_s: float = 6.0) -> str:
-    """Mo url bang Edge headless qua DevTools, chay click_js (bam menu), cho, tra ve HTML.
-
-    Dung cho trang ung dung mot trang ma duong dan chi chay khi vao bang menu (OCB: mo thang
-    /vi/cong-cu/lai-suat tra 404, va API cua ho can ma xac thuc do chinh trang tao)."""
     import asyncio
     import json
     import socket
@@ -188,7 +150,6 @@ def _links(raw: str, base: str) -> list[tuple[str, str]]:
 
 
 def _wayback(url_key: str, since: str = "20240301") -> list[tuple[str, str]]:
-    """(url ban luu nguyen goc, ngay luu) cho moi thang co ban chup cua url_key."""
     cdx = ("http://web.archive.org/cdx/search/cdx?url=" + url_key +
            f"&output=json&fl=timestamp,original&filter=statuscode:200&collapse=timestamp:6&from={since}")
     try:
@@ -207,8 +168,6 @@ def _num(s: str) -> float:
 
 
 def _after(text: str, label: str, window: int = 40) -> float | None:
-    """So dau tien dung ngay sau nhan. Duyet moi lan nhan xuat hien: nhan hay lap lai trong tieu de muc
-    ("Lai suat cho vay binh quan va chenh lech ...") ma ngay sau tieu de khong co so."""
     for m in re.finditer(label, text, re.I):
         n = re.search(DEC, text[m.end(): m.end() + window])
         if n:
@@ -227,7 +186,6 @@ def _period(text: str) -> str | None:
 
 
 def _ym(d: str) -> str | None:
-    """'30/4/2026' -> '2026-04'."""
     m = re.match(r"(\d{1,2})/(\d{1,2})/(20\d{2})", d or "")
     return f"{m.group(3)}-{int(m.group(2)):02d}" if m else None
 
@@ -336,26 +294,39 @@ def _eib(backfill: bool) -> list[dict]:
     return out
 
 
-TCB_PDF = ("https://techcombank.com/content/dam/techcombank/public-site/documents/"
-           "lai-suat-cho-vay-binh-quan-{seg}-techcombank-thang-{m:02d}-{y}.pdf")
+TCB_DOCS = "https://techcombank.com/content/dam/techcombank/public-site/documents/"
+# TCB doi ten file nhieu lan; thu lan luot. Mau "bao-cao-lai-suat-..." dung tu ky 09/2026 (thang khong so 0,
+# lay tu thuoc tinh data-file-link tren trang cong-cu-tien-ich/bieu-phi-lai-suat, trang nay nap bang JS).
+TCB_NAMES = {
+    "khcn": ("lai-suat-cho-vay-binh-quan-khcn-techcombank-thang-{m:02d}-{y}",
+             "bao-cao-lai-suat-khcn-chu-ho-kinh-doanh-techcombank-thang-{m}-{y}",
+             "bao-cao-lai-suat-khcn-chu-ho-kinh-doanh-techcombank-thang-{m:02d}-{y}"),
+    "khdn": ("lai-suat-cho-vay-binh-quan-khdn-techcombank-thang-{m:02d}-{y}",
+             "bao-cao-lai-suat-khdn-thang-{m}-{y}-techcombank",
+             "bao-cao-lai-suat-khdn-thang-{m:02d}-{y}-techcombank"),
+}
 
 
 def _tcb(backfill: bool) -> list[dict]:
     out = []
     for y, m in _months_back(30 if backfill else 4):
         for seg, segment in (("khcn", "individual"), ("khdn", "business")):
-            url = TCB_PDF.format(seg=seg, m=m, y=y)
-            r = _get(url)
-            if r.status_code != 200 or not r.content.startswith(b"%PDF"):
-                continue
-            t = _pdf_text(r.content)
-            # PDF tach tung chu so: "0 6 - 2 0 2 6"
-            t = re.sub(r"(?<=\d) (?=\d)", "", t)
-            out += _rows("TCB", _period(t) or f"{y}-{m:02d}", {
-                (segment, "avg_lending"): _after(t, r"Average Lending Rate \(\*\)"),
-                # so chenh lech nam giua "Difference between" va "Average Lending & Average Deposit Rate"
-                (segment, "spread"): _after(t, r"Difference between", 40),
-            }, url, "pdf", basis="new_loans")
+            for name in TCB_NAMES[seg]:
+                url = TCB_DOCS + name.format(m=m, y=y) + ".pdf"
+                r = _get(url)
+                if r.status_code != 200 or not r.content.startswith(b"%PDF"):
+                    continue
+                t = _pdf_text(r.content)
+                # PDF tach tung chu so: "0 6 - 2 0 2 6"
+                t = re.sub(r"(?<=\d) (?=\d)", "", t)
+                out += _rows("TCB", _period(t) or f"{y}-{m:02d}", {
+                    (segment, "avg_lending"): _after(t, r"Average Lending Rate \(\*\)"),
+                    # mau cu: so nam giua "Difference between" va "Average Lending & Average Deposit Rate";
+                    # mau 09/2026: so dung ngay sau nhan tieng Viet "... cho vay binh quan /"
+                    (segment, "spread"): (_after(t, r"Difference between", 40)
+                                          or _after(t, r"Chênh lệch lãi suất tiền gửi và cho vay bình quân\s*/", 15)),
+                }, url, "pdf", basis="new_loans")
+                break
     return out
 
 
@@ -423,18 +394,28 @@ def _mbb(backfill: bool) -> list[dict]:
 def _pgb(backfill: bool) -> list[dict]:
     page = "https://www.pgbank.com.vn/tin-tuc?page=1&q=lai-suat-cho-vay-binh-quan-12"
     raw = _render(page)
-    pdfs = list(dict.fromkeys(u for text, u in _links(raw, page)
+    links = _links(raw, page)
+    pdfs = list(dict.fromkeys(u for text, u in links
                               if "bình quân" in text.lower() and u.lower().endswith(".pdf")))
+    # Tu ky 06/2026 PGBank dang so ngay trong bai (HTML dung bang JS), khong con PDF; ky lay tu tieu de bai
+    # "... KY THANG 9/2026" vi cuoi bai co danh sach bai cu cung chu "ky thang".
+    arts = list(dict.fromkeys((text, u) for text, u in links
+                              if "bình quân" in text.lower() and "/tin-tuc/" in u and not u.lower().endswith(".pdf")
+                              and _period(text)))
+    labels = {
+        ("all", "avg_lending"): r"Lãi suất cho vay bình quân",
+        ("all", "spread"): r"Chênh lệch LSCV bình quân và Lãi suất tiền gửi bình quân",
+    }
     out = []
     for url in pdfs[: (24 if backfill else 2)]:
         r = _get(url)
         if not r.content.startswith(b"%PDF"):
             continue
         t = _pdf_text(r.content)
-        out += _rows("PGB", _period(t), {
-            ("all", "avg_lending"): _after(t, r"Lãi suất cho vay bình quân"),
-            ("all", "spread"): _after(t, r"Chênh lệch LSCV bình quân và Lãi suất tiền gửi bình quân"),
-        }, url, "pdf")
+        out += _rows("PGB", _period(t), {k: _after(t, lab) for k, lab in labels.items()}, url, "pdf")
+    for text, url in arts[: (24 if backfill else 4)]:
+        t = _plain(_render(url))
+        out += _rows("PGB", _period(text), {k: _after(t, lab) for k, lab in labels.items()}, url, "html_render")
     return out
 
 
@@ -465,8 +446,10 @@ def _bvb(backfill: bool) -> list[dict]:
     return out
 
 
-# MSB doi duong dan gan nhu moi thang (da gap ca 4 kieu duoi day, 2025-2026); xac nhan bang thang trong tieu de.
-MSB_SLUGS = ("bao-cao-tinh-hinh-cong-bo-lai-suat-thang-{mm}-{y}/", "cong-bo-lai-suat-thang-{mm}-{y}/",
+# MSB doi duong dan gan nhu moi thang (da gap ca 5 kieu duoi day, 2025-2026; kieu dau tu ky 05/2026, ky 06/2026
+# chua tim ra); xac nhan bang thang trong tieu de.
+MSB_SLUGS = ("lai-suat-binh-quan-cua-khoan-vay-moi-giai-ngan-thang-{mm}-{y}/",
+             "bao-cao-tinh-hinh-cong-bo-lai-suat-thang-{mm}-{y}/", "cong-bo-lai-suat-thang-{mm}-{y}/",
              "bao-cao-1117-nhnn-bao-cao-tinh-hinh-cong-bo-lai-suat-t{m}-{y}/", "cong-bo-lai-suat-binh-quan-thang-{m}/")
 
 
@@ -491,8 +474,6 @@ def _msb(backfill: bool) -> list[dict]:
 
 
 def _ssb(backfill: bool) -> list[dict]:
-    """Hai loai bai: 'lai suat cho vay KHCN thang MM' (so trong PDF dinh kem, tach ngan / trung dai han,
-    khoan vay phat sinh moi) va 'chenh lech ... ngay DD/MM/YYYY' (so nam ngay trong bai)."""
     page = "https://www.seabank.com.vn/tin-tuc/cong-bo-lai-suat-cho-vay/khach-hang-ca-nhan"
     r = _get(page, timeout=60)
     posts = sorted(set(u for _, u in _links(r.text, page)
@@ -547,7 +528,6 @@ def _tpb(backfill: bool) -> list[dict]:
 
 
 def _nvb(backfill: bool) -> list[dict]:
-    """NCB sua lai cung mot bai moi ky; bai ghi ngay dang, khong ghi ky so lieu."""
     url = ("https://www.ncb-bank.vn/vi/tin-tuc/"
            "ncb-cong-bo-lai-suat-cho-vay-binh-quan-va-chenh-lech-lai-suat-binh-quan-n104492")
     t = _plain(_render(url))
@@ -604,7 +584,6 @@ def _nab(backfill: bool) -> list[dict]:
 
 
 def _stb(backfill: bool) -> list[dict]:
-    """Sacombank ghi de cung mot anh moi ky; ky doc tu tieu de trang."""
     page = f"https://www.sacombank.com.vn/trang-chu/tin-tuc/thong-bao/{date.today().year}/lai-suat-binh-quan.html"
     r = _get(page)
     m = re.search(r"Lãi suất cho vay bình quân tháng\s*(\d{1,2})\.(20\d{2})", _plain(r.text))
@@ -617,14 +596,42 @@ def _stb(backfill: bool) -> list[dict]:
     return []
 
 
+CTG_PAGE = "https://www.vietinbank.vn/tin-tuc/tin-tuc-sme/tong-hop-cong-bo-thong-tin-lai-suat-20250526045752-00-html"
+
+
+def _ctg(backfill: bool) -> list[dict]:
+    r = _get(CTG_PAGE)
+    m = re.search(r'Tệp đính kèm.*?href="(https://(?:www\.)?vietinbank\.vn/assets/[0-9a-f-]{36})"', r.text, re.S)
+    if m:
+        k = re.search(r'filename_download\\?":\\?"[^"\\]*kỳ tháng\s*(\d{1,2})', r.text)
+        _need_manual("CTG", m.group(1), f"bang luy ke lai binh quan{' ky thang ' + k.group(1) if k else ''}")
+    return []
+
+
+BAB_SEARCH = ("https://www.baca-bank.vn/SitePages/website/tim-kiem.aspx"
+              "?query=l%c3%a3i%20su%e1%ba%a5t%20cho%20vay%20b%c3%acnh%20qu%c3%a2n&s=TK")
+
+
+def _bab(backfill: bool) -> list[dict]:
+    r = _get(BAB_SEARCH)
+    arts = []
+    for m in re.finditer(r'<a[^>]+href="([^"]*tin-tuc\.aspx\?ttid=\d+[^"]*)"[^>]*>(.*?)</a>', r.text, re.S):
+        text = re.sub(r"<[^>]+>|\s+", " ", unescape(m.group(2))).strip()
+        p = re.search(r"BÌNH QUÂN.*?(\d{1,2})/(20\d{2})", text, re.I)
+        if p:
+            arts.append((f"{p.group(2)}-{int(p.group(1)):02d}", urljoin(BAB_SEARCH, unescape(m.group(1)))))
+    for period, url in sorted(set(arts), reverse=True)[: (24 if backfill else 2)]:
+        for src in re.findall(r'<img[^>]+src="([^"]*LSBQ[^"]*)"', _get(url).text, re.I):
+            _need_manual("BAB", urljoin(url, src), f"lai cho vay binh quan ky {period}")
+    return []
+
+
 VCB_SEARCH = ("https://www.vietcombank.com.vn/vi-VN/sxa/search/results/?l=vi-VN&q={q}&p=100"
               "&v=%7B5E30B19D-3205-453A-97DA-2EC52C3B1DC1%7D&s=%7B96F6D836-0056-44EC-825D-6EC2A1CB2532%7D"
               "&itemid=%7B7FFD0BD8-62BB-4848-AAD9-98D4D9442890%7D")
 
 
 def _vcb(backfill: bool) -> list[dict]:
-    """Danh sach bai lay tu API tim kiem cua chinh VCB (moi thang mot bai 'Thong tin lai suat ...').
-    So nam trong anh (da so) hoac PDF dinh kem."""
     from urllib.parse import quote
     arts = set()
     for q in ("lãi suất cho vay bình quân", "Thông tin lãi suất"):
@@ -678,7 +685,8 @@ def _vcb(backfill: bool) -> list[dict]:
 
 BANKS = {"ACB": _acb, "BID": _bid, "EIB": _eib, "TCB": _tcb, "HDB": _hdb, "VIB": _vib, "SHB": _shb,
          "MBB": _mbb, "PGB": _pgb, "BVB": _bvb, "MSB": _msb, "SSB": _ssb, "TPB": _tpb, "NVB": _nvb,
-         "OCB": _ocb, "NAB": _nab, "STB": _stb, "VCB": _vcb}
+         "OCB": _ocb, "NAB": _nab, "STB": _stb, "VCB": _vcb, "CTG": _ctg, "BAB": _bab}
+IMAGE_ONLY = (_nab, _stb, _ctg, _bab)  # so chi o file nhap tay; ham chi bao anh moi
 
 
 # ---------------------------------------------------------------------------
@@ -690,7 +698,6 @@ def _load() -> pd.DataFrame:
 
 
 def _expected_period(today: date | None = None) -> str:
-    """Ky ngan hang le ra da cong bo: thang truoc."""
     y, m = _months_back(2, today)[1]
     return f"{y}-{m:02d}"
 
@@ -714,7 +721,7 @@ def run(backfill: bool = False, force: bool = False, only: list[str] | None = No
             periods = sorted({r["period"] for r in rows})
             if rows:
                 status[tk] = f"{len(rows)} dong, ky {periods[0]}..{periods[-1]}"
-            elif fn in (_nab, _stb):
+            elif fn in IMAGE_ONLY:
                 status[tk] = "nguon la anh: so lay tu file nhap tay, chi kiem anh moi"
             else:
                 status[tk] = "KHONG DOC DUOC so nao"

@@ -58,7 +58,7 @@ export function SaveNeedButton({ need, defaultLabel }: { need: Omit<SavedNeedReq
         <DialogTitle>Lưu nhu cầu</DialogTitle>
         <DialogContent>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            Chỉ lưu tiêu chí tìm kiếm (số tiền, kỳ hạn, mức ưu tiên), không lưu thông tin tài chính cá nhân.
+            Chỉ lưu tiêu chí tìm kiếm (số tiền, kỳ hạn, kênh), không lưu thông tin tài chính cá nhân.
           </Typography>
           <TextField
             autoFocus

@@ -8,6 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.csrf.CsrfException;
 import vn.kltn.bankadvisor.common.exception.ErrorCode;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Trả lỗi 401/403 cùng định dạng {@code ApiResponse} như các lỗi khác.
- * Token hỏng hoặc hết hạn thì xóa luôn cookie để lần gọi sau không gửi lại.
+ * Token hỏng, hết hạn, bị thu hồi, hoặc tài khoản bị khóa thì xóa luôn cookie để lần gọi sau không gửi lại.
  */
 class JsonSecurityErrorHandler implements AuthenticationEntryPoint, AccessDeniedHandler {
 
@@ -28,7 +29,12 @@ class JsonSecurityErrorHandler implements AuthenticationEntryPoint, AccessDenied
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException ex) throws IOException {
-        if (ex instanceof InvalidBearerTokenException) {
+        if (ex instanceof SessionAuthenticationConverter.AccountLockedException) {
+            cookies.clear(response);
+            write(response, ErrorCode.ACCOUNT_LOCKED);
+            return;
+        }
+        if (ex instanceof InvalidBearerTokenException || ex instanceof SessionAuthenticationConverter.SessionRevokedException) {
             cookies.clear(response);
         }
         write(response, ErrorCode.UNAUTHORIZED);
@@ -37,7 +43,8 @@ class JsonSecurityErrorHandler implements AuthenticationEntryPoint, AccessDenied
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException ex) throws IOException {
-        write(response, ErrorCode.FORBIDDEN);
+        // Thiếu / sai token CSRF: mã riêng để giao diện đọc lại cookie XSRF-TOKEN (vừa được cấp mới) và thử lại một lần.
+        write(response, ex instanceof CsrfException ? ErrorCode.CSRF_TOKEN_INVALID : ErrorCode.FORBIDDEN);
     }
 
     private static void write(HttpServletResponse response, ErrorCode code) throws IOException {

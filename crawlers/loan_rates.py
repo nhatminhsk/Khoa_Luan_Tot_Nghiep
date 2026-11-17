@@ -164,7 +164,6 @@ def parse_block(block):
 
 
 def parse_sbv_text(text):
-    """Ban tieng Anh cua NHNN -> cung dang ket qua voi parse_block()."""
     text = re.sub(r"\s+", " ", text.replace(" ", " "))
     usd = text.find("in USD")  # doan VND dung truoc lan dau nhac USD (tien gui USD)
     deposit_part = text[:usd] if usd > 0 else text
@@ -189,7 +188,6 @@ def sbv_pdf_text(content):
 
 
 def fetch_sbv_month(year, month, session):
-    """Trang + PDF cua mot thang. Tra (status, vals, url, title); status: ok / missing / blocked / bad."""
     for tail in SBV_TAILS:
         url = SBV_ARTICLE.format(month=MONTHS_EN[month - 1], year=year, tail=tail)
         r = session.get(url, timeout=30)
@@ -219,7 +217,6 @@ def fetch_sbv_month(year, month, session):
 
 
 def next_months(last_date, today=None):
-    """Cac thang sau thang cuoi trong file, toi thang truoc thang hien tai."""
     today = today or datetime.now(timezone.utc).date()
     y, m = int(last_date[:4]), int(last_date[5:7])
     out = []
@@ -231,7 +228,6 @@ def next_months(last_date, today=None):
 
 
 def scrape_sbv(months):
-    """Thang nao NHNN da dang. Dung o thang dau tien chua co (thang sau khong the co truoc)."""
     session = requests.Session()
     session.headers.update(HEADERS)
     found, status = {}, []
@@ -264,7 +260,6 @@ def scrape(years):
 
 
 def blank_cells(row, idx):
-    """Ten cac o so lieu con de trong trong mot dong da co."""
     out = []
     for field in FIELDS:
         for bound in ("min", "max"):

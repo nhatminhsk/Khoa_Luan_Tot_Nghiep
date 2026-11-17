@@ -86,7 +86,7 @@ def validate():
         h[c] = pd.to_numeric(h[c].astype(str).str.replace(r"[,\s]", "", regex=True), errors="coerce")
     h = h[(h["Total Deposits"] > 0) & h["Interest Expenses"].notna()]
     h["ie_over_deposits"] = h["Interest Expenses"] / h["Total Deposits"] * 100
-    m = h.merge(ann, left_on=["Bank Code", "Year"], right_on=["ticker", "year"])
+    m = h.merge(ann, left_on=["ticker", "Year"], right_on=["ticker", "year"])  # cot ticker: ma Harvard da quy doi
     gap = m["ie_over_deposits"] - m["annual"]
     out["cross_vendor_harvard"] = {
         "n_bank_years": len(m),

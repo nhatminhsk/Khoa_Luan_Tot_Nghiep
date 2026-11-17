@@ -62,6 +62,7 @@ class EmailNotificationIntegrationTests {
 
     private static final GreenMail GREEN_MAIL = new GreenMail(ServerSetupTest.SMTP.dynamicPort());
     private static final Pattern VERIFY_LINK = Pattern.compile("http://localhost:3000/verify-email\\?token=([A-Za-z0-9_.-]+)");
+    private static final Pattern RESET_LINK = Pattern.compile("http://localhost:3000/reset-password\\?token=([A-Za-z0-9_.-]+)");
 
     static {
         // Khởi động trước khi Spring đọc cổng SMTP ở @DynamicPropertySource.
@@ -92,7 +93,45 @@ class EmailNotificationIntegrationTests {
 
     @BeforeEach
     void setUp() {
-        mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+        mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity())
+                .defaultRequest(get("/").with(TestCsrf.xsrf())).build();
+    }
+
+    @Test
+    void passwordResetLinkWorksOnceAndEndsOldSessions() throws Exception {
+        Cookie session = register("quen-mk@example.test", "Quên mật khẩu");
+        mvc.perform(post("/api/v1/auth/password-reset").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"Quen-MK@example.test\"}"))
+                .andExpect(status().isOk());
+        // Email chưa đăng ký: cùng kết quả, không có thư nào được gửi.
+        mvc.perform(post("/api/v1/auth/password-reset").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"chua-dang-ky@example.test\"}"))
+                .andExpect(status().isOk());
+        assertTrue(messagesTo("chua-dang-ky@example.test").isEmpty());
+
+        List<MimeMessage> mails = messagesTo("quen-mk@example.test");
+        assertEquals(1, mails.size());
+        assertEquals("Đặt lại mật khẩu BankAdvisor", mails.getFirst().getSubject());
+        Matcher link = RESET_LINK.matcher(plainText(mails.getFirst()));
+        assertTrue(link.find(), "email phải có link đặt lại mật khẩu");
+        String token = link.group(1);
+
+        // Token đặt lại mật khẩu không dùng làm cookie đăng nhập được.
+        mvc.perform(get("/api/v1/auth/me").cookie(new Cookie("ba_session", token)))
+                .andExpect(status().isUnauthorized());
+        String confirm = "{\"token\":\"" + token + "\",\"newPassword\":\"matkhaumoi789\"}";
+        mvc.perform(post("/api/v1/auth/password-reset/confirm").contentType(MediaType.APPLICATION_JSON).content(confirm))
+                .andExpect(status().isOk());
+        mvc.perform(get("/api/v1/auth/me").cookie(session)).andExpect(status().isUnauthorized());
+        // Link chỉ dùng được một lần: mật khẩu đã đổi nên dấu vân tay trong token không còn khớp.
+        mvc.perform(post("/api/v1/auth/password-reset/confirm").contentType(MediaType.APPLICATION_JSON).content(confirm))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errorCode").value("PASSWORD_RESET_INVALID"));
+        mvc.perform(post("/api/v1/auth/login").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"quen-mk@example.test\",\"password\":\"matkhaumoi789\"}"))
+                .andExpect(status().isOk())
+                // Bấm được link trong thư nghĩa là nhận được thư ở địa chỉ này.
+                .andExpect(jsonPath("$.data.emailVerified").value(true));
     }
 
     @Test

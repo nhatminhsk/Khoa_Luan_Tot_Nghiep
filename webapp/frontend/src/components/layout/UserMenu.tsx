@@ -1,11 +1,12 @@
 "use client";
 
 import { Avatar, Box, Button, Divider, IconButton, ListItemIcon, Menu, MenuItem, Skeleton, Typography } from "@mui/material";
-import { IconBell, IconDatabaseCog, IconLogin, IconLogout } from "@tabler/icons-react";
+import { IconBell, IconDatabaseCog, IconDevicesOff, IconKey, IconLogin, IconLogout, IconUsers } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { useNotify } from "@/components/providers/NotifierProvider";
+import { ChangePasswordDialog } from "@/features/account/ChangePasswordDialog";
+import { reloadTo } from "@/features/auth/reload-after-auth";
 import { useAuth } from "@/hooks/use-auth";
 
 function initials(name: string): string {
@@ -14,21 +15,28 @@ function initials(name: string): string {
 }
 
 export function UserMenu() {
-  const { user, isLoading, isAdmin, logout } = useAuth();
+  const { user, isLoading, can, logout, logoutEverywhere } = useAuth();
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
+  const [changingPassword, setChangingPassword] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const notify = useNotify();
 
   if (isLoading) return <Skeleton variant="circular" width={36} height={36} />;
 
   if (!user) {
     const href = `/login?next=${encodeURIComponent(pathname)}`;
+    // Trước đây `next` chỉ có pathname nên đăng nhập xong mất tiêu chí trên URL (ví dụ /savings?amount=…&term=… về mặc định,
+    // hồ sơ ngân hàng về tab đầu). Đọc location lúc bấm thay vì useSearchParams để thanh trên không phải nằm trong Suspense.
+    const goLogin = (e: React.MouseEvent) => {
+      e.preventDefault();
+      router.push(`/login?next=${encodeURIComponent(window.location.pathname + window.location.search)}`);
+    };
     return (
       <>
         <Button
           component={Link}
           href={href}
+          onClick={goLogin}
           variant="contained"
           startIcon={<IconLogin size={18} />}
           sx={{ display: { xs: "none", sm: "inline-flex" } }}
@@ -39,6 +47,7 @@ export function UserMenu() {
         <IconButton
           component={Link}
           href={href}
+          onClick={goLogin}
           aria-label="Đăng nhập"
           sx={{
             display: { xs: "inline-flex", sm: "none" },
@@ -78,7 +87,7 @@ export function UserMenu() {
           </ListItemIcon>
           Theo dõi và thông báo
         </MenuItem>
-        {isAdmin && (
+        {can("DATA_MANAGE") && (
           <MenuItem component={Link} href="/admin" onClick={close}>
             <ListItemIcon>
               <IconDatabaseCog size={18} aria-hidden />
@@ -86,24 +95,56 @@ export function UserMenu() {
             Quản trị dữ liệu
           </MenuItem>
         )}
+        {can("USER_MANAGE") && (
+          <MenuItem component={Link} href="/admin/users" onClick={close}>
+            <ListItemIcon>
+              <IconUsers size={18} aria-hidden />
+            </ListItemIcon>
+            Quản lý người dùng
+          </MenuItem>
+        )}
+        <MenuItem
+          onClick={() => {
+            close();
+            setChangingPassword(true);
+          }}
+        >
+          <ListItemIcon>
+            <IconKey size={18} aria-hidden />
+          </ListItemIcon>
+          Đổi mật khẩu
+        </MenuItem>
         <Divider />
         <MenuItem
           onClick={() => {
             close();
+            // Tải lại cả trang: trang cần đăng nhập đã prefetch lúc còn phiên không được dùng lại (reload-after-auth.ts).
             logout.mutate(undefined, {
-              onSuccess: () => {
-                notify("Đã đăng xuất");
-                router.push("/");
-              },
+              onSuccess: () => reloadTo("/", "Đã đăng xuất trên trình duyệt này", "assign"),
             });
           }}
         >
           <ListItemIcon>
             <IconLogout size={18} aria-hidden />
           </ListItemIcon>
-          Đăng xuất
+          {/* Chỉ xóa cookie trên trình duyệt này; thu hồi mọi phiên là mục bên dưới. */}
+          Đăng xuất trên trình duyệt này
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            close();
+            logoutEverywhere.mutate(undefined, {
+              onSuccess: () => reloadTo("/", "Đã đăng xuất trên mọi thiết bị", "assign"),
+            });
+          }}
+        >
+          <ListItemIcon>
+            <IconDevicesOff size={18} aria-hidden />
+          </ListItemIcon>
+          Đăng xuất mọi thiết bị
         </MenuItem>
       </Menu>
+      <ChangePasswordDialog open={changingPassword} onClose={() => setChangingPassword(false)} />
     </>
   );
 }

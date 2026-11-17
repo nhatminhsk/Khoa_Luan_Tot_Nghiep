@@ -6,6 +6,56 @@ from crawlers import macro
 
 HISTORY: list[tuple[str, str, float, float, float, str, str]] = [
     (
+        "2011-10-10", "2210/QĐ-NHNN", 15.0, 13.0, 16.0,
+        "https://caselaw.vn/van-ban-phap-luat/188097-quyet-dinh-so-2210-qd-nhnn-ngay-06-10-2011-cua-thong-doc-ngan-hang-nha-nuoc-viet-nam-ve-lai-suat-tai-cap-von-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 06/10/2011, hieu luc 10/10/2011; chi sua tai cap von (15,0) va qua dem (16,0). Tai chiet khau 13,0 giu theo QD 929/QD-NHNN ngay 29/4/2011 (caselaw.vn/van-ban-phap-luat/191002). Them 13/10/2026 de lui mau ve 2012.",
+    ),
+    (
+        "2012-03-13", "407/QĐ-NHNN", 14.0, 12.0, 15.0,
+        "https://caselaw.vn/van-ban-phap-luat/184946-quyet-dinh-so-407-qd-nhnn-ngay-12-03-2012-ve-lai-suat-tai-cap-von-tai-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-do-ngan-hang-nha-nuoc-viet-nam-ban-hanh-van-ban-het-hieu-luc",
+        "Ky 12/03/2012, hieu luc 13/03/2012. Thay the QD 2210 va QD 929. Doc toan van Dieu 1.",
+    ),
+    (
+        "2012-04-11", "693/QĐ-NHNN", 13.0, 11.0, 14.0,
+        "https://caselaw.vn/van-ban-phap-luat/184372-quyet-dinh-so-693-qd-nhnn-ngay-10-04-2012-ve-lai-suat-tai-cap-von-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-nganh-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 10/04/2012, hieu luc 11/04/2012. Doc toan van Dieu 1.",
+    ),
+    (
+        "2012-05-28", "1081/QĐ-NHNN", 12.0, 10.0, 13.0,
+        "https://caselaw.vn/van-ban-phap-luat/183498-quyet-dinh-so-1081-qd-nhnn-ngay-25-05-2012-ve-lai-suat-tai-cap-von-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 25/05/2012, hieu luc 28/05/2012. Thay the QD 693. Doc toan van Dieu 1.",
+    ),
+    (
+        "2012-06-11", "1196/QĐ-NHNN", 11.0, 9.0, 12.0,
+        "https://caselaw.vn/van-ban-phap-luat/183175-quyet-dinh-so-1196-qd-nhnn-ngay-08-06-2012-ve-lai-suat-tai-cap-von-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thiet-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 08/06/2012, hieu luc 11/06/2012. Thay the QD 1081. Doc toan van Dieu 1.",
+    ),
+    (
+        "2012-07-01", "1289/QĐ-NHNN", 10.0, 8.0, 11.0,
+        "https://caselaw.vn/van-ban-phap-luat/182692-quyet-dinh-so-1289-qd-nhnn-ngay-29-06-2012-ve-lai-suat-tai-cap-von-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 29/06/2012, hieu luc 01/07/2012. Thay the QD 1196. Doc toan van Dieu 1.",
+    ),
+    (
+        "2012-12-24", "2646/QĐ-NHNN", 9.0, 7.0, 10.0,
+        "https://caselaw.vn/van-ban-phap-luat/178652-quyet-dinh-so-2646-qd-nhnn-ngay-21-12-2012-ve-lai-suat-tai-cap-von-lai-suat-tai-chiet-khau-lai-suat-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 21/12/2012, hieu luc 24/12/2012. Thay the QD 1289. Doc toan van Dieu 1.",
+    ),
+    (
+        "2013-03-26", "643/QĐ-NHNN", 8.0, 6.0, 9.0,
+        "https://caselaw.vn/van-ban-phap-luat/176604-quyet-dinh-so-643-qd-nhnn-ngay-25-03-2013-ve-lai-suat-tai-cap-von-tai-chiet-khau-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 25/03/2013, hieu luc 26/03/2013. Thay the QD 2646. Doc toan van Dieu 1.",
+    ),
+    (
+        "2013-05-13", "1073/QĐ-NHNN", 7.0, 5.0, 8.0,
+        "https://caselaw.vn/van-ban-phap-luat/175518-quyet-dinh-so-1073-qd-nhnn-ngay-10-05-2013-ve-lai-suat-cap-von-lai-suat-tai-chiet-khau-lai-suat-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 10/05/2013, hieu luc 13/05/2013. Thay the QD 643. Doc toan van Dieu 1.",
+    ),
+    (
+        "2014-03-18", "496/QĐ-NHNN", 6.5, 4.5, 7.5,
+        "https://caselaw.vn/van-ban-phap-luat/166651-quyet-dinh-so-496-qd-nhnn-ngay-17-03-2014-ve-lai-suat-tai-cap-von-lai-suat-tai-chiet-khau-lai-suat-cho-vay-qua-dem-trong-thanh-toan-dien-tu-lien-ngan-hang-va-cho-vay-bu-dap-thieu-hut-von-trong-thanh-toan-bu-tru-cua-ngan-hang-nha-nuoc-viet-nam-doi-voi-cac-ngan-hang-van-ban-het-hieu-luc",
+        "Ky 17/03/2014, hieu luc 18/03/2014. Thay the QD 1073; giu nguyen den QD 1424 (10/07/2017).",
+    ),
+    (
         "2017-07-10", "1424/QĐ-NHNN", 6.25, 4.25, 7.25,
         "https://cafebiz.vn/3-phut-de-hieu-tai-sao-nhnn-cat-giam-lai-suat-la-tin-hieu-tot-"
         "cho-nen-kinh-te-20170714170833637.chn",

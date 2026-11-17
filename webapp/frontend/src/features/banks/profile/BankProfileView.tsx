@@ -13,8 +13,7 @@ import { queryKeys } from "@/lib/query/keys";
 import { bankRepository } from "@/repositories/bank.repository";
 import type { BankOwnership } from "@/types/api";
 import { formatDate, formatPercent } from "@/utils/format";
-import { AppPanel } from "./AppPanel";
-import { ForecastPanel } from "./ForecastPanel";
+import { BankKpiStrip } from "./BankKpiStrip";
 import { IndicatorsPanel } from "./IndicatorsPanel";
 import { ProgramsPanel } from "./ProgramsPanel";
 import { RatesPanel } from "./RatesPanel";
@@ -22,8 +21,6 @@ import { RatesPanel } from "./RatesPanel";
 const TABS = [
   { value: "indicators", label: "Chỉ tiêu tài chính" },
   { value: "rates", label: "Lãi suất" },
-  { value: "forecast", label: "Dự báo" },
-  { value: "app", label: "Ứng dụng" },
   { value: "programs", label: "Chương trình tín dụng" },
 ] as const;
 type TabValue = (typeof TABS)[number]["value"];
@@ -57,7 +54,6 @@ export function BankProfileView({ ticker }: { ticker: string }) {
             <Typography color="text.secondary">{bank.data.fullName}</Typography>
             <Stack direction="row" spacing={0.75} sx={{ mt: 0.75, flexWrap: "wrap", rowGap: 0.75 }} useFlexGap>
               <Chip size="small" label={`Mã ${bank.data.ticker}`} />
-              {bank.data.appName && <Chip size="small" variant="outlined" label={`Ứng dụng: ${bank.data.appName}`} />}
               {bank.data.ownership && <OwnershipChips ownership={bank.data.ownership} />}
             </Stack>
           </Box>
@@ -76,6 +72,8 @@ export function BankProfileView({ ticker }: { ticker: string }) {
         </Stack>
       </Stack>
 
+      <BankKpiStrip ticker={ticker} />
+
       <Tabs
         value={tab}
         onChange={(_, value: TabValue) => changeTab(value)}
@@ -90,8 +88,6 @@ export function BankProfileView({ ticker }: { ticker: string }) {
 
       {tab === "indicators" && <IndicatorsPanel ticker={ticker} />}
       {tab === "rates" && <RatesPanel ticker={ticker} />}
-      {tab === "forecast" && <ForecastPanel ticker={ticker} />}
-      {tab === "app" && <AppPanel ticker={ticker} />}
       {tab === "programs" && <ProgramsPanel ticker={ticker} />}
 
       <Disclaimer />

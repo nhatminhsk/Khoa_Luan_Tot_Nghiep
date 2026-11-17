@@ -1,0 +1,225 @@
+# Triển khai cả hệ thống trên một máy (VPS 1–2 GB RAM hoặc Docker Desktop) với giới hạn tài nguyên chặt.
+#
+#   cp .env.example .env        # điền mật khẩu CSDL, khóa JWT, tài khoản quản trị
+#   docker compose up -d --build
+#   mở http://localhost:8088
+#
+# Tổng giới hạn: ~1,1 GB RAM, 2,25 CPU. Đo bằng docker stats (29/10/2026, sau ~400 request): API 394 MB, web 184 MB,
+# PostgreSQL 56 MB, nginx 12 MB — tổng ~650 MB.
+# Chỉ nginx mở cổng ra ngoài; CSDL nằm trong mạng nội bộ "data", chỉ API và bản sao lưu chạm được.
+# Dữ liệu PostgreSQL ở volume "pgdata", bản sao lưu ở ./backups; CSV của pipeline gắn chỉ đọc từ ../data/serving.
+# HTTPS: ghép thêm docker-compose.https.yml. Pipeline: profile "job" (không chạy khi "up").
+
+name: bankadvisor
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bankadvisor
+      POSTGRES_USER: bankadvisor
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD:?Đặt APP_DB_PASSWORD trong webapp/.env}
+      TZ: Asia/Ho_Chi_Minh
+    # Tinh chỉnh cho 256 MB: CSDL chỉ vài chục MB (bảng xếp hạng, lãi suất, người dùng), 1 API với pool 5 kết nối.
+    command:
+      - postgres
+      - -c
+      - shared_buffers=48MB
+      - -c
+      - effective_cache_size=128MB
+      - -c
+      - work_mem=2MB
+      - -c
+      - maintenance_work_mem=16MB
+      - -c
+      - max_connections=20
+      - -c
+      - max_worker_processes=2
+      - -c
+      - max_parallel_workers=0
+      - -c
+      - max_parallel_workers_per_gather=0
+      - -c
+      - autovacuum_max_workers=2
+      - -c
+      - min_wal_size=32MB
+      - -c
+      - max_wal_size=256MB
+      - -c
+      - jit=off
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bankadvisor -d bankadvisor"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 256M }
+        reservations: { memory: 96M }
+    shm_size: 64m
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+  api:
+    build: ./backend
+    image: bankadvisor-api:latest
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+      APP_DB_URL: jdbc:postgresql://db:5432/bankadvisor
+      APP_DB_USERNAME: bankadvisor
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD}
+      APP_DB_POOL_SIZE: "5"
+      SERVER_TOMCAT_THREADS_MAX: "40"
+      APP_JWT_SECRET: ${APP_JWT_SECRET:?Đặt APP_JWT_SECRET (>= 32 ký tự) trong webapp/.env}
+      APP_COOKIE_SECURE: ${APP_COOKIE_SECURE:-false}
+      APP_ADMIN_EMAIL: ${APP_ADMIN_EMAIL:-}
+      APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:-}
+      APP_MAIL_MODE: ${APP_MAIL_MODE:-OFF}
+      APP_MAIL_FROM: ${APP_MAIL_FROM:-BankAdvisor <no-reply@bankadvisor.test>}
+      APP_WEB_BASE_URL: ${APP_WEB_BASE_URL:-http://localhost:8088}
+      APP_SMTP_HOST: ${APP_SMTP_HOST:-}
+      APP_SMTP_PORT: ${APP_SMTP_PORT:-587}
+      APP_SMTP_USERNAME: ${APP_SMTP_USERNAME:-}
+      APP_SMTP_PASSWORD: ${APP_SMTP_PASSWORD:-}
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      # Pipeline Python ghi CSV vào data/serving; API nạp lúc khởi động và 16:00 mỗi ngày.
+      - ../data/serving:/data/serving:ro
+    tmpfs: [/tmp]
+    read_only: true
+    networks: [edge, data]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/actuator/health | grep -q UP"]
+      interval: 15s
+      timeout: 3s
+      start_period: 90s
+      retries: 5
+    deploy:
+      resources:
+        limits: { cpus: "1.00", memory: 512M }
+        reservations: { memory: 256M }
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        API_URL: http://api:8080
+    image: bankadvisor-web:latest
+    restart: unless-stopped
+    depends_on:
+      api: { condition: service_healthy }
+    environment:
+      # Server Component gọi thẳng API trong mạng Docker (không qua nginx).
+      API_URL: http://api:8080
+      NODE_OPTIONS: --max-old-space-size=160
+    networks: [edge]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:3000/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 256M }
+        reservations: { memory: 96M }
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      web: { condition: service_healthy }
+    ports:
+      - "${HTTP_PORT:-8088}:80"
+    environment:
+      # Ảnh nginx thay biến môi trường trong /etc/nginx/templates/*.template rồi ghi vào thư mục này.
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx
+    volumes:
+      - ./deploy/nginx/http.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+    networks: [edge]
+    deploy:
+      resources:
+        limits: { cpus: "0.25", memory: 64M }
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+  # Sao lưu CSDL mỗi ngày lúc BACKUP_AT vào webapp/backups (7 bản ngày + 4 bản tuần). Sao lưu ngay:
+  #   docker compose exec backup sh /sao-luu.sh ngay
+  backup:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+    # Chạy bằng "sh" vì clone trên VPS không giữ quyền thực thi của file soạn trên Windows.
+    entrypoint: ["sh", "/sao-luu.sh"]
+    environment:
+      PGHOST: db
+      PGUSER: bankadvisor
+      PGDATABASE: bankadvisor
+      PGPASSWORD: ${APP_DB_PASSWORD}
+      BACKUP_AT: ${BACKUP_AT:-02:00}
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - ./deploy/backup/sao-luu.sh:/sao-luu.sh:ro
+      - ./backups:/backups
+    networks: [data]
+    deploy:
+      resources:
+        limits: { cpus: "0.25", memory: 64M }
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+  # Pipeline dữ liệu hằng ngày (Python + Chromium), chạy một lần rồi thoát. Không tự chạy khi "up":
+  #   docker compose --profile job run --rm pipeline
+  # Trên VPS gọi bằng systemd timer 15:30 (deploy/vps). Trên máy Windows này vẫn dùng Task Scheduler — chỉ một
+  # lịch được phép ghi dữ liệu. Mã và dữ liệu gắn từ thư mục gốc repo (..), ảnh chỉ chứa thư viện.
+  pipeline:
+    build: ../pipeline
+    image: bankadvisor-pipeline:latest
+    profiles: [job]
+    working_dir: /work
+    command: ["python", "run_daily_crawl.py"]
+    environment:
+      # lending_rates_official dựng trang JavaScript bằng trình duyệt headless; trong container là Chromium.
+      EDGE_PATH: /usr/local/bin/chromium-headless
+      TZ: Asia/Ho_Chi_Minh
+      PYTHONUNBUFFERED: "1"
+    volumes:
+      - ..:/work
+    networks: [jobs]
+    shm_size: 512m
+    deploy:
+      resources:
+        limits: { cpus: "1.00", memory: 1G }
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+
+networks:
+  edge: {}
+  # internal: không ra Internet, không có cổng nào ra máy chủ — chỉ API, CSDL và bản sao lưu nói chuyện với nhau.
+  data:
+    internal: true
+  # Pipeline cần ra Internet để crawl, không cần chạm CSDL hay API.
+  jobs: {}
+
+volumes:
+  pgdata: {}

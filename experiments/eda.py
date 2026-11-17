@@ -1,22 +1,3 @@
-"""EDA: cac nhom du lieu lien he voi nhau the nao (khong ve tung bien).
-
-Chin cau hoi, moi cau mot bang so trong data/model/eda/ va mot khoi trong eda.json:
-  1. variance     Phuong sai nam o dau: giua NH, theo quy chung, hay rieng tung NH-quy?
-  2. trends       Xu huong 2019-2026: trung vi va khoang tu phan vi cua 22 NH theo quy
-  3. leadlag      Lai suat dieu hanh truyen sang chi phi von, NIM sau bao nhieu quy?
-  4. correlation  Cac chi so di cung nhau: tuong quan GIUA NH (trung binh NH) va TRONG NH
-  5. groups       PCA + k-means (k = 3) tren so gan nhat trong 4 quy cuoi, kem do on dinh nhom
-  6. deposit      Lai suat tiet kiem hom nay (deposit_daily.csv) vs suc khoe NH
-  7. app          Diem app co lien quan tai chinh khong -- giua NH va trong NH
-  8. policy       Tham gia goi nong nghiep vs ty trong du no nong nghiep; phoi nhiem Yagi vs NPL
-  9. season       Mua vu theo quy trong nam: ANOVA long nhau + naive co mua vu so voi naive
-
-Tuong quan dung Spearman; khoang tin cay 95% bang bootstrap theo NH (22 cum) de khong gia
-dinh cac quy cua mot NH doc lap.
-
-Chay:
-    python -m experiments.eda
-"""
 from __future__ import annotations
 
 import json
@@ -60,7 +41,6 @@ def spearman(a, b):
 
 
 def boot_ci(f, fn, rng, B=1000):
-    """Bootstrap theo cum NH: lay lai 22 NH co hoan lai."""
     banks = f.ticker.unique()
     vals = []
     for _ in range(B):
@@ -109,7 +89,6 @@ def add_derived(f):
 
 
 def casa_seasonality(f):
-    """CASA quy 4 tru CASA quy 1 nam sau, theo NH."""
     w = f.pivot(index="ticker", columns="period", values="casa_percent")
     rows = []
     for y in sorted({int(p[:4]) for p in w.columns}):
@@ -121,7 +100,6 @@ def casa_seasonality(f):
 
 
 def trends(f, clusters: pd.Series):
-    """Trung vi theo quy cho ca 22 NH va cho tung nhom (nhom lay tu anh chup hien tai, nhin nguoc lai qua khu)."""
     f = f.assign(cluster=f.ticker.map(clusters))
     out = []
     for c in TREND_COLS:
@@ -138,7 +116,6 @@ def trends(f, clusters: pd.Series):
 
 # --------------------------------------------------------------------------- 3
 def leadlag(f):
-    """Tuong quan gop panel giua thay doi chi so NH quy t va thay doi lai suat tai cap von quy t-k."""
     f = f.sort_values(["ticker", "period"]).copy()
     refi = f.groupby("period").refinancing_rate_pct.first().sort_index()
     d_refi = refi.diff()
@@ -156,7 +133,6 @@ def leadlag(f):
 
 # --------------------------------------------------------------------------- 4
 def demean_two_way(f, cols):
-    """Tru trung binh NH roi tru trung binh quy: con lai phan rieng cua NH trong quy do."""
     d = f[cols] - f.groupby("ticker")[cols].transform("mean")
     return d - d.groupby(f.period).transform("mean")
 
@@ -183,12 +159,6 @@ SNAP_COLS = ["npl_percent", "loans_g2_percent", "credit_cost_ttm_pct", "car_asof
 
 
 def snapshot(f, upto=None):
-    """Anh chup HIEN TAI: gia tri khac rong gan nhat trong 4 quy cuoi cua tung NH.
-
-    Cung cach voi features_ranking_latest.csv (dau vao xep hang). Truoc 16/09/2026 lay trung
-    binh 4 quy - cham so voi hien tai: STB NPL trung binh 5,83% trong khi 2026-Q2 la 7,54%;
-    NVB ROA trung binh -0,93% trong khi da lai tro lai (+0,12%). `upto` = quy cuoi cua cua so.
-    """
     periods = sorted(p for p in f.period.unique() if upto is None or p <= upto)
     last4 = periods[-4:]
     recent = f[f.period.isin(last4)].sort_values("period")
@@ -209,7 +179,6 @@ def _kmeans(Z, seed=SEED, n_init=50):
 
 
 def _align(labels, reference):
-    """Doi ten nhan k-means sao cho trung nhieu nhat voi phan nhom tham chieu (3! = 6 cach)."""
     from itertools import permutations
     best, best_hit = labels, -1
     for perm in permutations(range(3)):
@@ -221,12 +190,6 @@ def _align(labels, reference):
 
 
 def group_stability(f, current, rng, B=300):
-    """Nhom co vung khong. Voi 22 NH va silhouette ~0,2, ranh gioi k-means rat mong.
-
-    (1) Phan nhom lai tren anh chup cua tung quy trong 4 quy gan nhat, dem so quy trung nhom hien tai.
-    (2) Bootstrap: lay lai 22 NH co hoan lai, fit k-means, gan nhom cho ca 22 NH, dem ty le trung.
-    NH duoc coi la ON DINH khi trung nhom >= 3/4 quy va >= 50% lan bootstrap.
-    """
     from sklearn.metrics import silhouette_score
     periods = sorted(f.period.unique())[-4:]
     same = pd.Series(0, index=current.index)
@@ -268,8 +231,6 @@ def groups(snap):
 
 # --------------------------------------------------------------------------- 6
 def deposit_today(snap, rng):
-    """Lai suat 12 thang ngay moi nhat. 24hmoney (crawl hang ngay) du 22 NH; deposit_daily chi ~12 NH co online.
-    Doc qua crawlers.deposit_tiers de moi NH cung bac so tien thap nhat."""
     from crawlers import deposit_tiers
     d = deposit_tiers.read(DEPOSIT_24H)
     d = d[d.ticker.notna()]
@@ -319,12 +280,6 @@ def app_links(f, rng):
 
 
 def app_monthly():
-    """Diem sao va ty le 1 sao theo thang, gop ca 22 app co trong so so review.
-
-    Trung vi giua NH khong thay cu roi thang 7/2024 (QĐ 2345/QĐ-NHNN, sinh trac hoc cho giao
-    dich > 10 trieu) va 1/2025 (TT 17/2024: dung giao dich online cua tai khoan chua doi chieu
-    sinh trac hoc) vi nhieu NH co it review; gop theo so review thi thay ro.
-    """
     a = pd.read_csv(APP_MONTHLY, encoding="utf-8-sig")
     a = a[a.month >= "2019-01"].assign(ws=lambda d: d.mean_score * d.n_reviews, w1=lambda d: d.pct_1star * d.n_reviews)
     g = a.groupby("month").agg(n_reviews=("n_reviews", "sum"), ws=("ws", "sum"), w1=("w1", "sum"), n_banks=("ticker", "nunique"))
@@ -368,7 +323,6 @@ SEASON_FROM = "2023-Q1"  # goc du bao dau tien, giong backtest naive vs AR(1) ng
 
 
 def _season_z(f, col, kind):
-    """Thay doi so voi quy truoc (bien muc) hoac muc tru trung binh NH (bien dong), cat o p1/p99."""
     g = f.groupby("ticker")[col]
     z = g.diff() if kind == "level" else f[col] - g.transform("mean")
     lo, hi = z.quantile([0.01, 0.99])
@@ -376,13 +330,6 @@ def _season_z(f, col, kind):
 
 
 def seasonality(f):
-    """ANOVA long nhau: quy trong nam > quy > NH-quy.
-
-    Cac NH cung quy chiu chung mot cu soc, nen don vi kiem dinh la QUY (~30), khong phai NH-quy (~640):
-    F = (SS quy-trong-nam / 3) / (SS cac quy cung vi tri / (T - 4)). Kruskal-Wallis tren trung binh tung
-    quy la ban khong gia dinh phan phoi chuan. "Nhat quan" = so nam ma quy dinh lech cung chieu so voi
-    trung binh cua chinh nam do (can >= 3 quy trong nam).
-    """
     from scipy import stats
     rows, prof, years = [], [], []
     for col, (label, kind) in SEASON.items():
@@ -416,16 +363,6 @@ def seasonality(f):
 
 
 def seasonal_naive(f, rng, B=2000):
-    """Walk-forward tu SEASON_FROM, ba cach du bao khong can mo hinh:
-
-      naive   giu nguyen so quy goc
-      drift   + h * trung vi moi thay doi da biet (xu huong chung, khong phan biet quy)
-      season  + tong trung vi thay doi cua dung (cac) quy toi (xu huong + mua vu)
-
-    Trung vi chi hoc tu cac thay doi da biet tai goc du bao. season so voi drift moi la phan mua vu thuan;
-    season so voi naive la baseline ma mo hinh du bao phai thang. Loi = 1 - MAE(a) / MAE(b); KTC 95%
-    bootstrap theo NH.
-    """
     per = sorted(f.period.unique())
     qn = {p: int(p[-1]) for p in per}
     rows = []

@@ -1,0 +1,23 @@
+﻿truong_hop,phuong_thuc,duong_dan,ma_http,phan_hoi
+Gửi: hợp lệ (đối chứng),POST,/api/v1/advisor/savings,200,22 ngân hàng có sản phẩm; xếp hạng AVAILABLE
+Gửi: số tiền 0,POST,/api/v1/advisor/savings,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (amount: Số tiền tối thiểu 1 triệu đồng)
+Gửi: số tiền âm,POST,/api/v1/advisor/savings,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (amount: Số tiền tối thiểu 1 triệu đồng)
+Gửi: số tiền 200 tỷ (vượt trần),POST,/api/v1/advisor/savings,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (amount: Số tiền tối đa 100 tỷ đồng)
+Gửi: số tiền là chữ,POST,/api/v1/advisor/savings,400,BAD_REQUEST: Nội dung yêu cầu không đọc được
+Gửi: thiếu kỳ hạn,POST,/api/v1/advisor/savings,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (termMonths: Chọn kỳ hạn)
+Gửi: kỳ hạn 0 tháng,POST,/api/v1/advisor/savings,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (termMonths: Kỳ hạn tối thiểu 1 tháng)
+Gửi: kênh không tồn tại,POST,/api/v1/advisor/savings,400,BAD_REQUEST: Nội dung yêu cầu không đọc được
+Gửi: kỳ hạn 9 tháng (không ngân hàng nào có số liệu),POST,/api/v1/advisor/savings,200,0 ngân hàng có sản phẩm; xếp hạng NOT_AVAILABLE (TERM_NOT_RANKED)
+Gửi: kỳ hạn 60 tháng (không có số liệu),POST,/api/v1/advisor/savings,200,0 ngân hàng có sản phẩm; xếp hạng NOT_AVAILABLE (TERM_NOT_RANKED)
+Gửi: thân yêu cầu không phải JSON,POST,/api/v1/advisor/savings,400,BAD_REQUEST: Nội dung yêu cầu không đọc được
+Vay: hợp lệ (đối chứng),POST,/api/v1/advisor/loans,200,22 ngân hàng có sản phẩm; xếp hạng AVAILABLE
+Vay: số tiền 5 triệu (dưới mức tối thiểu),POST,/api/v1/advisor/loans,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (amount: Số tiền vay tối thiểu 10 triệu đồng)
+Vay: thời hạn 50 năm,POST,/api/v1/advisor/loans,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (termMonths: Thời hạn tối đa 35 năm)
+Vay: mục đích không tồn tại,POST,/api/v1/advisor/loans,400,BAD_REQUEST: Nội dung yêu cầu không đọc được
+Vay: thiếu cách trả nợ,POST,/api/v1/advisor/loans,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (repayment: Chọn cách trả nợ)
+Hồ sơ ngân hàng không tồn tại,GET,/api/v1/banks/XYZ,404,BANK_NOT_FOUND: Không tìm thấy ngân hàng
+Xếp hạng với mục đích sai,GET,/api/v1/rankings?purpose=ABC,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (purpose: Giá trị không hợp lệ)
+Chỉ tiêu không tồn tại,GET,/api/v1/indicators/khong_co/comparison,400,VALIDATION_FAILED: Dữ liệu gửi lên không hợp lệ (tickers: Bắt buộc nhập)
+Trang cá nhân khi chưa đăng nhập,GET,/api/v1/me/needs,401,UNAUTHORIZED: Bạn cần đăng nhập để dùng chức năng này
+"Đã đăng nhập, lưu nhu cầu nhưng thiếu mã CSRF",POST,/api/v1/me/needs,403,CSRF_TOKEN_INVALID: Phiên làm việc trên trang đã cũ. Vui lòng thử lại
+Đường dẫn quản trị khi chưa đăng nhập,GET,/api/v1/admin/imports,401,UNAUTHORIZED: Bạn cần đăng nhập để dùng chức năng này

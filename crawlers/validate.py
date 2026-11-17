@@ -1,39 +1,3 @@
-"""Cong kiem tra chat luong du lieu chay TRUOC khi dung panel de mo hinh hoa.
-
-Vi sao can module nay rieng: 19 crawler da co `validate()` cua chinh no, nhung
-moi cai chi nhin duoc file cua chinh no. Ba loai loi da tung cat du an deu nam
-NGOAI tam nhin do:
-
-  1. Loi don vi / dau im lang. `financial_long.csv` ghi `unit='%'` nhung luu gia
-     tri thap phan, va COF / NPL-coverage / CIR luu SO AM. Khong co exception nao
-     duoc nem ra; doc thang file se ra ket qua sai am tham.
-  2. Mau thuan giua hai nguon doc lap. Mot nguon co the tu nhat quan hoan toan ma
-     van sai - chi lo ra khi dat canh nguon kia.
-  3. Bien suy dan theo thoi gian. Mot crawler mat dan dong sau moi lan chay se
-     khong bao loi, chi lo ra khi so sanh voi muc do phu da ghi nhan truoc do.
-
-Nguyen tac phan muc do nghiem trong - day la phan quan trong nhat cua module:
-
-  ERROR  Gia tri KHONG THE dung ve mat dinh nghia, hoac hai nguon mau thuan qua
-         nguong. Vi du: close nam ngoai [low, high], du no lon hon tong tai san,
-         P/E tinh tren EPS bang 0. Loai nay phai sua truoc khi mo hinh hoa.
-  WARN   Gia tri CUC DOAN nhung co the co that. Vi du toan bo chuoi cua NVB -
-         NPL 35%, ROE -92%, CIR 976% - deu la so that cua mot ngan hang dang tai
-         co cau, khong duoc loc bo. Muc nay de doc, khong de chan.
-  INFO   Do phu va thong ke nen, khong phai van de.
-
-Nham WARN thanh ERROR se khien nguoi dung xoa mat du lieu that; nham ERROR thanh
-WARN se khien loi lot vao mo hinh. Do la ly do hai muc nay tach bien nhau bang
-hai bo nguong rieng (HARD_BOUNDS va SOFT_BOUNDS) chu khong bang mot allowlist.
-
-Chay:
-    python -m crawlers.validate                 # bao cao day du, nguoi doc
-    python -m crawlers.validate --json          # cho CI / script
-    python -m crawlers.validate --scope panel   # chi cac phep kiem tren panel
-    python -m crawlers.validate --quiet         # chi in ERROR
-
-Ma thoat: 1 neu co bat ky ERROR nao, 0 neu khong. Dung lam cong trong CI.
-"""
 from __future__ import annotations
 
 import os
@@ -50,6 +14,9 @@ FIN_LONG = "data/vnstock_financial/financial_long.csv"
 CAR_HALF = "data/credit/bank_car_halfyear.csv"
 DEPOSIT_LSTK = "data/interest_rates/deposit_daily.csv"
 DEPOSIT_24H = "data/interest_rates/deposit_24hmoney_daily.csv"
+# Nguon chinh lai tien gui tu 07/11/2026 (bieu doc thang tu web tung NH, crawlers/deposit_official.py)
+DEPOSIT_SHEET = "data/interest_rates/deposit_official_daily.csv"
+DEPOSIT_SHEET_MAX_AGE_DAYS = 2
 PRICE_DIR = "data/price"
 MARKET_DIR = "data/market"
 LOG_PATH = "crawl_log.txt"
@@ -57,8 +24,8 @@ LOG_PATH = "crawl_log.txt"
 ERROR, WARN, INFO = "ERROR", "WARN", "INFO"
 LEVEL_ORDER = {ERROR: 0, WARN: 1, INFO: 2}
 
-QUARTERS = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:34]
-N_BANKS, N_QUARTERS = 22, 34
+QUARTERS = [f"{y}-Q{q}" for y in range(2018, 2027) for q in range(1, 5)][:35]
+N_BANKS, N_QUARTERS = 22, 35
 
 # --------------------------------------------------------------------------
 # Nguong mien gia tri.
@@ -123,9 +90,11 @@ COVERAGE_BASELINE = {
     "loans_vnd": 748, "deposits_vnd": 748, "total_assets_vnd": 748,
     "ldr_computed_percent": 748, "provision_over_loans_percent": 748,
     "npl_percent": 737, "casa_percent": 737,
-    "nim_ttm_percent": 738, "cof_ttm_percent": 738,
-    "earning_asset_yield_ttm_percent": 738, "roe_ttm_percent": 738,
-    "roa_ttm_percent": 738, "cir_ttm_approx_percent": 738,
+    # cof 738 -> 689, loi suat 738 -> 662, cir 738 -> 737 ngay 31/10/2026: 0 cua MAS la
+    # thieu, truoc do bi cong nhu so that (vnstock_ratio_mas.ZERO_MEANS_MISSING).
+    "nim_ttm_percent": 738, "cof_ttm_percent": 689,
+    "earning_asset_yield_ttm_percent": 662, "roe_ttm_percent": 738,
+    "roa_ttm_percent": 738, "cir_ttm_approx_percent": 737,
     # npl_coverage 649 -> 737 ngay 15/09/2026: build_panel tinh lap bao phu tu
     # thuyet minh o nhung o VCI trong (ke ca 2021-Q2 va quy lech 2022-Q1).
     "loans_short_share_percent": 736, "npl_coverage_percent": 737,
@@ -189,7 +158,10 @@ SBV_DEPOSIT_CAPS = [
     ("2022-10-25", 6.00, "QĐ 1813/QĐ-NHNN"),
     ("2023-04-03", 5.50, "QĐ 574/QĐ-NHNN"),
     ("2023-05-25", 5.00, "QĐ 951/QĐ-NHNN"),
-    ("2023-06-19", 4.75, "QĐ 1125/QĐ-NHNN, giu nguyen o QĐ 2411/QĐ-NHNN 01/11/2024"),
+    ("2023-06-19", 4.75, "QĐ 1124/QĐ-NHNN ky 16/06/2023"),
+    # Kiem 14/10/2026: van hieu luc, chua co quyet dinh moi (bao 27/02/2026: hon 10 NH "kich tran 4,75%" ky han 1 thang;
+    # 13/10/2026: 10 NH ghi dung 4,75 online 1 thang, khong o nao tren 4,8). QD 2411 thay QD 1124, giu muc.
+    ("2024-11-20", 4.75, "QĐ 2411/QĐ-NHNN ky 01/11/2024 theo TT 48/2024/TT-NHNN (thay QĐ 1124)"),
 ]
 DEPOSIT_CAP_ROUNDING_PP = 0.05
 
@@ -278,12 +250,65 @@ XSOURCE_RESOLVED = {
                     "24hmoney giu so cu tu truoc 23/09. Du lieu dung qua deposit_tiers.TIER_OVERRIDES",
         "reviewed": "2026-10-01",
     },
+    **{("SHB", term, "online"): {
+        "winner": "deposit_24hmoney",
+        "evidence": "nguoi dung tu kiem tra 14/10/2026 va xac nhan so 24hmoney (6T 7,7, 12T 7,8). Bieu PDF dang "
+                    "tren shb.com.vn (file 01/07/2026, QD 1221/2026 hieu luc 11/4) van ghi 6,20 / 6,50 nen lstk "
+                    "khop bieu cu; khong ghi de truoc 20/10. TU 20/10/2026 co bieu moi (QD 3990/2026/QD-TGD, online "
+                    "6T 5,70 / 12T 6,00, VietnamNet 21/10 cung ghi vay) -> tu ngay do lay deposit_tiers.OFFICIAL",
+        "reviewed": "2026-10-22",
+    } for term in (6, 12)},
+    # Dot giam lai 20-22/10/2026 (CV 9608/NHNN-CSTT): lstk cap nhat, 24hmoney dung yen tu 17/10. Bieu chinh thuc
+    # doc ngay 22/10 khop lstk o TPB quay 6T (5,00), ACB online 12T (5,20), LPB online 18T (6,55); SHB online
+    # 18-36T lstk ghi so lanh lai hang thang (5,94 / 6,02) con bieu cuoi ky la 6,10 / 6,20.
+    **{key: {
+        "winner": "bieu chinh thuc (deposit_tiers.OFFICIAL, doc 22/10/2026)",
+        "evidence": "24hmoney khong cap nhat sau dot giam lai 20-22/10/2026; so dung qua anh chup bieu chinh thuc "
+                    "data/interest_rates/deposit_official_manual.csv",
+        "reviewed": "2026-10-22",
+    } for key in [("ACB", 12, "online"), ("LPB", 18, "online"), ("SHB", 18, "online"), ("SHB", 24, "online"),
+                  ("SHB", 36, "online"), ("TPB", 6, "quay"), ("TPB", 12, "online")]},
+    ("BAB", 6, "quay"): {
+        "winner": "deposit_daily",
+        "evidence": "Bieu tai quay tren baca-bank.vn (trang lai-xuat.aspx, doc 23/10/2026, hieu luc 19/10) ghi 6T 6,55 = "
+                    "lstk; 24hmoney 5,55. Da ghi vao deposit_tiers.OFFICIAL",
+        "reviewed": "2026-10-23",
+    },
+    **{("OCB", term, "online"): {
+        "winner": "deposit_daily",
+        "evidence": "Bang lai suat OCB hieu luc 20/10/2026 (webocb-api.ocb.com.vn/Resources/Files/20261019184205_3-"
+                    "20.10.2026-...pdf), bac duoi 100 trieu online 6T 6,0 / 12T 6,3 = lstk; 24hmoney dung yen 6,7 / 7,0",
+        "reviewed": "2026-10-23",
+    } for term in (6, 12)},
+    **{("BID", term, "online"): {
+        "winner": "deposit_24hmoney toi 28/10; tu 29/10 bang tong hop Techcombank (deposit_tiers.TIER_OVERRIDES)",
+        "evidence": "BIDV tang lai online thang 8/2026: 6-11T va 13-36T len 7,2, 12T len 7,4 (bai 24hmoney "
+                    "04/08/2026 20:37 va 05/08/2026 11:02; cafeland 'BIDV tang manh lai suat tien gui online'). "
+                    "24hmoney cap nhat tre tu 05/10 (7,2 / 7,4), lstk van giu so truoc dot tang (6,6 / 6,8). "
+                    "BIDV khong dang bang online tren bidv.com.vn. Sau dot giam lai 20-22/10, bang Techcombank "
+                    "03/11 ghi 6,6 / 6,8 (ban Wayback 17/10 con 7,2 / 7,4), trung lstk; 24hmoney dung o 29/10",
+        "reviewed": "2026-11-03",
+    } for term in (6, 12)},
+    **{("BID", term, "online"): {
+        "winner": "deposit_24hmoney",
+        "evidence": "21-23/10/2026 lstk chep nguyen bieu TAI QUAY moi cua BIDV (bidv.com.vn doc 22/10: 2,10 / 2,40 / "
+                    "3,00 / 5,40 / 5,40 / 5,50 / 5,50) vao kenh online; truoc 21/10 va tu 24/10 lstk online lai khop "
+                    "24hmoney (4,75 / 4,75 / 6,6 / 6,8 / 6,8). Ky 1-3T 24hmoney 4,8 la 4,75 lam tron, read() dua ve tran",
+        "reviewed": "2026-11-06",
+    } for term in (1, 3, 18, 24, 36)},
+    **{("TCB", term, "online"): {
+        "winner": "bieu chinh thuc 24/10/2026 (deposit_tiers.OFFICIAL)",
+        "evidence": "Bieu KHCN Techcombank ap dung tu 24/10/2026 (tcb-bieu-lai-suat-tien-gui-tiet-kiem-tien-gui-co-ky-"
+                    "han-20261024.pdf, doc 06/11): online KH THUONG 4,25 / 4,55 / 6,05 / 6,25 / 5,35 (1/3/6/12/13-36T). "
+                    "KHONG nguon nao dung: lstk ghi cot PRIVATE (4,40 / 4,65 / 6,20 / 6,40 / 5,50), 24hmoney tu 27/10 "
+                    "chep lech cot tu blog Techcombank (12T 5,35 la so 13-36T; tai quay 18-36T 5,35 la so online)",
+        "reviewed": "2026-11-06",
+    } for term in (1, 3, 6, 12, 18, 24, 36)},
 }
 
 
 @dataclass
 class Finding:
-    """Mot phat hien. `sample` giu toi da vai dong minh hoa, khong giu ca bang."""
     level: str
     check: str
     table: str
@@ -307,24 +332,16 @@ def _read(path, **kw):
 
 
 def _round(value, digits=4):
-    """Cat nhieu dau phay dong de mau in ra doc duoc (2.0500000000000003)."""
     if isinstance(value, float) and np.isfinite(value):
         return round(value, digits)
     return value
 
 
 def _has(frame, cols):
-    """Du cot de chay phep kiem chua.
-
-    Mot bo kiem tra gap du lieu di dang phai bao cao, khong duoc nem exception:
-    dung ngay o dong dau tien nghia la moi loi phia sau deu khong ai thay.
-    Cot thieu da duoc check_panel_coverage bao rieng thanh ERROR.
-    """
     return all(c in frame.columns for c in cols)
 
 
 def _sample(frame, cols, limit=6):
-    """Vai dong dai dien, da ep ve kieu JSON-hoa duoc."""
     cols = [c for c in cols if c in frame.columns]
     head = frame[cols].head(limit)
     records = head.astype(object).where(head.notna(), None).to_dict("records")
@@ -377,7 +394,6 @@ def check_panel_keys(panel):
 
 
 def check_panel_bounds(panel):
-    """Hai vong: HARD ra ERROR, SOFT ra WARN. Mot o vuot HARD khong bao lai o WARN."""
     out = []
     hard_hits = {}
     for col, (lo, hi) in HARD_BOUNDS.items():
@@ -412,7 +428,6 @@ def check_panel_bounds(panel):
 
 
 def check_panel_identities(panel):
-    """Cac quan he phai dung theo dinh nghia, khong phu thuoc nguon."""
     out = []
     money = ["loans_vnd", "deposits_vnd", "total_assets_vnd"]
 
@@ -467,22 +482,27 @@ def check_panel_identities(panel):
                 _sample(over, ["ticker", "period", "loans_vnd",
                                "total_assets_vnd"])))
 
+    rates = ["earning_asset_yield_ttm_percent", "nim_ttm_percent"]
+    if _has(panel, rates):
+        # NIM = loi suat - chi phi lai / tai san sinh lai, ma chi phi lai khong am. Sau khi
+        # sua 0 cua MAS: 45 o vi pham -> 0, khoang cach nho nhat 1,73 diem, nen khong can dung sai.
+        under = panel[panel[rates[0]] < panel[rates[1]]]
+        if len(under):
+            out.append(Finding(
+                ERROR, "panel.identity", PANEL,
+                f"{len(under)} dong co loi suat tai san sinh lai thap hon NIM - bat kha thi, "
+                f"thuong la quy thieu bi cong nhu so 0 khi dung TTM",
+                _sample(under, ["ticker", "period", "yield_src", "nim_src"] + rates)))
+
     if not out:
         out.append(Finding(
             INFO, "panel.identity", PANEL,
             "cac dang thuc noi bo deu dung: LDR khop, ty trong ky han cong 100%, "
-            "khong co gia tri am, du no khong vuot tong tai san"))
+            "khong co gia tri am, du no khong vuot tong tai san, loi suat khong thap hon NIM"))
     return out
 
 
 def check_degenerate_ratios(panel):
-    """Hai kieu ty so vo nghia, deu khong nem loi va deu doc thang ra so dep.
-
-    (1) Mau bang 0: gia tri ra khong sai mot chut, no vo nghia.
-    (2) Ty so bang DUNG 0 trong khi mau van khoe manh: nguon dang dung 0 lam ky
-        hieu THIEU. Nguy hiem hon (1) vi 0 trong ngoai hoan toan hop le, va trong
-        moi phep min-max thi 0 lai roi vao dung dau mut "tot nhat" cua thang do.
-    """
     out = []
     for ratio_col, base_col in ZERO_MEANS_MISSING.items():
         if not _has(panel, [ratio_col, base_col]):
@@ -521,7 +541,6 @@ def check_degenerate_ratios(panel):
 
 
 def check_coverage_regression(panel):
-    """Bat truong hop crawler mat dan dong ma khong bao loi."""
     out = []
     drops = []
     for col, base in COVERAGE_BASELINE.items():
@@ -547,13 +566,6 @@ def check_coverage_regression(panel):
 
 
 def check_panel_share_jumps(panel):
-    """Ty trong co cau nhay manh roi quay ve - dau hieu nguon ghi nham dong.
-
-    Hai dang: (1) o giua chuoi lech > SHARE_JUMP_PP ca hai phia trong khi hai quy
-    ke ben gan nhau; (2) quy CUOI lech > SHARE_JUMP_PP khoi trung vi 4 quy truoc
-    von on dinh. Dang (2) can rieng vi loi o quy moi nhat khong co quy sau de so
-    - STB 2026-Q2 lot qua dung cach do.
-    """
     out = []
     if not _has(panel, ["ticker", "period"]):
         return out
@@ -600,12 +612,6 @@ def check_panel_share_jumps(panel):
 # Loi rieng cua nguon VCI
 # --------------------------------------------------------------------------
 def check_vci_stale_rows():
-    """Dong ratio chep nguyen quy truoc (2021-Q4 = 2021-Q3) khong con lot vao file tinh.
-
-    Gia tri chep lai nam tron trong mien hop le nen check_panel_bounds khong bao
-    gio thay. Da go o tang doc (crawlers/vci_ratio.py); phep kiem nay la tripwire
-    cho truong hop mot module moi doc thang raw/ ma bo qua lop sua do.
-    """
     out = []
     if not os.path.exists(CREDIT):
         return [Finding(WARN, "vci.stale", CREDIT, "khong tim thay file")]
@@ -642,7 +648,6 @@ def check_vci_stale_rows():
 
 
 def check_note_currency_identity():
-    """Tien gui VND khong the lon hon tong tien gui theo loai tien."""
     out = []
     if not os.path.exists(NOTE):
         return [Finding(WARN, "note.identity", NOTE, "khong tim thay file")]
@@ -671,11 +676,6 @@ def check_note_currency_identity():
 # Tripwire cho bay don vi / dau
 # --------------------------------------------------------------------------
 def check_ratio_shape():
-    """Kiem gia dinh chuan hoa cua build_panel con dung khong.
-
-    Khong phai "cac gia tri nay am nen sai" - ma la "build_panel dang gia dinh
-    chung am va la thap phan; neu nguon doi thi gia dinh do thanh sai".
-    """
     out = []
     if not os.path.exists(FIN_LONG):
         return [Finding(WARN, "ratio.shape", FIN_LONG, "khong tim thay file")]
@@ -743,12 +743,6 @@ def check_ratio_shape():
 # Doi chung cheo giua cac nguon doc lap
 # --------------------------------------------------------------------------
 def check_deposit_cross_source():
-    """laisuattietkiem vs 24hmoney tren nhung o ca hai cung do.
-
-    CANH BAO KY THUAT: pandas merge ghep NaN voi NaN. Neu khong loc ticker rong
-    truoc khi merge, hai file nay sinh ra 8.218 cap gia thay vi 1.274 cap that,
-    va moi thong ke sau do deu vo nghia.
-    """
     out = []
     for path in (DEPOSIT_LSTK, DEPOSIT_24H):
         if not os.path.exists(path):
@@ -827,10 +821,10 @@ def _cap_on(day):
 
 
 def check_deposit_caps():
-    """Lai suat ky han 1 den duoi 6 thang khong duoc vuot tran NHNN tai ngay cua bang."""
     out = []
     sources = (("deposit_24hmoney", DEPOSIT_24H, "effective_date"),
-               ("deposit_daily", DEPOSIT_LSTK, "date"))
+               ("deposit_daily", DEPOSIT_LSTK, "date"),
+               ("deposit_official", DEPOSIT_SHEET, "date"))
     for name, path, day_col in sources:
         if not os.path.exists(path):
             out.append(Finding(WARN, "deposit.cap", path, "khong tim thay file"))
@@ -896,11 +890,6 @@ def check_deposit_caps():
 
 
 def check_deposit_amount_tiers():
-    """Bac lai suat theo so tien (deposit_tiers.AMOUNT_TIERS) con khop bac thap nhat trong du lieu khong.
-
-    Bac chi duoc xuat cho o khop; o lech nghia la NH da doi bieu (hoac 24hmoney doi bac) - trang gui
-    tiet kiem se tu quay ve bac thap nhat cho o do cho toi khi cap nhat bang bac.
-    """
     try:
         from crawlers import deposit_tiers
         table = deposit_tiers.amount_tier_status()
@@ -922,13 +911,66 @@ def check_deposit_amount_tiers():
         f"{int((~table['present']).sum())} ky han trong bieu khong co trong du lieu")]
 
 
-def check_deposit_tier_overrides():
-    """Bang ghi de bac lai suat (crawlers/deposit_tiers.py) con khop so nguon dang ghi khong.
+def check_deposit_official():
+    try:
+        from crawlers import deposit_tiers
+        table = deposit_tiers.official_status()
+    except Exception as exc:
+        return [Finding(WARN, "deposit.official", DEPOSIT_24H,
+                        f"khong doc duoc anh chup bieu chinh thuc ({type(exc).__name__}: {exc})")]
+    if table.empty:
+        return [Finding(INFO, "deposit.official", DEPOSIT_24H, "chua co anh chup bieu chinh thuc")]
+    out = []
+    stale = table[~table["still_matches"]]
+    if len(stale):
+        out.append(Finding(
+            WARN, "deposit.official", DEPOSIT_24H,
+            f"{len(stale)}/{len(table)} o bieu chinh thuc khong con khop so 24hmoney ngay "
+            f"{table['latest_date'].iloc[0]} - doc lai bieu NH roi cap nhat {deposit_tiers.OFFICIAL}",
+            _sample(stale, ["ticker", "channel", "term_months", "official", "raw_at_check", "raw_latest"])))
+    old = table[table["age_days"] > deposit_tiers.OFFICIAL_MAX_AGE_DAYS]
+    if len(old):
+        out.append(Finding(
+            WARN, "deposit.official", DEPOSIT_24H,
+            f"anh chup bieu chinh thuc cu hon {deposit_tiers.OFFICIAL_MAX_AGE_DAYS} ngay "
+            f"({', '.join(sorted(old['ticker'].unique()))}) - o them moi da het han, doc lai bieu"))
+    if not out:
+        out.append(Finding(
+            INFO, "deposit.official", DEPOSIT_24H,
+            f"{len(table)} o bieu chinh thuc ({table['ticker'].nunique()} NH, doc {table['checked'].max()}) van "
+            f"khop nguon; {int(table['added_cell'].sum())} o them moi"))
+    return out
 
-    Ghi de chi ap khi 24hmoney van ghi dung so da thay luc doi chieu bieu cua NH. Khi NH
-    doi lai suat, o do ngung duoc ghi de - phai doi chieu bieu moi, neu khong NH do se
-    quay lai dung bac so tien khac voi 21 NH con lai ma khong ai hay.
-    """
+
+def check_deposit_sheet():
+    if not os.path.exists(DEPOSIT_SHEET):
+        return [Finding(WARN, "deposit.sheet", DEPOSIT_SHEET, "khong tim thay file - chay "
+                        "`python -m crawlers.deposit_official`")]
+    try:
+        from crawlers import deposit_official
+    except Exception as exc:
+        return [Finding(WARN, "deposit.sheet", DEPOSIT_SHEET, f"khong nap duoc crawler ({type(exc).__name__}: {exc})")]
+    sheet = _read(DEPOSIT_SHEET)
+    latest = str(sheet["date"].max())
+    age = (pd.Timestamp.now().normalize() - pd.Timestamp(latest)).days
+    out = []
+    if age > DEPOSIT_SHEET_MAX_AGE_DAYS:
+        out.append(Finding(WARN, "deposit.sheet", DEPOSIT_SHEET,
+                           f"anh chup bieu NH moi nhat la {latest} ({age} ngay truoc) - crawl hang ngay co chay khong?"))
+    today = sheet[sheet["date"].astype(str) == latest]
+    missing = sorted(set(deposit_official.BANKS) - set(today["ticker"]))
+    if missing:
+        out.append(Finding(WARN, "deposit.sheet", DEPOSIT_SHEET,
+                           f"{latest}: khong doc duoc bieu cua {', '.join(missing)} (xem crawl_log.txt; "
+                           f"`python -m crawlers.deposit_official {' '.join(missing)}` de thu lai)"))
+    out.append(Finding(INFO, "deposit.sheet", DEPOSIT_SHEET,
+                       f"{latest}: {today['ticker'].nunique()}/{len(deposit_official.BANKS)} NH doc tu dong, "
+                       f"{len(today)} o; chua tu dong: {', '.join(sorted(deposit_official.GAPS))} "
+                       f"(bu bang anh chup doc tay / blog Techcombank)"))
+    return out
+
+
+def check_deposit_tier_overrides():
     try:
         from crawlers import deposit_tiers
         table = deposit_tiers.status()
@@ -951,7 +993,6 @@ def check_deposit_tier_overrides():
 
 
 def check_npl_cross_source(panel):
-    """NPL tu thuyet minh (so cap) vs NPL cua VCI tren nhung o ca hai cung co."""
     out = []
     if not os.path.exists(CREDIT):
         return [Finding(WARN, "npl.xsource", CREDIT, "khong tim thay file")]
@@ -989,25 +1030,6 @@ def check_npl_cross_source(panel):
 # OHLC
 # --------------------------------------------------------------------------
 def check_ohlc(directory, label):
-    """Tinh nhat quan cua thanh gia.
-
-    Hai loai vi pham RAT khac nhau, khong duoc gop chung mot muc:
-
-    `high < low` la bat kha thi ve cau truc - khong co cach nao mot phien co gia
-    cao nhat thap hon gia thap nhat. Luon la ERROR.
-
-    `open` hoac `close` nam ngoai [low, high] thi thuong la dau vet cua viec
-    nha cung cap dieu chinh mot truong ma khong dieu chinh cac truong con lai
-    (close da dieu chinh co tuc con OHL thi chua, hoac open lay tu phien ATO
-    trong khi high/low lay tu phien lien tuc). Do la khiem khuyet cua nguon,
-    khong phai du lieu hong - va bien do rat nho. Chi khi bien do vuot
-    OHLC_MAX_DEVIATION_PERCENT thi moi la hong that.
-
-    Do tren kho ngay 2026-09-10: 54 vi pham, KHONG cai nao la high < low, lech
-    trung vi 0,50% va lon nhat 2,42%. Vi pham don gia dung o file chi so (open),
-    vi pham don close dung o file co phieu - hai dau van khac nhau cua cung mot
-    loai loi nha cung cap.
-    """
     out = []
     if not os.path.isdir(directory):
         return [Finding(WARN, "ohlc", directory, "khong tim thay thu muc")]
@@ -1099,12 +1121,6 @@ def check_ohlc(directory, label):
 # Thoi gian
 # --------------------------------------------------------------------------
 def _is_date_column(name):
-    """Nhan dien cot ngay theo TEN CHINH XAC, khong theo chuoi con.
-
-    Khong dung `"date" in name`: chuoi 'updated' co chua 'date' (up-DATE-d), nen
-    bo loc long se keo ca `source_updated_at` - mot cot dau thoi gian dang
-    'HH:MM:SS DD/MM/YYYY' - vao phep kiem, sinh canh bao parse va ton cong vo ich.
-    """
     low = name.lower()
     if low.startswith("retrieved") or low.endswith("_utc"):
         return False
@@ -1113,7 +1129,6 @@ def _is_date_column(name):
 
 
 def check_future_dates(paths):
-    """Ngay vuot hom nay gan nhu luon la loi parse nam hoac loi mui gio."""
     out = []
     today = pd.Timestamp.now(tz="UTC").normalize()
     hits = []
@@ -1148,11 +1163,6 @@ PANEL_CHECKS = ("panel.keys", "panel.bounds", "panel.identity",
 
 
 def run(scope="all"):
-    """Chay cac phep kiem, tra ve danh sach Finding da sap theo muc nghiem trong.
-
-    scope='panel' chi chay nhung phep kiem chan duoc viec dung panel de mo hinh
-    hoa - dung khi goi tu build_panel. scope='all' chay het.
-    """
     if not os.path.exists(PANEL):
         return [Finding(ERROR, "panel.keys", PANEL,
                         "chua co panel - chay `python -m crawlers.build_panel` truoc")]
@@ -1174,6 +1184,8 @@ def run(scope="all"):
         findings += check_deposit_cross_source()
         findings += check_deposit_caps()
         findings += check_deposit_tier_overrides()
+        findings += check_deposit_official()
+        findings += check_deposit_sheet()
         findings += check_deposit_amount_tiers()
         findings += check_ohlc(PRICE_DIR, "gia co phieu")
         findings += check_ohlc(MARKET_DIR, "chi so thi truong")
@@ -1196,7 +1208,6 @@ def summarize(findings):
 
 
 def report(findings, quiet=False):
-    """Bao cao cho nguoi doc. WARN in kem loi nhac khong duoc loc bo du lieu."""
     counts = {level: sum(1 for f in findings if f.level == level)
               for level in (ERROR, WARN, INFO)}
     print(f"{counts[ERROR]} ERROR - {counts[WARN]} WARN - {counts[INFO]} INFO")

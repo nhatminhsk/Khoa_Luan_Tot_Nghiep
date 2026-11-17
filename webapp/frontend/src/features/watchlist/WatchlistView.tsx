@@ -326,7 +326,11 @@ function SavedNeedsCard() {
 
   return (
     <SectionCard title="Nhu cầu đã lưu" subtitle="Mở lại trang gửi tiết kiệm / vay với đúng tiêu chí đã lưu." flush>
-      {!needs.data ? (
+      {needs.isError ? (
+        <Box sx={{ px: 2.5, pb: 2.5 }}>
+          <ErrorState error={needs.error} onRetry={() => needs.refetch()} />
+        </Box>
+      ) : !needs.data ? (
         <Box sx={{ px: 2.5, pb: 2.5 }}>
           <LoadingBlock height={120} />
         </Box>
@@ -374,7 +378,8 @@ function needHref(need: SavedNeed): string {
       amount: need.amount,
       termMonths: need.termMonths,
       channel: need.channel ?? "ONLINE",
-      weights: { rate: need.weightRate ?? 50, safety: need.weightSafety ?? 30, app: need.weightApp ?? 20 },
+      // Tiêu chí ứng dụng đã bỏ: nhu cầu cũ có trọng số app thì bỏ qua (link mở ra sẽ quy hai mức còn lại về tổng 100).
+      weights: { rate: need.weightRate ?? 60, safety: need.weightSafety ?? 40, app: 0 },
     })}`;
   }
   return `/loans?${toLoanQuery({

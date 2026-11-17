@@ -4,15 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Button, IconButton, InputAdornment, Link as MuiLink, Stack, Typography } from "@mui/material";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { EmailTypoHint } from "@/components/form/EmailTypoHint";
 import { RHFTextField } from "@/components/form/RHFFields";
-import { useNotify } from "@/components/providers/NotifierProvider";
 import { useAuth } from "@/hooks/use-auth";
 import { errorMessage } from "@/lib/http/api-error";
+import { reloadTo } from "./reload-after-auth";
 import { safeNext } from "./safe-next";
 
 const schema = z.object({
@@ -22,20 +22,21 @@ const schema = z.object({
 type LoginValues = z.infer<typeof schema>;
 
 export function LoginForm() {
-  const router = useRouter();
   const next = safeNext(useSearchParams().get("next"));
-  const { login } = useAuth();
-  const notify = useNotify();
+  const { login, isAuthenticated } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const methods = useForm<LoginValues>({ resolver: zodResolver(schema), defaultValues: { email: "", password: "" } });
   const email = useWatch({ control: methods.control, name: "email" });
 
+  // Đã có phiên (bấm Back về trang này, mở lại link đăng nhập cũ, hoặc link "Theo dõi" còn nhớ lệnh chuyển hướng từ lúc
+  // chưa đăng nhập): tải lại tới trang đích. Không dùng router.replace — xem reload-after-auth.ts.
+  useEffect(() => {
+    if (isAuthenticated && !login.isSuccess) reloadTo(next);
+  }, [isAuthenticated, login.isSuccess, next]);
+
   const onSubmit = methods.handleSubmit((values) =>
     login.mutate(values, {
-      onSuccess: (user) => {
-        notify(`Xin chào, ${user.displayName}`);
-        router.replace(next);
-      },
+      onSuccess: (user) => reloadTo(next, `Xin chào, ${user.displayName}`),
     }),
   );
 
@@ -77,6 +78,9 @@ export function LoginForm() {
             },
           }}
         />
+        <MuiLink component={Link} href="/forgot-password" variant="body2" sx={{ alignSelf: "flex-end", mt: -1 }}>
+          Quên mật khẩu?
+        </MuiLink>
         <Button type="submit" variant="contained" size="large" loading={login.isPending}>
           Đăng nhập
         </Button>

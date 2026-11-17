@@ -37,6 +37,8 @@ export const meRepository = {
 
   /** Đổi email đăng nhập (cần mật khẩu hiện tại); email mới phải xác minh lại. */
   changeEmail: (input: { newEmail: string; currentPassword: string }) => apiClient.put<User>("/me/email", input),
+  /** Đổi mật khẩu: phiên ở thiết bị khác bị thu hồi, trình duyệt này nhận cookie phiên mới. */
+  changePassword: (input: { currentPassword: string; newPassword: string }) => apiClient.put<User>("/me/password", input),
 
   emailVerification: () => apiClient.get<EmailVerificationStatus>("/me/email-verification"),
   /** Gửi (lại) email xác minh (link + mã 6 số) tới email đăng ký. */

@@ -8,8 +8,10 @@ import {
   TextField,
   ToggleButton,
   ToggleButtonGroup,
+  Typography,
   type TextFieldProps,
 } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import type { ReactNode } from "react";
 import { NumericFormat } from "react-number-format";
 import { Controller, useFormContext, type FieldValues, type Path } from "react-hook-form";
@@ -113,13 +115,17 @@ export function RHFSelect<T extends FieldValues, V extends string | number>({
   );
 }
 
-/** Chọn một trong vài lựa chọn ngắn (kênh gửi, cách trả nợ). */
+/**
+ * Chọn một trong vài lựa chọn ngắn (kênh gửi, cách trả nợ).
+ * `inline`: dùng trong thanh lọc ngang — nhãn chỉ còn cho trình đọc màn hình, nút cao 56px bằng ô nhập bên cạnh.
+ */
 export function RHFToggle<T extends FieldValues, V extends string | number>({
   name,
   label,
   helperText,
   options,
-}: BaseProps<T> & { options: Option<V>[] }) {
+  inline = false,
+}: BaseProps<T> & { options: Option<V>[]; inline?: boolean }) {
   const { control } = useFormContext<T>();
   return (
     <Controller
@@ -127,7 +133,7 @@ export function RHFToggle<T extends FieldValues, V extends string | number>({
       control={control}
       render={({ field, fieldState }) => (
         <FormControl error={!!fieldState.error} fullWidth>
-          <FormLabel sx={{ mb: 0.75, fontSize: "0.875rem" }}>{label}</FormLabel>
+          <FormLabel sx={inline ? visuallyHidden : { mb: 0.75, fontSize: "0.875rem" }}>{label}</FormLabel>
           <ToggleButtonGroup
             exclusive
             fullWidth
@@ -138,7 +144,7 @@ export function RHFToggle<T extends FieldValues, V extends string | number>({
             aria-label={label}
           >
             {options.map((option) => (
-              <ToggleButton key={option.value} value={option.value} sx={{ minHeight: 40 }}>
+              <ToggleButton key={option.value} value={option.value} sx={{ minHeight: inline ? 50 : 40, lineHeight: 1.25 }}>
                 {option.label}
               </ToggleButton>
             ))}
@@ -149,5 +155,17 @@ export function RHFToggle<T extends FieldValues, V extends string | number>({
         </FormControl>
       )}
     />
+  );
+}
+
+/**
+ * Dòng nhắc dưới nút gửi khi tiêu chí trên form đã sửa mà chưa bấm: kết quả và nút "Lưu nhu cầu" vẫn theo tiêu chí trên URL.
+ */
+export function UnappliedHint({ show }: { show: boolean }) {
+  if (!show) return null;
+  return (
+    <Typography variant="caption" color="warning.main" role="status" sx={{ display: "block", mt: 1, textAlign: "center" }}>
+      Chưa áp dụng — bấm Xem kết quả trước khi lưu nhu cầu.
+    </Typography>
   );
 }

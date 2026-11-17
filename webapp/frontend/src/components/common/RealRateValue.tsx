@@ -1,7 +1,7 @@
 import { Typography, type TypographyProps } from "@mui/material";
 import { formatDelta } from "@/utils/format";
 
-/** Lãi suất thực có dấu (+2,31% / −0,40%): xanh khi dương (giữ được sức mua), đỏ khi âm. */
+/** Lãi suất thực có dấu (+2,31% / −0,40%): xanh khi dương (cao hơn lạm phát tháng gần nhất), đỏ khi âm. */
 export function RealRateValue({ value, variant = "body2" }: { value: number | null; variant?: TypographyProps["variant"] }) {
   if (value === null) return <>—</>;
   return (

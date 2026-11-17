@@ -24,20 +24,20 @@ import { Disclaimer } from "@/components/common/Disclaimer";
 import { PageHeader } from "@/components/common/PageHeader";
 import { SectionCard } from "@/components/common/SectionCard";
 import { StatTile } from "@/components/common/StatTile";
-import { EmptyState, ErrorState, LoadingBlock } from "@/components/common/States";
+import { EmptyState, ErrorState, LoadingBlock, UpdatingNote } from "@/components/common/States";
 import { LendingOriginTag, lendingOriginLabel } from "@/components/domain/LendingOriginTag";
 import { ProgramList } from "@/components/domain/ProgramList";
 import { RankingSection } from "@/components/domain/RankingSection";
 import { SaveNeedButton } from "@/features/needs/SaveNeedButton";
+import { useScrollToResults } from "@/hooks/use-scroll-to-results";
 import { advisorRepository } from "@/repositories/advisor.repository";
 import type { LoanAdvice, LoanAdviceRequest } from "@/types/api";
 import { formatMonth, formatPercent, formatTerm, formatVnd, formatVndCompact } from "@/utils/format";
 import { LOAN_PURPOSE_LABEL, REPAYMENT_LABEL } from "@/utils/labels";
+import { STALE_MONTHS, isComparableLending } from "@/utils/lending";
 import { LoanForm } from "./LoanForm";
 import { parseLoanParams, toLoanQuery } from "./loan-params";
 
-/** Số lãi cũ hơn mức này (tháng) thì gắn cảnh báo. */
-const STALE_MONTHS = 3;
 
 export function LoansView() {
   const searchParams = useSearchParams();
@@ -51,7 +51,16 @@ export function LoansView() {
     placeholderData: keepPreviousData,
   });
 
-  const submit = (values: LoanAdviceRequest) => router.replace(`${pathname}?${toLoanQuery(values)}`, { scroll: false });
+  const [resultsRef, expectResults] = useScrollToResults(
+    searchParams.toString(),
+    advice.isSuccess && !advice.isPlaceholderData && !advice.isFetching,
+    advice.isError,
+  );
+  const submit = (values: LoanAdviceRequest) => {
+    const query = toLoanQuery(values);
+    expectResults(query);
+    router.replace(`${pathname}?${query}`, { scroll: false });
+  };
 
   return (
     <>
@@ -77,20 +86,26 @@ export function LoansView() {
       />
 
       <Grid container spacing={2.5}>
-        {/* Chỉ chia cột form/kết quả từ lg: ở iPad (≤ 1199px, có thêm menu trái từ md) cột kết quả 8/12 còn ~470px,
-            thẻ KPI bị cắt số và bảng phải cuộn ngang. Dưới lg form nằm trên, trường xếp nhiều cột. */}
-        <Grid size={{ xs: 12, lg: 4 }}>
-          <Card sx={{ p: { xs: 2, sm: 2.5 }, position: { lg: "sticky" }, top: { lg: 88 } }}>
+        {/* Thanh lọc ngang trên cùng, kết quả rộng cả trang (cùng bố cục trang Gửi tiết kiệm). */}
+        <Grid size={12}>
+          <Card sx={{ p: { xs: 2, sm: 2.5 } }}>
             <LoanForm key={toLoanQuery(request)} initial={request} onSubmit={submit} submitting={advice.isFetching} />
           </Card>
         </Grid>
-        <Grid size={{ xs: 12, lg: 8 }}>
+        <Grid
+          size={12}
+          ref={resultsRef}
+          tabIndex={-1}
+          aria-label="Kết quả"
+          sx={{ scrollMarginTop: 80, "&:focus": { outline: "none" } }}
+        >
           {advice.isError ? (
             <ErrorState error={advice.error} onRetry={() => advice.refetch()} />
           ) : !advice.data ? (
             <LoadingBlock height={420} />
           ) : (
-            <Box sx={{ opacity: advice.isPlaceholderData ? 0.55 : 1, transition: "opacity 150ms" }}>
+            <Box aria-busy={advice.isPlaceholderData} sx={{ opacity: advice.isPlaceholderData ? 0.55 : 1, transition: "opacity 150ms" }}>
+              {advice.isPlaceholderData && <UpdatingNote sx={{ mb: 1.5 }} />}
               <LoanResults data={advice.data} />
             </Box>
           )}
@@ -107,7 +122,10 @@ export function LoansView() {
 }
 
 function LoanResults({ data }: { data: LoanAdvice }) {
-  const cheapest = data.offers[0];
+  // Thẻ số đặt cạnh nhau phải so được với nhau: ưu tiên số KH cá nhân do ngân hàng tự công bố và không cũ (cùng cách thẻ Vay ở
+  // Tổng quan); bảng bên dưới vẫn có đủ mọi loại số. Không có số nào như vậy thì lấy dòng đầu bảng (thấp nhất chung).
+  const comparable = data.offers.find((o) => isComparableLending(o, data.latestMonth));
+  const cheapest = comparable ?? data.offers[0];
   const programNames = new Map(data.programs.map((p) => [p.code, p.name]));
   const declining = data.repayment === "DECLINING_BALANCE";
 
@@ -119,11 +137,12 @@ function LoanResults({ data }: { data: LoanAdvice }) {
             <StatTile
               icon={<IconPercentage size={18} aria-hidden />}
               tone="primary"
-              label="Lãi vay thấp nhất"
+              // Mức bình quân ngân hàng công bố (không phải lãi được duyệt); số có thể cũ hơn tháng mới nhất của bảng.
+              label={comparable ? "Bình quân thấp nhất (KH cá nhân)" : "Bình quân thấp nhất trong dữ liệu"}
               value={formatPercent(cheapest.lendingAvgPercent)}
               hint={`${cheapest.shortName} · tháng ${formatMonth(cheapest.month)}${
                 cheapest.segment || cheapest.source ? ` · ${lendingOriginLabel(cheapest).toLowerCase()}` : ""
-              }`}
+              }${cheapest.monthsBehind >= STALE_MONTHS ? ` · cũ hơn ${cheapest.monthsBehind} tháng` : ""}`}
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 4 }}>
@@ -147,9 +166,21 @@ function LoanResults({ data }: { data: LoanAdvice }) {
         </Grid>
       )}
 
-      <SectionCard title="Xếp hạng tổng hợp" subtitle="Cân nhắc lãi suất cho vay, chương trình ưu đãi và sức khỏe tài chính.">
-        <RankingSection purpose="LOAN" block={data.ranking} />
-      </SectionCard>
+      {cheapest && (
+        <Typography variant="caption" color="text.secondary" component="p" sx={{ mt: -1 }}>
+          Minh họa theo {cheapest.shortName} {formatPercent(cheapest.lendingAvgPercent)}/năm, giả định lãi giữ nguyên suốt{" "}
+          {formatTerm(data.termMonths)}; không phải lãi suất được duyệt.
+        </Typography>
+      )}
+
+      {data.ranking.status !== "NOT_AVAILABLE" && (
+        <SectionCard
+          title="Xếp hạng tổng hợp cho người vay"
+          subtitle="Giá vay (lãi cho vay bình quân, lợi suất cho vay), phù hợp với khách hàng cá nhân, sức cho vay; bốn phương pháp đa tiêu chí, 10.000 lần rút trọng số."
+        >
+          <RankingSection purpose="LOAN" block={data.ranking} />
+        </SectionCard>
+      )}
 
       {data.programs.length > 0 && (
         <SectionCard
@@ -160,9 +191,13 @@ function LoanResults({ data }: { data: LoanAdvice }) {
         </SectionCard>
       )}
 
+      {/* Chưa có xếp hạng: một dòng ngay trên bảng (dòng này nói "bảng dưới"), sau thẻ chương trình ưu đãi nếu có. */}
+      {data.ranking.status === "NOT_AVAILABLE" && <RankingSection purpose="LOAN" block={data.ranking} />}
+
       <SectionCard
         title="Ước tính tiền trả theo lãi suất cho vay bình quân"
-        subtitle={`Sắp theo lãi suất tăng dần. Mỗi ngân hàng một số: ưu tiên số khách hàng cá nhân ngân hàng công bố, không có thì số chung, cuối cùng là số báo tổng hợp; các số này không hoàn toàn cùng loại (rê chuột lên nhãn để xem). Tháng mới nhất trong dữ liệu: ${formatMonth(data.latestMonth)}.`}
+        subtitle={`Sắp theo lãi suất tăng dần, mỗi ngân hàng một số. Các số khác nhau về tháng và phạm vi công bố (nhãn cạnh số), không phải lãi suất bạn được duyệt. Tháng mới nhất: ${formatMonth(data.latestMonth)}.`}
+        info="Thứ tự chọn số cho mỗi ngân hàng: số khách hàng cá nhân ngân hàng công bố; không có thì số chung; rồi đến nhóm hẹp ngân hàng chỉ công bố riêng (trung dài hạn, vay tiêu dùng); cuối cùng là số báo tổng hợp. Các số này không hoàn toàn cùng loại — rê chuột hoặc chạm vào nhãn cạnh số để xem chi tiết và nguồn. Dấu tam giác vàng: số cũ hơn 3 tháng so với tháng mới nhất."
         flush
       >
         {data.offers.length === 0 ? (
@@ -212,11 +247,21 @@ function LoanResults({ data }: { data: LoanAdvice }) {
                         )}
                         <Typography variant="caption" color="text.secondary">
                           {formatMonth(offer.month)}
+                          {offer.basis ? ` · ${offer.basis === "NEW_LOANS" ? "vay mới" : "dư nợ"}` : ""}
                         </Typography>
                       </Stack>
                     </TableCell>
                     <TableCell align="right" sx={{ fontWeight: 600 }}>
                       {formatVnd(offer.firstPayment)}
+                      {/* Điện thoại ẩn cột tổng tiền lãi (và trả tháng cuối đến md): ghi gọn dưới ô này để vẫn đọc được từng ngân hàng. */}
+                      <Typography variant="caption" color="text.secondary" component="div" sx={{ display: { xs: "block", sm: "none" }, fontWeight: 400 }}>
+                        Tổng lãi {formatVndCompact(offer.totalInterest)}
+                      </Typography>
+                      {declining && (
+                        <Typography variant="caption" color="text.secondary" component="div" sx={{ display: { xs: "block", md: "none" }, fontWeight: 400 }}>
+                          Tháng cuối {formatVndCompact(offer.lastPayment)}
+                        </Typography>
+                      )}
                     </TableCell>
                     {declining && (
                       <TableCell align="right" sx={{ display: { xs: "none", md: "table-cell" } }}>
